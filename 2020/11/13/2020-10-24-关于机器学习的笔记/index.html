@@ -241,6 +241,15 @@
 </li>
 </ul>
 </blockquote>
+<p><strong>简单总结一下反向传播与梯度下降的基本工作原理：</strong></p>
+<ol>
+<li><strong>初始化；</strong></li>
+<li><strong>正向计算；</strong></li>
+<li><strong>损失函数为我们提供了计算损失的方法；</strong></li>
+<li><strong>梯度下降是在损失函数基础上向着损失最小的点靠近而指引了网络权重调整的方向；</strong></li>
+<li><strong>反向传播把损失值反向传给神经网络的每一层，让每一层都根据损失值反向调整权重；</strong></li>
+<li><strong>Go to 2，直到精度足够好（比如损失函数值小于 0.001）。</strong></li>
+</ol>
 </li>
 </ul>
 </blockquote>
