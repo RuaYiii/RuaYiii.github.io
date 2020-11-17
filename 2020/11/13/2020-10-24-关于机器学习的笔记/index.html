@@ -253,7 +253,398 @@
 </li>
 </ul>
 </blockquote>
-<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><blockquote>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2><ul>
+<li><p>线性</p>
+<p>比如 <img src="https://camo.githubusercontent.com/d2fb954cabd65d39416b87f8a4fd7f7a1f6176e7cccd5479ea8213ebaba67f65/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f666c6f77322e706e67" alt="img" style="zoom: 80%;" /></p>
+<blockquote>
+<p>最终的 z 值，受到了前面很多因素的影响：变量 w，变量 b，计算式 x，计算式 y。</p>
+</blockquote>
+<p><strong>求 w 的偏导</strong></p>
+<p>​    目前 z=162，如果想让 z 变小一些，比如目标是 z=150，w 应该如何变化呢？</p>
+<p>​    最笨的办法是可以在输入端一点一点的试——直到满意为止</p>
+<p>​    从 z 开始一层一层向回➡   <strong>z=x⋅y</strong>   又有  <code>x=2w+3b</code>,<code>y=2b+1</code></p>
+<p>所以<img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20201116200258117.png" alt="image-20201116200258117" style="zoom:80%;" />  （链式法则）</p>
+<p>其中  $$\frac{\partial{z}}{\partial{x}}=\frac{\partial{}}{\partial{x}}(x \cdot y)=y=9$$       $$\frac{\partial{x}}{\partial{w}}=\frac{\partial{}}{\partial{w}}(2w+3b)=2$$     </p>
+<p> 上述表达的含义是：当 w 变化一点点时，z 会产生 w 的变化值18倍的变化。记住我们的目标是让 z=150，目前在初始状态时是 z=162，所以，问题转化为：当需要 z 从 162 变到 150 时，w 需要变化多少？ </p>
+<p>​    既然 Δz=18⋅Δw    那么—— $$\Delta w = {\Delta z \over 18}=\frac{162-150}{18}= 0.6667$$  </p>
+<p>​    最终结果也可以看出  $$w = w - 0.6667=2.3333$$</p>
+<p>​                                        $$x=2w+3b=16.6667$$</p>
+<p>​                          $$z=x \cdot y=16.6667 \times 9=150.0003$$ </p>
+<p>​    其误差和最终的150相差无几</p>
+<blockquote>
+<p>但是精度还不够。再迭代几次，到<strong>误差的绝对值不大于 <code>1e-4</code> 时，我们就可以结束迭代</strong>了 ，对于计算机来说，这些运算的执行速度很快。</p>
+</blockquote>
+<blockquote>
+<p>这个问题用数学公式倒推求解一个二次方程，就能直接得到准确的b值吗？是的！但是我们是要说明机器学习的方法，机器并不会解二次方程，而且很多时候不是用二次方程就能解决实际问题的</p>
+</blockquote>
+<p>求b的偏导</p>
+<p>不再赘述</p>
+<p><strong>同求w和b的变化值</strong></p>
+<p>我们不妨把 Δz的误差让 w 和 b 平分</p>
+</li>
+<li><p>非线性</p>
+<img src="https://camo.githubusercontent.com/4c2edb15b8b4e647e89e52baec6d8575a89c5f3487e6246747df0c3f000cfa9e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67616d652e706e67" alt="img" style="zoom:50%;" />
+
+<p>​    <strong>数学解析解</strong></p>
+<p>​    $$c=\sqrt{b}=\sqrt{\ln(a)}=\sqrt{\ln(x^2)}=2.13$$</p>
+<p>​    $$x = 9.6653$$ </p>
+<p>​    <strong>梯度迭代解</strong></p>
+<p>​        $$\frac{da}{dx}=\frac{d(x^2)}{dx}=2x=\frac{\Delta a}{\Delta x} \tag{1}$$</p>
+<p>$$\frac{db}{da} =\frac{d(\ln{a})}{da} =\frac{1}{a} = \frac{\Delta b}{\Delta a} \tag{2}$$</p>
+</li>
+</ul>
+<p>$$\frac{dc}{db}=\frac{d(\sqrt{b})}{db}=\frac{1}{2\sqrt{b}}=\frac{\Delta c}{\Delta b} \tag{3}$$ </p>
+<p>​    那么我们应该这样：Δc=c−y</p>
+<p>​                                   $$\Delta b = \Delta c \cdot 2\sqrt{b}$$</p>
+<p>​                                     Δa=Δb⋅a</p>
+<p>​                                    Δx=Δa/2x</p>
+<p><strong>上表</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方向</td>
+<td>公式</td>
+<td>迭代1</td>
+<td>迭代2</td>
+<td>迭代3</td>
+<td>迭代4</td>
+<td>迭代5</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>x=x−Δx</td>
+<td>2</td>
+<td>4.243</td>
+<td>7.344</td>
+<td>9.295</td>
+<td>9.665</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>a=x2</td>
+<td>4</td>
+<td>18.005</td>
+<td>53.934</td>
+<td>86.404</td>
+<td>93.233</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>b=ln(a)</td>
+<td>1.386</td>
+<td>2.891</td>
+<td>3.988</td>
+<td>4.459</td>
+<td>4.535</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>c=b√</td>
+<td>1.177</td>
+<td>1.700</td>
+<td>1.997</td>
+<td>2.112</td>
+<td>2.129</td>
+</tr>
+<tr>
+<td></td>
+<td>标签值y</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δc=c−y</td>
+<td>-0.953</td>
+<td>-0.430</td>
+<td>-0.133</td>
+<td>-0.018</td>
+<td></td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δb=Δc⋅2b√</td>
+<td>-2.243</td>
+<td>-1.462</td>
+<td>-0.531</td>
+<td>-0.078</td>
+<td></td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δa=Δb⋅a</td>
+<td>-8.973</td>
+<td>-26.317</td>
+<td>-28.662</td>
+<td>-6.698</td>
+<td></td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δx=Δa/2x</td>
+<td>-2.243</td>
+<td>-3.101</td>
+<td>-1.951</td>
+<td>-0.360</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>​    <strong>自然角度理解</strong>：</p>
+<blockquote>
+<p>在自然界中，梯度下降的最好例子，就是泉水下山的过程：</p>
+<ol>
+<li>水受重力影响，会在当前位置，沿着最陡峭的方向流动，有时会形成瀑布（梯度下降）</li>
+<li>水流下山的路径不是唯一的，在同一个地点，有可能有多个位置具有同样的陡峭程度，而造成了分流（可以得到多个解）</li>
+<li>遇到坑洼地区，有可能形成湖泊，而终止下山过程（不能得到全局最优解，而是局部最优解）</li>
+</ol>
+</blockquote>
+<p>​    <strong>数学理解（淦哦</strong></p>
+<blockquote>
+<p>$$\theta_{n+1} = \theta_{n} - \eta \cdot \nabla J(\theta) $$</p>
+<ul>
+<li>θn+1：下一个值；</li>
+<li><strong>θn：当前值；</strong></li>
+<li>−：减号，梯度的反向；</li>
+<li>η：学习率或步长，控制每一步走的距离，不要太快以免错过了最佳景点，不要太慢以免时间太长；</li>
+<li><strong>∇：梯度，函数当前位置的最快上升点；</strong></li>
+<li>J(θ)：函数。</li>
+</ul>
+</blockquote>
+<p>​    三个要素：当前点   方向   步长</p>
+<p><strong>为何叫做 梯度下降？？</strong></p>
+<blockquote>
+<p>“梯度下降”包含了两层含义：</p>
+<ol>
+<li>梯度：函数当前位置的最快上升点；</li>
+<li>下降：与导数相反的方向，用数学语言描述就是那个减号。</li>
+</ol>
+<p>亦即与上升相反的方向运动，就是下降</p>
+</blockquote>
+<p>假设一个  $$J(x) = x ^2$$  |我们的目的是找到该函数的最小值，于是计算其微分</p>
+<p>​                $$J’(x) = 2x$$ </p>
+<p>假设初始位置为：$$x_0=1.2$$    假设学习率： $$\eta = 0.3$$ </p>
+<p>根据公式 ：$$\theta_{n+1} = \theta_{n} - \eta \cdot \nabla J(\theta) $$ </p>
+<p>则就是     $$x_{n+1} = x_{n} - \eta \cdot 2x$$ </p>
+<p><strong>现在是双变量的梯度下降</strong></p>
+<p>假设   $$J(x,y) = x^2 + \sin^2(y)$$     </p>
+<p>计算其微分  $${\partial{J(x,y)} \over \partial{x}} = 2x$$</p>
+<p>​                    $${\partial{J(x,y)} \over \partial{y}} = 2 \sin y \cos y$$ </p>
+<p>假设初始位置  $$(x_0,y_0)=(3,1)$$ 假设学习率  $$\eta = 0.1$$ </p>
+<p>那么其迭代计算公式为：  $$(x_{n+1},y_{n+1}) = (x_n,y_n) - \eta \cdot \nabla J(x,y)$$ </p>
+<p>​                                        $$ = (x_n,y_n) - \eta \cdot (2x,2 \cdot \sin y \cdot \cos y)$$ </p>
+<p>过程如下： </p>
+<table>
+<thead>
+<tr>
+<th>迭代次数</th>
+<th>x</th>
+<th>y</th>
+<th>J(x,y)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>9.708073</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2.4</td>
+<td>0.909070</td>
+<td>6.382415</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.105553</td>
+<td>0.063481</td>
+<td>0.015166</td>
+</tr>
+<tr>
+<td>16</td>
+<td>0.084442</td>
+<td>0.050819</td>
+<td>0.009711</td>
+</tr>
+</tbody></table>
+<p>迭代16次后，J(x,y) 的值为 0.009711，<strong>满足小于 0.01 的条件，停止迭代</strong></p>
+<p><strong>学习率η的选择</strong></p>
+<blockquote>
+<p>在公式表达时，学习率被表示为η。在代码里，我们把学习率定义为<code>learning_rate</code>，或者<code>eta</code>，针对上面的例子，试验不同的学习率对迭代情况的影响，如表2-5所示。</p>
+<p>表2-5 不同学习率对迭代情况的影响</p>
+<table>
+<thead>
+<tr>
+<th>学习率</th>
+<th>迭代路线图</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/4cfdca932b7f4b9f533b20b2471220830e4fa9b7fe7e301c7afa22aeb2c7a940/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643130302e706e67"><img src="https://camo.githubusercontent.com/4cfdca932b7f4b9f533b20b2471220830e4fa9b7fe7e301c7afa22aeb2c7a940/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643130302e706e67" alt="img"></a></td>
+<td>学习率太大，迭代的情况很糟糕，在一条水平线上跳来跳去，永远也不能下降。</td>
+</tr>
+<tr>
+<td>0.8</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/07d9ea9b385074dd3157c13213c9ff7c2b7ab1706a58777e621d2bc32bb54dfc/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643038302e706e67"><img src="https://camo.githubusercontent.com/07d9ea9b385074dd3157c13213c9ff7c2b7ab1706a58777e621d2bc32bb54dfc/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643038302e706e67" alt="img"></a></td>
+<td>学习率大，会有这种左右跳跃的情况发生，这不利于神经网络的训练。</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/b2af582be26aab17d545fce0d775db55129f64fb7e50bae627da3f3e829a291e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643034302e706e67"><img src="https://camo.githubusercontent.com/b2af582be26aab17d545fce0d775db55129f64fb7e50bae627da3f3e829a291e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643034302e706e67" alt="img"></a></td>
+<td>学习率合适，损失值会从单侧下降，4步以后基本接近了理想值。</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/c751d93772af8df24ab26bcd3d89636801b9c3394d04d7b44168004082228e9b/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643031302e706e67"><img src="https://camo.githubusercontent.com/c751d93772af8df24ab26bcd3d89636801b9c3394d04d7b44168004082228e9b/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643031302e706e67" alt="img"></a></td>
+<td>学习率较小，损失值会从单侧下降，但下降速度非常慢，10步了还没有到达理想状态。</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><blockquote>
+<p>在各种材料中经常看到的中英文词汇有：误差，偏差，Error，Cost，Loss，损失，代价……意思都差不多，在本书中，使用“损失函数”和“Loss Function”这两个词汇，具体的损失函数符号用 J 来表示，误差值用 loss 表示。</p>
+</blockquote>
+<p>“损失”就是所有样本的“误差”的总和   $$损失 = \sum^m_{i=1}误差<em>i$$   也就是    $$J = \sum</em>{i=1}^m loss_i$$ </p>
+<blockquote>
+<p>在黑盒子的例子中，我们如果说“某个样本的损失”是不对的，只能说“某个样本的误差”，因为样本是一个一个计算的。如果我们把神经网络的参数调整到完全满足独立样本的输出误差为 0，通常会令其它样本的误差变得更大，这样作为误差之和的损失函数值，就会变得更大。所以，我们通常会在根据某个样本的误差调整权重后，计算一下整体样本的损失函数值，来判定网络是不是已经训练到了可接受的状态。</p>
+</blockquote>
+<p><strong>损失函数的作用，就是计算神经网络每次迭代的前向计算结果与真实值的差距，从而指导下一步的训练向正确的方向进行。</strong></p>
+<p><strong>如何使用损失函数呢？具体步骤：</strong></p>
+<ol>
+<li>用随机值初始化前向计算公式的参数；</li>
+<li>代入样本，计算输出的预测值；</li>
+<li>用<strong>损失函数计算预测值和标签值（真实值）的误差</strong>；</li>
+<li><strong>根据损失函数的导数，沿梯度最小方向将误差回传，修正前向计算公式中的各个权重值</strong>；</li>
+<li><strong>进入第2步重复</strong>, 直到损失函数值达到一个满意的值就停止迭代。</li>
+</ol>
+<p><strong>损失函数的图像理解</strong></p>
+<ul>
+<li><strong>二维图像</strong></li>
+</ul>
+<blockquote>
+<img src="https://camo.githubusercontent.com/0c3256abd5d53df0ff69fbc19c3a889d7eddbc9df9046c3eb56a89d9bca4e1e3/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f332f676432642e706e67" alt="img" style="zoom: 80%;" />
+
+<p>单变量的损失函数图——纵坐标是损失函数值，横坐标是变量。不断地改变变量的值，会造成损失函数值的上升或下降。而梯度下降算法会让我们沿着损失函数值下降的方向前进。</p>
+<ol>
+<li>假设我们的初始位置在 A 点，x=x0，损失函数值（纵坐标）较大，回传给网络做训练；</li>
+<li>经过一次迭代后，我们移动到了 B 点，x=x1，损失函数值也相应减小，再次回传重新训练；</li>
+<li>以此节奏不断向损失函数的最低点靠近，经历了 x2,x3,x4,x5；</li>
+<li>直到损失值达到可接受的程度，比如 x5 的位置，就停止训练。</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>等高线图（？？？</strong></li>
+</ul>
+<blockquote>
+<img src="https://camo.githubusercontent.com/e88729b8852343a7cc533201bade63919a4048e1a37bcd56edef1b4ac6c020e2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f332f676433642e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>双变量的损失函数图</strong>——横坐标是一个变量 w，纵坐标是另一个变量 b。两个变量的组合形成的损失函数值，在图中对应处于等高线上的唯一的一个坐标点</p>
+<p>w,b 所有不同值的组合会形成一个损失函数值的矩阵，我们把矩阵中具有相同（相近）损失函数值的点连接起来，可以形成一个不规则椭圆，其圆心位置，是损失值为 0 的位置，也是我们要逼近的目标。</p>
+<p>这个椭圆如同平面地图的等高线，来表示的一个洼地，中心位置比边缘位置要低，通过对损失函数值的计算，对损失函数的求导，会带领我们沿着等高线形成的梯子一步步下降，无限逼近中心点。</p>
+</blockquote>
+<h3 id="机器学习常用损失函数"><a href="#机器学习常用损失函数" class="headerlink" title="*机器学习常用损失函数"></a>*机器学习常用损失函数</h3><p>​    符号规则：**$a$ 是预测值<strong>，$y$ **是样本标签值</strong>，$loss$ <strong>是损失函数值</strong>。</p>
+<ul>
+<li><p>Gold Standard Loss，又称0-1误差  </p>
+<p>$$loss=\begin{cases}0 &amp; a=y \\1 &amp; a \ne y \end{cases}$$ </p>
+</li>
+<li><p>绝对值损失函数</p>
+</li>
+</ul>
+<p>​     $$loss = |y-a|$$</p>
+<ul>
+<li>Hinge Loss，铰链/折页损失函数或最大边界损失函数，主要用于SVM（支持向量机）中</li>
+</ul>
+<p>​     $$loss=\max(0,1-y \cdot a) \qquad y=\pm 1$$</p>
+<ul>
+<li>Log Loss，对数损失函数，又叫交叉熵损失函数(cross entropy error)</li>
+</ul>
+<p>​     $$loss = -[y \cdot \ln(a)+(1-y)\cdot\ln(1-a)]\qquad y\in { 0,1 } $$</p>
+<ul>
+<li>Squared Loss，均方差损失函数</li>
+</ul>
+<p>​      $$loss=(a-y)^2$$</p>
+<ul>
+<li>Exponential Loss，指数损失函数</li>
+</ul>
+<p>​      $$loss = e^{-(y \cdot a)}$$ </p>
+<blockquote>
+<p> <strong>神经网络中常用的损失函数</strong></p>
+<ul>
+<li>均方差函数，主要用于回归</li>
+<li>交叉熵函数，主要用于分类</li>
+</ul>
+<p>二者都是非负函数，极值在底部，用梯度下降法可以求解。</p>
+</blockquote>
+<h3 id="均方差损失函数"><a href="#均方差损失函数" class="headerlink" title="均方差损失函数"></a>均方差损失函数</h3><blockquote>
+<p>最直观的一个损失函数了，<strong>计算预测值和真实值之间的欧式距离</strong>。预测值和真实值越接近，两者的均方差就越小</p>
+<p>常用于线性回归(linear regression)，即函数拟合(function fitting)。公式如下</p>
+<p>$$loss = {1 \over 2}(z-y)^2 $$    <strong>[单样本]</strong></p>
+<p>$$J=\frac{1}{2m} \sum_{i=1}^m (z_i-y_i)^2$$  <strong>[多样本]</strong></p>
+</blockquote>
+<p><strong>工作原理</strong>：</p>
+<blockquote>
+<p>要想得到预测值 a 与真实值 y 的差距，最朴素的想法就是用 $Error=a_i-y_i$</p>
+<p>对于单个样本来说，这样做没问题，但是多个样本累计时，$a_i-y_i$ 可能有正有负，误差求和时就会导致相互抵消，从而失去价值。所以有了绝对值差的想法，即  $Error=a_i-y_i$ </p>
+<p><strong>这看上去很简单，并且也很理想，那为什么还要引入均方差损失函数呢？</strong></p>
+<p>那么现在看一下他们的比较：</p>
+<table>
+<thead>
+<tr>
+<th>样本标签值</th>
+<th>样本预测值</th>
+<th>绝对值损失函数</th>
+<th>均方差损失函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[1,1,1]</td>
+<td>[1,2,3]</td>
+<td>(1−1)+(2−1)+(3−1)=3</td>
+<td>(1−1)2+(2−1)2+(3−1)2=5</td>
+</tr>
+<tr>
+<td>[1,1,1]</td>
+<td>[1,3,3]</td>
+<td>(1−1)+(3−1)+(3−1)=4</td>
+<td>(1−1)2+(3−1)2+(3−1)2=8</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>4/3=1.33</td>
+<td>8/5=1.6</td>
+</tr>
+</tbody></table>
+</blockquote>
+<blockquote>
+<p><strong>可以看到5比3已经大了很多，8比4大了一倍，而8比5也放大了某个样本的局部损失对全局带来的影响，用术语说，就是“对某些偏离大的样本比较敏感”，从而引起监督训练过程的足够重视，以便回传误差</strong></p>
+</blockquote>
+<p>###交叉熵损失函数</p>
+<blockquote>
+<p><strong>交叉熵（Cross Entropy）是Shannon信息论中一个重要概念，主要用于度量两个概率分布间的差异性信息。在信息论中，交叉熵是表示两个概率分布 p,q 的差异，其中 p 表示真实分布，q 表示预测分布，那么 H(p,q) 就称为交叉熵：</strong></p>
+</blockquote>
+<p>##训练</p>
+<blockquote>
 <p>output=relu(dot(<strong>w</strong>[weight] , input)+<strong>b</strong>[bias])</p>
 </blockquote>
 <h5 id="random-initialization-随机初始化"><a href="#random-initialization-随机初始化" class="headerlink" title="random initialization[随机初始化]"></a>random initialization[随机初始化]</h5><blockquote>
