@@ -32,7 +32,7 @@
   <meta name="author" content="RuaYiii">
 
   
-  <meta property="og:image" content="http://ruayiii.codes/2020/11/13/2020-10-24-关于机器学习的笔记/undefined">
+  <meta property="og:image" content="http://ruayiii.codes/2020/11/18/2020-10-24-关于机器学习的笔记/undefined">
   
 
   <!-- Mobile Specific Metas
@@ -642,6 +642,124 @@
 <p>###交叉熵损失函数</p>
 <blockquote>
 <p><strong>交叉熵（Cross Entropy）是Shannon信息论中一个重要概念，主要用于度量两个概率分布间的差异性信息。在信息论中，交叉熵是表示两个概率分布 p,q 的差异，其中 p 表示真实分布，q 表示预测分布，那么 H(p,q) 就称为交叉熵：</strong></p>
+<p>$$H(p,q)=\sum_i p_i \cdot \ln {1 \over q_i} = - \sum_i p_i \ln q_i $$  </p>
+<p>交叉熵可在神经网络中作为损失函数，<strong>p 表示真实标记的分布</strong>，<strong>q 则为训练后的模型的预测标记分布</strong>，<strong>交叉熵损失函数可以衡量 p 与 q 的相似性</strong>。</p>
+<p><strong>交叉熵函数常用于逻辑回归(logistic regression)，也就是分类(classification)</strong></p>
+</blockquote>
+<p><strong>交叉熵的由来</strong> </p>
+<ul>
+<li><strong>信息量</strong></li>
+</ul>
+<blockquote>
+<p>信息表示方法： $$I(x_j) = -\ln (p(x_j))$$ </p>
+<p>$x_j$：表示一个事件</p>
+<p>$p(x_j)$：<strong>表示 $x_j$ 发生的概率</strong></p>
+<p>$I(x_j)$：<strong>信息量</strong>，$x_j$ 越不可能发生时，它一旦发生后的信息量就越大</p>
+</blockquote>
+<p>举个例子，我考试有三种可能的情况发生</p>
+<table>
+<thead>
+<tr>
+<th>事件编号</th>
+<th>事件</th>
+<th>概率 p</th>
+<th>信息量 I</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x1</td>
+<td>优秀</td>
+<td>p=0.7</td>
+<td>I=−ln(0.7)=0.36</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>及格</td>
+<td>p=0.2</td>
+<td>I=−ln(0.2)=1.61</td>
+</tr>
+<tr>
+<td>x3</td>
+<td>不及格</td>
+<td>p=0.1</td>
+<td>I=−ln(0.1)=2.30</td>
+</tr>
+</tbody></table>
+<p>好家伙，某某同学不及格！好大的信息量！相比较来说，“优秀”事件的信息量反而小了很多</p>
+<ul>
+<li><p><strong>熵</strong></p>
+<blockquote>
+<p>$$H(p) = - \sum_j^n p(x_j) \ln (p(x_j))$$ </p>
+<p>针对上个栗子就是 ：</p>
+<p>$$\begin{aligned} H(p)&amp;=-[p(x_1) \ln p(x_1) + p(x_2) \ln p(x_2) + p(x_3) \ln p(x_3)] \\&amp;=0.804\end{aligned}$$  </p>
+</blockquote>
+</li>
+<li><p><strong>相对熵（KL散度）</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>相对熵又称KL散度，<strong>如果我们对于同一个随机变量 x 有两个单独的概率分布 P(x) 和 Q(x)，我们可以使用 KL 散度（Kullback-Leibler (KL) divergence）来衡量这两个分布的差异</strong>，这个相当于信息论范畴的均方差。</p>
+<p>计算公式为  $$D_{KL}(p||q)=\sum_{j=1}^n p(x_j) \ln{p(x_j) \over q(x_j)}$$   </p>
+<p><strong>n 为事件的所有可能性。D 的值越小，表示 q 分布和 p 分布越接近。</strong></p>
+</blockquote>
+<ul>
+<li>交叉熵</li>
+</ul>
+<blockquote>
+<p>将上述公式变形</p>
+<p>$$\begin{aligned} D_{KL}(p||q)&amp;=\sum_{j=1}^n p(x_j) \ln{p(x_j)} - \sum_{j=1}^n p(x_j) \ln q(x_j) \\&amp;=- H(p(x)) + H(p,q) \end{aligned}$$</p>
+<p>等式的前一部分恰巧就是 p 的熵，等式的后一部分，就是<strong>交叉熵</strong>：</p>
+<p>即  $$H(p,q) =- \sum_{j=1}^n p(x_j) \ln q(x_j)$$ </p>
+<p><strong>在机器学习中，我们需要评估标签值 $y$ 和预测值 $a$ 之间的差距，使用KL散度刚刚好，即 $D_{KL}(y||a)$，由于KL散度中的前一部分 $H(y)$ 不变，故在优化过程中，只需要关注交叉熵就可以了。所以一般在机器学习中直接用交叉熵做损失函数来评估模型</strong></p>
+<p>即  $$loss =- \sum_{j=1}^n y_j \ln a_j$$ </p>
+<p><strong>n 并不是样本个数，而是分类个数。所以，对于批量样本（m个）的交叉熵计算公式是</strong></p>
+<p>$$J =- \sum_{i=1}^m \sum_{j=1}^n y_{ij} \ln a_{ij}$$ </p>
+<p> m 是样本数，n 是分类数 </p>
+<blockquote>
+<p>有一类特殊问题，<strong>就是事件只有两种情况发生的可能</strong>，比如“学会了”和“没学会”，<strong>称为 0/1 分类或二分类</strong>。对于这类问题，由于$n=2，y_1=1-y_2，a_1=1-a_2$所以交叉熵可以简化为：$$loss =-[y \ln a + (1-y) \ln (1-a)]$$</p>
+<p>批量算法： $$J= - \sum_{i=1}^m [y_i \ln a_i + (1-y_i) \ln (1-a_i)]$$ </p>
+</blockquote>
+</blockquote>
+<p><strong>关于二分类问题交叉熵</strong></p>
+<p>对于二分类对于批量样本的交叉熵计算公式，有两种情况：</p>
+<ul>
+<li>当 y=1 时，即标签值是 1，是个正例，加号后面的项为 0：$$loss = -\ln(a)$$ </li>
+<li>当 y=0 时，即标签值是0，是个反例，加号前面的项为0： $$loss = -\ln (1-a)$$</li>
+</ul>
+<img src="https://camo.githubusercontent.com/0c6196e426549de3881ab57bcdae0b3e5472687e046da2826e9b26f9670e4b75/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f332f63726f7373656e74726f7079322e706e67" alt="img" style="zoom:80%;" />
+
+<blockquote>
+<p><strong>横坐标是预测输出，纵坐标是损失函数值。y=1 意味着当前样本标签值是1，当预测输出越接近1时，损失函数值越小，训练结果越准确。当预测输出越接近0时，损失函数值越大，训练结果越糟糕。</strong></p>
+</blockquote>
+<p><strong>栗子时刻</strong></p>
+<p><strong>二分类</strong></p>
+<p>假设学会了课程的标签值为1，没有学会的标签值为0</p>
+<p>我们想建立一个预测器，对于一个特定的学员，根据出勤率、课堂表现、作业情况、学习能力等等来预测其学会课程的概率。</p>
+<blockquote>
+<p>对于学员甲，预测其学会的概率为0.6，而实际上该学员通过了考试，真实值为1。所以，学员甲的交叉熵损失函数值是：$$loss_1 = -(1 \times \ln 0.6 + (1-1) \times \ln (1-0.6)) = 0.51$$ </p>
+<p>对于学员乙，预测其学会的概率为0.7，而实际上该学员也通过了考试。所以，学员乙的交叉熵损失函数值是：$$loss_2 = -(1 \times \ln 0.7 + (1-1) \times \ln (1-0.7)) = 0.36$$ </p>
+<p><strong>由于0.7比0.6更接近1，是相对准确的值，所以 loss2 要比 loss1 小，反向传播的力度也会小</strong></p>
+</blockquote>
+<p> <strong>现在是多分类问题</strong></p>
+<p>假设期末考试有三种情况：</p>
+<ol>
+<li>优秀，标签值OneHot编码为 [1,0,0]；</li>
+<li>及格，标签值OneHot编码为 [0,1,0]；</li>
+<li>不及格，标签值OneHot编码为 [0,0,1]。</li>
+</ol>
+<blockquote>
+<p>假设我们预测学员丙的成绩为优秀、及格、不及格的概率为：[0.2,0.5,0.3]</p>
+<p>而真实情况是该学员不及格，则得到的交叉熵是 $$ loss_1 = -(0 \times \ln 0.2 + 0 \times \ln 0.5 + 1 \times \ln 0.3) = 1.2$$ </p>
+<p>假设我们预测学员丁的成绩为优秀、及格、不及格的概率为：[0.2,0.2,0.6]</p>
+<p>而真实情况是该学员不及格，则得到的交叉熵是：</p>
+<p>$$loss_2 = -(0 \times \ln 0.2 + 0 \times \ln 0.2 + 1 \times \ln 0.6) = 0.51$$ </p>
+<p>可以看到，0.51比1.2的损失值小很多，这说明预测值越接近真实标签值（0.6 vs 0.3），交叉熵损失函数值越小，反向传播的力度越小 </p>
+</blockquote>
+<h3 id="为什么不能使用均方差作为分类函数的损失函数"><a href="#为什么不能使用均方差作为分类函数的损失函数" class="headerlink" title="??为什么不能使用均方差作为分类函数的损失函数"></a>??为什么不能使用均方差作为分类函数的损失函数</h3><blockquote>
+<ol>
+<li>回归问题通常用均方差损失函数，可以保证损失函数是个凸函数，即可以得到最优解。<strong>而分类问题如果用均方差的话，损失函数的表现不是凸函数，就很难得到最优解。而交叉熵函数可以保证区间内单调。</strong></li>
+<li>分类问题的最后一层网络，需要分类函数，Sigmoid或者Softmax，如果再接均方差函数的话，其求导结果复杂，运算量比较大。用交叉熵函数的话，可以得到比较简单的计算结果，一个简单的减法就可以得到反向误差。</li>
+</ol>
 </blockquote>
 <p>##训练</p>
 <blockquote>
@@ -727,8 +845,8 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
-
-  <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Nov 13, 2020</p>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h2 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h2><h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2>
+  <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Nov 18, 2020</p>
   
   <hr>
 <section id="comments" class="mt-2 mb-3">
@@ -739,8 +857,8 @@
 
   <script>
     var disqus_config = function() {
-      this.page.url = 'http://ruayiii.codes/2020/11/13/2020-10-24-关于机器学习的笔记/index.html';
-      this.page.identifier = '2020/11/13/2020-10-24-关于机器学习的笔记/index.html';
+      this.page.url = 'http://ruayiii.codes/2020/11/18/2020-10-24-关于机器学习的笔记/index.html';
+      this.page.identifier = '2020/11/18/2020-10-24-关于机器学习的笔记/index.html';
       this.page.title = '关于机器学习的笔记';
     };
 
