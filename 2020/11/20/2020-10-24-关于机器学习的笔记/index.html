@@ -32,7 +32,7 @@
   <meta name="author" content="RuaYiii">
 
   
-  <meta property="og:image" content="http://ruayiii.codes/2020/11/18/2020-10-24-关于机器学习的笔记/undefined">
+  <meta property="og:image" content="http://ruayiii.codes/2020/11/20/2020-10-24-关于机器学习的笔记/undefined">
   
 
   <!-- Mobile Specific Metas
@@ -845,8 +845,361 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h2 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h2><h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2>
-  <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Nov 18, 2020</p>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><blockquote>
+<p>向神经网络的第一个小台阶</p>
+<p>单层的神经网络，其实就是一个神经元，可以完成一些线性的工作，比如拟合一条直线，这用一个神经元就可以实现。当这个神经元只接收一个输入时，就是单变量线性回归，可以在二维平面上用可视化方法理解。当接收多个变量输入时，叫做多变量线性回归，此时可视化方法理解就比较困难了，通常我们会用变量两两组对的方式来表现。</p>
+<p>当变量多于一个时，两个变量的量纲和数值有可能差别很大，这种情况下，我们通常需要对样本特征数据做归一化，然后把数据喂给神经网络进行训练，否则会出现“消化不良”的情况。</p>
+</blockquote>
+<p>线性回归的解题思路：<strong>利用已有值，预测未知值</strong></p>
+<p><strong>举个栗子</strong></p>
+<p>你想科学控制机房空调功率（保证服务器所在的机房的温度常年保持在23摄氏度左右）但是你他娘不会热力学——所以你打算用统计学研究功率和服务器数量的关系——<strong>最简单的一元线性回归问题</strong> </p>
+<p>###一元线性回归模型</p>
+<blockquote>
+<p>$$Y=a+bX+\varepsilon $$ </p>
+<p>X 是自变量   Y 是因变量   ε 是随机误差</p>
+</blockquote>
+<blockquote>
+<p><strong>对于线性回归模型，有如下一些概念需要了解：</strong></p>
+<ul>
+<li>通常假定随机误差 ε 的均值为 0，方差为σ2（σ2&gt;0，σ2 与 X 的值无关）</li>
+<li>若进一步假定随机误差遵从正态分布，就叫做正态线性模型</li>
+<li>一般地，若有 k 个自变量和 1 个因变量（即公式1中的 Y），则因变量的值分为两部分：一部分由自变量影响，即表示为它的函数，函数形式已知且含有未知参数；另一部分由其他的未考虑因素和随机性影响，即随机误差</li>
+<li>当函数为参数未知的线性函数时，称为线性回归分析模型</li>
+<li>当函数为参数未知的非线性函数时，称为非线性回归分析模型</li>
+<li>当自变量个数大于 1 时称为多元回归</li>
+<li>当因变量个数大于 1 时称为多重回归</li>
+</ul>
+</blockquote>
+<h3 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h3><blockquote>
+<p>也叫做最小平方法（Least Square），它通过最小化误差的平方和寻找数据的最佳函数匹配。利用最小二乘法可以简便地求得未知的数据，并使得这些求得的数据与实际数据之间误差的平方和为最小。最小二乘法还可用于曲线拟合。其他一些优化问题也可通过最小化能量或最小二乘法来表达。</p>
+</blockquote>
+<p>线性回归试图学得：$$z_i=w \cdot x_i+b$$ </p>
+<p>使$$z_i \simeq y_i$$ </p>
+<blockquote>
+<p>$x_i$ <strong>是样本特征值，$y_i$ 是样本标签值，$z_i$ 是模型预测值</strong></p>
+</blockquote>
+<p>如何学得 w 和 b 呢？均方差(MSE - mean squared error)是回归任务中常用的手段</p>
+<blockquote>
+<p>$$J = \frac{1}{2m}\sum_{i=1}^m(z_i-y_i)^2 = \frac{1}{2m}\sum_{i=1}^m(y_i-wx_i-b)^2$$   </p>
+</blockquote>
+<p>J 称为损失函数。实际上就是试图找到一条直线，使所有样本到直线上的残差的平方和最小。</p>
+<img src="https://camo.githubusercontent.com/54bcce372e82cc90f25d76e5bb4ea76d77a2dbc2b188017ea58da94c47f950ec/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f342f6d73652e706e67" alt="img" style="zoom:50%;" />
+
+<p>假设我们计算出初步的结果是虚线所示，这条直线是否合适呢？我们来计算一下图中每个点到这条直线的距离，把这些距离的值都加起来（都是正数，不存在互相抵消的问题）成为误差。</p>
+<p>因为上图中的几个点不在一条直线上，所以不能有一条直线能同时穿过它们。所以，我们只能想办法不断改变红色直线的角度和位置，让总体误差最小（永远不可能是 0），就意味着整体偏差最小，那么最终的那条直线就是我们要的结果。</p>
+<blockquote>
+<p><strong>如果想让误差的值最小，通过对 w 和 b 求导，再令导数为 0（到达最小极值），就是 w 和 b 的最优解</strong></p>
+<p>推导过程：</p>
+<p><strong>对于w求导</strong></p>
+<p>$$\begin{aligned}\frac{\partial{J}}{\partial{w}} &amp;=\frac{\partial{(\frac{1}{2m}\sum_{i=1}^m(y_i-wx_i-b)^2)}}{\partial{w}} \\&amp;= \frac{1}{m}\sum_{i=1}^m(y_i-wx_i-b)(-x_i) \end{aligned}$$ </p>
+<p>令其为零  $$\sum_{i=1}^m(y_i-wx_i-b)x_i=0$$ </p>
+<p><strong>对于b求导</strong></p>
+<p>$$\begin{aligned}\frac{\partial{J}}{\partial{b}} &amp;=\frac{\partial{(\frac{1}{2m}\sum_{i=1}^m(y_i-wx_i-b)^2)}}{\partial{b}} \\&amp;=\frac{1}{m}\sum_{i=1}^m(y_i-wx_i-b)(-1) \end{aligned}$$      </p>
+<p> 令其为零   $$\sum_{i=1}^m(y_i-wx_i-b)=0$$  </p>
+<p>​                    得到  $$\sum_{i=1}^m b = m \cdot b = \sum_{i=1}^m{y_i} - w\sum_{i=1}^m{x_i}$$ </p>
+<p>​                    两边除以 m<strong>得到b</strong>：  $$b = \frac{1}{m}\left(\sum_{i=1}^m{y_i} - w\sum_{i=1}^m{x_i}\right)=\bar y-w \bar x$$ </p>
+<p>​            将其带入 <strong>对w求导并令其为零得到的</strong>  $$\sum_{i=1}^m(y_i-wx_i-b)x_i=0$$   中</p>
+<p>​            得 $$\sum_{i=1}^m(y_i-wx_i-\bar y + w \bar x)x_i=0$$</p>
+<p>​                $$\sum_{i=1}^m(x_i y_i-wx^2_i-x_i \bar y + w \bar x x_i)=0$$</p>
+<p>​                $$\sum_{i=1}^m(x_iy_i-x_i \bar y)-w\sum_{i=1}^m(x^2_i - \bar x x_i) = 0$$</p>
+<p>​                        $$w = \frac{\sum_{i=1}^m(x_iy_i-x_i \bar y)}{\sum_{i=1}^m(x^2_i - \bar x x_i)} $$</p>
+<p>​                        $$w = \frac{\sum_{i=1}^m (x_i \cdot y_i) - \sum_{i=1}^m x_i \cdot \frac{1}{m} \sum_{i=1}^m y_i}{\sum_{i=1}^m x^2_i - \sum_{i=1}^m x_i \cdot \frac{1}{m}\sum_{i=1}^m x_i}$$ </p>
+<p>​        分子分母都乘以 $m$：</p>
+<p>​                        $$w = \frac{m\sum_{i=1}^m x_i y_i - \sum_{i=1}^m x_i \sum_{i=1}^m y_i}{m\sum_{i=1}^m x^2_i - (\sum_{i=1}^m x_i)^2} $$    </p>
+<p>​    之后得到不同的变种</p>
+<blockquote>
+<p>而事实上，式13有很多个变种，大家会在不同的文章里看到不同版本，往往感到困惑，比如下面两个公式也是正确的解：</p>
+<p>$$w = \frac{\sum_{i=1}^m y_i(x_i-\bar x)}{\sum_{i=1}^m x^2_i - (\sum_{i=1}^m x_i)^2/m} $$</p>
+<p>$$w = \frac{\sum_{i=1}^m x_i(y_i-\bar y)}{\sum_{i=1}^m x^2_i - \bar x \sum_{i=1}^m x_i} $$</p>
+<p>以上两个公式，如果把公式10代入，也应该可以得到和式13相同的答案，只不过需要一些运算技巧。比如，很多人不知道这个神奇的公式：</p>
+<p>$$\begin{aligned}\sum_{i=1}^m (x_i \bar y) &amp;= \bar y \sum_{i=1}^m x_i =\frac{1}{m}(\sum_{i=1}^m y_i) (\sum_{i=1}^m x_i) \\&amp;=\frac{1}{m}(\sum_{i=1}^m x_i) (\sum_{i=1}^m y_i)= \bar x \sum_{i=1}^m y_i \\&amp;=\sum_{i=1}^m (y_i \bar x) \end{aligned}$$</p>
+</blockquote>
+<p>淦哦我被干碎了</p>
+</blockquote>
+<h3 id="梯度下降-1"><a href="#梯度下降-1" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>我们预设函数 $$z_i = x_i \cdot w + b $$       (1)</p>
+<p>则  $$loss_i(w,b) = \frac{1}{2} (z_i-y_i)^2$$      (2)</p>
+<blockquote>
+<p>与最小二乘法比较可以看到，梯度下降法和最小二乘法的模型及损失函数是相同的，都是一个线性模型加均方差损失函数，模型用于拟合，损失函数用于评估效果。</p>
+</blockquote>
+<blockquote>
+<p>区别在于，最小二乘法从损失函数求导，直接求得数学解析解，而梯度下降以及后面的神经网络，都是利用导数传递误差，再通过迭代方式一步一步（用近似解）逼近真实解。 </p>
+</blockquote>
+<h4 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h4><p>计算 z 的梯度 $$\frac{\partial loss}{\partial z_i}=z_i - y_i$$ </p>
+<p>计算 w  的梯度  $$\frac{\partial{loss}}{\partial{w}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{w}}=(z_i-y_i)x_i$$ </p>
+<blockquote>
+<p>我们用 $loss$ 的值作为误差衡量标准，通过求 $w$ 对它的影响，也就是 $loss$ 对 $w$ 的偏导数，来得到 $w$ 的梯度。由于 $loss$ 是通过公式2-&gt;公式1间接地联系到 $w$ 的，所以我们使用链式求导法则，通过单个样本来求导。</p>
+</blockquote>
+<p>计算 b 的梯度  $$\frac{\partial{loss}}{\partial{b}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{b}}=z_i-y_i$$   </p>
+<h3 id="神经网络法"><a href="#神经网络法" class="headerlink" title="神经网络法"></a>神经网络法</h3><blockquote>
+<p>在梯度下降法中，我们简单讲述了一下神经网络做线性拟合的原理，即：</p>
+<ol>
+<li>初始化权重值</li>
+<li>根据权重值放出一个解</li>
+<li>根据均方差函数求误差</li>
+<li>误差反向传播给线性计算部分以调整权重值</li>
+<li>是否满足终止条件？不满足的话跳回2</li>
+</ol>
+</blockquote>
+<img src="https://camo.githubusercontent.com/af6a93f73fda18748ca51ba5314c37af5d8bad25aaa31a9a80acec2dc3b49182/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f342f53657475702e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>输入层</strong></p>
+<blockquote>
+<p>此神经元在输入层只接受一个输入特征，经过参数 w,b 的计算后，直接输出结果。这样一个简单的“网络”，只能解决简单的一元线性回归问题，而且由于是线性的，我们不需要定义激活函数，这就大大简化了程序，而且便于大家循序渐进地理解各种知识点。</p>
+</blockquote>
+<blockquote>
+<p>严格来说输入层在神经网络中并不能称为一个层。</p>
+</blockquote>
+<p><strong>权重 w,b</strong></p>
+<blockquote>
+<p>因为是一元线性问题，所以 w,b 都是标量。</p>
+</blockquote>
+<p><strong>输出层</strong></p>
+<blockquote>
+<p>输出层 1 个神经元，线性预测公式是：$$z_i = x_i \cdot w + b$$ </p>
+</blockquote>
+<blockquote>
+<p>z 是模型的预测输出，y 是实际的样本标签值，下标 i 为样本。</p>
+</blockquote>
+<p><strong>损失函数</strong></p>
+<blockquote>
+<p>因为是线性回归问题，所以损失函数使用均方差函数。 $$loss(w,b) = \frac{1}{2} (z_i-y_i)^2$$ </p>
+</blockquote>
+<h4 id="反向传播-1"><a href="#反向传播-1" class="headerlink" title="反向传播"></a>反向传播</h4><blockquote>
+<p><strong>计算 $w$ 的梯度</strong></p>
+<p>$${\partial{loss} \over \partial{w}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{w}}=(z_i-y_i)x_i$$ </p>
+<p><strong>计算 $b$ 的梯度</strong></p>
+<p>$$\frac{\partial{loss}}{\partial{b}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{b}}=z_i-y_i$$ </p>
+</blockquote>
+<h3 id="多样本单特征值计算"><a href="#多样本单特征值计算" class="headerlink" title="多样本单特征值计算"></a>多样本单特征值计算</h3><blockquote>
+<p>在前面的代码中，我们一直使用单样本计算来实现神经网络的训练过程，但是单样本计算有一些缺点：</p>
+<ol>
+<li>前后两个相邻的样本很有可能会对反向传播产生相反的作用而互相抵消。假设样本1造成了误差为 0.5，w 的梯度计算结果是 0.1；紧接着样本2造成的误差为 −0.5，w 的梯度计算结果是 −0.1，那么前后两次更新 w 就会产生互相抵消的作用。</li>
+<li>在样本数据量大时，逐个计算会花费很长的时间。由于我们在本例中样本量不大（200个样本），所以计算速度很快，觉察不到这一点。在实际的工程实践中，动辄10万甚至100万的数据量，轮询一次要花费很长的时间。</li>
+</ol>
+</blockquote>
+<p><strong>所以我们要开始使用矩阵计算辣</strong></p>
+<h4 id="向前计算"><a href="#向前计算" class="headerlink" title="向前计算"></a>向前计算</h4><blockquote>
+<p>Z=X⋅w+b</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__forwardBatch</span>(<span class="params">self, batch_x</span>):</span></span><br><span class="line">    Z = np.dot(batch_x, self.w) + self.b</span><br><span class="line">    <span class="keyword">return</span> Z</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>另外<code>Python</code>中的矩阵乘法命名有些问题，<code>np.dot()</code>并不是矩阵点乘，而是矩阵叉乘，请读者习惯</strong></p>
+</blockquote>
+<h4 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h4><blockquote>
+<p>用传统的均方差函数，其中，$z$ 是每一次迭代的预测输出，$y$ 是样本标签数据。我们使用 $m$ 个样本参与计算，因此损失函数为：$$J(w,b) = \frac{1}{2m}\sum_{i=1}^{m}(z_i - y_i)^2$$</p>
+<p>其中的分母中有个2，实际上是想在求导数时把这个2约掉，没有什么原则上的区别。</p>
+<p>我们假设每次有3个样本参与计算，即 $m=3$，则损失函数实例化后的情形是：</p>
+<p>$$\begin{aligned}J(w,b) &amp;= \frac{1}{2\times3}[(z_1-y_1)^2+(z_2-y_2)^2+(z_3-y_3)^2] \\&amp;=\frac{1}{2\times3}\sum_{i=1}^3[(z_i-y_i)^2]\end{aligned}$$   </p>
+<p><code>Python</code>中的矩阵减法运算，不需要对矩阵中的每个对应的元素单独做减法，而是整个矩阵相减即可。做求和运算时，也不需要自己写代码做遍历每个元素，而是简单地调用求和函数即可。</p>
+</blockquote>
+<h4 id="求梯度"><a href="#求梯度" class="headerlink" title="求梯度"></a>求梯度</h4><blockquote>
+<p><strong>看的迷糊的内容</strong></p>
+<blockquote>
+<p><strong>求 $w$ 的梯度</strong></p>
+<p>我们用 $J$ 的值作为基准，去求 $w$ 对它的影响，也就是 $J$ 对 $w$ 的偏导数，就可以得到 $w$ 的梯度了。从公式3看 $J$ 的计算过程，$z_1,z_2,z_3$都对它有贡献；再从公式2看 $z_1,z_2,z_3$ 的生成过程，都有 $w$ 的参与。所以，$J$ 对 $w$ 的偏导应该是这样的：</p>
+<p>$$\begin{aligned}\frac{\partial{J}}{\partial{w}}&amp;=\frac{\partial{J}}{\partial{z_1}}\frac{\partial{z_1}}{\partial{w}}+\frac{\partial{J}}{\partial{z_2}}\frac{\partial{z_2}}{\partial{w}}+\frac{\partial{J}}{\partial{z_3}}\frac{\partial{z_3}}{\partial{w}}\\&amp;=\frac{1}{3}[(z_1-y_1)x_1+(z_2-y_2)x_2+(z_3-y_3)x_3] \\&amp;=\frac{1}{3}\begin{pmatrix}  x_1 &amp; x_2 &amp; x_3\end{pmatrix}\begin{pmatrix}  z_1-y_1 \\  z_2-y_2 \\  z_3-y_3 \end{pmatrix} \\&amp;=\frac{1}{m} \sum^m_{i=1} (z_i-y_i)x_i \\ &amp;=\frac{1}{m} X^{\top} \cdot (Z-Y) \\ \end{aligned} $$</p>
+<p>其中：</p>
+<p>$$X = \begin{pmatrix}  x_1 \\   x_2 \\   x_3\end{pmatrix}, X^{\top} =\begin{pmatrix} x_1 &amp; x_2 &amp; x_3\end{pmatrix}$$</p>
+<p>公式4中最后两个等式其实是等价的，只不过倒数第二个公式用求和方式计算每个样本，最后一个公式用矩阵方式做一次性计算。</p>
+<p><strong>求 $b$ 的梯度</strong></p>
+<p>$$\begin{aligned}  \frac{\partial{J}}{\partial{b}}&amp;=\frac{\partial{J}}{\partial{z_1}}\frac{\partial{z_1}}{\partial{b}}+\frac{\partial{J}}{\partial{z_2}}\frac{\partial{z_2}}{\partial{b}}+\frac{\partial{J}}{\partial{z_3}}\frac{\partial{z_3}}{\partial{b}} \\&amp;=\frac{1}{3}[(z_1-y_1)+(z_2-y_2)+(z_3-y_3)] \\&amp;=\frac{1}{m} \sum^m_{i=1} (z_i-y_i) \\ &amp;=\frac{1}{m}(Z-Y)\end{aligned} $$ </p>
+<p>公式5中最后两个等式也是等价的，在<code>Python</code>中，可以直接用最后一个公式求矩阵的和，免去了一个个计算 $z_i-y_i$ 最后再求和的麻烦，速度还快。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__backwardBatch</span>(<span class="params">self, batch_x, batch_y, batch_z</span>):</span></span><br><span class="line">    m = batch_x.shape[<span class="number">0</span>]</span><br><span class="line">    dZ = batch_z - batch_y</span><br><span class="line">    dW = np.dot(batch_x.T, dZ)/m</span><br><span class="line">    dB = dZ.sum(axis=<span class="number">0</span>, keepdims=<span class="literal">True</span>)/m</span><br><span class="line">    <span class="keyword">return</span> dW, dB</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码位置</strong></p>
+<p>ch04, HelperClass/NeuralNet.py</p>
+</blockquote>
+</blockquote>
+<h3 id="梯度下降的三种形式-比较"><a href="#梯度下降的三种形式-比较" class="headerlink" title="梯度下降的三种形式|比较"></a>梯度下降的三种形式|比较</h3><h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><h4 id="正规方程法"><a href="#正规方程法" class="headerlink" title="正规方程法"></a>正规方程法</h4><h4 id="神经网络法-1"><a href="#神经网络法-1" class="headerlink" title="神经网络法"></a>神经网络法</h4><h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h3><blockquote>
+<p>看哦你的loss越来越大到离谱喽</p>
+</blockquote>
+<blockquote>
+<p>论层面上，神经网络是以样本在事件中的统计分布概率为基础进行训练和预测的，所以它对样本数据的要求比较苛刻。具体说明如下：</p>
+<ol>
+<li><p>样本的各个特征的取值要符合概率分布，即 [0,1]。</p>
+</li>
+<li><p>样本的度量单位要相同。我们并没有办法去比较1米和1公斤的区别，但是，如果我们知道了1米在整个样本中的大小比例，以及1公斤在整个样本中的大小比例，比如一个处于0.2的比例位置，另一个处于0.3的比例位置，就可以说这个样本的1米比1公斤要小。</p>
+</li>
+<li><p>神经网络假设所有的输入输出数据都是标准差为1，均值为0，包括权重值的初始化，激活函数的选择，以及优化算法的设计。</p>
+</li>
+<li><p>数值问题</p>
+<p>标准化可以避免一些不必要的数值问题。因为激活函数sigmoid/tanh的非线性区间大约在 [−1.7，1.7]。意味着要使神经元有效，线性计算输出的值的数量级应该在1（1.7所在的数量级）左右。这时如果输入较大，就意味着权值必须较小，一个较大，一个较小，两者相乘，就引起数值问题了。</p>
+</li>
+<li><p>梯度更新</p>
+<p>若果输出层的数量级很大，会引起损失函数的数量级很大，这样做反向传播时的梯度也就很大，这时会给梯度的更新带来数值问题。</p>
+</li>
+<li><p>学习率</p>
+<p>如果梯度非常大，学习率就必须非常小，因此，学习率（学习率初始值）的选择需要参考输入的范围，不如直接将数据标准化，这样学习率就不必再根据数据范围作调整。对 w1 适合的学习率，可能相对于 w2 来说会太小，若果使用适合 w1 的学习率，会导致在 w2 方向上步进非常慢，从而消耗非常多的时间；而使用适合 w2 的学习率，对 w1 来说又太大，搜索不到适合 w1 的解。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>标准化常用方法</strong></p>
+<ul>
+<li><strong>min-max标准化（离差标准化）</strong></li>
+</ul>
+<blockquote>
+<p>将数据映射到[0,1]区间</p>
+<p>$$x_{new}=\frac{x-x_{min}}{x_{max} - x_{min}}$$</p>
+</blockquote>
+<ul>
+<li><strong>平均值标准化</strong></li>
+</ul>
+<blockquote>
+<p>将数据映射到[-1,1]区间</p>
+<p>$$x_{new} = \frac{x - \bar{x}}{x_{max} - x_{min}}$$</p>
+</blockquote>
+<ul>
+<li><strong>对数转换</strong></li>
+</ul>
+<blockquote>
+<p>$$x_{new}=\ln(x_i)$$</p>
+</blockquote>
+<ul>
+<li><strong>反正切转换</strong></li>
+</ul>
+<blockquote>
+<p>$$x_{new}=\frac{2}{\pi}\arctan(x_i)$$</p>
+</blockquote>
+<ul>
+<li><strong>z-score法</strong></li>
+</ul>
+<blockquote>
+<p>把每个特征值中的所有数据，变成平均值为0，标准差为1的数据，最后为正态分布。Z-Score规范化（标准差标准化 / 零均值标准化，其中std是标准差）</p>
+<p>$$x_{new} = \frac{x_i - \bar{x}}{std}$$</p>
+</blockquote>
+<ul>
+<li><strong>中心化</strong></li>
+</ul>
+<blockquote>
+<p>平均值为0，无标准差要求</p>
+<p>$$x_{new} = x_i - \bar{x}$$</p>
+</blockquote>
+<ul>
+<li><strong>比例法</strong></li>
+</ul>
+<blockquote>
+<p>要求数据全是正值</p>
+<p>$$x_{new} = \frac{x_k}{\sum_{i=1}^m{x_i}}$$</p>
+</blockquote>
+<p><strong>那么，如何做？</strong></p>
+<blockquote>
+<p>以哪个房价为例</p>
+<table>
+<thead>
+<tr>
+<th>样本序号</th>
+<th>地理位置</th>
+<th>居住面积</th>
+<th>价格（万元）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>10.06</td>
+<td>60</td>
+<td>302.86</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15.47</td>
+<td>74</td>
+<td>393.04</td>
+</tr>
+<tr>
+<td>3</td>
+<td>18.66</td>
+<td>46</td>
+<td>270.67</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5.20</td>
+<td>77</td>
+<td>450.59</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+</blockquote>
+<blockquote>
+<p><strong>按照标准化的定义，我们只要把地理位置列和居住面积列分别做标准化就达到要求了</strong>，结果如表5-6。</p>
+<table>
+<thead>
+<tr>
+<th>样本序号</th>
+<th>地理位置</th>
+<th>居住面积</th>
+<th>价格（万元）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0.4033</td>
+<td>0.2531</td>
+<td>302.86</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.6744</td>
+<td>0.4303</td>
+<td>393.04</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.8341</td>
+<td>0.0759</td>
+<td>270.67</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.1592</td>
+<td>0.4683</td>
+<td>450.59</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h3 id="还原参数值"><a href="#还原参数值" class="headerlink" title="还原参数值"></a>还原参数值</h3><blockquote>
+<p>我们唯一修改的地方，就是样本数据特征值的标准化，并没有修改标签值。可以大概猜到W的值和样本特征值的缩放有关系，而且缩放倍数非常相似，甚至可以说一致。下面推导一下这种现象的数学基础。</p>
+<p>假设在标准化之前，真实的样本值是 X，真实的权重值是 W；在标准化之后，样本值变成了 X′，训练出来的权重值是 W′</p>
+</blockquote>
+<blockquote>
+<p>$$y = x_1 w_1 + x_2 w_2 + b$$        {y是标签值}</p>
+<p>$$z = x_1’ w_1’ + x_2’ w_2’ + b’$$       {z是预测值}</p>
+</blockquote>
+<blockquote>
+<p>由于训练时标签值（房价）并没有做标准化，意味着我们是用真实的房价做的训练，所以预测值和标签值应该相等，所以：</p>
+<p>$$y = z $$</p>
+<p>$$x_1 w_1 + x_2 w_2 + b = x_1’ w_1’ + x_2’ w_2’ + b’ $$\tag{1}</p>
+<p>标准化的公式是：</p>
+<p>$$x’ = \frac{x - x_{min}}{x_{max}-x_{min}} $$\tag{2}</p>
+<p>为了简化书写，我们令$xm=x_{max}-x_{min}$，把公式2代入公式1：</p>
+<p>$$x_1 w_1 + x_2 w_2 + b = \frac{x_1 - x_{1min}}{xm_1} w_1’ + \frac{x_2 - x_{2min}}{xm_2} w_2’ + b’ \=x_1 \frac{w_1’}{xm_1} + x_2 \frac{w_2’}{xm_2}+b’-\frac{w_1’x_{1min}}{xm_1}-\frac{w_2’x_{2min}}{xm_2} $$\tag{3}</p>
+<p>公式3中，$x1,x2$ 是变量，其它都是常量，如果想让公式3等式成立，则变量项和常数项分别相等，即：</p>
+<p>$$w_1 = \frac{w_1’}{xm_1} $$       \tag{4}</p>
+<p>$$w_2 = \frac{w_2’}{xm_2} $$        \tag{5}</p>
+<p>$$ b = b’-\frac{w_1’x_{1min}}{xm_1}-\frac{w_2’x_{2min}}{xm_2}  $$ \tag{6}</p>
+<p>下面我们用实际数值代入公式4,5,6：</p>
+<p>$$w_1 = \frac{w_1’}{x_{1max}-x_{1min}} = \frac{-40.2}{21.96-2.02} = -2.016 $$\tag{7}</p>
+<p>$$w_2 = \frac{w_2’}{x_{2max}-x_{2min}} = \frac{399.3}{119-40} = 5.054$$ \tag{8}</p>
+<p>$$b=244.5-(-2.016) \cdot 2.02 - 5.054 \cdot 40=46.412 $$tag{9}</p>
+<p>可以看到公式7、8、9的计算结果（神经网络的训练结果的变换值）与正规方程的计算结果(-2.018, 5.055, 46.235)基本相同，基于神经网络是一种近似解的考虑，可以认为这种推导是有理论基础和试验证明的。</p>
+</blockquote>
+<h4 id="思考？？"><a href="#思考？？" class="headerlink" title="??思考？？"></a>??思考？？</h4><p>在上一节中，我们在用训练出来的模型预测房屋价格之前，还需要先还原 W 和 B 的值，这看上去比较麻烦，下面我们来介绍一种正确的推理方法。</p>
+<p>既然我们在训练时可以把样本数据标准化，那么在预测时，把预测数据也做相同方式的标准化，不是就可以和训练数据一样进行预测了吗？且慢！这里有一个问题，训练时的样本数据是批量的，至少是成百成千的数量级。但是预测时，一般只有一个或几个数据，如何做标准化？</p>
+<p>我们在针对训练数据做标准化时，得到的最重要的数据是训练数据的最小值和最大值，我们只需要把这两个值记录下来，在预测时使用它们对预测数据做标准化，这就相当于把预测数据“混入”训练数据。前提是预测数据的特征值不能超出训练数据的特征值范围，否则有可能影响准确程度。</p>
+<h2 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h2><h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2>
+  <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Nov 20, 2020</p>
   
   <hr>
 <section id="comments" class="mt-2 mb-3">
@@ -857,8 +1210,8 @@
 
   <script>
     var disqus_config = function() {
-      this.page.url = 'http://ruayiii.codes/2020/11/18/2020-10-24-关于机器学习的笔记/index.html';
-      this.page.identifier = '2020/11/18/2020-10-24-关于机器学习的笔记/index.html';
+      this.page.url = 'http://ruayiii.codes/2020/11/20/2020-10-24-关于机器学习的笔记/index.html';
+      this.page.identifier = '2020/11/20/2020-10-24-关于机器学习的笔记/index.html';
       this.page.title = '关于机器学习的笔记';
     };
 
