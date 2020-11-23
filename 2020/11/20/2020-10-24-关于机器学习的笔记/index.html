@@ -1198,7 +1198,187 @@
 <h4 id="思考？？"><a href="#思考？？" class="headerlink" title="??思考？？"></a>??思考？？</h4><p>在上一节中，我们在用训练出来的模型预测房屋价格之前，还需要先还原 W 和 B 的值，这看上去比较麻烦，下面我们来介绍一种正确的推理方法。</p>
 <p>既然我们在训练时可以把样本数据标准化，那么在预测时，把预测数据也做相同方式的标准化，不是就可以和训练数据一样进行预测了吗？且慢！这里有一个问题，训练时的样本数据是批量的，至少是成百成千的数量级。但是预测时，一般只有一个或几个数据，如何做标准化？</p>
 <p>我们在针对训练数据做标准化时，得到的最重要的数据是训练数据的最小值和最大值，我们只需要把这两个值记录下来，在预测时使用它们对预测数据做标准化，这就相当于把预测数据“混入”训练数据。前提是预测数据的特征值不能超出训练数据的特征值范围，否则有可能影响准确程度。</p>
-<h2 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h2><h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2>
+<blockquote>
+<p>二者非常接近，可以说这种方法的确很方便，把预测数据看作训练数据的一个记录，先做标准化，再做预测，这样就不需要把权重矩阵还原了。</p>
+<p>看上去我们已经完美地解决了这个问题，但是且慢，仔细看看<code>loss</code>值，还有<code>W</code>和<code>B</code>的值，都是几十几百的数量级，这和神经网络的概率计算的优点并不吻合，实际上它们的值都应该在 [0,1] 之间的。</p>
+<p>大数量级的数据有另外一个问题，就是它的波动有可能很大。目前我们还没有使用激活函数，一旦网络复杂了，开始使用激活函数时，像486.166这种数据，一旦经过激活函数就会发生梯度饱和的现象，输出值总为1，这样对于后面的网络就没什么意义了，因为输入值都是1。</p>
+<p>好吧，看起来问题解决得并不完美，我们看看还能有什么更好的解决方案！</p>
+<p><strong>——就是下面这个！！</strong></p>
+</blockquote>
+<h3 id="标准化标签"><a href="#标准化标签" class="headerlink" title="标准化标签"></a>标准化标签</h3><p>这一节里我们重点解决在训练过程中的数值的数量级的问题。</p>
+<p>我们既然已经对样本数据特征值做了标准化，那么如此大数值的损失函数值是怎么来的呢？看一看损失函数定义：</p>
+<p>$$J(w,b)=\frac{1}{2m} \sum_{i=1}^m (z_i-y_i)^2 $$</p>
+<p>其中，$z_i$ 是预测值，$y_i$ 是标签值。<strong>初始状态时，$W$ 和 $B$ 都是 $0$，所以，经过前向计算函数 $Z=X \cdot W+B$ 的结果是 $0$，</strong>但是 $Y$ 值很大，再经过平方计算后，一下子就成为至少5位数的数值了。</p>
+<p>第二行代码求得的<code>dZ</code>，与房价是同一数量级的，这样经过反向传播后，<code>dW</code>和<code>dB</code>的值也会很大，导致整个反向传播链的数值都很大。我们可以debug一下，得到第一反向传播时的数值是：</p>
+<p>这么大的数值，需要把学习率设置得很小，比如<code>0.001</code>，才可以落到 [0,1] 区间，但是损失函数值还是不能变得很小。</p>
+<p><strong>如果我们像对特征值做标准化一样，把标签值也标准化到 [0,1] 之间，是不是有帮助呢？</strong></p>
+<p><em>标准化 都可以标准化</em> 、</p>
+<p>聪明的读者可能会想到：既然对标签值做了标准化，那么我们在得到预测结果后，需要对这个结果应该做反标准化</p>
+<blockquote>
+<p>标准化的公式应该是</p>
+<p>$$y = y_{new}(y_{max}-y_{min})+y_{min}$$</p>
+</blockquote>
+<p>总结一下从本章中学到的正确的方法：</p>
+<ol>
+<li>X 必须标准化，否则无法训练；</li>
+<li>Y 值不在 [0,1] 之间时，要做标准化，好处是迭代次数少；</li>
+<li>如果 Y 做了标准化，对得出来的预测结果做关于 Y 的反标准化</li>
+</ol>
+<p><strong>小小总结：</strong></p>
+<ol>
+<li><strong>样本不做标准化的话，网络发散，训练无法进行；</strong></li>
+<li><strong>训练样本标准化后，网络训练可以得到结果，但是预测结果有问题；</strong></li>
+<li><strong>还原参数值后，预测结果正确，但是此还原方法并不能普遍适用；</strong></li>
+<li><strong>标准化测试样本，而不需要还原参数值，可以保证普遍适用；</strong></li>
+<li><strong>标准化标签值，可以使得网络训练收敛快，但是在预测时需要把结果反标准化，以便得到真实值。</strong></li>
+</ol>
+<h2 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h2><blockquote>
+<p>让我们对着一个玩意划一刀——逻辑回归，或者叫做分类器</p>
+</blockquote>
+<blockquote>
+<p>读者可能会觉得这个太简单了，这不是有图吗？定位坐标值后在图上一比划，一下子就能找到对应的区域了。但是我们要求用机器学习的方法来解决这个看似简单的问题，以便将来的预测行为是快速准确的，而不是拿个尺子在图上去比划。</p>
+<p>另外，本着用简单的例子说明复杂的原理的原则，我们用这个看似简单的例子，是想让读者对问题和解决方法都有一个视觉上的清晰认识，而这类可以可视化的问题，在实际生产环境中并不多见</p>
+</blockquote>
+<h3 id="二分类函数"><a href="#二分类函数" class="headerlink" title="二分类函数"></a>二分类函数</h3><ul>
+<li>Logistic函数公式</li>
+</ul>
+<blockquote>
+<p>$$Logistic(z) = \frac{1}{1 + e^{-z}}$$</p>
+<p>对率函数Logistic Function，<strong>既可以做为激活函数使用，又可以当作二分类函数使用</strong>。而在很多不太正规的文字材料中，把这两个概念混用了，<strong>比如下面这个说法：“我们在最后使用Sigmoid激活函数来做二分类”，这是不恰当的。</strong>在本书中，我们会根据不同的任务区分激活函数和分类函数这两个概念，在二分类任务中，叫做Logistic函数，而在作为激活函数时，叫做Sigmoid函数。</p>
+</blockquote>
+<p>以下记 a=Logistic(z)。</p>
+<p>其<strong>导数</strong>则为： $$Logistic’(z) = a(1 - a)$$ </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>具体求导过程可以参考8.1节。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>输入值域：</strong> (−∞,∞)     |      <strong>输出值域：</strong>(0,1)</p>
+<p><strong>其图像为</strong></p>
+<img src="https://camo.githubusercontent.com/9a9517850210205ab3da388244e0d039823714006177000cced04f0188e97d23/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f6c6f6769737469632e706e67" alt="img" style="zoom:80%;" />
+
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>此函数实际上是一个概率计算，它把 (−∞,∞) 之间的任何数字都压缩到 (0,1) 之间，返回一个概率值，这个概率值接近 1 时，认为是正例，否则认为是负例。</p>
+<p>训练时，一个样本 x 在经过神经网络的最后一层的矩阵运算结果作为输入 z，经过Logistic计算后，输出一个 (0,1) 之间的预测值。我们假设这个样本的标签值为 0 属于负类，如果其预测值越接近 0，就越接近标签值，那么误差越小，反向传播的力度就越小</p>
+<p><strong>推理时，我们预先设定一个阈值比如 0.5，则当推理结果大于 0.5 时，认为是正类；小于 0.5 时认为是负类；等于 0.5 时，根据情况自己定义。阈值也不一定就是 0.5，也可以是 0.65 等等，阈值越大，准确率越高，召回率越低；阈值越小则相反，准确度越低，召回率越高</strong>。</p>
+<h4 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h4><p><strong>矩阵运算</strong></p>
+<blockquote>
+<p>$$z=x \cdot w + b$$ </p>
+</blockquote>
+<p><strong>分类计算</strong></p>
+<blockquote>
+<p>$$ a = Logistic(z)=\frac{1}{1 + e^{-z}} $$</p>
+</blockquote>
+<p><strong>损失函数计算</strong></p>
+<p>二分类交叉熵损失函数   $$loss(w,b) = -[y \ln a+(1-y) \ln(1-a)]$$ </p>
+<h4 id="反向传播-2"><a href="#反向传播-2" class="headerlink" title="反向传播"></a>反向传播</h4><p><strong>求损失函数对 $a$ 的偏导</strong></p>
+<blockquote>
+<p>$$\frac{\partial loss}{\partial a}=-\left[\frac{y}{a}-\frac{1-y}{1-a}\right]=\frac{a-y}{a(1-a)}$$ </p>
+</blockquote>
+<p><strong>求 $a$ 对 $z$ 的偏导</strong></p>
+<blockquote>
+<p>$$\frac{\partial a}{\partial z}= a(1-a)$$ </p>
+</blockquote>
+<p><strong>求误差 $loss$ 对 $z$ 的偏导</strong></p>
+<blockquote>
+<p>使用链式法则</p>
+<p>$$\frac{\partial loss}{\partial z}=\frac{\partial loss}{\partial a}\frac{\partial a}{\partial z}=\frac{a-y}{a(1-a)} \cdot a(1-a)=a-y$$ </p>
+</blockquote>
+<p>我们惊奇地发现，使用交叉熵函数求导得到的分母，与Logistic分类函数求导后的结果，正好可以抵消，最后只剩下了 a−y 这一项。真的有这么巧合的事吗？实际上这是依靠科学家们的聪明才智寻找出了这种匹配关系，以满足以下条件：</p>
+<ol>
+<li>损失函数满足二分类的要求，无论是正例还是反例，都是单调的；</li>
+<li>损失函数可导，以便于使用反向传播算法；</li>
+<li><strong>计算过程非常简单，一个减法就可以搞定</strong></li>
+</ol>
+<p><strong>多样本</strong></p>
+<blockquote>
+<p>$$Z=\begin{pmatrix} z_1 \\ z_2 \\ z_3\end{pmatrix},A=Logistic\begin{pmatrix} z_1 \\ z_2 \\ z_3\end{pmatrix}=\begin{pmatrix} a_1 \\ a_2 \\ a_3\end{pmatrix}$$  </p>
+<p>$$\begin{aligned}J(w,b)=&amp;-[y_1 \ln a_1+(1-y_1)\ln(1-a_1)] \\&amp;-[y_2 \ln a_2+(1-y_2)\ln(1-a_2)] \\&amp;-[y_3 \ln a_3+(1-y_3)\ln(1-a_3)] \\\end{aligned}$$  </p>
+<p>然后带入loss对z的求导</p>
+<p>$$\begin{aligned}</p>
+<p>J(w,b)=&amp;-[y_1 \ln a_1+(1-y_1)\ln(1-a_1)] \\</p>
+<p>&amp;-[y_2 \ln a_2+(1-y_2)\ln(1-a_2)] \\</p>
+<p>&amp;-[y_3 \ln a_3+(1-y_3)\ln(1-a_3)] \\</p>
+<p>\end{aligned}</p>
+<p>$$</p>
+<p>代入公式6结果：</p>
+<p>$$ \frac{\partial J(w,b)}{\partial Z}=\begin{pmatrix} \frac{\partial J(w,b)}{\partial z_1} \\ \frac{\partial J(w,b)}{\partial z_2} \\ \frac{\partial J(w,b)}{\partial z_3}\end{pmatrix}=\begin{pmatrix} a_1-y_1 \\ a_2-y_2 \\ a_3-y_3 \end{pmatrix}=A-Y$$ </p>
+<p><strong>所以，用矩阵运算时可以简化为矩阵相减的形式：$A-Y$。</strong> </p>
+</blockquote>
+<p><strong>经过数学推导后可以知道，神经网络实际也是在做这样一件事：经过调整 w 和 b 的值，把所有正例的样本都归纳到大于 0.5 的范围内，所有负例都小于 0.5。但是如果只说大于或者小于，无法做准确的量化计算，所以用一个对率函数来模拟</strong></p>
+<p>说到对率函数，还有一个问题，它为什么叫做<strong>“对数几率”函数</strong>呢？</p>
+<blockquote>
+<p>举个栗子</p>
+<p>假设有一个硬币，抛出落地后，得到正面的概率是0.5，得到反面的概率是0.5。如果用正面的概率除以反面的概率，0.5/0.5=1，这个数值叫做odds，即几率。</p>
+<p>泛化一下，如果正面的概率是 a，则反面的概率就是 1−a，则几率等于：$$odds = \frac{a}{1-a}$$ </p>
+<p>上式中，如果 a 是把样本 x 的预测为正例的可能性，那么 1−a 就是其负例的可能性，a1−a就是正负例的比值，称为<strong>几率(odds)**，它反映了 x作为正例的相对可能性，而对几率取对数就叫做</strong>对数几率(log odds, logit)**。</p>
+<table>
+<thead>
+<tr>
+<th>概率a</th>
+<th>0</th>
+<th>0.1</th>
+<th>0.2</th>
+<th>0.3</th>
+<th>0.4</th>
+<th>0.5</th>
+<th>0.6</th>
+<th>0.7</th>
+<th>0.8</th>
+<th>0.9</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>反概率1−a</td>
+<td>1</td>
+<td>0.9</td>
+<td>0.8</td>
+<td>0.7</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>0.4</td>
+<td>0.3</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>几率 odds</td>
+<td>0</td>
+<td>0.11</td>
+<td>0.25</td>
+<td>0.43</td>
+<td>0.67</td>
+<td>1</td>
+<td>1.5</td>
+<td>2.33</td>
+<td>4</td>
+<td>9</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>对数几率 ln(odds)</td>
+<td>N/A</td>
+<td>-2.19</td>
+<td>-1.38</td>
+<td>-0.84</td>
+<td>-0.4</td>
+<td>0</td>
+<td>0.4</td>
+<td>0.84</td>
+<td>1.38</td>
+<td>2.19</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p><strong>可以看到几率的值不是线性的，不利于分析问题，所以在表中第4行对几率取对数，可以得到一组成线性关系的值，并可以用直线方程来表示</strong></p>
+<p>$$\ln(odds) = \ln \frac{a}{1-a}= xw + b$$ </p>
+<h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2>
   <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Nov 20, 2020</p>
   
   <hr>
