@@ -1298,12 +1298,7 @@
 <p>$$Z=\begin{pmatrix} z_1 \\ z_2 \\ z_3\end{pmatrix},A=Logistic\begin{pmatrix} z_1 \\ z_2 \\ z_3\end{pmatrix}=\begin{pmatrix} a_1 \\ a_2 \\ a_3\end{pmatrix}$$  </p>
 <p>$$\begin{aligned}J(w,b)=&amp;-[y_1 \ln a_1+(1-y_1)\ln(1-a_1)] \\&amp;-[y_2 \ln a_2+(1-y_2)\ln(1-a_2)] \\&amp;-[y_3 \ln a_3+(1-y_3)\ln(1-a_3)] \\\end{aligned}$$  </p>
 <p>然后带入loss对z的求导</p>
-<p>$$\begin{aligned}</p>
-<p>J(w,b)=&amp;-[y_1 \ln a_1+(1-y_1)\ln(1-a_1)] \\</p>
-<p>&amp;-[y_2 \ln a_2+(1-y_2)\ln(1-a_2)] \\</p>
-<p>&amp;-[y_3 \ln a_3+(1-y_3)\ln(1-a_3)] \\</p>
-<p>\end{aligned}</p>
-<p>$$</p>
+<p>$$\begin{aligned}J(w,b)=&amp;-[y_1 \ln a_1+(1-y_1)\ln(1-a_1)] \\&amp;-[y_2 \ln a_2+(1-y_2)\ln(1-a_2)] \\&amp;-[y_3 \ln a_3+(1-y_3)\ln(1-a_3)] \\\end{aligned}$$</p>
 <p>代入公式6结果：</p>
 <p>$$ \frac{\partial J(w,b)}{\partial Z}=\begin{pmatrix} \frac{\partial J(w,b)}{\partial z_1} \\ \frac{\partial J(w,b)}{\partial z_2} \\ \frac{\partial J(w,b)}{\partial z_3}\end{pmatrix}=\begin{pmatrix} a_1-y_1 \\ a_2-y_2 \\ a_3-y_3 \end{pmatrix}=A-Y$$ </p>
 <p><strong>所以，用矩阵运算时可以简化为矩阵相减的形式：$A-Y$。</strong> </p>
@@ -1378,6 +1373,246 @@
 </blockquote>
 <p><strong>可以看到几率的值不是线性的，不利于分析问题，所以在表中第4行对几率取对数，可以得到一组成线性关系的值，并可以用直线方程来表示</strong></p>
 <p>$$\ln(odds) = \ln \frac{a}{1-a}= xw + b$$ </p>
+<p><strong>对其两边取对数</strong></p>
+<p>$$\frac{a}{1-a}=e^{xw+b}$$ </p>
+<p><strong>令$z=xw+b$：</strong></p>
+<p>$$a=\frac{1}{1+e^{-z}}$$ 、</p>
+<p>于是就得出了我们分类计算的公式</p>
+<p>以上推导过程，<strong>实际上就是用线性回归模型的预测结果来逼近样本分类的对数几率</strong>。这就是为什么它叫做逻辑回归(logistic regression)，但其实是分类学习的方法。这种方法的优点如下：</p>
+<ul>
+<li><p>把线性回归的成功经验引入到分类问题中，相当于对“分界线”的预测进行建模，而“分界线”在二维空间上是一条直线，这就不需要考虑具体样本的分布（比如在二维空间上的坐标位置），避免了假设分布不准确所带来的问题；</p>
+</li>
+<li><p>不仅预测出类别（0/1），而且得到了近似的概率值（比如0.31或0.86），这对许多需要利用概率辅助决策的任务很有用；</p>
+</li>
+<li><p>对率函数是任意阶可导的凸函数，有很好的数学性，许多数值优化算法都可以直接用于求取最优解。</p>
+<p><strong>线性分类和线性回归的异同</strong></p>
+</li>
+</ul>
+<p>此原理对线性和非线性二分类都适用。</p>
+<p>回忆一下前面学习过的线性回归，通过均方差函数误差反向传播的方法，不断矫正拟合直线的角度（Weights）和偏移（Bias），因为均方差函数能够准确地反映出当前的拟合程度。那么在线性分类中，我们能不能采取类似的方法呢？</p>
+<p>线性分类，试图在含有两种样本的空间中划出一条分界线，让双方截然分开，就好像是中国象棋的棋盘中的楚河汉界一样。与线性回归相似的地方是，两者都需要划出那条“直线”来，但是不同的地方也很明显</p>
+<p><strong>代数原理</strong></p>
+<p>​     <strong>基本公式回顾</strong></p>
+<p>下面我们以单样本双特征值为例来说明神经网络的二分类过程，这是用代数方式来解释其工作原理。</p>
+<p>​    正向计算：$$ z = x_1 w_1+ x_2 w_2 + b$$</p>
+<p>​    分类：$a={1 \over 1 + e^{-z}}$</p>
+<p>​    损失函数:$loss = -[y \ln (a)+(1-y) \ln (1-a)]$</p>
+<blockquote>
+<p>二分类函数的最终结果是把正例都映射到图6-6中的上半部分的曲线上，而把负类都映射到下半部分的曲线上</p>
+<img src="https://camo.githubusercontent.com/eb47870fb77386afcbffe08eb103f78f8da2aa9a2e44857eb54abbb1fc6f02de/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f7369676d6f69645f62696e6172792e706e67" alt="img" style="zoom:80%;" />
+</blockquote>
+<p>我们用正例来举例：$$a = Logistic(z) = \frac{1}{1 + e^{-z}} &gt; 0.5$$</p>
+<p>做公式变形，两边取自然对数:    z&gt;0</p>
+<p>也就是：$$z = x_1 \cdot w_1 + x_2 \cdot w_2 + b &gt; 0 $$</p>
+<p>对上式做一下变形，把$x_2$放在左侧（选$x_1$还是$x_2$都无所谓），其他项放在右侧（<strong>假设$w_2$&gt;0，则不等号方向不变）</strong></p>
+<blockquote>
+<p><strong>在推导公式时，假设 $w_2$&gt;0，这样做有什么问题吗？如果假设 $w_2$&lt;0 会是什么情况？</strong></p>
+</blockquote>
+<p>$$x_2 &gt; - \frac{w_1}{w_2}x_1 - \frac{b}{w_2}$$</p>
+<p>简化一下两个系数，令$w’=-w1/w2,b’=-b/w2$ </p>
+<p>则可得：$x_2 &gt; w’ \cdot x_1 + b’$ （<strong>方便可视化</strong>）</p>
+<blockquote>
+<p>？？</p>
+<p>用几何方式解释，就是：有一条直线，方程为 z=w′⋅x1+b′，所有的正例样本都处于这条直线的上方；同理可得所有的负例样本都处于这条直线的下方。</p>
+<p><img src="https://camo.githubusercontent.com/c875f7ea4f2c78d8e0069e148a047a73aca0e8b653f1ff2720dd9aa013a4ac22/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f6c696e6561725f62696e6172795f616e616c797369732e706e67" alt="img"></p>
+</blockquote>
+<p>我们再观察一下分类正确的图，如图6-7所示。假设绿色方块为正类：标签值 y=1，红色三角形为负类：标签值 y=0。从几何关系上理解，如果我们有一条直线，其公式为：z=w′⋅x1+b′，如图中的虚线 L1 所示，则所有正类的样本的 x2 都大于 z，而所有的负类样本的 x2 都小于 z，那么这条直线就是我们需要的分割线。</p>
+<p>这就说明神经网络的工作原理和我们在二维平面上的直观感觉是相同的，即神经网络的工作就是找到这么一条合适的直线，尽量让所有正例样本都处于直线上方时，负例样本处于直线的下方。其实这与线性回归中找到一条直线穿过所有样本点的过程有异曲同工之处。</p>
+<p><strong>我们还有一个额外的收获，即：</strong></p>
+<p>$w′=−w_1/w_2$</p>
+<p>$b′=−b/w_2$</p>
+<p>我们可以使用神经网络计算出 $w_1$,$w_2$,b 三个值以后，转换成 w′,b′，只是便于将其化为斜截式来方便可视化</p>
+<p><strong>关于训练我猜想还是和线性回归一样来使用loss进行训练</strong>，应该是的</p>
+<blockquote>
+<p>以上的分类只是0或1的二分类，这点请注意</p>
+</blockquote>
+<h3 id="关于实现逻辑与或非门"><a href="#关于实现逻辑与或非门" class="headerlink" title="关于实现逻辑与或非门"></a>关于实现逻辑与或非门</h3><blockquote>
+<p>单层神经网络，又叫做感知机，它可以轻松实现逻辑与、或、非门。由于逻辑与、或门，需要有两个变量输入，而逻辑非门只有一个变量输入。但是它们共同的特点是输入为0或1，可以看作是正负两个类别。</p>
+</blockquote>
+<p>用分类思想来实现5个逻辑门（多分类？？</p>
+<ul>
+<li><strong>与门 AND</strong></li>
+<li><strong>与非门 NAND</strong></li>
+<li><strong>或门 OR</strong></li>
+<li><strong>或非门 NOR</strong></li>
+<li><strong>非门 NOT</strong></li>
+</ul>
+<p>举个例子：逻辑AND</p>
+<img src="https://camo.githubusercontent.com/61fe9c3743518d72fab5c676fa848b968ab1322c2500681aaabcb2da5c848181/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f4c6f676963416e6447617465446174612e706e67" alt="img" style="zoom:67%;" />
+
+<p>蓝点为负类，红三角为正类</p>
+<p>如果用分类思想的话，根据前面学到的知识，应该在红色点和蓝色点之间划出一条分割线来，可以正好把正例和负例完全分开。<strong>由于样本数据稀疏，所以这条分割线的角度和位置可以比较自由，比如图中的三条直线（红黑绿），都可以是这个问题的解</strong></p>
+<p>很多阅读材料上会这样介绍：模型 $y=wx+b$，令w=−1,b=1，则：</p>
+<ul>
+<li>当 x=0 时，y=−1×0+1=1</li>
+<li>当 x=1 时，y=−1×1+1=0</li>
+</ul>
+<img src="https://camo.githubusercontent.com/22fb82beba26564895ca4e895911c479b97b8fbc94203f5374b25bc89f0d4f1f/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f4c6f6769634e6f742e706e67" alt="img" style="zoom: 50%;" />
+
+<p><strong>上图是不正确的逻辑非门的神经元实现</strong></p>
+<p>因为这成为了一个<strong>拟合问题</strong>，而不是<strong>分类问题</strong></p>
+<p>正确的：<img src="https://camo.githubusercontent.com/738d175738e9449676ee65428cd3141a0e614391dccc1aa3e2ab3301ba8d0d03/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f4c6f6769634e6f74322e706e67" alt="img" style="zoom:50%;" /></p>
+<p><strong>与门：</strong> <img src="https://camo.githubusercontent.com/0a2b67acee65bbb6538c6db6665a57ceea938e1997db16a2138218a116c5bd06/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f42696e617279436c61737369666965724e4e2e706e67" alt="img" style="zoom:50%;" /></p>
+<p><strong>……</strong></p>
+<p><strong>永远给出的是近似解</strong></p>
+<table>
+<thead>
+<tr>
+<th>逻辑门</th>
+<th>分类结果</th>
+<th>参数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/f8517dd12151823b4a399f0b4a9c82536a35f9d036558981647c8f13ef226576/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f74526573756c742e706e67"><img src="https://camo.githubusercontent.com/f8517dd12151823b4a399f0b4a9c82536a35f9d036558981647c8f13ef226576/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f74526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W=-12.468 B=6.031</td>
+</tr>
+<tr>
+<td>与</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/bd7d7ebf2f3cce6b399a16e754dc20a01dff73daa03ea350b88bc38e2281ffd2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f676963416e6447617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/bd7d7ebf2f3cce6b399a16e754dc20a01dff73daa03ea350b88bc38e2281ffd2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f676963416e6447617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=11.757 W2=11.757 B=-17.804</td>
+</tr>
+<tr>
+<td>与非</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/c8271e6b484a63a8fad2f7d512d6ec3a6e098eca2b62a740d164af1c8edd3b0a/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e616e6447617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/c8271e6b484a63a8fad2f7d512d6ec3a6e098eca2b62a740d164af1c8edd3b0a/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e616e6447617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=-11.763 W2=-11.763 B=17.812</td>
+</tr>
+<tr>
+<td>或</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/2b506ed0e376fb42ff0f56020da38195d6328bf479b189c1dbe7e271c6c960d5/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634f7247617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/2b506ed0e376fb42ff0f56020da38195d6328bf479b189c1dbe7e271c6c960d5/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634f7247617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=11.743 W2=11.743 B=-11.738</td>
+</tr>
+<tr>
+<td>或非</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/edc78072dda863a079e89542753850a0af2d337764d68c5db71567bbaf72884c/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f7247617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/edc78072dda863a079e89542753850a0af2d337764d68c5db71567bbaf72884c/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f7247617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=-11.738 W2=-11.738 B=5.409</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>我们从数值和图形可以得到两个结论：</p>
+<ol>
+<li><code>W1</code>和<code>W2</code>的值基本相同而且符号相同，说明分割线一定是135°斜率</li>
+<li>精度越高，则分割线的起点和终点越接近四边的中点0.5的位置</li>
+</ol>
+<p>以上两点说明神经网络还是很聪明的，它会尽可能优美而鲁棒地找出那条分割线。</p>
+</blockquote>
+<h3 id="多分类"><a href="#多分类" class="headerlink" title="多分类"></a>多分类</h3><h4 id="一对一方式"><a href="#一对一方式" class="headerlink" title="一对一方式"></a>一对一方式</h4><img src="https://camo.githubusercontent.com/65769d0d69f7dbfe41c927693d4b8438bbdaf3ba5e0f0f2b8f0e7be3ca702d26/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f6f6e655f76735f6f6e652e706e67" alt="img" style="zoom: 50%;" />
+
+<p><strong>每次先只保留两个类别的数据，训练一个分类器。如果一共有 N 个类别，则需要训练 C2N 个分类器。以 N=3 时举例，需要训练 A|B，B|C，A|C 三个分类器。</strong></p>
+<p><strong>推理时，(A|B) 分类器告诉你是A类时，需要到 (A|C) 分类器再试一下，如果也是A类，则就是A类。如果 (A|C) 告诉你是C类，则基本是C类了，不可能是B类，不信的话可以到 (B|C) 分类器再去测试一下。</strong></p>
+<h4 id="一对多方式"><a href="#一对多方式" class="headerlink" title="一对多方式"></a>一对多方式</h4><img src="https://camo.githubusercontent.com/9fdbb5b7f8fde5fa8b00cf916236c0a7b40a5c5180f7b4c98c34b89ad5de238b/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f6f6e655f76735f6d756c7469706c652e706e67" alt="img" style="zoom:50%;" />
+
+<p><strong>处理一个类别时，暂时把其它所有类别看作是一类，这样对于三分类问题，可以得到三个分类器。</strong></p>
+<p><strong>推理时，同时调用三个分类器，再把三种结果组合起来，就是真实的结果。比如，第一个分类器告诉你是“红类”，那么它确实就是红类；如果告诉你是非红类，则需要看第二个分类器的结果，绿类或者非绿类；依此类推。</strong></p>
+<h4 id="多对多方式"><a href="#多对多方式" class="headerlink" title="多对多方式"></a>多对多方式</h4><p><strong>假设有4个类别ABCD，我们可以把AB算作一类，CD算作一类，训练一个分类器1；再把AC算作一类，BD算作一类，训练一个分类器2。</strong></p>
+<p><strong>推理时，第1个分类器告诉你是AB类，第二个分类器告诉你是BD类，则做“与”操作，就是B类</strong>。</p>
+<h4 id="区别：多分类与多标签"><a href="#区别：多分类与多标签" class="headerlink" title="*区别：多分类与多标签"></a>*区别：多分类与多标签</h4><p>多分类学习中，虽然有多个类别，但是每个样本只属于一个类别。</p>
+<p>有一种情况也很常见，比如一幅图中，既有蓝天白云，又有花草树木，那么这张图片可以有两种标注方法：</p>
+<ul>
+<li>标注为“风景”，而不是“人物”，属于风景图片，这叫做分类</li>
+<li>被同时标注为“蓝天”、“白云”、“花草”、“树木”等多个标签，这样的任务不叫作多分类学习，而是“多标签”学习，multi-label learning。<strong>我们此处不涉及这类问题</strong>。</li>
+</ul>
+<h4 id="多分类函数"><a href="#多分类函数" class="headerlink" title="多分类函数"></a>多分类函数</h4><blockquote>
+<p><strong>此函数对线性多分类和非线性多分类都适用</strong></p>
+</blockquote>
+<p>思考：<strong>Logistic函数可以得到诸如0.8、0.3这样的二分类概率值，前者接近1，后者接近0。那么多分类问题如何得到类似的概率值呢</strong></p>
+<p>我们依然假设对于一个样本的分类值是用这个线性公式得到的：</p>
+<p>$z=x⋅w+b$</p>
+<p>但是，我们要求 z 不是一个标量，而是一个向量。如果是三分类问题，<strong>我们就要求 z 是一个三维的向量，向量中的每个单元的元素值代表该样本分别属于三个分类的值，这样不就可以了吗？</strong></p>
+<p>具体的说，假设x是一个 (1x2) 的向量，把w设计成一个(2x3)的向量，b设计成(1x3)的向量，则z就是一个(1x3)的向量。我们假设z的计算结果是[3,1,−3]，这三个值分别代表了样本x在三个分类中的数值，下面我们把它转换成概率值。</p>
+<p>——<strong>我们不能训练神经网络让它的z值直接变成概率形式吗？</strong></p>
+<p>——<strong>答案是否定的，因为z值是经过线性计算得到的，线性计算能力有限，无法有效地直接变成概率值</strong>。</p>
+<p><strong>取max值</strong></p>
+<p>z值是 $[3,1,-3]$，如果取max操作会变成 $[1,0,0]$，这符合我们的分类需要，<strong>即三者相加为1</strong>，并且认为该样本属于第一类。但是有两个不足：</p>
+<ol>
+<li><p>分类结果是 $[1,0,0]$，只保留的非0即1的信息，没有各元素之间相差多少的信息，可以理解是“<code>Hard Max</code>”；</p>
+</li>
+<li><p>max操作本身不可导，无法用在反向传播中。</p>
+</li>
+</ol>
+<p><strong>引入softmax</strong></p>
+<p>Softmax加了个”soft”来模拟max的行为，但同时又保留了相对大小的信息。</p>
+<p>$a_j = \frac{e^{z_j}}{\sum\limits_{i=1}^m e^{z_i}}=\frac{e^{z_j}}{e^{z_1}+e^{z_2}+\dots+e^{z_m}}$</p>
+<p>上式中:</p>
+<ul>
+<li>z<del>j</del> 是对第 j 项的分类原始值，即矩阵运算的结果</li>
+<li>z<del>i</del> 是参与分类计算的每个类别的原始值</li>
+<li>m 是总分类数</li>
+<li>a<del>j</del> 是对第 j 项的计算结果</li>
+</ul>
+<img src="https://camo.githubusercontent.com/d2648f46c38f5e226b95b93d7cbb78abeff91a036f697284f96e2c3c4c526c0e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f736f66746d61782e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>举栗顺便比较</strong></p>
+<table>
+<thead>
+<tr>
+<th>输入原始值</th>
+<th>MAX计算</th>
+<th>Softmax计算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[3,1,−3]</td>
+<td>[1,0,0]</td>
+<td>[0.879,0.119,0.002]</td>
+</tr>
+</tbody></table>
+<p>也就是说，在（至少）有三个类别时，通过使用Softmax公式计算它们的输出，比较相对大小后，得出该样本属于第一类，因为第一类的值为0.879，在三者中最大。注意这是对一个样本的计算得出的数值，而不是三个样本，亦即Softmax给出了某个样本分别属于三个类别的概率。</p>
+<p><strong>它有两个特点：</strong></p>
+<ol>
+<li><strong>三个类别的概率相加为1</strong></li>
+<li><strong>每个类别的概率都大于0</strong></li>
+</ol>
+<p><strong>Softmax的反向传播工作原理</strong></p>
+<blockquote>
+<p>我们仍假设网络输出的预测数据是 z=[3,1,−3]，而标签值是 y=[1,0,0]。在做反向传播时，根据前面的经验，我们会用 z−y，得到：</p>
+<p><strong>z−y=[2,1,−3]</strong></p>
+<p>这个信息很怪</p>
+<ul>
+<li>第一项是2，我们已经预测准确了此样本属于第一类，但是反向误差的值是2，即惩罚值是2</li>
+<li>第二项是1，惩罚值是1，预测对了，仍有惩罚值</li>
+<li>第三项是-3，惩罚值是-3，意为着奖励值是3，明明预测错误了却给了奖励</li>
+</ul>
+</blockquote>
+<p><strong>所以，如果不使用Softmax这种机制，会存在有个问题：</strong></p>
+<blockquote>
+<ul>
+<li>z值和y值之间，即<strong>预测值和标签值之间不可比</strong>，比如 z0=3 与 y0=1 是不可比的</li>
+<li>z值中的三个元素之间虽然可比，但只能比大小，不能比差值，比如 z0&gt;z1&gt;z2，但3和1相差2，1和-3相差4，<strong>这些差值是无意义的</strong></li>
+</ul>
+<p>在使用Softmax之后，我们得到的值是 a=[0.879,0.119,0.002]</p>
+<p>用 a−y：$a−y=[−0.121,0.119,0.002]$ </p>
+<p>——多好啊多好啊</p>
+</blockquote>
+<blockquote>
+<p>这个信息是完全正确的，可以用于反向传播。Softmax先做了归一化，把输出值归一到[0,1]之间，这样就可以与标签值的0或1去比较，并且知道惩罚或奖励的幅度</p>
+</blockquote>
+<p>从继承关系的角度来说，Softmax函数可以视作Logistic函数扩展——其实Logistic函数也是给出了当前样本的一个概率值，只不过是依靠偏近0或偏近1来判断属于正类还是负类</p>
+<h4 id="正向传播-1"><a href="#正向传播-1" class="headerlink" title="正向传播"></a>正向传播</h4><p>矩阵计算:$z=x \cdot w + b$</p>
+<p>分类计算:$a_j = \frac{e^{z_j}}{\sum\limits_{i=1}^m e^{z_i}}=\frac{e^{z_j}}{e^{z_1}+e^{z_2}+\dots+e^{z_m}}$ </p>
+<p>loss:</p>
+<p>​    单样本: $loss(w,b)=-\sum_{i=1}^m y_i \ln a_i$</p>
+<p>​    多样本: $J(w,b) =- \sum_{j=1}^n \sum_{i=1}^m y_{ji} \log a_{ji}$ </p>
+<h4 id="反向传播-3"><a href="#反向传播-3" class="headerlink" title="反向传播"></a>反向传播</h4><p><strong>实例化推导</strong></p>
+<p>$z_1 = x \cdot w+ b_1$</p>
+<p>$z_2 = x \cdot w + b_2$</p>
+<p>$z_3 = x \cdot w + b_3$</p>
+<p>$a_1=\frac{e^{z_1}}{\sum_i e^{z_i}}=\frac{e^{z_1}}{e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>$a_2=\frac{e^{z_2}}{\sum_i e^{z_i}}=\frac{e^{z_2}}{e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>$a_3=\frac{e^{z_3}}{\sum_i e^{z_i}}=\frac{e^{z_3}}{e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>为了方便书写:  令 $E ={e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>$loss(w,b)=-(y_1 \ln a_1 + y_2 \ln a_2 + y_3 \ln a_3)$ </p>
+<p>你对loss求导最终所得:</p>
+<p>$\begin{aligned}  \frac{\partial loss}{\partial z_1}&amp;=-\frac{y_1}{a_1}a_1(1-a_1)+\frac{y_2}{a_2}a_1a_2+\frac{y_3}{a_3}a_1a_3 \\&amp;=-y_1+y_1a_1+y_2a_1+y_3a_1 \\&amp;=-y_1+a_1(y_1+y_2+y_3) \\&amp;=a_1-y_1 \end{aligned}$ </p>
+<blockquote>
+<p> 不失一般性 就是  $\frac{\partial loss}{\partial z_i}=a_i-y_i    $</p>
+</blockquote>
+<p><strong>一般性推导</strong></p>
+<ol>
+<li>Softmax函数自身的求导</li>
+</ol>
+<p>2.结合损失函数的整体反向传播公式</p>
 <h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2>
   <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Nov 20, 2020</p>
   
