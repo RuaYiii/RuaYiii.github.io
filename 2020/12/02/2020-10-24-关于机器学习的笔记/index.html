@@ -32,7 +32,7 @@
   <meta name="author" content="RuaYiii">
 
   
-  <meta property="og:image" content="http://ruayiii.codes/2020/11/20/2020-10-24-关于机器学习的笔记/undefined">
+  <meta property="og:image" content="http://ruayiii.codes/2020/12/02/2020-10-24-关于机器学习的笔记/undefined">
   
 
   <!-- Mobile Specific Metas
@@ -264,7 +264,7 @@
 <p>​    最笨的办法是可以在输入端一点一点的试——直到满意为止</p>
 <p>​    从 z 开始一层一层向回➡   <strong>z=x⋅y</strong>   又有  <code>x=2w+3b</code>,<code>y=2b+1</code></p>
 <p>所以<img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20201116200258117.png" alt="image-20201116200258117" style="zoom:80%;" />  （链式法则）</p>
-<p>其中  $$\frac{\partial{z}}{\partial{x}}=\frac{\partial{}}{\partial{x}}(x \cdot y)=y=9$$       $$\frac{\partial{x}}{\partial{w}}=\frac{\partial{}}{\partial{w}}(2w+3b)=2$$     </p>
+<p>其中  $$\frac{ \partial{ z } }{ \partial{ x } }=\frac{ \partial{ }}{ \partial{ x } }(x \cdot y)=y=9$$       $$\frac{\partial{ x } }{ \partial{ w } }=\frac { \partial{ } } { \partial{ w } } (2w+3b)=2$$     </p>
 <p> 上述表达的含义是：当 w 变化一点点时，z 会产生 w 的变化值18倍的变化。记住我们的目标是让 z=150，目前在初始状态时是 z=162，所以，问题转化为：当需要 z 从 162 变到 150 时，w 需要变化多少？ </p>
 <p>​    既然 Δz=18⋅Δw    那么—— $$\Delta w = {\Delta z \over 18}=\frac{162-150}{18}= 0.6667$$  </p>
 <p>​    最终结果也可以看出  $$w = w - 0.6667=2.3333$$</p>
@@ -1612,9 +1612,433 @@
 <ol>
 <li>Softmax函数自身的求导</li>
 </ol>
+<p>由于Softmax涉及到求和，所以有两种情况(<strong>我不大懂</strong></p>
+<ul>
+<li>求输出项 a1 对输入项 z1 的导数，此时：j=1,i=1,i=j，可以扩展到 i,j 为任意相等值</li>
+<li>求输出项 a2 或 a3 对输入项 z1 的导数，此时：j 为 2 或 3, i=1,i≠j，可以扩展到 i,j 为任意不等值</li>
+</ul>
+<p>分子: 因为是计算 $a_j$，所以分子是 $e^{z_j}$</p>
+<p>分母: $\sum\limits_{i=1}^m e^{z_i} = e^{z_1} + \dots + e^{ z_j } + \dots +e^{ z_m } \Rightarrow E$ </p>
+<p><strong>那么 $i=j$时</strong>（比如输出分类值 $a_1$ 对 $z_1$ 的求导），求 $a_j$ 对 $z_i$ 的导数，此时分子上的 $e^{z_j}$ 要参与求导</p>
+<p>$\begin{aligned}\frac{\partial{a_j}} {\partial{z_i}} &amp;= \frac{\partial{ } }{ \partial{z_i} }(e^{z_j}/E) \\&amp;= \frac{\partial { } } {\partial{z_j} }(e^{z_j}/E) \quad (因为z_i==z_i)\\&amp;=\frac{e^{z_j}E-e^{z_j}e^{z_j} }{E^2} =\frac{e^{z_j} }{E} - \frac{(e^{z_j})^2}{E^2} \\&amp;= a_j-a^2_j=a_j(1-a_j) \\\end{aligned}$ </p>
+<hr>
+<p>####这里是分割线</p>
+<hr>
+<p>那么$i \neq j$时 （比如输出分类值 $a_1$ 对 $z_2$ 的求导，$j=1,i=2$），$a_j$对$z_i$的导数，分子上的 $z_j$ 与 $i$ 没有关系，求导为0，分母的求和项中$e^{z_i}$要参与求导。</p>
+<p>$\frac{\partial{a_j}}{\partial{z_i}}=\frac{-(E)’e^{z_j}}{E^2}$</p>
+<p>求和公式对$e^{z_i}$的导数$(E)’$，除了$e^{z_i}$项外，其它都是0</p>
+<p>$(E)’ = (e^{z_1} + \dots + e^{z_i} + \dots +e^{z_m})’=e^{z_i}$</p>
+<p>所以：</p>
+<p>$\begin{aligned}\frac{\partial{a_j}}{\partial{z_i}}&amp;=\frac{-(E)’e^{z_j} } {(E)^2}=-\frac{ e^{z_j }e^{z_i} }{ {(E)^2} } \\&amp;=-\frac{e^{z_j} }{ {E} }\frac{e^{z_j} }{ {E} }=-a_{ i }a_{j} \end{aligned}$</p>
 <p>2.结合损失函数的整体反向传播公式</p>
-<h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2>
-  <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Nov 20, 2020</p>
+<p><strong>我们要求Loss值对$z_1$的偏导数。和以前的Logistic函数不同，那个函数是一个z对应一个a，所以反向关系也是一对一。而在这里，$a_1$的计算是有$z_1$,$z_2$, $z_3$参与的，$a_2$的计算也是有$z_1$,$z_2$, $z_3$参与的，即所有a的计算都与前一层的z有关，所以考虑反向时也会比较复杂</strong> </p>
+<p>先从Loss的公式看，$loss=-(y_1lna_1+y_2lna_2+y_3lna_3)$，**$a_1$肯定与$z_1$有关，那么$a_2$,$a_3$是否与$z_1$有关呢？**</p>
+<p><strong>无论是$a_1$，$a_2$，$a_3$，都是与$z_1$相关的，而不是一对一的关系，所以，想求Loss对$z_1$的偏导，必须把Loss-&gt;$a_1$-&gt;$z_1$， Loss-&gt;$a_2$-&gt;$z_1$，Loss-&gt;$a_3$-&gt;$z_1$，这三条路的结果加起来</strong>。于是有了如下公式:</p>
+<p>$\begin{aligned}  \frac{\partial{loss}}{\partial{z_i}} &amp;= \frac{\partial{loss}}{\partial{a_1}}\frac{\partial{a_1}}{\partial{z_i}} + \frac{\partial{loss}}{\partial{a_2}}\frac{\partial{a_2}}{\partial{z_i}}+\frac{\partial{loss}}{\partial{a_3}}\frac{\partial{a_3}}{\partial{z_i}} \\&amp;=\sum_j \frac{\partial{loss}}{\partial{a_j}}\frac{\partial{a_j}}{\partial{z_i}}\end{aligned}$</p>
+<p>前面说过了，因为Softmax涉及到各项求和，A的分类结果和Y的标签值分类是否一致，所以需要分情况讨论,就有</p>
+<p>$\frac{\partial{a_j}}{\partial{z_i}} = \begin{cases} a_j(1-a_j), &amp; i = j \\ -a_ia_j, &amp; i \neq j \end{cases}$</p>
+<p>因此，$\frac{\partial{loss}}{\partial{z_i}}$应该是 $i=j$ 和 $i \neq j$两种情况的和：</p>
+<ul>
+<li><p>$i = j$ 时，loss通过 $a_1$ 对 $z_1$ 求导（或者是通过 $a_2$ 对 $z_2$ 求导）：</p>
+<p>$\begin{aligned}\frac{\partial{loss}}{\partial{z_i}} &amp;= \frac{\partial{loss}}{\partial{a_j}}\frac{\partial{a_j}}{\partial{z_i}}=-\frac{y_j}{a_j}a_j(1-a_j) \\&amp;=y_j(a_j-1)=y_i(a_i-1) \end{aligned}$</p>
+</li>
+<li><p>$i \neq j$，loss通过 $a_2+a_3$ 对 $z_1$ 求导：</p>
+<p>$\begin{aligned}  \frac{\partial{loss}}{\partial{z_i}} &amp;= \frac{\partial{loss}}{\partial{a_j}}\frac{\partial{a_j}}{\partial{z_i}}=\sum_j^m(-\frac{y_j}{a_j})(-a_ja_i) \\&amp;=\sum_j^m(y_ja_i)=a_i\sum_{j \neq i}{y_j} \end{aligned}$</p>
+</li>
+</ul>
+<p>相加:</p>
+<p>$\begin{aligned}  \frac{\partial{loss}}{\partial{z_i}} &amp;= y_i(a_i-1)+a_i\sum_{j \neq i}y_j \\&amp;=-y_i+a_iy_i+a_i\sum_{j \neq i}y_j \\&amp;=-y_i+a_i(y_i+\sum_{j \neq i}y_j) \\&amp;=-y_i + a_i*1 \\&amp;=a_i-y_i \end{aligned}$</p>
+<blockquote>
+<p>因为$y_j$取值$[1,0,0]$或者$[0,1,0]$或者$[0,0,1]$，这三者加起来，就是$[1,1,1]$，在矩阵乘法运算里乘以$[1,1,1]$相当于什么都不做，就等于原值。</p>
+<p>我们惊奇地发现，最后的反向计算过程就是：$a_i-y_i$，假设当前样本的$a_i=[0.879, 0.119, 0.002]$，而$y_i=[0, 1, 0]$，则：</p>
+<p>$$a_i - y_i = [0.879, 0.119, 0.002]-[0,1,0]=[0.879,-0.881,0.002]$$</p>
+<p>其含义是，样本预测第一类，但实际是第二类，所以给第一类0.879的惩罚值，给第二类0.881的奖励，给第三类0.002的惩罚，并反向传播给神经网络。</p>
+</blockquote>
+<h4 id="神经网络实践"><a href="#神经网络实践" class="headerlink" title="神经网络实践"></a>神经网络实践</h4><p><strong>如果有三个以上的分类同时存在，我们需要对每一类别分配一个神经元</strong></p>
+<p>这个神经元的作用是根据前端输入的各种数据，先做线性处理（Z=WX+B），然后做一次非线性处理，计算每个样本在每个类别中的预测概率，再和标签中的类别比较，看看预测是否准确，如果准确，则奖励这个预测，给与正反馈；如果不准确，则惩罚这个预测，给与负反馈。两类反馈都反向传播到神经网络系统中去调整参数。</p>
+<p>这个网络只有输入层和输出层，由于输入层不算在内，所以是一层网络</p>
+<img src="https://camo.githubusercontent.com/2f16b65361b07b26b2839aee4a9c57baae04fcede605c613ea68dd95fbed04df/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f4d756c7469706c65436c61737369666965724e4e2e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>输入</strong>：假设有两个特征</p>
+<p>$x=\begin{pmatrix}x_1 &amp; x_2\end{pmatrix}$</p>
+<p><strong>权重</strong>：**$W$权重矩阵的尺寸**，可以从前往后看，比如：输入层是2个特征，输出层是3个神经元，则$W$的尺寸就是 $2\times 3$。</p>
+<p>$W=\begin{pmatrix}w_{11} &amp; w_{12} &amp; w_{13}\\w_{21} &amp; w_{22} &amp; w_{23} \end{pmatrix}$</p>
+<p>​    <strong>B的尺寸</strong>是1x3，列数永远和神经元的数量一样，行数永远是1</p>
+<p><strong>输出层</strong>：输出层三个神经元，再加上一个Softmax计算，最后有$A1,A2,A3$三个输出，写作：</p>
+<p>$Z = \begin{pmatrix}z_1 &amp; z_2 &amp; z_3 \end{pmatrix}$</p>
+<p>$A = \begin{pmatrix}a_1 &amp; a_2 &amp; a_3 \end{pmatrix}$</p>
+<p>其中，$Z=X \cdot W+B，A = Softmax(Z)$</p>
+<p><strong>关于样本标签数据</strong></p>
+<p>一般来说，在标记样本时，我们会用1,2,3这样的标记来指明是哪一类。</p>
+<p>所以样本数据是这个样子的：</p>
+<p>$Y = \begin{pmatrix}y_1 \\ y_2 \\ \vdots \\ y_{140}\end{pmatrix}=\begin{pmatrix}3 \\ 2 \\ \vdots \\ 1\end{pmatrix}$ </p>
+<p>在有Softmax的多分类计算时，我们用下面这种等价的方式，俗称<strong>OneHot</strong></p>
+<p>$Y = \begin{pmatrix}y_1 \\ y_2 \\ \vdots \\ y_{140}\end{pmatrix}=\begin{pmatrix}0 &amp; 0 &amp; 1 \\0 &amp; 1 &amp; 0 \\… &amp; … &amp; … \\1 &amp; 0 &amp; 0\end{pmatrix}$ </p>
+<h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>这啥——假设该神经元有三个输入，分别为$x_1,x_2,x_3$，那么</p>
+<p>$z=x_1 w_1 + x_2 w_2 + x_3 w_3 +b$   ;   $a = \sigma(z)$ </p>
+<p><strong>激活函数也就是 $a=\sigma(z)$ 这一步了</strong> </p>
+<h4 id="激活函数作用-amp-性质"><a href="#激活函数作用-amp-性质" class="headerlink" title="激活函数作用&amp;性质"></a>激活函数作用&amp;性质</h4><p><strong>作用</strong>：</p>
+<ul>
+<li>给神经网络增加非线性因素</li>
+<li>把计算结果压缩到[0,1] 之间，便于后面的计算</li>
+</ul>
+<p><strong>性质</strong>：</p>
+<ul>
+<li><strong>非线性</strong>：<strong>线性的激活函数和没有激活函数一样(摔</strong>；</li>
+<li><strong>可导性</strong>：做误差反向传播和梯度下降，必须要保证激活函数的可导性；</li>
+<li><strong>单调性</strong>：单一的输入会得到单一的输出，较大值的输入得到较大值的输出。</li>
+</ul>
+<blockquote>
+<p>在物理试验中使用的继电器，是最初的激活函数的原型：当输入电流大于一个阈值时，会产生足够的磁场，从而打开下一级电源通道</p>
+</blockquote>
+<p><strong>那么什么时候是我们使用激活函数呢</strong></p>
+<p>简言之：</p>
+<ol>
+<li>神经网络最后一层不需要激活函数</li>
+<li>激活函数只用于连接相邻的两层神经网络</li>
+</ol>
+<h4 id="挤压型激活函数"><a href="#挤压型激活函数" class="headerlink" title="挤压型激活函数"></a>挤压型激活函数</h4><p>这一类函数的特点是，<strong>当输入值域的绝对值较大的时候，其输出在两端是饱和的，都具有S形的函数曲线以及压缩输入值域的作用</strong>，所以叫挤压型激活函数，<strong>又可以叫饱和型激活函数</strong>。</p>
+<p>在英文中，通常用<strong>Sigmoid</strong>来表示，原意是S型的曲线，在数学中是指一类具有压缩作用的S型的函数，在神经网络中，有两个常用的Sigmoid函数</p>
+<p>一个是Logistic函数，另一个是Tanh函数。</p>
+<h5 id="Logistic函数"><a href="#Logistic函数" class="headerlink" title="Logistic函数"></a>Logistic函数</h5><p><strong>对数几率函数（Logistic Function，简称对率函数）</strong></p>
+<p>很多文字材料中通常把激活函数和分类函数混淆在一起说，有一个原因是：<strong>在二分类任务中最后一层使用的对率函数与在神经网络层与层之间连接的Sigmoid激活函数，是同样的形式。所以它既是激活函数，又是分类函数，是个特例。</strong></p>
+<p>对这个函数的叫法比较混乱，在本书中我们约定一下，凡是用到“Logistic”词汇的，指的是二分类函数；而用到“Sigmoid”词汇的，指的是本激活函数</p>
+<p><strong>公式</strong>：$Sigmoid(z) = \frac{1}{1 + e^{-z}} \rightarrow a$ </p>
+<p><strong>导数</strong>：$Sigmoid’(z) = a(1 - a)$</p>
+<blockquote>
+<p><strong>注意，如果是矩阵运算的话，需要在公式2中使用⊙符号表示按元素的矩阵相乘：a⊙(1−a)，后面不再强调。</strong></p>
+</blockquote>
+<p><strong>值域</strong></p>
+<ul>
+<li>输入值域：(−∞,∞)</li>
+<li>输出值域：(0,1)</li>
+<li>导数值域：(0,0.25]</li>
+</ul>
+<blockquote>
+<p>再放送</p>
+<img src="https://camo.githubusercontent.com/22506771636e1f8a886bb2bc751852b8eba0e3fc53c2d9341166af93495a5249/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f7369676d6f69642e706e67" alt="img" style="zoom:80%;" />
+</blockquote>
+<p><strong>谈谈优点</strong></p>
+<p>从函数图像来看，Sigmoid函数的作用是将输入压缩到 (0,1) 这个区间范围内，这种输出在0~1之间的函数可以用来模拟一些概率分布的情况。它还是一个连续函数，导数简单易求。</p>
+<p>从数学上来看，Sigmoid函数对中央区的信号增益较大，对两侧区的信号增益小，在信号的特征空间映射上，有很好的效果。</p>
+<p>从神经科学上来看，中央区酷似神经元的兴奋态，两侧区酷似神经元的抑制态，因而在神经网络学习方面，可以将重点特征推向中央区， 将非重点特征推向两侧区。</p>
+<p>分类功能：我们经常听到这样的对白：</p>
+<ul>
+<li>甲：“你觉得这件事情成功概率有多大？”</li>
+<li>乙：“我有六成把握能成功。”</li>
+</ul>
+<p>Sigmoid函数在这里就起到了如何把一个数值转化成一个通俗意义上的“把握”的表示。z坐标值越大，经过Sigmoid函数之后的结果就越接近1，把握就越大。</p>
+<p><strong>谈谈缺点</strong></p>
+<p>指数计算代价大。</p>
+<p>反向传播时梯度消失：从梯度图像中可以看到，Sigmoid的梯度在两端都会接近于0，根据链式法则，如果传回的误差是$\delta$，那么梯度传递函数是$\delta \cdot a’$，而$a’$这时接近零，也就是说整体的梯度也接近零。这就出现梯度消失的问题，并且这个问题可能导致网络收敛速度比较慢。</p>
+<blockquote>
+<p>此外，如果输入数据是(-1, 1)范围内的均匀分布的数据会导致什么样的结果呢？经过Sigmoid函数处理之后这些数据的均值就从0变到了0.5，导致了均值的漂移，在很多应用中，这个性质是不好的。</p>
+</blockquote>
+<h5 id="Tanh函数"><a href="#Tanh函数" class="headerlink" title="Tanh函数"></a>Tanh函数</h5><p><strong>TanHyperbolic，即双曲正切函数</strong></p>
+<p><strong>公式</strong>：$Tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = (\frac{2}{1 + e^{-2z}}-1) \rightarrow a$ </p>
+<p><strong>导数</strong>：$$Tanh’(z) = (1 + a)(1 - a)$$ </p>
+<p><strong>值域</strong>：</p>
+<ul>
+<li>输入值域：(−∞,∞)</li>
+<li>输出值域：(−1,1)</li>
+<li>导数值域：(0,1)</li>
+</ul>
+<img src="https://camo.githubusercontent.com/dbf4ffa73bc333afdb93100accfa39351069839cccb8b32c511105eb391ff730/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f74616e682e706e67" alt="img" style="zoom:67%;" />
+
+<p><strong>优点</strong></p>
+<p>无论从理论公式还是函数图像，这个函数都是一个和Sigmoid非常相像的激活函数，他们的性质也确实如此。但是比起Sigmoid，<strong>Tanh减少了一个缺点，就是他本身是零均值的，也就是说，在传递过程中，输入数据的均值并不会发生改变</strong>，这就使他在很多应用中能表现出比Sigmoid优异一些的效果。</p>
+<p><strong>缺点</strong></p>
+<p>exp指数计算代价大。梯度消失问题仍然存在。</p>
+<h5 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h5><p>其它的基本不怎么使用，目的是告诉大家这类函数有很多，但是常用的只有Sigmoid和Tanh两个</p>
+<p><img src="https://camo.githubusercontent.com/6ca3736084bb42ed2b336d801c9e1bab6ccdb1d31f126955629d2cad13f425a5/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f6f74686572732e706e67" alt="img"></p>
+<p><strong>强调二度</strong>(本书中：</p>
+<ol>
+<li>Sigmoid，指的是对数几率函数用于激活函数时的称呼；</li>
+<li>Logistic，指的是对数几率函数用于二分类函数时的称呼；</li>
+<li>Tanh，指的是双曲正切函数用于激活函数时的称呼。</li>
+</ol>
+<h4 id="半线性激活函数"><a href="#半线性激活函数" class="headerlink" title="半线性激活函数"></a>半线性激活函数</h4><blockquote>
+<p>又可以叫<strong>非饱和型</strong>激活函数。</p>
+</blockquote>
+<h5 id="RuLU函数"><a href="#RuLU函数" class="headerlink" title="RuLU函数"></a>RuLU函数</h5><p>Rectified Linear Unit，修正线性单元，线性整流函数，斜坡函数</p>
+<p>$ReLU(z) = max(0,z) = \begin{cases} z, &amp; z \geq 0 \\  0, &amp; z &lt; 0 \end{cases}$ </p>
+<p>$$ReLU’(z) = \begin{cases} 1 &amp; z \geq 0 \\ 0 &amp; z &lt; 0 \end{cases}$$</p>
+<p><img src="https://camo.githubusercontent.com/a9f181a5a1a6a55112fbda1c9a17645649439b83d8cebf2e9140b30f3386df21/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f72656c752e706e67" alt="img"></p>
+<blockquote>
+<p>一图胜万言</p>
+</blockquote>
+<p><strong>仿生学依据</strong>:</p>
+<blockquote>
+<p>相关大脑方面的研究表明生物神经元的信息编码通常是比较分散及稀疏的。通常情况下，大脑中在同一时间大概只有1%~4%的神经元处于活跃状态。使用线性修正以及正则化可以对机器神经网络中神经元的活跃度（即输出为正值）进行调试；相比之下，Sigmoid函数在输入为0时输出为0.5，即已经是半饱和的稳定状态，不够符合实际生物学对模拟神经网络的期望。不过需要指出的是，一般情况下，在一个使用修正线性单元（即线性整流）的神经网络中大概有50%的神经元处于激活态</p>
+</blockquote>
+<p>######优点</p>
+<ul>
+<li>反向导数恒等于1，更加有效率的反向传播梯度值，收敛速度快；</li>
+<li>避免梯度消失问题；</li>
+<li>计算简单，速度快；</li>
+<li>活跃度的分散性使得神经网络的整体计算成本下降。</li>
+</ul>
+<p>######缺点 </p>
+<p>无界。</p>
+<p><strong>梯度很大的时候可能导致的神经元“死”掉。</strong></p>
+<blockquote>
+<p>这个死掉的原因是什么呢？是因为很大的梯度导致更新之后的网络传递过来的输入是小于零的，从而导致ReLU的输出是0，计算所得的梯度是零，然后对应的神经元不更新，从而使ReLU输出恒为零，对应的神经元恒定不更新，等于这个ReLU失去了作为一个激活函数的作用。问题的关键点就在于输入小于零时，ReLU回传的梯度是零，从而导致了后面的不更新。在学习率设置不恰当的情况下，很有可能网络中大部分神经元“死”掉，也就是说不起作用了。</p>
+</blockquote>
+<blockquote>
+<p>用和Sigmoid函数那里更新相似的算法步骤和参数，来模拟一下ReLU的梯度下降次数，也就是学习率η=0.2，希望函数值从0.9衰减到0.5，这样需要多少步呢？</p>
+<p>由于ReLU的导数为1，所以：</p>
+<p>0.9−1×0.2=0.70.7−1×0.2=0.5</p>
+<p>也就是说，同样的学习速率，ReLU函数只需要两步就可以做到Sigmoid需要67步才能达到的数值！</p>
+</blockquote>
+<h5 id="Leaky-ReLU函数"><a href="#Leaky-ReLU函数" class="headerlink" title="Leaky ReLU函数"></a>Leaky ReLU函数</h5><blockquote>
+<p>LReLU，带泄露的线性整流函数。</p>
+</blockquote>
+<p>$$LReLU(z) = \begin{cases} z &amp; z \geq 0 \\ \alpha \cdot z &amp; z &lt; 0 \end{cases}$$ </p>
+<p>$$LReLU’(z) = \begin{cases} 1 &amp; z \geq 0 \\ \alpha &amp; z &lt; 0 \end{cases}$$</p>
+<p><img src="https://camo.githubusercontent.com/d08bbf901a65fb289bdfbba0f2e12e1ac80bad65c95072b0b9e15e9d7bde6ccc/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f6c65616b7952656c752e706e67" alt="img"></p>
+<p>######优点</p>
+<p>继承了ReLU函数的优点。</p>
+<p>Leaky ReLU同样有收敛快速和运算复杂度低的优点，而且由于给了z&lt;0时一个比较小的梯度α,使得z&lt;0时依旧可以进行梯度传递和更新，可以在一定程度上避免神经元“死”掉的问题。</p>
+<h5 id="Softplus函数"><a href="#Softplus函数" class="headerlink" title="Softplus函数"></a>Softplus函数</h5><p>$$Softplus(z) = \ln (1 + e^z)$$</p>
+<p>$$Softplus’(z) = \frac{e^z}{1 + e^z}$$</p>
+<p><img src="https://camo.githubusercontent.com/693c2f386fb9524acd057564bc605efb5f1160a236364012967059e012431401/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f736f6674706c75732e706e67" alt="img"></p>
+<h5 id="ELU函数"><a href="#ELU函数" class="headerlink" title="ELU函数"></a>ELU函数</h5><p>$$ELU(z) = \begin{cases} z &amp; z \geq 0 \ \alpha (e^z-1) &amp; z &lt; 0 \end{cases}$$</p>
+<p>$$ELU’(z) = \begin{cases} 1 &amp; z \geq 0 \ \alpha e^z &amp; z &lt; 0 \end{cases}$$</p>
+<p><img src="https://camo.githubusercontent.com/23c66aca83ff86a58c6fa912d417ed4e4e29c259a161f77dc3656afb158e46f2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f656c752e706e67" alt="img"></p>
+<h3 id="前馈神经网络的通用近似定理"><a href="#前馈神经网络的通用近似定理" class="headerlink" title="前馈神经网络的通用近似定理"></a>前馈神经网络的通用近似定理</h3><blockquote>
+<p>在工程实践中，我们最常遇到不是线性问题，而是非线性问题</p>
+</blockquote>
+<p><strong>Q1</strong>:如何使用神经网络拟合一条有很强规律的曲线，比如正弦曲线？</p>
+<p><strong>Q2</strong>:前面的正弦函数，看上去是非常有规律的，也许单层神经网络很容易就做到了。如果是更复杂的曲线，单层神经网络还能轻易做到吗,比如：</p>
+<img src="https://camo.githubusercontent.com/109ce8870945455683564f53717cd91c4ad5365f041b088d0ba6233c3e86f68f/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f53616d706c652e706e67" alt="img" style="zoom:50%;" />
+
+<blockquote>
+<p>原则上说，如果你有足够的耐心，愿意花很高的时间成本和计算资源，总可以用多项式回归的方式来解决这个问题</p>
+</blockquote>
+<p>上面这条“蛇形”曲线，实际上是由下面这个公式添加噪音后生成的：</p>
+<p>$$y=0.4x^2 + 0.3x\sin(15x) + 0.01\cos(50x)-0.3$$</p>
+<blockquote>
+<p>以上问题可以叫做非线性回归，即自变量X和因变量Y之间不是线性关系。常用的传统的处理方法有线性迭代法、分段回归法、迭代最小二乘法等。<strong>在神经网络中，解决这类问题的思路非常简单，就是使用带有一个隐层的两层神经网络</strong></p>
+</blockquote>
+<h4 id="评估标准"><a href="#评估标准" class="headerlink" title="评估标准"></a>评估标准</h4><blockquote>
+<p>回归问题主要是求值，评价标准主要是看求得值与实际结果的偏差有多大</p>
+</blockquote>
+<h5 id="平均绝对误差"><a href="#平均绝对误差" class="headerlink" title="平均绝对误差"></a>平均绝对误差</h5><p>MAE（Mean Abolute Error）</p>
+<p>$MAE=\frac{1}{m} \sum_{i=1}^m \lvert a_i-y_i \rvert$</p>
+<blockquote>
+<p>对异常值不如均方差敏感，类似中位数</p>
+</blockquote>
+<h5 id="绝对平均值率误差"><a href="#绝对平均值率误差" class="headerlink" title="绝对平均值率误差"></a>绝对平均值率误差</h5><p>MAPE（Mean Absolute Percentage Error）</p>
+<p>$MAPE=\frac{100}{m} \sum^m_{i=1} \left\lvert {a_i - y_i \over y_i} \right\rvert$ </p>
+<h5 id="和方差"><a href="#和方差" class="headerlink" title="和方差"></a>和方差</h5><p>SSE（Sum Squared Error）</p>
+<p>$SSE=\sum_{i=1}^m (a_i-y_i)^2$ </p>
+<blockquote>
+<p>得出的值与样本数量有关系，假设有1000个测试样本，得到的值是120；如果只有100个测试样本，得到的值可能是11，我们不能说11就比120要好。</p>
+</blockquote>
+<h5 id="均方差"><a href="#均方差" class="headerlink" title="均方差"></a>均方差</h5><p>MSE（Mean Squared Error）</p>
+<p>$MSE = \frac{1}{m} \sum_{i=1}^m (a_i-y_i)^2$</p>
+<blockquote>
+<p>就是实际值减去预测值的平方再求期望，没错，就是线性回归的代价函数。由于MSE计算的是误差的平方，所以它对异常值是非常敏感的，因为一旦出现异常值，MSE指标会变得非常大。MSE越小，证明误差越小</p>
+</blockquote>
+<h5 id="均方根误差"><a href="#均方根误差" class="headerlink" title="均方根误差"></a>均方根误差</h5><p>RMSE（Root Mean Squard Error）</p>
+<p>$RMSE = \sqrt{\frac{1}{m} \sum_{i=1}^m (a_i-y_i)^2}$</p>
+<blockquote>
+<p>是均方差开根号的结果，其实质是一样的，<strong>只不过对结果有更好的解释</strong>。</p>
+<p>例如：要做房价预测，每平方是万元，我们预测结果也是万元，那么MSE差值的平方单位应该是千万级别的。假设我们的模型预测结果与真实值相差1000元，则用MSE的计算结果是1000,000，这个值没有单位，如何描述这个差距？于是就求个平方根就好了，这样误差可以是标签值是同一个数量级的，在描述模型的时候就说，我们模型的误差是多少元</p>
+</blockquote>
+<h5 id="R平方"><a href="#R平方" class="headerlink" title="R平方"></a>R平方</h5><p>$R^2=1-\frac{\sum (a_i - y_i)^2}{\sum(\bar y_i-y_i)^2}=1-\frac{MSE(a,y)}{Var(y)}$</p>
+<blockquote>
+<p>上面的几种衡量标准针对不同的模型会有不同的值。比如说预测房价，那么误差单位就是元，比如3000元、11000元等。如果预测身高就可能是0.1、0.2米之类的。也就是说，对于不同的场景，会有不同量纲，因而也会有不同的数值，无法用一句话说得很清楚，必须啰啰嗦嗦带一大堆条件才能表达完整。</p>
+<p><strong>我们通常用概率来表达一个准确率，比如89%的准确率。</strong></p>
+<p><strong>那么线性回归有没有这样的衡量标准呢？</strong>答案就是R-Squared</p>
+</blockquote>
+<p><strong>R平方是多元回归中的回归平方和（分子）占总平方和（分母）的比例</strong>，它是度量多元回归方程中拟合程度的一个统计量。R平方值越接近1，表明回归平方和占总平方和的比例越大，回归线与各观测点越接近，回归的拟合程度就越好</p>
+<ul>
+<li>如果结果是0，说明模型跟瞎猜差不多；</li>
+<li>如果结果是1，说明模型无错误；</li>
+<li>如果结果是0-1之间的数，就是模型的好坏程度；</li>
+<li>如果结果是负数，说明模型还不如瞎猜。</li>
+</ul>
+<p>###一元多次多项式</p>
+<p><strong>有一个定理：任意一个函数在一个较小的范围内，都可以用多项式任意逼近。因此在实际工程实践中，有时候可以不管 y 值与 x 值的数学关系究竟是什么，而是强行用回归分析方法进行近似的拟合。</strong></p>
+<p>那么如何得到更多的特征值呢？对于只有一个特征值的问题，人们发明了一种聪明的办法，就是把特征值的高次方作为另外的特征值，加入到回归分析中，用公式描述:</p>
+<p>$z = x w_1 + x^2 w_2 + … + x^m w_m + b$ </p>
+<p>上式中x是原有的唯一特征值，$x^m$ 是利用 $x$ 的 $m$ 次方作为额外的特征值，这样就把特征值的数量从 $1$ 个变为 $m$ 个。</p>
+<h3 id="多元多次多项式"><a href="#多元多次多项式" class="headerlink" title="多元多次多项式"></a>多元多次多项式</h3><blockquote>
+<p>先看一个被经常拿出来讲解的例子</p>
+<p><img src="https://camo.githubusercontent.com/51d346a59263e8ac125782f0dcb8fe63e40a7d7bedd82ac76cbe66c051e6b54d/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f706f6c796e6f6d69616c5f31305f7069632e706e67" alt="img"></p>
+<p>一堆散点，看上去像是一条带有很大噪音的正弦曲线，从左上到右下，分别是1次多项式、2次多项式……10次多项式，其中：</p>
+<ul>
+<li>第4、5、6、7图是比较理想的拟合</li>
+<li>第1、2、3图欠拟合，多项式的次数不够高</li>
+<li>第8、9、10图，多项式次数过高，过拟合了</li>
+</ul>
+</blockquote>
+<h3 id="万能近似定理"><a href="#万能近似定理" class="headerlink" title="万能近似定理"></a>万能近似定理</h3><blockquote>
+<p>万能近似定理(universal approximation theorem) ，是深度学习最根本的理论依据。它证明了在给定网络具有<strong>足够多的隐藏单元</strong>的条件下，<strong>配备一个线性输出层和一个带有任何“挤压”性质的激活函数（如Sigmoid激活函数）的隐藏层的前馈神经网络，能够以任何想要的误差量近似任何从一个有限维度的空间映射到另一个有限维度空间的Borel可测的函数</strong>。</p>
+<p>前馈网络的导数也可以以任意好地程度近似函数的导数。</p>
+</blockquote>
+<p>万能近似定理其实说明了理论上神经网络可以近似任何函数。但实践上我们不能保证学习算法一定能学习到目标函数。即使网络可以表示这个函数，学习也可能因为两个不同的原因而失败：</p>
+<ol>
+<li>用于训练的优化算法可能找不到用于期望函数的参数值；</li>
+<li>训练算法可能由于过拟合而选择了错误的函数。</li>
+</ol>
+<p>根据“<strong>没有免费的午餐</strong>”定理，说明了没有普遍优越的机器学习算法。前馈网络提供了表示函数的万能系统，在这种意义上，给定一个函数，存在一个前馈网络能够近似该函数。但不存在万能的过程既能够验证训练集上的特殊样本，又能够选择一个函数来扩展到训练集上没有的点</p>
+<p><img src="https://camo.githubusercontent.com/ef5201021af6838fc52d04bb44ad8d7244765aca57c55b8786e855ec77fbe53d/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f6e6e2e706e67" alt="img"></p>
+<p><img src="https://camo.githubusercontent.com/de66dd3b7af5da8e631c65e2be85a2e6991685acc8ccea56a771a88dfbacee42/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f666f72776172642e706e67" alt="img"></p>
+<h3 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h3><blockquote>
+<p>待续</p>
+</blockquote>
+<h3 id="超参数优化"><a href="#超参数优化" class="headerlink" title="超参数优化"></a>超参数优化</h3><p>超参数优化（Hyperparameter Optimization）主要存在两方面的困难：</p>
+<ol>
+<li>超参数优化是一个组合优化问题，无法像一般参数那样通过梯度下降方法来优化，也没有一种通用有效的优化方法。</li>
+<li>评估一组超参数配置（Conﬁguration）的时间代价非常高，从而导致一些优化方法（比如演化算法）在超参数优化中难以应用。</li>
+</ol>
+<p>对于超参数的设置，比较简单的方法有<strong>人工搜索</strong>、<strong>网格搜索</strong>和<strong>随机搜索</strong></p>
+<p><strong>参数配置</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>缺省值</th>
+<th>是否可调</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入层神经元数</td>
+<td>1</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>隐层神经元数</td>
+<td>4</td>
+<td>Yes</td>
+<td>影响迭代次数</td>
+</tr>
+<tr>
+<td>输出层神经元数</td>
+<td>1</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>学习率</td>
+<td>0.1</td>
+<td>Yes</td>
+<td>影响迭代次数</td>
+</tr>
+<tr>
+<td>批样本量</td>
+<td>10</td>
+<td>Yes</td>
+<td>影响迭代次数</td>
+</tr>
+<tr>
+<td>最大epoch</td>
+<td>10000</td>
+<td>Yes</td>
+<td>影响终止条件,建议不改动</td>
+</tr>
+<tr>
+<td>损失门限值</td>
+<td>0.001</td>
+<td>Yes</td>
+<td>影响终止条件,建议不改动</td>
+</tr>
+<tr>
+<td>损失函数</td>
+<td>MSE</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>权重矩阵初始化方法</td>
+<td>Xavier</td>
+<td>Yes</td>
+<td>参看15.1</td>
+</tr>
+</tbody></table>
+<p>最终可以调节的其实只有三个：</p>
+<ul>
+<li>隐层神经元数</li>
+<li>学习率</li>
+<li>批样本量</li>
+</ul>
+<p>另外还有一个权重矩阵初始化方法需要特别注意</p>
+<blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>超参数</th>
+<th>目标</th>
+<th>作用</th>
+<th>副作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>学习率</td>
+<td>调至最优</td>
+<td>低的学习率会导致收敛慢，高的学习率会导致错失最佳解</td>
+<td>容易忽略其它参数的调整</td>
+</tr>
+<tr>
+<td>隐层神经元数量</td>
+<td>增加</td>
+<td>增加数量会增加模型的表示能力</td>
+<td>参数增多、训练时间增长</td>
+</tr>
+<tr>
+<td>批大小</td>
+<td>有限范围内尽量大</td>
+<td>大批量的数据可以保持训练平稳，缩短训练时间</td>
+<td>可能会收敛速度慢</td>
+</tr>
+</tbody></table>
+<h4 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h4><h4 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h4><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2><blockquote>
+<p>请类比推理</p>
+</blockquote>
+<p>###二分类</p>
+<blockquote>
+<p>直接上图：</p>
+<p><img src="https://camo.githubusercontent.com/28d804403a1cf54be933e649b08b738d68dc9090aa3b6ad4478e5c6a319c30d8/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31302f62696e6172795f6261636b776172642e706e67" alt="img"></p>
+</blockquote>
+<p><strong>向前</strong>：</p>
+<p>$z1_{1} = x_{1} w1_{11} + x_{2} w1_{21} + b1_{1}$</p>
+<p>$z1_{2} = x_{1} w1_{12} + x_{2} w1_{22} + b1_{2}$</p>
+<p>$Z1 = X \cdot W1 + B1$</p>
+<p>$$a1_{1} = Sigmoid(z1_{1})$$</p>
+<p>$$a1_{2} = Sigmoid(z1_{2})$$</p>
+<p>$A1=\begin{pmatrix} a1_{1} &amp; a1_{2}\end{pmatrix}=Sigmoid(Z1)$ </p>
+<p>$z2_1 = a1_{1} w2_{11} + a1_{2} w2_{21} + b2_{1}$ </p>
+<p>$Z2 = A1 \cdot W2 + B2$ </p>
+<p>$$a2_1 = Logistic(z2_1)$$</p>
+<p>$$A2 = Logistic(Z2)$$ </p>
+<p>$loss = -Y \ln A2 + (1-Y) \ln (1-A2) $ </p>
+<p> <strong>反向</strong>：</p>
+<ul>
+<li><p>$\begin{aligned}\frac{\partial loss}{\partial Z2}&amp;=\frac{\partial loss}{\partial A2}\frac{\partial A2}{\partial Z2} \\&amp;=\frac{A2-Y}{A2(1-A2)} \cdot A2(1-A2) \\&amp;=A2-Y \rightarrow dZ2\end{aligned}$</p>
+</li>
+<li><p>$\begin{aligned}\frac{\partial loss}{\partial W2}&amp;=\begin{pmatrix} \frac{\partial loss}{\partial w2_{11}} \\ \frac{\partial loss}{\partial w2_{21}}\end{pmatrix}=\begin{pmatrix} \frac{\partial loss}{\partial Z2}\frac{\partial z2}{\partial w2_{11}} \\ \frac{\partial loss}{\partial Z2}\frac{\partial z2}{\partial w2_{21}}\end{pmatrix}\\&amp;=\begin{pmatrix} dZ2 \cdot a1_{1} \\ dZ2 \cdot a1_{2} \end{pmatrix}=\begin{pmatrix} a1_{1} \\ a1_{2}\end{pmatrix}dZ2\\&amp;=A1^{\top} \cdot dZ2 \rightarrow dW2 \end{aligned}$ </p>
+</li>
+<li><p>$\frac{\partial{loss}}{\partial{B2}}=dZ2 \rightarrow dB2 $</p>
+</li>
+<li><p>$\begin{aligned} \frac{\partial{loss}}{\partial{A1}} &amp;= \begin{pmatrix} \frac{\partial loss}{\partial a1_{1}} &amp; \frac{\partial loss}{\partial a1_{2}} \end{pmatrix}\\&amp;=\begin{pmatrix}\frac{\partial{loss}}{\partial{Z2}} \frac{\partial{Z2}}{\partial{a1_{1}}} &amp; \frac{\partial{loss}}{\partial{Z2}} \frac{\partial{Z2}}{\partial{a1_{2}}} \end{pmatrix}\\&amp;=\begin{pmatrix}dZ2 \cdot w2_{11} &amp; dZ2 \cdot w2_{21}\end{pmatrix}\\&amp;=dZ2 \cdot \begin{pmatrix} w2_{11} &amp; w2_{21}\end{pmatrix}\\&amp;=dZ2 \cdot W2^{\top}\end{aligned}$ </p>
+</li>
+<li><p>$\frac{\partial A1}{\partial Z1}=A1 \odot (1-A1) \rightarrow dA1$</p>
+</li>
+<li><p>$\begin{aligned}\frac{\partial loss}{\partial Z1}&amp;=\frac{\partial loss}{\partial A1}\frac{\partial A1}{\partial Z1}\\&amp;=dZ2 \cdot W2^{\top} \odot dA1 \rightarrow dZ1 \end{aligned}$ </p>
+</li>
+<li><p>$dW1=X^{\top} \cdot dZ1$</p>
+</li>
+<li><p>$dB1=dZ1$</p>
+</li>
+</ul>
+<p>###多分类</p>
+
+  <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Dec 2, 2020</p>
   
   <hr>
 <section id="comments" class="mt-2 mb-3">
@@ -1625,8 +2049,8 @@
 
   <script>
     var disqus_config = function() {
-      this.page.url = 'http://ruayiii.codes/2020/11/20/2020-10-24-关于机器学习的笔记/index.html';
-      this.page.identifier = '2020/11/20/2020-10-24-关于机器学习的笔记/index.html';
+      this.page.url = 'http://ruayiii.codes/2020/12/02/2020-10-24-关于机器学习的笔记/index.html';
+      this.page.identifier = '2020/12/02/2020-10-24-关于机器学习的笔记/index.html';
       this.page.title = '关于机器学习的笔记';
     };
 
