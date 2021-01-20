@@ -11,11 +11,10 @@
   <meta charset="utf-8">
 
   
-  <title></title>
+  <title>关于数据分析</title>
 
   
-  <meta name="description" content="数据分析笔记
-##数据分析
+  <meta name="description" content="##数据分析
 
 你分析数据的目的是什么、你的分析指标体系是什么、采集数据、数据的处理、你的分析、展示、撰写报告、最后部署
 
@@ -30,7 +29,7 @@
 定性分析
 
 
-">
+分析的数据 ：">
   
 
   <meta name="author" content="RuaYiii">
@@ -131,10 +130,9 @@
 </script>
 
         <div class="trans">
-            <h4></h4>
+            <h4>关于数据分析</h4>
 
-  <p>数据分析笔记</p>
-<p>##数据分析</p>
+  <p>##数据分析</p>
 <blockquote>
 <p>你分析数据的<strong>目的</strong>是什么、你的分析<strong>指标体系</strong>是什么、<strong>采集</strong>数据、数据的<strong>处理</strong>、你的<strong>分析</strong>、<strong>展示</strong>、<strong>撰写报告</strong>、最后<strong>部署</strong></p>
 </blockquote>
@@ -196,13 +194,52 @@
 <p>=  ≠ &gt; &lt;  + - × ÷</p>
 <p>小名是：连续数据</p>
 </blockquote>
-<h2 id="数据处理方法"><a href="#数据处理方法" class="headerlink" title="数据处理方法"></a>数据处理方法</h2><h3 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h3><ul>
-<li>创建列表</li>
-</ul>
+<h2 id="数据处理方法"><a href="#数据处理方法" class="headerlink" title="数据处理方法"></a>数据处理方法</h2><h3 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h3><p>####<strong>创建数组</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">ar1= np.array((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,),dtype=int) <span class="comment">#dtype是数组的元素类型</span></span><br><span class="line">ar2= np.array([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]],dtype=float)  <span class="comment">#对应的，是三维数组</span></span><br><span class="line">ar1.ndim  <span class="comment">#返回数组维度</span></span><br><span class="line">ar1.shape  <span class="comment">#应该返回数组外形 (3)  是元组类型</span></span><br><span class="line">ar2.shape  <span class="comment">#应该返回数组外形 (3,)</span></span><br><span class="line">ar2.size  <span class="comment">#返回元素的个数</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p><strong>注意数组和数组运算时其长度和维度都要相同（外形相同</strong></p>
+</blockquote>
+<p>同时为了保证精度，最<strong>好把其定义为浮点型</strong>（<strong>不过现在貌似和浮点数相乘会自动转换为浮点了</strong></p>
+<h5 id="自动化生成列表："><a href="#自动化生成列表：" class="headerlink" title="自动化生成列表："></a>自动化生成列表：</h5><blockquote>
+<p>来点随机生成：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">np.random.randint(<span class="number">1</span>,<span class="number">13</span>,<span class="number">10</span>) <span class="comment">#[1,13)是随机数的区间，左闭右开，10是生成的形状，即1*10 </span></span><br><span class="line"><span class="comment">#你知道的 这形成一个简单的一维数组，你把最后一个参数改成[3,2]之类的</span></span><br><span class="line">np.random.seed(<span class="number">114514</span>)  <span class="comment">#我们扔一个seed,之后产生的随机数会基于这个seed不变</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>或者你可以用arrange:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.arrange(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0.0001</span>)   <span class="comment">#前两个参数还是左闭右开，后一个参数是步进值</span></span><br><span class="line">np.linspace(<span class="number">1</span>,<span class="number">9</span>,<span class="number">10</span>)      <span class="comment">#前两个参数还是左闭右开, 后一个参数是均匀分割份数</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>你也可以用列表推导式：….</p>
+</blockquote>
+<blockquote>
+<p>生成CSV格式的数据：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fc= <span class="keyword">lambda</span> x:x**<span class="number">2</span>*np.sin(x)</span><br><span class="line">x=np.linspace(<span class="number">-4</span>,<span class="number">4</span>,<span class="number">1000</span>)</span><br><span class="line">data_zip=list(zip(x,fc(x)))</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&quot;test.csv&quot;</span>,<span class="string">&quot;w&quot;</span>,newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f_scv:  <span class="comment">#newline=&#x27;&#x27; 防止表格出现空行</span></span><br><span class="line">    csv_writer= csv.writer(f_scv)</span><br><span class="line">    <span class="keyword">for</span> data_row <span class="keyword">in</span> data_zip:</span><br><span class="line">        csv_writer.writerow(data_row) </span><br><span class="line"><span class="comment">#这就生成了一个`test.csv`的文件</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>当然你也可以从数组导出列表</strong>：<code>&lt;numpy数组&gt;.tolist()</code></p>
+<p>用列表推导式来个简单的计数统计</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ar1=np.random.randint(<span class="number">1</span>,<span class="number">13</span>,<span class="number">100</span>)</span><br><span class="line">data_ind=[(element,ar1.tolist().count(element)) <span class="keyword">for</span> element <span class="keyword">in</span> set(ar1)] </span><br></pre></td></tr></table></figure>
+
+<h5 id="特殊数组："><a href="#特殊数组：" class="headerlink" title="特殊数组："></a>特殊数组：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.ones((<span class="number">3</span>,<span class="number">2</span>)) <span class="comment">#创建2*3的全是1的数组</span></span><br><span class="line">np.zeros((<span class="number">3</span>,<span class="number">2</span>)) <span class="comment">#创建2*3的全是0的数组</span></span><br><span class="line">np.empty((<span class="number">3</span>,<span class="number">2</span>)) <span class="comment">#创建2*3的全是随机噪音值的数组</span></span><br><span class="line">np.identity(<span class="number">10</span>) <span class="comment">#创建10*10的单位矩阵</span></span><br><span class="line"><span class="comment">#还有一些指定数组</span></span><br><span class="line">np.ones_like(ar) <span class="comment">#和ar外形相同的1数组  0/空数组同理</span></span><br></pre></td></tr></table></figure>
+
+<p>【<strong>一个栗子</strong>】当我设计一个数组——插入列什么东西：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ar=np.random.randint(<span class="number">1</span>,<span class="number">13</span>,[<span class="number">3</span>,<span class="number">2</span>])</span><br><span class="line">np.array([[<span class="number">1</span>]+k <span class="keyword">for</span> k <span class="keyword">in</span> ar.tolist()])  <span class="comment">#经久不衰的列表推导式的原始实现</span></span><br><span class="line">np.column_stack(np.ones(<span class="number">3</span>),ar) <span class="comment">#用现成的来实现</span></span><br></pre></td></tr></table></figure>
+
+<p>#####对于数组的处理：</p>
+<ul>
+<li><code>.reshape()</code>   改变多维数组的形状、</li>
+<li><code>.reval()</code>     把多维数组拆分为一维数组</li>
+<li><code>.astype()</code>    改变数组中元素的类型</li>
+</ul>
+<h6 id="数组的拼接"><a href="#数组的拼接" class="headerlink" title="数组的拼接"></a>数组的拼接</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ar=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line">np.hstack((ar,&lt;您想拼接的那一堆玩意&gt;))  <span class="comment">#水平拼接-一个元组/列表：左边的和右边的拼在一起v</span></span><br><span class="line"><span class="comment">#当然你可以塞更多！</span></span><br><span class="line">np.vstack([ar,&lt;您想拼接的那一堆玩意&gt;])  <span class="comment">#竖直拼接</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>我们也可以用索引下标挑出我们想要的行</strong></p>
+<h6 id="内积"><a href="#内积" class="headerlink" title="内积"></a>内积</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_prod</span>(<span class="params">ar1,ar2</span>):</span></span><br><span class="line">    <span class="keyword">return</span> sum(ar1*ar2.tolist())  </span><br><span class="line"><span class="comment">#或者咱们直接</span></span><br><span class="line">np.dot(ar1,ar2)  <span class="comment">#推荐</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dot</span>(<span class="params">ar1,ar2</span>):</span></span><br><span class="line">    <span class="comment">#我们假设这两个玩意符合条件</span></span><br><span class="line">    <span class="keyword">return</span> np.array([in_prod(ar1[j],ar2) j <span class="keyword">for</span> j <span class="keyword">in</span> range(ar1.shape[<span class="number">0</span>])])</span><br><span class="line"><span class="comment">#等一下...没整完</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>别忘了还可以直接用<code>@</code>运算符来运算矩阵乘法</strong>（一个古老的玩意</p>
 <p>###数据清洗</p>
 <ul>
 <li><p>3倍标准差原则</p>
@@ -230,7 +267,7 @@
 <li>……</li>
 </ul>
 <h3 id="撰写报告"><a href="#撰写报告" class="headerlink" title="撰写报告"></a>撰写报告</h3>
-  <p> — Jan 14, 2021</p>
+  <p><a class="classtest-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a> — Jan 14, 2021</p>
   
   <hr>
 <section id="comments" class="mt-2 mb-3">
@@ -243,7 +280,7 @@
     var disqus_config = function() {
       this.page.url = 'http://ruayiii.codes/2021/01/14/PY杂记/index.html';
       this.page.identifier = '2021/01/14/PY杂记/index.html';
-      this.page.title = '';
+      this.page.title = '关于数据分析';
     };
 
     var is_disqus_loaded = false;
