@@ -2040,6 +2040,79 @@
 <blockquote>
 <p><img src="https://camo.githubusercontent.com/e33917aa13957ea80e32c135da0ea2a1c9c050b3cfa2ad593c4ea65bd4e482f4/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31312f6e6e2e706e67" alt="img"></p>
 </blockquote>
+<h2 id="模型的加载和保存"><a href="#模型的加载和保存" class="headerlink" title="模型的加载和保存"></a>模型的加载和保存</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SaveResultValue</span>(<span class="params">self</span>):</span></span><br><span class="line">        np.savez(self.result_file_name, W=self.W, B=self.B)</span><br></pre></td></tr></table></figure>
+
+<h1 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h1><blockquote>
+<p>典型结构</p>
+<p><img src="https://camo.githubusercontent.com/7312eb679de72055e164caa6a1df3de72b9c5abebc5114a83481844798e7779d/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31372f636f6e765f6e65742e706e67" alt="img"></p>
+<p>原始的输入：图片</p>
+<p>卷积—&gt;池化—&gt;卷积—&gt;池化—&gt;铺平—&gt;fully connected—&gt;softmax</p>
+</blockquote>
+<p>所以，在一个典型的卷积神经网络中，会至少包含以下几个层：</p>
+<ul>
+<li>卷积层</li>
+<li>激活函数层</li>
+<li>池化层</li>
+<li>全连接分类层</li>
+</ul>
+<p>##卷积核</p>
+<blockquote>
+<p>其实就是一个小矩阵，类似这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.1  0.23  -0.45</span><br><span class="line">0.1  -2.1   1.24</span><br><span class="line">0.74 -1.32  0.01</span><br></pre></td></tr></table></figure>
+
+<p>这是一个3x3的卷积核，还会有1x1、5x5、7x7、9x9、11x11的卷积核。在卷积层中，我们会用输入数据与卷积核相乘，得到输出数据，就类似全连接层中的Weights一样，所以卷积核里的数值，也是通过反向传播的方法学习到的。</p>
+</blockquote>
+<blockquote>
+<img src="https://camo.githubusercontent.com/05398dd262a1d17a87d68e0f78ec23de4d15f60bc7695a4e384caf2d3670ae97/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31372f636972636c655f66696c746572732e706e67" alt="img" style="zoom:67%;" />
+
+<p>如图所示的内容，是使用9个不同的卷积核在同一张图上运算后得到的结果，而表中按顺序列出了9个卷积核的数值和名称，可以一一对应到上面的9张图中</p>
+<img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20210121195115183.png" alt="image-20210121195115183" style="zoom:67%;" />
+
+<ul>
+<li>sharpness 锐化  :  <strong>如果一个像素点比周围像素点亮，则此算子会令其更亮</strong></li>
+<li>vertical edge 检测竖边:   <strong>检测出了十字线中的竖线，由于是左侧和右侧分别检查一次，所以得到两条颜色不一样的竖线</strong></li>
+<li>surround 周边: <strong>把周边增强，把同色的区域变弱，形成大色块</strong>  </li>
+<li>Sobel-Y   : <strong>纵向亮度差分可以检测出横边，与横边检测不同的是，它可以使得两条横线具有相同的颜色，具有分割线的效果</strong>  </li>
+<li>Identity:  <strong>中心为1四周为0的过滤器，卷积后与原图相同</strong>  </li>
+<li>horizontal 横边检测 : <strong>检测出了十字线中的横线，由于是上侧和下侧分别检查一次，所以得到两条颜色不一样的横线</strong></li>
+<li>blur 模糊: <strong>通过把周围的点做平均值计算而“杀富济贫”造成模糊效果</strong>  </li>
+<li>Sobel-X   :  <strong>横向亮度差分可以检测出竖边，与竖边检测不同的是，它可以使得两条竖线具有相同的颜色，具有分割线的效果</strong>  </li>
+<li>embossing 浮雕   :  <strong>形成大理石浮雕般的效果</strong></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><img src="https://camo.githubusercontent.com/7e1c145e4897e0a8925a7c6620717f6a7c07b2c908e8336e15a2d592f9892ff6/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31372f636972636c655f636f6e765f72656c755f706f6f6c2e706e67" alt="img"></p>
+<p>原图经过卷积-激活-池化操作后的效果</p>
+<ol>
+<li>注意图一是原始图片，用cv2读取出来的图片，其顺序是反向的，即：</li>
+</ol>
+<ul>
+<li>第一维是高度</li>
+<li>第二维是宽度</li>
+<li>第三维是彩色通道数，但是其顺序为BGR，而不是常用的RGB</li>
+</ul>
+<ol>
+<li>我们对原始图片使用了一个3x1x3x3的卷积核，因为原始图片为彩色图片，所以第一个维度是3，对应RGB三个彩色通道；我们希望只输出一张feature map，以便于说明，所以第二维是1；我们使用了3x3的卷积核，用的是sobel x算子。所以图二是卷积后的结果。</li>
+<li>图三做了一层Relu激活计算，把小于0的值都去掉了，只留下了一些边的特征。</li>
+<li>图四是图三的四分之一大小，虽然图片缩小了，但是特征都没有丢失，反而因为图像尺寸变小而变得密集，亮点的密度要比图三大而粗。</li>
+</ol>
+</blockquote>
+<p>在最后一层的池化后面，把所有特征数据变成一个一维的全连接层，然后就和普通的深度全连接网络一样了，通过在最后一层的softmax分类函数，以及多分类交叉熵函数，对比图片的OneHot编码标签，回传误差值，从全连接层传回到池化层，通过激活函数层再回传给卷积层，对卷积核的数值进行梯度更新，实现卷积核数值的自我学习。</p>
+<p><strong>但是如果图像发生了位置上的微小移动</strong>（一些旋转、翻转、放大、缩小、平移）？</p>
+<blockquote>
+<p>人类的视觉系统来说都可以轻松应对，即平移不变性、旋转视角不变性、尺度不变性。那么卷积神经网络网络如何处理呢？</p>
+</blockquote>
+<ul>
+<li><p><strong>平移不变性</strong></p>
+<p>对于原始图A，平移后得到图B，对于同一个卷积核来说，都会得到相同的特征，这就是卷积核的权值共享。但是特征处于不同的位置，由于距离差距较大，即使经过多层池化后，也不能处于近似的位置。此时，后续的全连接层会通过权重值的调整，把这两个相同的特征看作同一类的分类标准之一。如果是小距离的平移，通过池化层就可以处理了。</p>
+</li>
+<li><p><strong>旋转视角不变性</strong></p>
+<p>对于原始图A，有小角度的旋转得到C，卷积层在A图上得到特征a，在C图上得到特征c，可以想象a与c的位置间的距离不是很远，在经过两层池化以后，基本可以重合。所以卷积网络对于小角度旋转是可以容忍的，但是对于较大的旋转，需要使用数据增强来增加训练样本。一个极端的例子是当6旋转90度时，谁也不能确定它到底是6还是9。</p>
+</li>
+<li><p><strong>尺度不变性</strong></p>
+<p>对于原始图A和缩小的图D，人类可以毫不费力地辨别出它们是同一个东西。池化在这里是不是有帮助呢？没有！因为神经网络对A做池化的同时，也会用相同的方法对D做池化，这样池化的次数一致，最终D还是比A小。如果我们有多个卷积视野，相当于从两米远的地方看图A，从一米远的地方看图D，那么A和D就可以很相近似了。这就是Inception的想法，用不同尺寸的卷积核去同时寻找同一张图片上的特征。</p>
+</li>
+</ul>
 
   <p><a class="classtest-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a> — Dec 2, 2020</p>
   
