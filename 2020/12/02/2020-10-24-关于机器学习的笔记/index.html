@@ -639,8 +639,7 @@
 <blockquote>
 <p><strong>可以看到5比3已经大了很多，8比4大了一倍，而8比5也放大了某个样本的局部损失对全局带来的影响，用术语说，就是“对某些偏离大的样本比较敏感”，从而引起监督训练过程的足够重视，以便回传误差</strong></p>
 </blockquote>
-<p>###交叉熵损失函数</p>
-<blockquote>
+<h3 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h3><blockquote>
 <p><strong>交叉熵（Cross Entropy）是Shannon信息论中一个重要概念，主要用于度量两个概率分布间的差异性信息。在信息论中，交叉熵是表示两个概率分布 p,q 的差异，其中 p 表示真实分布，q 表示预测分布，那么 H(p,q) 就称为交叉熵：</strong></p>
 <p>$$H(p,q)=\sum_i p_i \cdot \ln {1 \over q_i} = - \sum_i p_i \ln q_i $$  </p>
 <p>交叉熵可在神经网络中作为损失函数，<strong>p 表示真实标记的分布</strong>，<strong>q 则为训练后的模型的预测标记分布</strong>，<strong>交叉熵损失函数可以衡量 p 与 q 的相似性</strong>。</p>
@@ -761,8 +760,7 @@
 <li>分类问题的最后一层网络，需要分类函数，Sigmoid或者Softmax，如果再接均方差函数的话，其求导结果复杂，运算量比较大。用交叉熵函数的话，可以得到比较简单的计算结果，一个简单的减法就可以得到反向误差。</li>
 </ol>
 </blockquote>
-<p>##训练</p>
-<blockquote>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><blockquote>
 <p>output=relu(dot(<strong>w</strong>[weight] , input)+<strong>b</strong>[bias])</p>
 </blockquote>
 <h5 id="random-initialization-随机初始化"><a href="#random-initialization-随机初始化" class="headerlink" title="random initialization[随机初始化]"></a>random initialization[随机初始化]</h5><blockquote>
@@ -781,8 +779,7 @@
 
 <h4 id="add函数"><a href="#add函数" class="headerlink" title="add函数"></a>add函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nautual_add</span>(<span class="params">x,y</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> len(x.shape)==<span class="number">2</span>  <span class="comment">#依旧假设是2d向量</span></span><br><span class="line">    <span class="keyword">assert</span> y.shape==x.shape</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(x.shape[<span class="number">1</span>]):</span><br><span class="line">            x[i,j] +=y[i,j]</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
 
-<p>#####广播</p>
-<blockquote>
+<h5 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h5><blockquote>
 <p>那么,如果不同尺寸的——比如说2d张量和一个向量相加</p>
 <p>没有歧义的话,向量会被<strong>广播</strong>[broadcast]以匹配较大张量的形状</p>
 </blockquote>
@@ -790,8 +787,7 @@
 <li>给较小的张量添加轴(<strong>广播轴</strong>) 使其 **ndim[n-dimension的缩写]**与较大的张量相同</li>
 <li>沿着新轴重复——直至其形状匹配</li>
 </ul>
-<p>####Dot</p>
-<blockquote>
+<h4 id="Dot"><a href="#Dot" class="headerlink" title="Dot"></a>Dot</h4><blockquote>
 <p>ndim=2基本上就是矩阵的点积规则</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">natural_vector_dot</span>(<span class="params">x,y</span>):</span> <span class="comment">#点积</span></span><br><span class="line">    <span class="keyword">assert</span> len(x.shape)==<span class="number">1</span></span><br><span class="line">    <span class="keyword">assert</span> len(y.shape)==<span class="number">1</span></span><br><span class="line">    <span class="keyword">assert</span> x.shape[<span class="number">0</span>]==y.shape[<span class="number">0</span>]</span><br><span class="line">    z=<span class="number">0.</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">0</span>]):</span><br><span class="line">        z+=x[i]*y[i]</span><br><span class="line">    <span class="keyword">return</span> z</span><br></pre></td></tr></table></figure>
@@ -853,8 +849,7 @@
 <p>线性回归的解题思路：<strong>利用已有值，预测未知值</strong></p>
 <p><strong>举个栗子</strong></p>
 <p>你想科学控制机房空调功率（保证服务器所在的机房的温度常年保持在23摄氏度左右）但是你他娘不会热力学——所以你打算用统计学研究功率和服务器数量的关系——<strong>最简单的一元线性回归问题</strong> </p>
-<p>###一元线性回归模型</p>
-<blockquote>
+<h3 id="一元线性回归模型"><a href="#一元线性回归模型" class="headerlink" title="一元线性回归模型"></a>一元线性回归模型</h3><blockquote>
 <p>$$Y=a+bX+\varepsilon $$ </p>
 <p>X 是自变量   Y 是因变量   ε 是随机误差</p>
 </blockquote>
@@ -1622,8 +1617,7 @@
 <p><strong>那么 $i=j$时</strong>（比如输出分类值 $a_1$ 对 $z_1$ 的求导），求 $a_j$ 对 $z_i$ 的导数，此时分子上的 $e^{z_j}$ 要参与求导</p>
 <p>$\begin{aligned}\frac{\partial{a_j}} {\partial{z_i}} &amp;= \frac{\partial{ } }{ \partial{z_i} }(e^{z_j}/E) \\&amp;= \frac{\partial { } } {\partial{z_j} }(e^{z_j}/E) \quad (因为z_i==z_i)\\&amp;=\frac{e^{z_j}E-e^{z_j}e^{z_j} }{E^2} =\frac{e^{z_j} }{E} - \frac{(e^{z_j})^2}{E^2} \\&amp;= a_j-a^2_j=a_j(1-a_j) \\\end{aligned}$ </p>
 <hr>
-<p>####这里是分割线</p>
-<hr>
+<h4 id="这里是分割线"><a href="#这里是分割线" class="headerlink" title="这里是分割线"></a>这里是分割线</h4><hr>
 <p>那么$i \neq j$时 （比如输出分类值 $a_1$ 对 $z_2$ 的求导，$j=1,i=2$），$a_j$对$z_i$的导数，分子上的 $z_j$ 与 $i$ 没有关系，求导为0，分母的求和项中$e^{z_i}$要参与求导。</p>
 <p>$\frac{\partial{a_j}}{\partial{z_i}}=\frac{-(E)’e^{z_j}}{E^2}$</p>
 <p>求和公式对$e^{z_i}$的导数$(E)’$，除了$e^{z_i}$项外，其它都是0</p>
@@ -1771,15 +1765,13 @@
 <blockquote>
 <p>相关大脑方面的研究表明生物神经元的信息编码通常是比较分散及稀疏的。通常情况下，大脑中在同一时间大概只有1%~4%的神经元处于活跃状态。使用线性修正以及正则化可以对机器神经网络中神经元的活跃度（即输出为正值）进行调试；相比之下，Sigmoid函数在输入为0时输出为0.5，即已经是半饱和的稳定状态，不够符合实际生物学对模拟神经网络的期望。不过需要指出的是，一般情况下，在一个使用修正线性单元（即线性整流）的神经网络中大概有50%的神经元处于激活态</p>
 </blockquote>
-<p>######优点</p>
-<ul>
+<h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><ul>
 <li>反向导数恒等于1，更加有效率的反向传播梯度值，收敛速度快；</li>
 <li>避免梯度消失问题；</li>
 <li>计算简单，速度快；</li>
 <li>活跃度的分散性使得神经网络的整体计算成本下降。</li>
 </ul>
-<p>######缺点 </p>
-<p>无界。</p>
+<h6 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h6><p>无界。</p>
 <p><strong>梯度很大的时候可能导致的神经元“死”掉。</strong></p>
 <blockquote>
 <p>这个死掉的原因是什么呢？是因为很大的梯度导致更新之后的网络传递过来的输入是小于零的，从而导致ReLU的输出是0，计算所得的梯度是零，然后对应的神经元不更新，从而使ReLU输出恒为零，对应的神经元恒定不更新，等于这个ReLU失去了作为一个激活函数的作用。问题的关键点就在于输入小于零时，ReLU回传的梯度是零，从而导致了后面的不更新。在学习率设置不恰当的情况下，很有可能网络中大部分神经元“死”掉，也就是说不起作用了。</p>
@@ -1796,8 +1788,7 @@
 <p>$$LReLU(z) = \begin{cases} z &amp; z \geq 0 \\ \alpha \cdot z &amp; z &lt; 0 \end{cases}$$ </p>
 <p>$$LReLU’(z) = \begin{cases} 1 &amp; z \geq 0 \\ \alpha &amp; z &lt; 0 \end{cases}$$</p>
 <p><img src="https://camo.githubusercontent.com/d08bbf901a65fb289bdfbba0f2e12e1ac80bad65c95072b0b9e15e9d7bde6ccc/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f6c65616b7952656c752e706e67" alt="img"></p>
-<p>######优点</p>
-<p>继承了ReLU函数的优点。</p>
+<h6 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h6><p>继承了ReLU函数的优点。</p>
 <p>Leaky ReLU同样有收敛快速和运算复杂度低的优点，而且由于给了z&lt;0时一个比较小的梯度α,使得z&lt;0时依旧可以进行梯度传递和更新，可以在一定程度上避免神经元“死”掉的问题。</p>
 <h5 id="Softplus函数"><a href="#Softplus函数" class="headerlink" title="Softplus函数"></a>Softplus函数</h5><p>$$Softplus(z) = \ln (1 + e^z)$$</p>
 <p>$$Softplus’(z) = \frac{e^z}{1 + e^z}$$</p>
@@ -1859,8 +1850,7 @@
 <li>如果结果是0-1之间的数，就是模型的好坏程度；</li>
 <li>如果结果是负数，说明模型还不如瞎猜。</li>
 </ul>
-<p>###一元多次多项式</p>
-<p><strong>有一个定理：任意一个函数在一个较小的范围内，都可以用多项式任意逼近。因此在实际工程实践中，有时候可以不管 y 值与 x 值的数学关系究竟是什么，而是强行用回归分析方法进行近似的拟合。</strong></p>
+<h3 id="一元多次多项式"><a href="#一元多次多项式" class="headerlink" title="一元多次多项式"></a>一元多次多项式</h3><p><strong>有一个定理：任意一个函数在一个较小的范围内，都可以用多项式任意逼近。因此在实际工程实践中，有时候可以不管 y 值与 x 值的数学关系究竟是什么，而是强行用回归分析方法进行近似的拟合。</strong></p>
 <p>那么如何得到更多的特征值呢？对于只有一个特征值的问题，人们发明了一种聪明的办法，就是把特征值的高次方作为另外的特征值，加入到回归分析中，用公式描述:</p>
 <p>$z = x w_1 + x^2 w_2 + … + x^m w_m + b$ </p>
 <p>上式中x是原有的唯一特征值，$x^m$ 是利用 $x$ 的 $m$ 次方作为额外的特征值，这样就把特征值的数量从 $1$ 个变为 $m$ 个。</p>
@@ -2000,8 +1990,7 @@
 <h4 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h4><h4 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h4><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2><blockquote>
 <p>请类比推理</p>
 </blockquote>
-<p>###二分类</p>
-<blockquote>
+<h3 id="二分类"><a href="#二分类" class="headerlink" title="二分类"></a>二分类</h3><blockquote>
 <p>直接上图：</p>
 <p><img src="https://camo.githubusercontent.com/28d804403a1cf54be933e649b08b738d68dc9090aa3b6ad4478e5c6a319c30d8/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31302f62696e6172795f6261636b776172642e706e67" alt="img"></p>
 </blockquote>
@@ -2036,8 +2025,7 @@
 <li><p>$dB1=dZ1$</p>
 </li>
 </ul>
-<p>###多分类</p>
-<blockquote>
+<h3 id="多分类-1"><a href="#多分类-1" class="headerlink" title="多分类"></a>多分类</h3><blockquote>
 <p><img src="https://camo.githubusercontent.com/e33917aa13957ea80e32c135da0ea2a1c9c050b3cfa2ad593c4ea65bd4e482f4/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31312f6e6e2e706e67" alt="img"></p>
 </blockquote>
 <h2 id="模型的加载和保存"><a href="#模型的加载和保存" class="headerlink" title="模型的加载和保存"></a>模型的加载和保存</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SaveResultValue</span>(<span class="params">self</span>):</span></span><br><span class="line">        np.savez(self.result_file_name, W=self.W, B=self.B)</span><br></pre></td></tr></table></figure>
@@ -2055,8 +2043,7 @@
 <li>池化层</li>
 <li>全连接分类层</li>
 </ul>
-<p>##卷积核</p>
-<blockquote>
+<h2 id="卷积核"><a href="#卷积核" class="headerlink" title="卷积核"></a>卷积核</h2><blockquote>
 <p>其实就是一个小矩阵，类似这样</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.1  0.23  -0.45</span><br><span class="line">0.1  -2.1   1.24</span><br><span class="line">0.74 -1.32  0.01</span><br></pre></td></tr></table></figure>
 

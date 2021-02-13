@@ -22,13 +22,13 @@
 这玩意算是笔记嘛??——事实证明 就是
 
 
-关于金融衍生品
+关于金融衍生品期贷：
 远期合约
 
  在未来某个时刻以约定价格买入/卖出某一产品的合约
 
 同意买入的一方被称为 持有多头寸 （long position 简称 多头）
-同意卖出的一">
+同意卖">
   
 
   <meta name="author" content="RuaYiii">
@@ -139,7 +139,7 @@
 <p>这玩意算是笔记嘛??——事实证明 就是</p>
 </blockquote>
 </blockquote>
-<h2 id="关于金融衍生品"><a href="#关于金融衍生品" class="headerlink" title="关于金融衍生品"></a>关于金融衍生品</h2><ul>
+<h2 id="关于金融衍生品"><a href="#关于金融衍生品" class="headerlink" title="关于金融衍生品"></a>关于金融衍生品</h2><h3 id="期贷："><a href="#期贷：" class="headerlink" title="期贷："></a>期贷：</h3><ul>
 <li><p>远期合约</p>
 <blockquote>
 <p> 在未来某个时刻以约定价格买入/卖出某一产品的合约</p>
@@ -157,7 +157,36 @@
 <blockquote>
 <p>这样我们可以想想<strong>远期价格</strong>和<strong>即期价格</strong>的关系</p>
 </blockquote>
+<h4 id="期贷的价格与头寸"><a href="#期贷的价格与头寸" class="headerlink" title="期贷的价格与头寸"></a>期贷的价格与头寸</h4><blockquote>
+<p>大多数合约价格在每天的变动限额由交易所规定。与前一天收盘价格相比，若下跌金额到限额了——这一合约叫 <strong>跌停 （limit down)</strong> ;反之，这一合约叫 <strong>涨停 （limit up)</strong>  。</p>
+<p>其目的自然是为了<strong>防止过多投机活动而造成价格巨幅波动</strong></p>
+</blockquote>
+<p>随着期贷合约交割月份的逼近，期贷价格会逐步收敛到标的资产的即期价格</p>
+<h4 id="保证金"><a href="#保证金" class="headerlink" title="保证金"></a>保证金</h4><p>为了防止交易双方某方反悔（或者财力不足履行承诺），交易所设立了<strong>保证金账户</strong> margin account </p>
+<p><strong>保证金是每日结算</strong>，每个交易日保证金账户的金额都会调整，从而反映投资者的盈亏。这玩意就叫：<strong>每日结算 daily settlement</strong> 或 <strong>按市场定价 marking to market</strong>——由此起到了防止违约的作用</p>
+<p>投资者有权提走保证金账户中超过初始保证金的那一部分资金。为了确保资金余额永远不会出现负值，交易所设置了<strong>维持保证金 maintenance margin</strong>  (通常是初始保证金的75%)，其低于初始保证金数量当余额低于维持保证金水平时，投资人会收到<strong>保证金催付 margin call</strong> 通知 ：在下个交易日投资者需要增加 <strong>追加保证金 variation margin</strong>  到初始保证金水平，<strong>否则经纪人将对合约平仓</strong></p>
+<p>而为了满足初始保证金需求，有时可以将有价证券存放在经纪人那里替代：通常短期国债可以按照其面值的90%数量代替现金。有时股票也可以代替现金，但只能为其市值的50%</p>
+<p><strong>对保证金的要求可能还取决于交易员的交易目的</strong>：比如对冲者的违约风险相对较小。<br>对<strong>短线交易 day trade</strong> 和 差价交易 <strong>spread transaction</strong> 所要求的保证金又常常低于对冲交易的保证金</p>
+<h5 id="清算中心"><a href="#清算中心" class="headerlink" title="清算中心"></a>清算中心</h5><blockquote>
+<p>起一个中介的作用，保证双方都履行合约。</p>
+</blockquote>
+<p>清算中心有一定数量的结算会员，但其经理人绝非必须会员开展业务。</p>
+<p>清算中心主要任务是记录每天的交易，以便记录每个会员的净头寸。其同样要求会员提供最初保证金**(结算保证金 clearing margin)** ——其数量反映了所要结算合约的总数量。</p>
+<blockquote>
+<p>无论如何，保证金体系的目的是当交易员赚钱时，有足够的钱支付</p>
+</blockquote>
+<h4 id="场外市场"><a href="#场外市场" class="headerlink" title="场外市场"></a>场外市场</h4><h5 id="CCP-中央交易对手"><a href="#CCP-中央交易对手" class="headerlink" title="CCP 中央交易对手"></a>CCP 中央交易对手</h5><blockquote>
+<p>在场外市场 A B 两个交易商就某一金融衍生品达成交易意向后，双方会同时将交易提交给CCP。当CCP同意交易时，它将同时成为A和B的交易对手</p>
+</blockquote>
+<p><strong>举个例子：</strong></p>
+<p>一个合约中 ，A同意在一年后以指定价格从B处买入某资产，CCP将会进行以下操作：</p>
 <ul>
+<li>一年后以指定价格从B处买入资产</li>
+<li>一年后以指定价格向A卖出</li>
+</ul>
+<p><strong>CPP同时承担着A和B的信用风险</strong></p>
+<p>而CPP成员都要向CPP提供初始保证金，非CPP成员的场外市场参与者必须经过CPP成员来进行交易</p>
+<h3 id="期权"><a href="#期权" class="headerlink" title="期权"></a>期权</h3><ul>
 <li><p>期权合约</p>
 <ul>
 <li><p>看涨期权（call option) </p>
@@ -218,6 +247,18 @@
 </blockquote>
 </li>
 </ul>
+<p>分类：</p>
+<ul>
+<li><p>短期投机者</p>
+<p>观察价格的短期走势而企图从中获利，这些头寸的持有时间可能就几分钟</p>
+</li>
+<li><p>短线交易员</p>
+<p>持有头寸的时间不超过1个交易日，不愿意承担晚上因为不利消息带来的风险</p>
+</li>
+<li><p>头寸交易员</p>
+<p>持有期限较长，希望在市场大的变动中获得可观的收益</p>
+</li>
+</ul>
 <h4 id="套利者"><a href="#套利者" class="headerlink" title="套利者"></a>套利者</h4><blockquote>
 <p>同时进行两种或更多交易来锁定无风险盈利</p>
 </blockquote>
@@ -268,70 +309,85 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><blockquote>
+<h2 id="关于交易"><a href="#关于交易" class="headerlink" title="关于交易"></a>关于交易</h2><ul>
+<li><p>support / resistance level 和管道突破</p>
+</li>
+<li><p>double top / bottom</p>
+</li>
+<li><p>hand and shoulders</p>
+</li>
+<li><p>triangles</p>
+<blockquote>
+<p>两条线：一条只连接峰顶，一条只连接低点</p>
+</blockquote>
+</li>
+</ul>
+<p>##杂项</p>
+<blockquote>
 <p><img src="https://pic4.zhimg.com/80/v2-9cab51e3c1f0631aad5ae55634af4322_1440w.jpg?source=1940ef5c" alt="img"></p>
 </blockquote>
-<h2 id="偏好——克服这玩意"><a href="#偏好——克服这玩意" class="headerlink" title="偏好——克服这玩意"></a>偏好——克服这玩意</h2><blockquote>
+<p>##关于财务自由</p>
+<h3 id="偏好——克服这玩意"><a href="#偏好——克服这玩意" class="headerlink" title="偏好——克服这玩意"></a>偏好——克服这玩意</h3><blockquote>
 <p>以下影响你的交易系统</p>
 <p><strong>注意</strong>:你要避免偏好</p>
 </blockquote>
-<h3 id="表述偏好"><a href="#表述偏好" class="headerlink" title="表述偏好"></a>表述偏好</h3><p>数据只是数据，绝非市场本身，其表述永远不是市场</p>
+<h4 id="表述偏好"><a href="#表述偏好" class="headerlink" title="表述偏好"></a>表述偏好</h4><p>数据只是数据，绝非市场本身，其表述永远不是市场</p>
 <blockquote>
 <p>表述只是展示大量信息的一个捷径，更糟糕的是，它对信息的曲解</p>
 </blockquote>
-<h3 id="可靠性偏好"><a href="#可靠性偏好" class="headerlink" title="可靠性偏好"></a>可靠性偏好</h3><p>时刻怀疑可靠性，或许你接收到的数据充斥着错误</p>
-<h3 id="彩票偏好"><a href="#彩票偏好" class="headerlink" title="彩票偏好"></a>彩票偏好</h3><p><strong>你无法掌控市场</strong>——市场只做它该做的</p>
+<h4 id="可靠性偏好"><a href="#可靠性偏好" class="headerlink" title="可靠性偏好"></a>可靠性偏好</h4><p>时刻怀疑可靠性，或许你接收到的数据充斥着错误</p>
+<h4 id="彩票偏好"><a href="#彩票偏好" class="headerlink" title="彩票偏好"></a>彩票偏好</h4><p><strong>你无法掌控市场</strong>——市场只做它该做的</p>
 <blockquote>
 <p>交易的黄金法则是止损获利,与入市无关,而与市场退出关系重大</p>
 </blockquote>
 <blockquote>
 <p>人们是通过给他人想要的而不是其所需要的而挣到大部分钱</p>
 </blockquote>
-<h3 id="小数定律偏好"><a href="#小数定律偏好" class="headerlink" title="小数定律偏好"></a>小数定律偏好</h3><p>个例只是个例</p>
+<h4 id="小数定律偏好"><a href="#小数定律偏好" class="headerlink" title="小数定律偏好"></a>小数定律偏好</h4><p>个例只是个例</p>
 <blockquote>
 <p>人们喜欢看到那些并不存在的模式，只需几个精选的事例就足以说服人们这一模式是有意义的</p>
 </blockquote>
-<h3 id="保守主义偏好"><a href="#保守主义偏好" class="headerlink" title="保守主义偏好"></a>保守主义偏好</h3><blockquote>
+<h4 id="保守主义偏好"><a href="#保守主义偏好" class="headerlink" title="保守主义偏好"></a>保守主义偏好</h4><blockquote>
 <p>一旦你相信自己已经找到了一种模式，并相信它有效（通过几个精选的事例），你就会尽一切可能回避它无效的事实</p>
 </blockquote>
-<h3 id="随机性偏好"><a href="#随机性偏好" class="headerlink" title="随机性偏好"></a>随机性偏好</h3><p>市场并不总是随机的</p>
+<h4 id="随机性偏好"><a href="#随机性偏好" class="headerlink" title="随机性偏好"></a>随机性偏好</h4><p>市场并不总是随机的</p>
 <blockquote>
 <p>人们没有理解，即使是一个随机市场也会有一个长期趋势，结果，抓住最高点或最低点成了最困难的交易类型</p>
 </blockquote>
-<h3 id="理解需要偏好"><a href="#理解需要偏好" class="headerlink" title="理解需要偏好"></a>理解需要偏好</h3><p>辩护</p>
+<h4 id="理解需要偏好"><a href="#理解需要偏好" class="headerlink" title="理解需要偏好"></a>理解需要偏好</h4><p>辩护</p>
 <blockquote>
 <p>我们试图理出市场的规则并且为任何事情找到理由。这种寻找规则的尝试会影响人们跟随市场的能力，因为我们看到的只是我们希望看到的事情，而并非真正发生的事情。</p>
 </blockquote>
 <hr>
-<h3 id="自由度偏好"><a href="#自由度偏好" class="headerlink" title="自由度偏好"></a>自由度偏好</h3><p>理解少部分概念</p>
+<h4 id="自由度偏好"><a href="#自由度偏好" class="headerlink" title="自由度偏好"></a>自由度偏好</h4><p>理解少部分概念</p>
 <blockquote>
 <p>我们希望优化自己的系统，而且相信操控的数据越是与历史吻合，就能越好地了解交易。其实不然，如果你理解了用来交易或投资的概念是如何运作的，并只做最少量的历史测试，你的状况就会大为改观</p>
 </blockquote>
-<h3 id="事后错误偏好"><a href="#事后错误偏好" class="headerlink" title="事后错误偏好"></a>事后错误偏好</h3><blockquote>
+<h4 id="事后错误偏好"><a href="#事后错误偏好" class="headerlink" title="事后错误偏好"></a>事后错误偏好</h4><blockquote>
 <p>我们会在系统开发中无意识地使用在现实交易中根本没有出现的数据。比如，如果把今天的收盘价考虑进去，那么你的测试结果可能非常好——尤其是当你在收盘前正要退出时。</p>
 </blockquote>
-<h3 id="缺乏自我保护偏好"><a href="#缺乏自我保护偏好" class="headerlink" title="缺乏自我保护偏好"></a>缺乏自我保护偏好</h3><p>明确规格</p>
+<h4 id="缺乏自我保护偏好"><a href="#缺乏自我保护偏好" class="headerlink" title="缺乏自我保护偏好"></a>缺乏自我保护偏好</h4><p>明确规格</p>
 <blockquote>
 <p>人们没有考虑到头寸规模确定和退出市场策略是交易的关键组成部分，因此，在给定的交易中，他们经常将自己太多的资本置于风险之中</p>
 </blockquote>
-<h3 id="赌徒谬论偏好"><a href="#赌徒谬论偏好" class="headerlink" title="赌徒谬论偏好"></a>赌徒谬论偏好</h3><p>即使一连串的失败之后,成功率也不会一定上升,反之亦然</p>
-<h3 id="获利时保守与损失时冒险的偏好"><a href="#获利时保守与损失时冒险的偏好" class="headerlink" title="获利时保守与损失时冒险的偏好"></a>获利时保守与损失时冒险的偏好</h3><blockquote>
+<h4 id="赌徒谬论偏好"><a href="#赌徒谬论偏好" class="headerlink" title="赌徒谬论偏好"></a>赌徒谬论偏好</h4><p>即使一连串的失败之后,成功率也不会一定上升,反之亦然</p>
+<h4 id="获利时保守与损失时冒险的偏好"><a href="#获利时保守与损失时冒险的偏好" class="headerlink" title="获利时保守与损失时冒险的偏好"></a>获利时保守与损失时冒险的偏好</h4><blockquote>
 <p>人们想很快变现利润，而给亏损留些余地，这给了他们一个错觉，<strong>以为自己做的是对的</strong>，但实际上他们恰恰是在“停止获利，继续亏损”.</p>
 </blockquote>
-<h3 id="当前交易或投资必须成功的偏好"><a href="#当前交易或投资必须成功的偏好" class="headerlink" title="当前交易或投资必须成功的偏好"></a>当前交易或投资必须成功的偏好</h3><blockquote>
+<h4 id="当前交易或投资必须成功的偏好"><a href="#当前交易或投资必须成功的偏好" class="headerlink" title="当前交易或投资必须成功的偏好"></a>当前交易或投资必须成功的偏好</h4><blockquote>
 <p> 醒醒,先生,你想想你是谁?</p>
 </blockquote>
-<p>##目标</p>
+<p>###目标</p>
 <blockquote>
 <p>一连串的问题</p>
 </blockquote>
-<h2 id="建立你自己的系统"><a href="#建立你自己的系统" class="headerlink" title="建立你自己的系统"></a>建立你自己的系统</h2><blockquote>
+<h3 id="建立你自己的系统"><a href="#建立你自己的系统" class="headerlink" title="建立你自己的系统"></a>建立你自己的系统</h3><blockquote>
 <p>遵循它——不要简单的放弃,不要心甘情愿当韭菜</p>
 </blockquote>
-<h2 id="基本面分析"><a href="#基本面分析" class="headerlink" title="基本面分析"></a>基本面分析</h2><h2 id="价值交易"><a href="#价值交易" class="headerlink" title="价值交易"></a>价值交易</h2><blockquote>
+<h3 id="基本面分析"><a href="#基本面分析" class="headerlink" title="基本面分析"></a>基本面分析</h3><h3 id="价值交易"><a href="#价值交易" class="headerlink" title="价值交易"></a>价值交易</h3><blockquote>
 <p>价值游戏</p>
 </blockquote>
-<h3 id="永远不要在行情跌落-时-买进价值被低估的股票"><a href="#永远不要在行情跌落-时-买进价值被低估的股票" class="headerlink" title="永远不要在行情跌落 时 买进价值被低估的股票"></a>永远不要在行情跌落 <strong>时</strong> 买进价值被低估的股票</h3><blockquote>
+<h4 id="永远不要在行情跌落-时-买进价值被低估的股票"><a href="#永远不要在行情跌落-时-买进价值被低估的股票" class="headerlink" title="永远不要在行情跌落 时 买进价值被低估的股票"></a>永远不要在行情跌落 <strong>时</strong> 买进价值被低估的股票</h4><blockquote>
 <p>例如，如果你发现一只股票的卖价只是其清算价值的70%，你不一定在第二天就买进。是的，它是很便宜，但是之所以便宜，是因为人们由于各种各样的原因在抛售它。这种争相抛售的局面将有可能持续一段时间，而且其价值今天被低估了，并不意味着在2～3个月后，它不会被低估得更厉害。</p>
 </blockquote>
 <blockquote>
@@ -343,7 +399,7 @@
 <blockquote>
 <p>选择在于你自己，但是要记住，你交易的仅仅是你有关市场的观点，必须确定你的观点是否有用。</p>
 </blockquote>
-<h2 id="波段交易"><a href="#波段交易" class="headerlink" title="波段交易"></a>波段交易</h2><blockquote>
+<h3 id="波段交易"><a href="#波段交易" class="headerlink" title="波段交易"></a>波段交易</h3><blockquote>
 <p>波段交易策略试图在一个交易范围的底部买进而在其顶部卖出，它基于对市场的以下观点：市场的移动非常像一个橡胶带或弹簧，伸展到一定程度后就会缩回。</p>
 </blockquote>
 <blockquote>
@@ -358,7 +414,7 @@
 <blockquote>
 <p>请注意观察在价格波幅很小时（点1）上下波段是如何靠近的，以及在价格波幅变大时它们又是如何相互远离的。</p>
 </blockquote>
-<h2 id="季节性趋势"><a href="#季节性趋势" class="headerlink" title="季节性趋势"></a>季节性趋势</h2><h2 id="套利"><a href="#套利" class="headerlink" title="套利"></a>套利</h2><blockquote>
+<h3 id="季节性趋势"><a href="#季节性趋势" class="headerlink" title="季节性趋势"></a>季节性趋势</h3><h3 id="套利"><a href="#套利" class="headerlink" title="套利"></a>套利</h3><blockquote>
 <p>当有人问我以什么谋生时，我回答说：套利。于是我就会从他们脸上看到在我揭开汽车发动机罩或有人说到微积分这个词时，我自己经常会有的那种茫然的凝视。母亲们会赶紧把她们的孩子拉到身边，而男人们则会以怀疑的眼神看着我。</p>
 </blockquote>
 <blockquote>
@@ -370,7 +426,7 @@
 <blockquote>
 <p> 从本质上来说，大多数交易和投资都是套利的一种形式——寻找市场中存在的无效率之处。套利使得市场价格保持一致，而且也的确让市场在某种程度上是有序的</p>
 </blockquote>
-<h2 id="跨市分析"><a href="#跨市分析" class="headerlink" title="跨市分析"></a>跨市分析</h2><h2 id="万物皆有序-我怎么感觉这玩意是玄学"><a href="#万物皆有序-我怎么感觉这玩意是玄学" class="headerlink" title="万物皆有序(我怎么感觉这玩意是玄学)"></a>万物皆有序(我怎么感觉这玩意是玄学)</h2><p>看看就好</p>
+<h3 id="跨市分析"><a href="#跨市分析" class="headerlink" title="跨市分析"></a>跨市分析</h3><h3 id="万物皆有序-我怎么感觉这玩意是玄学"><a href="#万物皆有序-我怎么感觉这玩意是玄学" class="headerlink" title="万物皆有序(我怎么感觉这玩意是玄学)"></a>万物皆有序(我怎么感觉这玩意是玄学)</h3><p>看看就好</p>
 <ul>
 <li><p>人的行为有其周期性</p>
 <blockquote>
@@ -390,10 +446,10 @@
 <blockquote>
 <p>依我看，这些理念没有哪一个比另一个更有效（或更有价值）。此外，我对任何一个理念也不会表达任何个人偏向。本章的目的只是向你展示多种不同的观点</p>
 </blockquote>
-<h2 id="注意大环境"><a href="#注意大环境" class="headerlink" title="注意大环境"></a>注意大环境</h2><blockquote>
+<h3 id="注意大环境"><a href="#注意大环境" class="headerlink" title="注意大环境"></a>注意大环境</h3><blockquote>
 <p>美国 通货膨胀 贬值 战争 债务 经济全球化 新兴 法规</p>
 </blockquote>
-<h2 id="人类的无效率"><a href="#人类的无效率" class="headerlink" title="人类的无效率"></a>人类的无效率</h2><ul>
+<h3 id="人类的无效率"><a href="#人类的无效率" class="headerlink" title="人类的无效率"></a>人类的无效率</h3><ul>
 <li><blockquote>
 <p>你将来能做的有些最好的投资，是那些本身有实际的内在价值，因为所有的人都不喜欢它而廉价出售的资产。之所以如此是因为人类大多都有恐惧和贪婪的周期。人们（因为恐惧）在市场谷底抛售，而（因为贪婪）在市场最高价位买进。</p>
 </blockquote>
@@ -420,8 +476,8 @@
 <blockquote>
 <p>​    以上评论是我想到的一般人注定要在经济上失败的几点想法。一般人满脑子充斥着太多的偏见，结果这些偏见将他们引向经济的灾难。我对这一问题的解决办法是帮助人们在决策时变得更为有效。然而，我认为你可以指望一个事实，就是大多数人（包括大的资金机构）在处理关于钱的问题时，在大多数事情上一般都是没有效率的，但大的资金机构有一个优势——它们制定大多数人在努力赢取金钱游戏时要遵守的规则。</p>
 </blockquote>
-<h3 id="所以得变得有效率"><a href="#所以得变得有效率" class="headerlink" title="所以得变得有效率"></a>所以得变得有效率</h3><hr>
-<h2 id="还是头寸规模"><a href="#还是头寸规模" class="headerlink" title="还是头寸规模"></a>还是头寸规模</h2><blockquote>
+<h4 id="所以得变得有效率"><a href="#所以得变得有效率" class="headerlink" title="所以得变得有效率"></a>所以得变得有效率</h4><hr>
+<h3 id="还是头寸规模"><a href="#还是头寸规模" class="headerlink" title="还是头寸规模"></a>还是头寸规模</h3><blockquote>
 <p>打雪仗的比喻</p>
 <p>雪墙的大小是一个非常重要的可变因素。如果墙太小，你难免会被击中，而如果墙很大你打个屁（不是</p>
 <p>初始资本的规模，就有点像雪墙的大小。实际上，你可以将初始资本视为一面保护你的财富之墙，假定其他因素保持不变，你拥有的钱越多，得到的保护也就越多<strong>现在设想一下一大堆白雪球向你扔过来的结果，它们只会增加雪墙的大小，雪墙会越变越大，而你会得到更多的保护——现在再想一下，别人向你仍使雪融化的东西（如果有这种东西），或者挖你墙角——你的雪墙就充满空洞了——就如亏损的交易侵蚀你的资本一样</strong></p>
@@ -452,11 +508,11 @@
 <blockquote>
 <p>大多数人压倒一切地渴望控制市场，结果，市场却控制了他们。</p>
 </blockquote>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><h3 id="入市"><a href="#入市" class="headerlink" title="入市"></a>入市</h3><ul>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><h4 id="入市"><a href="#入市" class="headerlink" title="入市"></a>入市</h4><ul>
 <li>市场被高估</li>
 <li>市场表现很坏</li>
 </ul>
-<h3 id="市场选择"><a href="#市场选择" class="headerlink" title="市场选择"></a>市场选择</h3><ul>
+<h4 id="市场选择"><a href="#市场选择" class="headerlink" title="市场选择"></a>市场选择</h4><ul>
 <li><p>流动性</p>
 <blockquote>
 <p>你预计该市场在将来的活跃程度如何？从根本上来说，这是一个流动性的问题，它和以买卖价格或者在买卖价格之间的价差进出市场的难易有关。如果这个市场的流动性相当差，那么买卖价差可能会非常大，你可能仅仅为了进出市场就不得不付出非常大的代价（高于佣金）</p>
@@ -472,10 +528,10 @@
 <li><p>交易理念的遵循程度</p>
 </li>
 </ul>
-<h3 id="市场方向"><a href="#市场方向" class="headerlink" title="市场方向"></a>市场方向</h3><h3 id="方案条件"><a href="#方案条件" class="headerlink" title="方案条件"></a>方案条件</h3><blockquote>
+<h4 id="市场方向"><a href="#市场方向" class="headerlink" title="市场方向"></a>市场方向</h4><h4 id="方案条件"><a href="#方案条件" class="headerlink" title="方案条件"></a>方案条件</h4><blockquote>
 <p>方案通常不是入市的准则。相反，它们是在你考虑进入市场、建立头寸之前应该预测到的必需的准则。</p>
 </blockquote>
-<h3 id="市场时机选择"><a href="#市场时机选择" class="headerlink" title="市场时机选择"></a>市场时机选择</h3><p>##CAN SLIM模型</p>
+<h4 id="市场时机选择"><a href="#市场时机选择" class="headerlink" title="市场时机选择"></a>市场时机选择</h4><p>###CAN SLIM模型</p>
 <ul>
 <li>C代表每股的<strong>当前盈利(current earnings per share)</strong></li>
 <li>A代表每股的<strong>年度盈利(annual earnings per share)</strong></li>
@@ -485,26 +541,26 @@
 <li>I代表<strong>公共机构赞助(institutional sponsorship)</strong></li>
 <li>M在公式中代表<strong>总体市场的行为(overall market)</strong></li>
 </ul>
-<h2 id="入市技巧"><a href="#入市技巧" class="headerlink" title="入市技巧"></a>入市技巧</h2><blockquote>
+<h3 id="入市技巧"><a href="#入市技巧" class="headerlink" title="入市技巧"></a>入市技巧</h3><blockquote>
 <p>随机入市都可以</p>
 </blockquote>
-<h3 id="管道突破点"><a href="#管道突破点" class="headerlink" title="管道突破点"></a>管道突破点</h3><blockquote>
+<h4 id="管道突破点"><a href="#管道突破点" class="headerlink" title="管道突破点"></a>管道突破点</h4><blockquote>
 <p>就是 入市信号</p>
 <p>基本上，你要么在最近X天的最高价中的最高点上入市做多头，要么在最近X天的最低价中的最低点上入市做空头。如果市场呈<strong>上涨趋势</strong> ，那么它会<strong>创造新高</strong>。如果进入了这些新的最高点之一，你将不会错过一个上涨的趋势。类似地，如果在一个新的最低点上入市做空头，那么你将不会错过一个下跌的趋势</p>
 </blockquote>
 <blockquote>
 <p><strong>管道</strong> 是指市场一直沿着一个窄小的范围移动了数天之后，突然在上涨的方向或下跌的方向发生了突破。<strong>然而，你需要知道的是这个管道有多长以及管道运动是何时开始的</strong></p>
 </blockquote>
-<h4 id="其缺陷"><a href="#其缺陷" class="headerlink" title="其缺陷"></a>其缺陷</h4><blockquote>
+<h5 id="其缺陷"><a href="#其缺陷" class="headerlink" title="其缺陷"></a>其缺陷</h5><blockquote>
 <p> 第一，它往往产生巨额损失(如果出现亏损)，当然，这是你所使用的止损指令的多少造成的结果。</p>
 </blockquote>
 <blockquote>
 <p>管道突破点存在的第二个缺陷是，要想交易成功通常需要大量的资金</p>
 </blockquote>
-<h3 id="基于图表的观察入市法"><a href="#基于图表的观察入市法" class="headerlink" title="基于图表的观察入市法"></a>基于图表的观察入市法</h3><blockquote>
+<h4 id="基于图表的观察入市法"><a href="#基于图表的观察入市法" class="headerlink" title="基于图表的观察入市法"></a>基于图表的观察入市法</h4><blockquote>
 <p>纯粹质朴</p>
 </blockquote>
-<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><blockquote>
+<h4 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h4><blockquote>
 <p>例如，技术分析关注市场形成的很多类型的图表模式。有些模式被描述为牛市，其他模式被描述为熊市。因此，这些模式可以给你入市的信号。图表模式的类型包括日模式，如缺口、峰值、关键反转日、推进日、快跑日、内部日和大幅波动日。这些模式一般用做短期交易信号。</p>
 </blockquote>
 <blockquote>
@@ -516,7 +572,7 @@
 <blockquote>
 <p>#mark# 杰克·施瓦格的书《施瓦格期货基本面分析》</p>
 </blockquote>
-<h3 id="纯粹的预测"><a href="#纯粹的预测" class="headerlink" title="纯粹的预测"></a>纯粹的预测</h3><blockquote>
+<h4 id="纯粹的预测"><a href="#纯粹的预测" class="headerlink" title="纯粹的预测"></a>纯粹的预测</h4><blockquote>
 <p>万物皆有序</p>
 </blockquote>
 <p>同时警惕</p>
@@ -527,7 +583,7 @@
 <blockquote>
 <p>要当心那些自称有高深的交易技能的人。观察他们的交易，尤其是他们如何确定头寸规模，如果他们确定低风险的头寸规模，那么就不是你要走开的问题，而是要赶紧跑开</p>
 </blockquote>
-<h3 id="波动幅度突破"><a href="#波动幅度突破" class="headerlink" title="波动幅度突破"></a>波动幅度突破</h3><blockquote>
+<h4 id="波动幅度突破"><a href="#波动幅度突破" class="headerlink" title="波动幅度突破"></a>波动幅度突破</h4><blockquote>
 <p><strong>波动幅度突破是指价格在特定的方向上发生突然的、剧烈的变动</strong> </p>
 </blockquote>
 <blockquote>
@@ -536,7 +592,7 @@
 <blockquote>
 <p>至于第二个优势，我已经提到过，就是波动幅度突破对那些使用各种模式预测价格移动的人而言是理想的工具。价格预测如果不与一个合理的交易系统一起使用是很危险的。波动幅度突破有助于你实现这一可靠系统的入市部分，让你能够利用所掌握的有关市场如何运作的“秘密知识”进行交易。<strong>价格预测如果不与一个合理的交易系统一起使用是很危险的。波动幅度突破有助于你实现这一可靠系统的入市部分，让你能够利用所掌握的有关市场如何运作的“秘密知识”进行交易。</strong></p>
 </blockquote>
-<h3 id="定向移动和平均定向移动"><a href="#定向移动和平均定向移动" class="headerlink" title="定向移动和平均定向移动"></a>定向移动和平均定向移动</h3><blockquote>
+<h4 id="定向移动和平均定向移动"><a href="#定向移动和平均定向移动" class="headerlink" title="定向移动和平均定向移动"></a>定向移动和平均定向移动</h4><blockquote>
 <p>提问<strong>你如何知道市场是真正有趋势的呢？？？</strong></p>
 </blockquote>
 <p>定向移动背后的基本假定如下：</p>
@@ -569,7 +625,7 @@
 <p>●当ADX在两天内增加4个点以上时，以市场移动的方向入市。[8]当然，需要一个交易方案（比如图表观察法）来告诉你是做空头还是多头，因为ADX的增加只能表明趋势很强劲。</p>
 <p>●在ADX达到过去10天的最大值时入市。当然，还是需要另外一个信号（方案）来告诉你进入的方向。</p>
 </blockquote>
-<h3 id="移动平均和适应性移动平均"><a href="#移动平均和适应性移动平均" class="headerlink" title="移动平均和适应性移动平均"></a>移动平均和适应性移动平均</h3><blockquote>
+<h4 id="移动平均和适应性移动平均"><a href="#移动平均和适应性移动平均" class="headerlink" title="移动平均和适应性移动平均"></a>移动平均和适应性移动平均</h4><blockquote>
 <p>移动平均是非常流行的交易指标，因为它简单而且容易计算。据我所知，自从人类最初创建交易市场之始，移动平均就被使用了。</p>
 </blockquote>
 <blockquote>
@@ -611,18 +667,18 @@
 </ul>
 </li>
 </ul>
-<h2 id="设计自己的"><a href="#设计自己的" class="headerlink" title="设计自己的"></a>设计自己的</h2><blockquote>
+<h3 id="设计自己的"><a href="#设计自己的" class="headerlink" title="设计自己的"></a>设计自己的</h3><blockquote>
 <p>谁都知道这玩意重要极了</p>
 </blockquote>
 <blockquote>
 <p>设计这样一个信号最好的方法是，彻底理清你的信号应该建立在怎样的概念之上。我曾设计了以下例子来对这一思路进行解释，只是举个例子。我们将从一个被交易商和投资者广为接受的想法着手，然后拓展到一般的想法。这个想法没有经过检验，但是在找到有用的方法之前，如果你想使用它，大可放心使用。</p>
 </blockquote>
-<h2 id="何时收手——保护你的资本"><a href="#何时收手——保护你的资本" class="headerlink" title="何时收手——保护你的资本"></a>何时收手——保护你的资本</h2><blockquote>
+<h3 id="何时收手——保护你的资本"><a href="#何时收手——保护你的资本" class="headerlink" title="何时收手——保护你的资本"></a>何时收手——保护你的资本</h3><blockquote>
 <p>黄金法则：截住你的损失，滚动你的利润     </p>
 <p>“股市中赚钱的全部秘诀就是在你已经错了时，尽可能地少赔钱。”</p>
 <p>“投资者都是大赌徒，下一个赌注，一直耗下去，如果赌注下错了，他们就全盘皆输。”</p>
 </blockquote>
-<h3 id="关于停价"><a href="#关于停价" class="headerlink" title="关于停价"></a>关于停价</h3><blockquote>
+<h4 id="关于停价"><a href="#关于停价" class="headerlink" title="关于停价"></a>关于停价</h4><blockquote>
 <p>当你在市场中设立了一个止损停价时，就是在做两件重要的事情</p>
 <p>第一，你是在为自己设置愿意承受的最大亏损（风险）。我们将其称为<code>初始风险R</code>，因为它是你确定在第7章所讨论的期望收益R乘数的基础——在我看来，每一位交易商或者投资者都应该理解R的概念。记住，R就是在你必须退出市场保护资本时，预计一笔交易要损失的数额。如果你没有为在市场中建立的每一个头寸事先确定一个R值，那么你就是在拿钱赌博。</p>
 <p><strong>经过很多次交易后，你可能会发现平均亏损大约是R的一半，即0.5R，这取决于你执行停价的策略。不过，有时市场会一发不可收拾，你的亏损将达到2R甚至是3R。希望这么大的亏损很少光顾你。</strong></p>
@@ -649,7 +705,7 @@
 <p>保护性停价有两个主要的作用：</p>
 <p>​    ①它设定了你每一个头寸有可能承受的最大损失(R)；</p>
 <p>​    ②它给出了一个度量随后的收益的基准。</p>
-<h2 id="如何获利？？"><a href="#如何获利？？" class="headerlink" title="如何获利？？"></a>如何获利？？</h2><blockquote>
+<h3 id="如何获利？？"><a href="#如何获利？？" class="headerlink" title="如何获利？？"></a>如何获利？？</h3><blockquote>
 <p>你开始随着海浪的节奏移动你的双手——当海浪袭来时把双手移向自己，在海浪退去时把双手移开。这么几次之后，你会发现自己很快与海浪联系在一起了。“当你达到与海浪的拍击合拍的境界时，”他说，“就会对如何才能成为一个交易商悟出很多道理。”要注意的是，为了能与海浪联系在一起，知道海浪何时停止涌动对你是很重要的。</p>
 </blockquote>
 <ul>
@@ -736,11 +792,11 @@
 </ul>
 </li>
 </ul>
-<h3 id="简单且多元"><a href="#简单且多元" class="headerlink" title="简单且多元"></a>简单且多元</h3><blockquote>
+<h4 id="简单且多元"><a href="#简单且多元" class="headerlink" title="简单且多元"></a>简单且多元</h4><blockquote>
 <p>简单的概念在系统设计中最起作用。简单有用是因为它一般都是建立在理解而非优化的基础之上的。它起作用是因为我们可以将简单的理念推广应用到许多市场和交易工具中去</p>
 </blockquote>
 <p>假如你的目标是使用一个趋势跟踪系统，你希望在市场中停留很长时间。你认为入市信号没有什么神奇的，因此想为头寸留出大量的空间。你认为一次不利的大的市场移动可能会导致潜在的灾难，因此在其发生时你希望退出市场。最后，你决定，既然初始风险会比较宽，一旦获得一次4R的利润，你就必须尽可能多地去获取。</p>
-<h3 id="要避免的东西"><a href="#要避免的东西" class="headerlink" title="要避免的东西"></a>要避免的东西</h3><blockquote>
+<h4 id="要避免的东西"><a href="#要避免的东西" class="headerlink" title="要避免的东西"></a>要避免的东西</h4><blockquote>
 <p>还有一种退出策略旨在摆脱亏损，但是却与前面所说的“截住损失，滚动利润”的黄金交易法则完全相悖，结果，这种退出策略产生的是巨额损失和较少的利润。这种退出策略的做法是，先进入市场建立较大的头寸规模，然后利用各种退出策略逐渐清仓。例如，你可能以买进300股股票开始，在全部300股股票能盈亏持平时抛出其中的100股，然后又为赚取500美元的利润抛出另外100股，留下最后100股以获取巨额利润。短期交易商非常频繁地使用这种策略。</p>
 </blockquote>
 <blockquote>
@@ -758,7 +814,7 @@
 <p>例如，他说一个很高的效率比值是不可持续的，一旦达到较高的比值，它就会快速下降。因此，考夫曼有两个基本的退出信号：①当适应性移动平均在相反的方向上出现变化时（也许是当它在相反的方向超过某一个门槛值时）；②当平均效率达到一个非常高的值，比如0.8时。</p>
 </blockquote>
 </blockquote>
-<p>##沉着应对</p>
+<p>###沉着应对</p>
 <blockquote>
 <p>每个人 每个人都有钱赚</p>
 </blockquote>
