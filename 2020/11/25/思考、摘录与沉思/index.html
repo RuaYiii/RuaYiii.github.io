@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            思考、摘录与沉思 | 
+        
+        RuaYiii&#39;s Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="仅此而已">
+    <meta name="keywords" content=",USEFUL">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="RuaYiii&#39;s Blog">
+    <meta name="msapplication-starturl" content="http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="RuaYiii&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="思考、摘录与沉思 | RuaYiii&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="仅此而已">
+    <meta property="og:article:tag" content="USEFUL"> 
+
+    
+        <meta property="article:published_time" content="Wed Nov 25 2020 21:30:12 GMT+0800">
+        <meta property="article:modified_time" content="Sat Jan 16 2021 20:43:51 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/index.html",
+    "headline": "思考、摘录与沉思",
+    "datePublished": "Wed Nov 25 2020 21:30:12 GMT+0800",
+    "dateModified": "Sat Jan 16 2021 20:43:51 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "RuaYiii",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "RuaYiii&#39;s Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",USEFUL",
+    "description": "仅此而已",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D"><span class="post-toc-number">1.</span> <span class="post-toc-text">思考、摘录与沉思</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">关于数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8B%92%E7%BB%9D"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">拒绝</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%99%9A%E5%81%87"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">虚假</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A1%8C%E5%8A%A8%E4%B8%BB%E4%B9%89"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">行动主义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%9E%E6%9A%B4%E5%8A%9B%E5%8F%8D%E9%A6%88%E6%8C%87%E5%8D%97"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">非暴力反馈指南</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B7%B4%E5%B0%94%E5%B9%B2%E5%8C%96"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">巴尔干化</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%95%B0%E5%AD%97%E4%BC%AA%E9%80%A0%EF%BC%9A%E9%BB%91%E4%B8%8E%E7%99%BD"><span class="post-toc-number">2.</span> <span class="post-toc-text">数字伪造：黑与白</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                思考、摘录与沉思
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>RuaYiii</strong>
+        <span>11月 25, 2020</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/USEFUL/" rel="tag">USEFUL</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=思考、摘录与沉思&url=http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/index.html&pic=http://ruayiii.codes/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=思考、摘录与沉思&url=http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/index.html&via=RuaYiii" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ruayiii.codes/2020/11/25/%E6%80%9D%E8%80%83%E3%80%81%E6%91%98%E5%BD%95%E4%B8%8E%E6%B2%89%E6%80%9D/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="思考、摘录与沉思"><a href="#思考、摘录与沉思" class="headerlink" title="思考、摘录与沉思"></a>思考、摘录与沉思</h1><p><img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20210116204342427.png" alt="image-20210116204342427"></p>
+<blockquote>
+<p><strong>叙事就是权力大厦的地基，不论它是恶意愚蠢还是半真相。如果你能打破叙事，就能让权力倒塌</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>只有能拿到受雇证据时，我们才能称其为水军</strong></p>
+</blockquote>
+<blockquote>
+<p>木偶给孩子讲了一个故事，您无法说这个故事是木偶讲述的。</p>
+</blockquote>
+<p>##1——IYP</p>
+<blockquote>
+<p>芝加哥媒体曾经报道过一件可怕又可笑的事：一群治安官员突袭了当地一家著名的儿科医生的诊所，把一切搞得稀巴烂。他们为什么会这么做？</p>
+<p>根据警方的说法，原因是：这些治安官不小心把 “儿科医生 pediatrician” 一词误认成了 “恋童癖者 pedophile” 了。</p>
+<p>此事中的受害者 —— 那名儿科医生，被迫离开了自己的住所，因为她的住所墙外被喷上了 “paedo” 的字样（恋童癖的缩写）。事后她接受媒体采访时说：“我觉得我这次真的受了无知的害”。</p>
+<p>这是真事。也许听起来有点奇怪？其实并不难理解，就如那些在推特上由于误读而追着骂您的人一样，他们的脑子里只有 “证明我自己才是对的 / 简体字推文都是傻逼” 的想法，才造成了他们对您的真正观点视而不见；同样，这些突袭儿科诊所的警察满脑子都是 “要抓住所有恋童癖分子，要立功，要完成任务” 的想法，结果就是 ……</p>
+</blockquote>
+<blockquote>
+<p>请不要误会，许多时候出错并非 “人品问题”。在看待周围事物的时候，您的视觉、记忆、感知都会受到某些系统性偏见的影响；由于这些根深蒂固的偏见，人们会在不知不觉中陷入错误。比如习惯用右手的人进入一栋建筑物后会习惯于向右转 —— 尽管那不是最近的路线；或者大多数人对数字7和蓝色有特殊的偏爱，等等。</p>
+<p>您还会受到第一印象的摆布，<strong>甚至包括您从未见过面的、道听途说的 “第一印象”</strong> —— 比如我告诉您说某个您完全不认识的人 “不靠谱”，您就很可能对此人产生先入为主的恶劣印象，此印象将左右您了解和理解这个人的一切，从网络发言到社交媒体照片。<strong>这就是为什么 “</strong><a target="_blank" rel="noopener" href="https://www.iyouport.org/%E4%BA%BA%E6%A0%BC%E6%9A%97%E6%9D%80%E5%92%8C%E6%8A%B9%E9%BB%91%E8%BF%90%E5%8A%A8%EF%BC%9A%E8%B0%81%E5%9C%A8%E5%8F%97%E7%9B%8A%EF%BC%9F/"><strong>人格暗杀</strong></a><strong>” 作为</strong><a target="_blank" rel="noopener" href="https://www.iyouport.org/%E8%AD%A6%E5%AF%9F%E6%B8%97%E9%80%8F%E6%8A%97%E8%AE%AE%E8%BF%90%E5%8A%A8%E7%AE%80%E5%8F%B2/"><strong>渗透抗议运动</strong></a><strong>的武器从古至今都如何高效。</strong></p>
+<p>“期待” 会影响您看待世界的方式，也会影响您的行为——比如，如果我告诉您我的新女友是餐馆厨师，您就很可能会脑补出一个比较胖的姑娘，相反，如果我说我的新女友是舞蹈演员，您就很可能脑补出一个比较瘦的形象来。是谁在规定参观厨师必须是胖子？</p>
+<p><strong>固有的观念是人们在很大程度上难以自己觉察到的</strong>。其实人类有很多优秀的品质，可以让您做好各种各样的事；然而这些品质又同时具有鲜为人知的一面，足够把您的所有努力付之东流。</p>
+<p>举个例子，人类可以快速对事态的发展作出判断，可以在十分之一秒的一瞥间将一副场景尽收眼底，而且通常可以捕捉到该场景的内涵和主题。但是，<strong>这种能力是有代价的：您往往不会觉得自己遗漏了什么，自以为看到了一切但实际上并没有。</strong></p>
+<p>对错误根源的这种误判比比皆是，也是人们不断重蹈覆辙的一个重要原因。<strong>很少有人能真的做到吃一堑长一智，因为人们找到的往往不是问题的根源。</strong>比如，您觉得人们之间<a target="_blank" rel="noopener" href="https://www.iyouport.org/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E4%BA%92%E4%B8%8D%E4%BF%A1%E4%BB%BB%EF%BC%9F/">为什么互不信任</a>？为什么一场美国的选举<a target="_blank" rel="noopener" href="https://www.iyouport.org/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%94%BF%E6%B2%BB%E5%B0%86%E4%BA%BA%E4%BB%AC%E5%88%86%E8%A3%82/">都能撕裂</a>中国的社会？…… 为什么您又把自己锁在门外了？也许您觉得找一位中立的调查人员来评估是个好主意。但调查人员也会受到偏见的困扰：他们经验中的东西会影响他们对新出现的问题的判断。那就太糟了。</p>
+<p><strong>公民调查人员必须警惕这个问题，因为你们没有经过专业训练，经验将指导大多数思考；这就很容易造成对不同寻常的状况缺乏感知力</strong></p>
+<p><strong>多看几眼再下结论的确是很有好处的，但您得首先看对了地方。</strong></p>
+<p>比如高尔夫球，在挥杆的最后几秒中 ，专业选手会目不转睛地盯着球看，很少会注意周围的其他任何东西包括球杆。而缺乏训练的选手会被球杆甚至草坪转移注意力。</p>
+<p>世界上很多伟大的球手就曾经实施过 “准分子激光原位角膜磨镶术 LASIK”，把视力矫正到20/15或更高。这意味着他们可以在20英尺之外清晰地看到正常视力的人在15英尺之内看清的东西。运动设备巨头耐克甚至推出了一种专门减少视觉干扰的推杆，这个的球杆和手柄都是绿色的 —— 可以和球场上的草地融为一体，以避免分散球手的注意力，而刀背式球头的前缘和T形瞄准线都是白色的，这样球手就可以把注意力更好地集中在球杆和高尔夫球接触的那个部位了。</p>
+<p>您呢？注意到关键位置了吗？<strong>围观美国大选的中国人把注意力放在了候选人身上 —— 是的，就是那些表演者—— 这真是太糟糕了，比盯着草坪击球还糟糕。</strong></p>
+<p>围观其他国家的选举是很好的经验积累，只有互联网才能提供这种便利的直观经验，尤其是对于没有选举经验的国家的人们来说，这些观察将最有可能帮助您提高公民意识，在未来于本国实现最民主的选举。要做到这点的前提是，<strong>您应该将自己想象成选民，用公民利益去思考，而不是把自己想象成候选人，站在权力博弈的角度评判。</strong></p>
+<p><strong>也许您对自己观察事物的能力很有自信，您相信自己能注意到其中的变化。其实，正是这种想法令 “视而不见” 变成了一件有意思的事。</strong></p>
+<p>…也就是说，<strong>在她眼中，迅速将对方定义为 “建筑工人” 了，而没有看到细节的不同 —— 比如发型、眼神、笑容、身体特征等等；她把整个场景中的具体信息全部转换成了一个抽象的对事物意义的理解。</strong></p>
+<p><strong>这正是您在社交媒体上经历的事</strong>：这个是左，那个是右，那个是傻逼，这个是嘚瑟逼 …… 因为在这里，几乎每个人采取的浏览模式都如那位失败的被试一样，走马观花，没有目的，没有学习和钻研的意识；这无疑会让您错过重要的东西，并且尤其是，会将您圈入狭小的同温层里。</p>
+<p><strong>如果你不常看的一件东西，你就总也看不到它</strong></p>
+<blockquote>
+<p>上面这句话在大多数情况下都适用。比如，想想看您平时读些什么书？这些书之间是否具有高度的共性？回忆您经常去的图书馆，是否有些柜子您从来都不会走上前去，就如同它们不存在一样？我敢说绝大多数人都是如此，这就是为什么我们认为 “读书多” 并不意味着 “知识充足”，因为大多数人会专注于自己感兴趣的狭小领域、符合自己立场的内容，换句话说，读书是在寻求迎合自己的东西。</p>
+</blockquote>
+<p>有一个著名的视觉注意力实验，其中要求志愿者在几千张图片中找到一个固定的物体，比如锤子。这种状况就如一个乱糟糟的办公室、卧室、或塞满东西的大冰箱。</p>
+<p>当锤子多次出现在图片中的时候，志愿者们的错误率很少，只有7%。但当工具较少出现的时候，比如每一百张图片中才会出现一次，志愿者的错误率就突增到30%。</p>
+<p>为什么呢？<strong>因为他们主观放弃了，由于很难找到（很难获得成功感）。这被称为 “退出阈值” ，</strong>即 在特定的一段时间内，如果自己还是找不到规定的物品，就干脆放弃，不再去找了。通常而言，观察者在寻找屡屡失败时，会放慢自己的寻找速度；而取得成功后，会加快自己的寻找速度。如果持续找不到，就会加快放弃的速度。</p>
+<p>实际上，实验中的被试在还没有坚持到找到目标物所需的平均时间时，就会放弃寻找。<strong>这会让您想起那些声明退出推特返回微博的人吗？</strong>因为他们看到了太多的垃圾内容，还没来得及找到真正有意义的内容时就直接放弃了。这正是<a target="_blank" rel="noopener" href="https://www.iyouport.org/%E7%BD%91%E7%BB%9C%E6%B0%B4%E5%86%9B%E5%A6%82%E4%BD%95%E4%B8%8D%E6%96%AD%E6%93%8D%E7%BA%B5%E6%82%A8%E5%9C%A8%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93%E4%B8%8A%E7%9C%8B%E5%88%B0%E7%9A%84%E5%86%85%E5%AE%B9/">营销账户和机器人试图导致</a>的结果之一。</p>
+</blockquote>
+<h2 id="关于数据"><a href="#关于数据" class="headerlink" title="关于数据"></a>关于数据</h2><blockquote>
+<p><strong>越是接近权力的顶层，信息就越少、保密度就越高、越难以找到证据</strong></p>
+</blockquote>
+<blockquote>
+<p>FOIA(信息自由法案)请求或开放数据倡议，这很好，但是，<strong>政府完全可以选择发布什么，并操纵公开的内容</strong>。所以在某些方面，这是最弱的方式。</p>
+</blockquote>
+<blockquote>
+<p><em>“……如果您对一家工业企业感兴趣，并且您认为那里正在进行环境犯罪，您基本无法直接敲开该工厂的大门走进去进行调查。但您可以做的是假设，如果他们处理的是有毒化学品，而且很有可能他们的安全记录很差，所以您可以做的是去当地的消防部门，询问是否有任何危险品反应的被记录事件。换句话说，****是否有任何实例可以证明您的假设。所以您应该开始建立证据 —— 围绕您正在寻找的东西，当您不能直接看它时”</em> </p>
+</blockquote>
+<h3 id="拒绝"><a href="#拒绝" class="headerlink" title="拒绝"></a>拒绝</h3><blockquote>
+<p>“通常情况下，我要么事先通过电子邮件申请、要么在与公司或政府机构面谈时请求允许拍照。绝大多数时候这样的请求就会被拒绝。<strong>这是一个相当标准的请求-拒绝模式</strong>，我成为请求者，而他们有权力扮演拒绝者。拒绝本身的形式是非常有趣的，从完全的沉默到公关主管非常勤奋地撰写的电子邮件不等。后者在西欧公司尤其如此。</p>
+<p>接下来我尝试做的是问他们，拍照到底在哪里被拒绝，拒绝的边界在哪里结束，如何界定拒绝的范围。<strong>这是一个破坏性的因素，它迫使请求者和拒绝者离开既定的位置。它也允许 “被拍摄者” 划定他们自己的保密边界，无论是法律规定的还是他们想象出来的。</strong></p>
+</blockquote>
+<p><strong>一些资源</strong>：</p>
+<ul>
+<li><p>要查找全球公司的注册信息，<a target="_blank" rel="noopener" href="http://www.rba.co.uk/sources/registers.htm">在这里</a>看到列表；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://littlesis.org/">LittleSis</a>是一个免费的数据库，连接世界上最有权势的人员和组织之间的点，您能看到这些权势之间的关系；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://opencorporates.com/">OpenCorporates</a> 是一个旨在收集世界上所有公司信息的数据库。该数据库目前提供了65个不同司法管辖区的5千万家公司的信息。在 OpenCorporates 上可以找到的信息包括公司的成立日期、注册地址和注册页面，以及董事和高级职员的名单；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.theyrule.net/">TheyRule </a>是一个网站，提供美国最大的公司的交互式可视化图，帮助您了解每家公司中谁拥有权力，以及公司高层个人之间的关系。TheyRule 还提供了各种机构和基金会的相关数据，揭示了谁隐藏在美国的游说团体和智囊团背后；</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://treasureislands.org/">Treasure Islands</a>：避税天堂和偷走世界的人</p>
+</li>
+<li><p>Andrew Feinstein 的 《The Shadow World》是一个非常优秀的调查成果，可以供您学习；在 <a target="_blank" rel="noopener" href="http://www.cw-uk.org/">Corruption Watch UK</a> 看到更多 Andrew 的作品</p>
+</li>
+</ul>
+<h2 id="虚假"><a href="#虚假" class="headerlink" title="虚假"></a>虚假</h2><blockquote>
+<p>要注意： <strong>镜头不一定能说明真相</strong>、</p>
+<blockquote>
+<p>在照片中，人、物和建筑物看起来像被压缩在一起了。📌 这种效果可以来自于不同的摄影技巧，比如使用长焦镜头，对使用广角镜头拍摄的照片进行裁剪，或者简单地改变相机的位置或采用创造性的构图手法。</p>
+</blockquote>
+<p>这是同一地方，<strong>一张照片是用变焦镜头拍摄的，另一张照片是用广角镜头拍摄的：</strong></p>
+<p><img src="https://i2.wp.com/cdn-images-1.medium.com/max/1067/1*prGYRyyqZuEpjBt-XXaFhg.png?w=1100&ssl=1" alt="img"></p>
+<p>还有其他例子，<strong>摄影师使用压缩图像的方法产生了如上述的效果</strong></p>
+<p><strong>新闻报道不会简陋到使用PS来处理照片，那将导致严重后果。但是，只需要稍微调整一下镜头的使用方式，摄影记者就可以讲述出一个完全不同的故事 —— 甚至是符合某些极少数人利益的歪曲的故事。消费新闻的公民们需要警惕这点。</strong></p>
+</blockquote>
+<h2 id="行动主义"><a href="#行动主义" class="headerlink" title="行动主义"></a>行动主义</h2><blockquote>
+<p><strong><em>他们想要让我们崩溃。他们所做的一切都是以此为目标的。打破他们的目标，您的福祉本身不仅是反抗，更是一种政治上的自我赋权</em></strong></p>
+</blockquote>
+<p>人权维护者一词指的是任何促进或维护各种权利的人，这些权利可能包括公民和政治权利 (如言论自由、或为遭受虐待的幸存者伸张正义)；透明度和反腐败、或更大程度的政治参与；环境权利、社会正义和文化权利；与性取向和性别认同有关的权利，或倡导承认新的人权。</p>
+<p>无论他们从事何种职业或促进何种人权，国际法以及许多国家的法律对人权维护者工作的承认，都应该为人权维护者开展工作提供必要的保护。</p>
+<p><strong>以群体的思考方式来处理您的安全和利益</strong></p>
+<blockquote>
+<p>📌 当权者的镇压战略在很大程度上是以令敏感人士恐惧、消沉、孤独、失去互信和联合行动的能力为目标的，他们试图给敏感人士制造一种幻觉即 “反抗是一种地狱般的生活”。事实上完全相反，臣服才是地狱，反抗是摆脱地狱的途径 —— 直接行动是最好的疗愈。但敏感人士必须能主观体验到这一点，即福祉；当能做到时，它就是颠覆性的和政治性的。</p>
+<p>为了保护敏感人士免于承受压力、疲劳、创伤和悲伤等问题的威胁，人们必须自觉和有意识地进行自我照护(selfcare)。自我照护不应被理解为一种自私的行为，而应被理解为一种自我保全的颠覆性的政治行为。</p>
+<p>作为敏感人士，您如何在行动主义的背景下定义自己的福祉是主观的，也是非常个人化的。它受到您的身体和思想的不同需求、面临的挑战、您的信仰（宗教、精神或世俗）、您的性别认同、利益和关系的影响</p>
+</blockquote>
+<p>当我们的直觉发出不可信或危险的信号时，往往是因为我们发现了多个微妙的指标，这些指标本身并不能确定某个特定的威胁，但它们综合起来却强烈暗示我们可能处于危险之中——<strong>生存直觉</strong></p>
+<p><strong>发展一种压力管理和自我照护的文化 —— 包括个人和团体、组织或运动，对于全面处理安全问题至关重要</strong></p>
+<p><strong>请注意，妖魔化任何人都是无济于事的；在压迫的背景下，他们往往也是受害者。</strong></p>
+<h3 id="非暴力反馈指南"><a href="#非暴力反馈指南" class="headerlink" title="非暴力反馈指南"></a><strong>非暴力反馈指南</strong></h3><p>1、“我为我自己说话” —— 您只能根据自己的主观经验说话，而不能说 “常识”，“我的团体”，“我们” 或 “某”，而只能说 “我”。</p>
+<p>例子：“当我发现办公室门大敞着时，我感到不安全”。</p>
+<p>不良做法：“你昨天所做的事使我们处于危险之中！”</p>
+<p>2、“你观察到了什么？” —— 您只应在经历事实时讲这些事实，这样对话者才能知道您的反馈所指的是什么（您所看到、听到的等等）。</p>
+<p>例子：“今天早上我到达办公室时，前门是开着的，没用钥匙我就进来了”。</p>
+<p>不良做法：“昨天是你忘了锁门！”</p>
+<p>3、“您对此有何反应？” —— 您对自己的经历有什么内在感受和身体反应？尽量不要评论它，但再一次，只要从您的经验中了解就可以了。</p>
+<p>例子：“我非常担心，害怕我们已经被抢劫了。当我发现一切正常时，我仍然很生气。”</p>
+<p>4、“您如何解释它？” —— 您的个人解释为事实带来了什么？尽管您的个人解释确实是主观的，但它仍然很有价值，可以丰富您的经验。</p>
+<p>例子：“我认为发生这种情况是因为您工作很晚了，很累，只是忘了锁门”。</p>
+<p>5、“您的愿望、建议或兴趣是什么？” —— 根据这种经验，您对变更有何建议？应无要求地提供这些信息。</p>
+<p>例子：“如果我们都能得到足够的休息、不会过度劳累，那么我会感觉更好，以便我们能够更好地照料这样的事，所以如果您不工作到这么晚会更好。”</p>
+<blockquote>
+<p><strong><em>虽然安全计划和协议是重要而有用的工具，但如果情况需要，灵活地放弃它们的能力同样重要，甚至更重要</em></strong></p>
+</blockquote>
+<h2 id="巴尔干化"><a href="#巴尔干化" class="headerlink" title="巴尔干化"></a>巴尔干化</h2><blockquote>
+<p>是指：将一个地区或主体划分为较小的且相互敌对的区域或组织<br>最初被用来描述欧洲巴尔干半岛分裂成一系列较小的、相互敌对的国家，这些国家是按照宗教和种族界限划分的。网络巴尔干化 (也称为 “互联网巴尔干化”) 是指全球互联网被分割成若干较小的、由国家管理的、沿地缘政治边界分割的 “大局域网”。</p>
+<p>GFW   “蜻蜓” 项目   云上贵州    中国寡头，以及与美国寡头势均力敌</p>
+<blockquote>
+<p>2014年，俄罗斯国家安全机构委托俄罗斯政府为金砖五国 BRICS（巴西、俄罗斯、印度、中国和南非）建立一个独立的互联网，该互联网将存在于美国影响范围之外。</p>
+</blockquote>
+</blockquote>
+<p> <strong>分裂的催化剂 —— （集中化）数据是 “新石油”</strong></p>
+<p>网络已然成为企业利润的引擎，是用户的数据、隐私泄露和人权危害为其提供源源不断的运转动力的</p>
+<p>寡头们向全世界提供<strong>近乎零边际成本</strong>的服务，包括文件存储、即时通讯、照片共享和视频通话 等所谓的 “免费” 服务。<strong>通过使用这些服务，用户被迫 “同意” 被窃取、存储和汇编高度敏感的个人数据</strong>，包括照片、电子邮件、聊天记录、文件、浏览习惯、搜索历史、位置信息和购买决定。</p>
+<p> <strong>分裂的催化剂 —— 斯诺登和全球监视的曝光</strong></p>
+<p>斯诺登文件暴露了外国对美国间谍活动的脆弱性，这些活动发生在从数据传输层到网络服务层的多个层面。</p>
+<p>从美国的角度来看，NSA的大规模监控计划是对其作为 “现代互联网守门人” 权力的合理利用。通过保持对互联网流量和网络服务用户数据的最高控制权，美国在维持其世界超级大国地位的努力中获得了巨大的战略优势。</p>
+<p>不奇怪，任何拥有这种权力的国家都会理智地期望以类似的方式行事。目前为止<strong>没有</strong>任何理由相信美国科技巨头考虑停止与美国情报机构在数据共享和监控项目上的合作。</p>
+<p><strong>风险</strong></p>
+<blockquote>
+<p><strong>各个国家将继续建立国内互联网产业，将所有流量的路由和所有用户数据存储在其内部。这将加剧数据孤岛效应，限制信息跨境流动，并使网络服务无法从境外使用。正如中国所证明的那样，这些努力可能会成功地维护数据主权，但是，却要付出大规模审查的专制主义恶化之代价</strong></p>
+</blockquote>
+<p><em>从根本上说，网络巴尔干化将是国家政权对个人的自由表达、获得信息的自由、以及不受侵入性监视的权利的全面剥夺。</em></p>
+<blockquote>
+<p>全球范围内的民族主义升级、全球经济不平等迅速加剧、西方的政治两极分化、以及<strong>即将到来的工业自动化海啸</strong>，这将引发被视为多余的旧世界职业的大规模丧失。</p>
+</blockquote>
+<p>##假人脸</p>
+<p>如今，通过 thispersondoesnotexist 这类网站，创建一个完全不存在的假人脸可以非常容易，只需点击一个按钮就可以完成。</p>
+<p>虽然这类工具效果不错，但也并非没有缺陷。</p>
+<p>图像可能肉眼看上去很完美，但仔细观察就能发现一些瑕疵，比如一组不匹配的皱纹或不完美的对称性。</p>
+<p>这些图像是通过所谓的生成式对抗网络（GAN）创建的。这是一类机器学习框架，它可以从选定的旧的真实世界图像中创建新的虚假图像。</p>
+<p><strong>这些信息战行动很可能使用GAN，因为这样做可以防止研究人员使用反向图像搜索工具来识别可能从社交资料中窃取的图片，这种做法以前出现过</strong>。</p>
+<p>尽管如此，研究人员依旧从头开始确定分析GAN图像的方法。一个关键的启示是：<strong>眼睛的位置。机器学习制作的假人脸的眼睛总是保持在同一个水平位置上，这就使研究人员能够开发技术来发现这种特征</strong></p>
+<h1 id="数字伪造：黑与白"><a href="#数字伪造：黑与白" class="headerlink" title="数字伪造：黑与白"></a>数字伪造：黑与白</h1><blockquote>
+<p><strong>有太多已被证实为完全捏造的事件被热传，甚至已经变成了部分公众的基本认知</strong>。</p>
+<p>一个例子可以从 Abdulaziz Alotaibi 在 Instagram 上发布的照片中看到：照片显示一个孩子睡在父亲和母亲的坟墓之间，作为对一个刚刚失去家人的叙利亚儿童的描述。您可能也看过这张照片，它在社交媒体上疯传，包括政客在内的无数人都在讨论它，甚至一些新闻机构也用它来撰写 “突发新闻报道”。</p>
+<p><img src="https://i2.wp.com/cdn-images-1.medium.com/max/1067/0*pLYEyAqy6F_OSRd-.jpg?resize=640,640&ssl=1" alt="img"></p>
+<p><strong>没有人努力去核实这张图片，也没有人提出以下这些最基本的问题：</strong></p>
+<ul>
+<li>照片是在哪里拍摄的？</li>
+<li>什么日期拍摄的？</li>
+<li>为什么拍摄？背后有什么故事？</li>
+</ul>
+<p><strong>事实是：</strong>当 Alotaibi 看到这张图片被错误地使用时，他发布了另一张照片，以表明这实际上是一个艺术项目。这张照片并不是在墓地拍摄的，孩子是他的侄子。</p>
+<p><img src="https://i2.wp.com/cdn-images-1.medium.com/max/1067/0*OBnha0gjZYNqr8fE.jpg?resize=640,640&ssl=1" alt="img"></p>
+</blockquote>
+<p>请不要停止追问：<strong>谁、发生了什么、什么时候发生的</strong></p>
+<blockquote>
+<p>2014年，YouTube上出现了一段视频，内容是一名儿童被叙利亚政权枪杀。该视频被观看了800多万次。随后，<strong>该视频被 BBC Trending 上的一篇文章引述，</strong><a target="_blank" rel="noopener" href="https://www.bbc.com/news/magazine-30043574"><strong>此文章称</strong></a><strong>该视频 “很可能不是假的”。</strong></p>
+<p><strong>几天后，一位挪威电影导演表示，是他编排了这段视频</strong>，展示了一个 “叙利亚英雄男孩” 在枪林弹雨中的情景。这段视频是2014年5月在马耳他拍摄的，而不是叙利亚；<strong>它是电影，而不是新闻</strong>。</p>
+<p>这段视频被一大群新闻机构和社交媒体活动家拿来传播，用以描述有关儿童在战争中受苦的信息。不幸的是，这在整体上产生了负面的政治影响 —— <strong>发布这段假视频并在社交媒体上传播将使得真正的战犯更容易通过宣传 “网上的大多数视频都是假的” 来否定真正的人权虐待证据</strong></p>
+</blockquote>
+<p><strong>在这里，您很难找到内容的原始来源，也就是说，常规的信息验证方法不起作用</strong></p>
+<p><strong>WHO ——</strong> </p>
+<ul>
+<li>来源 ～ 谁上传的内容？</li>
+</ul>
+<p><strong>WHAT ——</strong> </p>
+<ul>
+<li>出处 ～这是原始内容吗？</li>
+<li>日期 ～ 这是什么时候采集的内容？</li>
+<li>地点 ～ 此内容是在哪里采集的？</li>
+</ul>
+<p><strong>账户持有人过去是否一直可靠？</strong></p>
+<blockquote>
+<p>推特上那些传播假消息的人其关注者依旧在不断增长、他们的新发布内容依旧会获得最大量的转发和点赞，远超过任何有意义的内容和知识，似乎人们完全不记得该账户撒谎的历史。</p>
+</blockquote>
+<p><strong>上传者的总部在哪里？</strong></p>
+<p><strong>视频和照片的描述是否一致，且大多来自特定地点</strong>？</p>
+<blockquote>
+<p>人们可能会在此造假，将不同地点来源的近似事件拼凑在一起，以强化一个虚假的杜撰故事<br><strong>您需要分清每一个细节。</strong></p>
+</blockquote>
+<p><strong>画面中的标志是否在所有视频中保持一致？</strong></p>
+<p><strong>上传者是否是某种视频/照片的聚合器？</strong></p>
+<p><strong>这些账户活跃多久了？他们的活跃度如何？</strong></p>
+<p><strong>发布者的账户中还包含哪些信息可表明账户持有人最近的位置、活动、可靠性、偏见、或议程？</strong> </p>
+<p>##end</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2020/12/01/%E5%85%B3%E4%BA%8E%E8%B0%83%E9%85%92/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2020/11/14/%E6%9F%B3%E6%B0%B8%E8%AE%B2%E4%B9%89/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="RuaYiii's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2021/02/">二月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/11/">十一月 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/10/">十月 2020<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;RuaYiii's Blog
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

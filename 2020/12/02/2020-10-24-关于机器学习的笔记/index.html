@@ -1,0 +1,2890 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            关于机器学习的笔记 | 
+        
+        RuaYiii&#39;s Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="仅此而已">
+    <meta name="keywords" content=",机器学习">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="RuaYiii&#39;s Blog">
+    <meta name="msapplication-starturl" content="http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="RuaYiii&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="关于机器学习的笔记 | RuaYiii&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="仅此而已">
+    <meta property="og:article:tag" content="机器学习"> 
+
+    
+        <meta property="article:published_time" content="Wed Dec 02 2020 21:30:12 GMT+0800">
+        <meta property="article:modified_time" content="Sat Feb 13 2021 10:11:38 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/index.html",
+    "headline": "关于机器学习的笔记",
+    "datePublished": "Wed Dec 02 2020 21:30:12 GMT+0800",
+    "dateModified": "Sat Feb 13 2021 10:11:38 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "RuaYiii",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "RuaYiii&#39;s Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",机器学习",
+    "description": "仅此而已",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于机器学习的笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9C%9F%E9%B8%A1%E5%84%BF%E5%BD%A2%E8%B1%A1%E7%9A%84%E6%A0%97%E5%AD%90"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">真鸡儿形象的栗子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">反向传播</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">梯度下降</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">损失函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">*机器学习常用损失函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%87%E6%96%B9%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">均方差损失函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">交叉熵损失函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E5%9D%87%E6%96%B9%E5%B7%AE%E4%BD%9C%E4%B8%BA%E5%88%86%E7%B1%BB%E5%87%BD%E6%95%B0%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">??为什么不能使用均方差作为分类函数的损失函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%AD%E7%BB%83"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">训练</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#random-initialization-%E9%9A%8F%E6%9C%BA%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="post-toc-number">1.5.0.0.1.</span> <span class="post-toc-text">random initialization[随机初始化]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Training-loop"><span class="post-toc-number">1.5.0.0.2.</span> <span class="post-toc-text">Training loop</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8Erelu%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.5.0.1.</span> <span class="post-toc-text">关于relu函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#add%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.5.0.2.</span> <span class="post-toc-text">add函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%B9%BF%E6%92%AD"><span class="post-toc-number">1.5.0.2.1.</span> <span class="post-toc-text">广播</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Dot"><span class="post-toc-number">1.5.0.3.</span> <span class="post-toc-text">Dot</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Reshape"><span class="post-toc-number">1.5.0.4.</span> <span class="post-toc-text">Reshape</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#transposition-%E8%BD%AC%E7%BD%AE"><span class="post-toc-number">1.5.0.4.1.</span> <span class="post-toc-text">transposition[转置]</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BC%A0%E9%87%8F%E8%BF%90%E7%AE%97%E7%9A%84%E5%AF%BC%E6%95%B0%EF%BC%9A%E6%A2%AF%E5%BA%A6%E2%80%94%E2%80%94%E5%A5%BD%E5%AE%B6%E4%BC%99%E4%B9%85%E9%97%BB%E5%A4%A7%E5%90%8D"><span class="post-toc-number">1.5.0.5.</span> <span class="post-toc-text">张量运算的导数：梯度——好家伙久闻大名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="post-toc-number">1.5.0.5.1.</span> <span class="post-toc-text">随机梯度下降</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">线性回归</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">一元线性回归模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">最小二乘法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-1"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">梯度下降</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="post-toc-number">1.6.3.1.</span> <span class="post-toc-text">梯度计算</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%B3%95"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">神经网络法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-1"><span class="post-toc-number">1.6.4.1.</span> <span class="post-toc-text">反向传播</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E6%A0%B7%E6%9C%AC%E5%8D%95%E7%89%B9%E5%BE%81%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="post-toc-number">1.6.5.</span> <span class="post-toc-text">多样本单特征值计算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%91%E5%89%8D%E8%AE%A1%E7%AE%97"><span class="post-toc-number">1.6.5.1.</span> <span class="post-toc-text">向前计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-1"><span class="post-toc-number">1.6.5.2.</span> <span class="post-toc-text">损失函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B1%82%E6%A2%AF%E5%BA%A6"><span class="post-toc-number">1.6.5.3.</span> <span class="post-toc-text">求梯度</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F-%E6%AF%94%E8%BE%83"><span class="post-toc-number">1.6.6.</span> <span class="post-toc-text">梯度下降的三种形式|比较</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="post-toc-number">1.6.7.</span> <span class="post-toc-text">多变量线性回归</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B%E6%B3%95"><span class="post-toc-number">1.6.7.1.</span> <span class="post-toc-text">正规方程法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%B3%95-1"><span class="post-toc-number">1.6.7.2.</span> <span class="post-toc-text">神经网络法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96"><span class="post-toc-number">1.6.8.</span> <span class="post-toc-text">标准化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%98%E5%8E%9F%E5%8F%82%E6%95%B0%E5%80%BC"><span class="post-toc-number">1.6.9.</span> <span class="post-toc-text">还原参数值</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%80%9D%E8%80%83%EF%BC%9F%EF%BC%9F"><span class="post-toc-number">1.6.9.1.</span> <span class="post-toc-text">??思考？？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="post-toc-number">1.6.10.</span> <span class="post-toc-text">标准化标签</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">线性分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%88%86%E7%B1%BB%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">二分类函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.7.1.1.</span> <span class="post-toc-text">使用方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AD%A3%E5%90%91%E4%BC%A0%E6%92%AD"><span class="post-toc-number">1.7.1.2.</span> <span class="post-toc-text">正向传播</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-2"><span class="post-toc-number">1.7.1.3.</span> <span class="post-toc-text">反向传播</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E4%B8%8E%E6%88%96%E9%9D%9E%E9%97%A8"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">关于实现逻辑与或非门</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E5%88%86%E7%B1%BB"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">多分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80%E6%96%B9%E5%BC%8F"><span class="post-toc-number">1.7.3.1.</span> <span class="post-toc-text">一对一方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%96%B9%E5%BC%8F"><span class="post-toc-number">1.7.3.2.</span> <span class="post-toc-text">一对多方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A%E6%96%B9%E5%BC%8F"><span class="post-toc-number">1.7.3.3.</span> <span class="post-toc-text">多对多方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8C%BA%E5%88%AB%EF%BC%9A%E5%A4%9A%E5%88%86%E7%B1%BB%E4%B8%8E%E5%A4%9A%E6%A0%87%E7%AD%BE"><span class="post-toc-number">1.7.3.4.</span> <span class="post-toc-text">*区别：多分类与多标签</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%9A%E5%88%86%E7%B1%BB%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.7.3.5.</span> <span class="post-toc-text">多分类函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AD%A3%E5%90%91%E4%BC%A0%E6%92%AD-1"><span class="post-toc-number">1.7.3.6.</span> <span class="post-toc-text">正向传播</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-3"><span class="post-toc-number">1.7.3.7.</span> <span class="post-toc-text">反向传播</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF%E5%88%86%E5%89%B2%E7%BA%BF"><span class="post-toc-number">1.7.3.8.</span> <span class="post-toc-text">这里是分割线</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E8%B7%B5"><span class="post-toc-number">1.7.3.9.</span> <span class="post-toc-text">神经网络实践</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">非线性回归</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">激活函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8-amp-%E6%80%A7%E8%B4%A8"><span class="post-toc-number">1.8.1.1.</span> <span class="post-toc-text">激活函数作用&amp;性质</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8C%A4%E5%8E%8B%E5%9E%8B%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.2.</span> <span class="post-toc-text">挤压型激活函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Logistic%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.2.1.</span> <span class="post-toc-text">Logistic函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Tanh%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.2.2.</span> <span class="post-toc-text">Tanh函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.2.3.</span> <span class="post-toc-text">其他函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8D%8A%E7%BA%BF%E6%80%A7%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.3.</span> <span class="post-toc-text">半线性激活函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#RuLU%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.3.1.</span> <span class="post-toc-text">RuLU函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E4%BC%98%E7%82%B9"><span class="post-toc-number">1.8.1.3.1.1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="post-toc-number">1.8.1.3.1.2.</span> <span class="post-toc-text">缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Leaky-ReLU%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.3.2.</span> <span class="post-toc-text">Leaky ReLU函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="post-toc-number">1.8.1.3.2.1.</span> <span class="post-toc-text">优点</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Softplus%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.3.3.</span> <span class="post-toc-text">Softplus函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ELU%E5%87%BD%E6%95%B0"><span class="post-toc-number">1.8.1.3.4.</span> <span class="post-toc-text">ELU函数</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E9%80%9A%E7%94%A8%E8%BF%91%E4%BC%BC%E5%AE%9A%E7%90%86"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">前馈神经网络的通用近似定理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%AF%84%E4%BC%B0%E6%A0%87%E5%87%86"><span class="post-toc-number">1.8.2.1.</span> <span class="post-toc-text">评估标准</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%B9%B3%E5%9D%87%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE"><span class="post-toc-number">1.8.2.1.1.</span> <span class="post-toc-text">平均绝对误差</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%B9%B3%E5%9D%87%E5%80%BC%E7%8E%87%E8%AF%AF%E5%B7%AE"><span class="post-toc-number">1.8.2.1.2.</span> <span class="post-toc-text">绝对平均值率误差</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%92%8C%E6%96%B9%E5%B7%AE"><span class="post-toc-number">1.8.2.1.3.</span> <span class="post-toc-text">和方差</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%9D%87%E6%96%B9%E5%B7%AE"><span class="post-toc-number">1.8.2.1.4.</span> <span class="post-toc-text">均方差</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%9D%87%E6%96%B9%E6%A0%B9%E8%AF%AF%E5%B7%AE"><span class="post-toc-number">1.8.2.1.5.</span> <span class="post-toc-text">均方根误差</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#R%E5%B9%B3%E6%96%B9"><span class="post-toc-number">1.8.2.1.6.</span> <span class="post-toc-text">R平方</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E5%85%83%E5%A4%9A%E6%AC%A1%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">一元多次多项式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E5%85%83%E5%A4%9A%E6%AC%A1%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="post-toc-number">1.8.4.</span> <span class="post-toc-text">多元多次多项式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%87%E8%83%BD%E8%BF%91%E4%BC%BC%E5%AE%9A%E7%90%86"><span class="post-toc-number">1.8.5.</span> <span class="post-toc-text">万能近似定理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88"><span class="post-toc-number">1.8.6.</span> <span class="post-toc-text">曲线拟合</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B6%85%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96"><span class="post-toc-number">1.8.7.</span> <span class="post-toc-text">超参数优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BD%91%E6%A0%BC%E6%90%9C%E7%B4%A2"><span class="post-toc-number">1.8.7.1.</span> <span class="post-toc-text">网格搜索</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2"><span class="post-toc-number">1.8.7.2.</span> <span class="post-toc-text">随机搜索</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">非线性分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E5%88%86%E7%B1%BB"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">二分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E5%88%86%E7%B1%BB-1"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">多分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%92%8C%E4%BF%9D%E5%AD%98"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">模型的加载和保存</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="post-toc-number">2.</span> <span class="post-toc-text">卷积神经网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%B7%E7%A7%AF%E6%A0%B8"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">卷积核</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                关于机器学习的笔记
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>RuaYiii</strong>
+        <span>12月 02, 2020</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=关于机器学习的笔记&url=http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/index.html&pic=http://ruayiii.codes/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=关于机器学习的笔记&url=http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/index.html&via=RuaYiii" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ruayiii.codes/2020/12/02/2020-10-24-%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%AC%94%E8%AE%B0/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="关于机器学习的笔记"><a href="#关于机器学习的笔记" class="headerlink" title="关于机器学习的笔记"></a>关于机器学习的笔记</h1><h2 id="真鸡儿形象的栗子"><a href="#真鸡儿形象的栗子" class="headerlink" title="真鸡儿形象的栗子"></a>真鸡儿形象的栗子</h2><blockquote>
+<ul>
+<li><p>目的：<strong>猜到乙心中的数</strong>字；</p>
+</li>
+<li><p>初始化：甲猜5；</p>
+</li>
+<li><p>前向计算：甲每次猜的新数字；</p>
+</li>
+<li><p>损失函数：乙在根据甲猜的数来和自己心中想的数做比较，得出“大了”或“小了”的结论；</p>
+</li>
+<li><p>反向传播：乙告诉甲“小了”、“大了”；</p>
+</li>
+<li><p>梯度下降：甲根据乙的反馈中的含义自行调整下一轮的猜测值。</p>
+<blockquote>
+<p>这里的损失函数是什么呢？就是“太小了”，“有点儿大”，很不精确！这个“所谓的”损失函数给出了两个信息：</p>
+<p>1.<strong>方向</strong>：大了或小了</p>
+<p>2.<strong>程度</strong>：“太”，“有点儿”，但是很模糊</p>
+</blockquote>
+<p>or <strong>黑盒</strong></p>
+<ul>
+<li>目的：猜到一个输入值，使得黑盒子的输出是4；</li>
+<li>初始化：输入1；</li>
+<li>前向计算：黑盒子内部的数学逻辑；</li>
+<li>损失函数：在输出端，用输出值减4；</li>
+<li>反向传播：告诉猜数的人差值，包括正负号和值；</li>
+<li>梯度下降：在输入端，根据正负号和值，确定下一次的猜测值。</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>样本ID</th>
+<th>输入(特征值)</th>
+<th>输出(标签)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>2.21</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.1</td>
+<td>2.431</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.2</td>
+<td>2.652</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>4.42</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>搭建一个神经网络，给出初始权重值，我们先假设这个黑盒子的逻辑是：z=x+x2；</p>
+</li>
+<li><p>输入1，根据 z=x+x2 得到输出为2，而实际的输出值是2.21，则误差值为 2−2.21=−0.21，小了；</p>
+</li>
+<li><p>调整权重值，比如 z=1.5x+x2，再输入1.1，得到的输出为2.86，实际输出为2.431，则误差值为 2.86−2.431=0.429，大了；</p>
+</li>
+<li><p>调整权重值，比如 z=1.2x+x2，再输入1.2……</p>
+</li>
+<li><p>调整权重值，再输入2……</p>
+<blockquote>
+<p>如果误差值是正数，我们就把权重降低一些；如果误差值为负数，则升高权重</p>
+</blockquote>
+</li>
+<li><p>所有样本遍历一遍，计算平均的损失函数值；</p>
+</li>
+</ol>
+<p>依此类推，重复3，4，5，6过程，直到损失函数值小于一个指标，比如 0.001，我们就可以认为网络训练完毕，黑盒子“破解”了，<strong>实际是被复制了，因为神经网络并不能得到黑盒子里的真实函数体，而只是近似模拟。</strong></p>
+</blockquote>
+<p>or  <strong>打靶</strong><img src="https://camo.githubusercontent.com/b91f08875d7db6dc2636dbd4e38e52380b235997f3cce3076af9a006d86767d7/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f746172676574312e706e67" alt="img" style="zoom:50%;" /></p>
+<blockquote>
+<p>图2-2 打靶的弹着点记录</p>
+<ul>
+<li><p>目的：打中靶心；</p>
+</li>
+<li><p>初始化：随便打一枪，能上靶就行，但是要记住当时的步枪的姿态；</p>
+</li>
+<li><p>前向计算：让子弹飞一会儿，击中靶子；</p>
+</li>
+<li><p>损失函数：环数，偏离角度</p>
+<blockquote>
+<p>这里的损失函数也有两个信息：距离 and 方向——<strong>所以，梯度，是个矢量！</strong> 它应该即告诉我们方向，又告诉我们数值。</p>
+</blockquote>
+</li>
+<li><p>反向传播：把靶子拉回来看；</p>
+</li>
+<li><p>梯度下降：根据本次的偏差，调整步枪的射击角度。</p>
+</li>
+</ul>
+<ul>
+<li><p>每次试枪弹着点和靶心之间的差距就叫做误差，可以用一个误差函数来表示，比如差距的绝对值，如图中的红色线。</p>
+</li>
+<li><p>一共试枪5次，就是迭代/训练了5次的过程 。</p>
+</li>
+<li><p>每次试枪后，把靶子拉回来看弹着点，然后调整下一次的射击角度的过程，叫做反向传播。注意，把靶子拉回来看和跑到靶子前面去看有本质的区别，后者容易有生命危险，因为还有别的射击者。<strong>一个不恰当的比喻是，在数学概念中，人跑到靶子前面去看，叫做正向微分；把靶子拉回来看，叫做反向微分。</strong></p>
+</li>
+<li><p><strong>每次调整角度的数值和方向，叫做梯度</strong>。比如向右侧调整1毫米，或者向左下方调整2毫米。如图中的绿色矢量线。</p>
+<p>在本例中，多个样本可以描述为连发射击，假设一次可以连打3发子弹（好家伙直接霰    弹），每次的离散程度都类似<img src="https://camo.githubusercontent.com/090f9d6b963e85bc447c82e94eebfa26564a24eef7cc0c05373aebf1db5d0995/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f746172676574322e706e67" alt="img" style="zoom:50%;" /></p>
+<p>如果每次3发子弹连发，这3发子弹的弹着点和靶心之间的差距之和再除以3，叫做损失，可以用损失函数来表示——在这个例子里面，用得分来衡量的话，就是说小明得到的反馈结果从差9分，到差8分，到差2分，到差1分，到差0分，<strong>这就是用一种量化的结果来表示小明的射击结果和目标之间差距的方式。也就是误差函数的作用</strong>。因为是一次只有一个样本，所以这里采用的是误差函数的称呼。如果一次有多个样本，就要叫做损失函数了。</p>
+<blockquote>
+<p><em>其实射击还不这么简单，如果是远距离狙击，还要考虑空气阻力和风速，在神经网络里，<strong>空气阻力和风速可以对应到隐藏层的概念上</strong>。</em> </p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>简单总结一下反向传播与梯度下降的基本工作原理：</strong></p>
+<ol>
+<li><strong>初始化；</strong></li>
+<li><strong>正向计算；</strong></li>
+<li><strong>损失函数为我们提供了计算损失的方法；</strong></li>
+<li><strong>梯度下降是在损失函数基础上向着损失最小的点靠近而指引了网络权重调整的方向；</strong></li>
+<li><strong>反向传播把损失值反向传给神经网络的每一层，让每一层都根据损失值反向调整权重；</strong></li>
+<li><strong>Go to 2，直到精度足够好（比如损失函数值小于 0.001）。</strong></li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2><ul>
+<li><p>线性</p>
+<p>比如 <img src="https://camo.githubusercontent.com/d2fb954cabd65d39416b87f8a4fd7f7a1f6176e7cccd5479ea8213ebaba67f65/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f666c6f77322e706e67" alt="img" style="zoom: 80%;" /></p>
+<blockquote>
+<p>最终的 z 值，受到了前面很多因素的影响：变量 w，变量 b，计算式 x，计算式 y。</p>
+</blockquote>
+<p><strong>求 w 的偏导</strong></p>
+<p>​    目前 z=162，如果想让 z 变小一些，比如目标是 z=150，w 应该如何变化呢？</p>
+<p>​    最笨的办法是可以在输入端一点一点的试——直到满意为止</p>
+<p>​    从 z 开始一层一层向回➡   <strong>z=x⋅y</strong>   又有   <code>x=2w+3b</code> ,<code>y=2b+1 </code> </p>
+<p>所以</p>
+<img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20201116200258117.png" alt="image-20201116200258117" style="zoom:80%;" />
+
+<p>  （链式法则）</p>
+<p>其中  </p>
+<p> $$ \frac{ \partial{ z } }{ \partial{ x } }=\frac{ \partial{ }}{ \partial{ x } }(x \cdot y)=y=9 $$      </p>
+<p>  $$ \frac{\partial{ x } }{ \partial{ w } }=\frac { \partial{ } } { \partial{ w } } (2w+3b)=2 $$      </p>
+<p> 上述表达的含义是：当 w 变化一点点时，z 会产生 w 的变化值18倍的变化。记住我们的目标是让 z=150，目前在初始状态时是 z=162，所以，问题转化为：当需要 z 从 162 变到 150 时，w 需要变化多少？ </p>
+<p>​    既然 Δz=18⋅Δw    那么—— $$\Delta w = {\Delta z \over 18}=\frac{162-150}{18}= 0.6667$$  </p>
+<p>​    最终结果也可以看出  $$w = w - 0.6667=2.3333$$</p>
+<p>​                                        $$x=2w+3b=16.6667$$</p>
+<p>​                          $$z=x \cdot y=16.6667 \times 9=150.0003$$ </p>
+<p>​    其误差和最终的150相差无几</p>
+<blockquote>
+<p>但是精度还不够。再迭代几次，到<strong>误差的绝对值不大于 <code>1e-4</code> 时，我们就可以结束迭代</strong>了 ，对于计算机来说，这些运算的执行速度很快。</p>
+</blockquote>
+<blockquote>
+<p>这个问题用数学公式倒推求解一个二次方程，就能直接得到准确的b值吗？是的！但是我们是要说明机器学习的方法，机器并不会解二次方程，而且很多时候不是用二次方程就能解决实际问题的</p>
+</blockquote>
+<p>求b的偏导</p>
+<p>不再赘述</p>
+<p><strong>同求w和b的变化值</strong></p>
+<p>我们不妨把 Δz的误差让 w 和 b 平分</p>
+</li>
+<li><p>非线性</p>
+<img src="https://camo.githubusercontent.com/4c2edb15b8b4e647e89e52baec6d8575a89c5f3487e6246747df0c3f000cfa9e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67616d652e706e67" alt="img" style="zoom:50%;" />
+
+<p>​    <strong>数学解析解</strong></p>
+<p>​    $$c=\sqrt{b}=\sqrt{\ln(a)}=\sqrt{\ln(x^2)}=2.13$$</p>
+<p>​    $$x = 9.6653$$ </p>
+<p>​    <strong>梯度迭代解</strong></p>
+<p>​        $$\frac{da}{dx}=\frac{d(x^2)}{dx}=2x=\frac{\Delta a}{\Delta x} \tag{1}$$</p>
+<p>$$\frac{db}{da} =\frac{d(\ln{a})}{da} =\frac{1}{a} = \frac{\Delta b}{\Delta a} \tag{2}$$</p>
+</li>
+</ul>
+<p>$$\frac{dc}{db}=\frac{d(\sqrt{b})}{db}=\frac{1}{2\sqrt{b}}=\frac{\Delta c}{\Delta b} \tag{3}$$ </p>
+<p>​    那么我们应该这样：Δc=c−y</p>
+<p>​                                   $$\Delta b = \Delta c \cdot 2\sqrt{b}$$</p>
+<p>​                                     Δa=Δb⋅a</p>
+<p>​                                    Δx=Δa/2x</p>
+<p><strong>上表</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方向</td>
+<td>公式</td>
+<td>迭代1</td>
+<td>迭代2</td>
+<td>迭代3</td>
+<td>迭代4</td>
+<td>迭代5</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>x=x−Δx</td>
+<td>2</td>
+<td>4.243</td>
+<td>7.344</td>
+<td>9.295</td>
+<td>9.665</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>a=x2</td>
+<td>4</td>
+<td>18.005</td>
+<td>53.934</td>
+<td>86.404</td>
+<td>93.233</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>b=ln(a)</td>
+<td>1.386</td>
+<td>2.891</td>
+<td>3.988</td>
+<td>4.459</td>
+<td>4.535</td>
+</tr>
+<tr>
+<td>正向</td>
+<td>c=b√</td>
+<td>1.177</td>
+<td>1.700</td>
+<td>1.997</td>
+<td>2.112</td>
+<td>2.129</td>
+</tr>
+<tr>
+<td></td>
+<td>标签值y</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+<td>2.13</td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δc=c−y</td>
+<td>-0.953</td>
+<td>-0.430</td>
+<td>-0.133</td>
+<td>-0.018</td>
+<td></td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δb=Δc⋅2b√</td>
+<td>-2.243</td>
+<td>-1.462</td>
+<td>-0.531</td>
+<td>-0.078</td>
+<td></td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δa=Δb⋅a</td>
+<td>-8.973</td>
+<td>-26.317</td>
+<td>-28.662</td>
+<td>-6.698</td>
+<td></td>
+</tr>
+<tr>
+<td>反向</td>
+<td>Δx=Δa/2x</td>
+<td>-2.243</td>
+<td>-3.101</td>
+<td>-1.951</td>
+<td>-0.360</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>​    <strong>自然角度理解</strong>：</p>
+<blockquote>
+<p>在自然界中，梯度下降的最好例子，就是泉水下山的过程：</p>
+<ol>
+<li>水受重力影响，会在当前位置，沿着最陡峭的方向流动，有时会形成瀑布（梯度下降）</li>
+<li>水流下山的路径不是唯一的，在同一个地点，有可能有多个位置具有同样的陡峭程度，而造成了分流（可以得到多个解）</li>
+<li>遇到坑洼地区，有可能形成湖泊，而终止下山过程（不能得到全局最优解，而是局部最优解）</li>
+</ol>
+</blockquote>
+<p>​    <strong>数学理解（淦哦</strong></p>
+<blockquote>
+<p>$$\theta_{n+1} = \theta_{n} - \eta \cdot \nabla J(\theta) $$</p>
+<ul>
+<li>θn+1：下一个值；</li>
+<li><strong>θn：当前值；</strong></li>
+<li>−：减号，梯度的反向；</li>
+<li>η：学习率或步长，控制每一步走的距离，不要太快以免错过了最佳景点，不要太慢以免时间太长；</li>
+<li><strong>∇：梯度，函数当前位置的最快上升点；</strong></li>
+<li>J(θ)：函数。</li>
+</ul>
+</blockquote>
+<p>​    三个要素：当前点   方向   步长</p>
+<p><strong>为何叫做 梯度下降？？</strong></p>
+<blockquote>
+<p>“梯度下降”包含了两层含义：</p>
+<ol>
+<li>梯度：函数当前位置的最快上升点；</li>
+<li>下降：与导数相反的方向，用数学语言描述就是那个减号。</li>
+</ol>
+<p>亦即与上升相反的方向运动，就是下降</p>
+</blockquote>
+<p>假设一个  $$J(x) = x ^2$$  |我们的目的是找到该函数的最小值，于是计算其微分</p>
+<p>​                $$J’(x) = 2x$$ </p>
+<p>假设初始位置为：$$x_0=1.2$$    假设学习率： $$\eta = 0.3$$ </p>
+<p>根据公式 ：$$\theta_{n+1} = \theta_{n} - \eta \cdot \nabla J(\theta) $$ </p>
+<p>则就是     $$x_{n+1} = x_{n} - \eta \cdot 2x$$ </p>
+<p><strong>现在是双变量的梯度下降</strong></p>
+<p>假设   $$J(x,y) = x^2 + \sin^2(y)$$     </p>
+<p>计算其微分  $${\partial{J(x,y)} \over \partial{x}} = 2x$$</p>
+<p>​                    $${\partial{J(x,y)} \over \partial{y}} = 2 \sin y \cos y$$ </p>
+<p>假设初始位置  $$(x_0,y_0)=(3,1)$$ 假设学习率  $$\eta = 0.1$$ </p>
+<p>那么其迭代计算公式为：  $$(x_{n+1},y_{n+1}) = (x_n,y_n) - \eta \cdot \nabla J(x,y)$$ </p>
+<p>​                                        $$ = (x_n,y_n) - \eta \cdot (2x,2 \cdot \sin y \cdot \cos y)$$ </p>
+<p>过程如下： </p>
+<table>
+<thead>
+<tr>
+<th>迭代次数</th>
+<th>x</th>
+<th>y</th>
+<th>J(x,y)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>9.708073</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2.4</td>
+<td>0.909070</td>
+<td>6.382415</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.105553</td>
+<td>0.063481</td>
+<td>0.015166</td>
+</tr>
+<tr>
+<td>16</td>
+<td>0.084442</td>
+<td>0.050819</td>
+<td>0.009711</td>
+</tr>
+</tbody></table>
+<p>迭代16次后，J(x,y) 的值为 0.009711，<strong>满足小于 0.01 的条件，停止迭代</strong></p>
+<p><strong>学习率η的选择</strong></p>
+<blockquote>
+<p>在公式表达时，学习率被表示为η。在代码里，我们把学习率定义为<code>learning_rate</code>，或者<code>eta</code>，针对上面的例子，试验不同的学习率对迭代情况的影响，如表2-5所示。</p>
+<p>表2-5 不同学习率对迭代情况的影响</p>
+<table>
+<thead>
+<tr>
+<th>学习率</th>
+<th>迭代路线图</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/4cfdca932b7f4b9f533b20b2471220830e4fa9b7fe7e301c7afa22aeb2c7a940/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643130302e706e67"><img src="https://camo.githubusercontent.com/4cfdca932b7f4b9f533b20b2471220830e4fa9b7fe7e301c7afa22aeb2c7a940/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643130302e706e67" alt="img"></a></td>
+<td>学习率太大，迭代的情况很糟糕，在一条水平线上跳来跳去，永远也不能下降。</td>
+</tr>
+<tr>
+<td>0.8</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/07d9ea9b385074dd3157c13213c9ff7c2b7ab1706a58777e621d2bc32bb54dfc/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643038302e706e67"><img src="https://camo.githubusercontent.com/07d9ea9b385074dd3157c13213c9ff7c2b7ab1706a58777e621d2bc32bb54dfc/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643038302e706e67" alt="img"></a></td>
+<td>学习率大，会有这种左右跳跃的情况发生，这不利于神经网络的训练。</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/b2af582be26aab17d545fce0d775db55129f64fb7e50bae627da3f3e829a291e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643034302e706e67"><img src="https://camo.githubusercontent.com/b2af582be26aab17d545fce0d775db55129f64fb7e50bae627da3f3e829a291e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643034302e706e67" alt="img"></a></td>
+<td>学习率合适，损失值会从单侧下降，4步以后基本接近了理想值。</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/c751d93772af8df24ab26bcd3d89636801b9c3394d04d7b44168004082228e9b/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643031302e706e67"><img src="https://camo.githubusercontent.com/c751d93772af8df24ab26bcd3d89636801b9c3394d04d7b44168004082228e9b/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f322f67643031302e706e67" alt="img"></a></td>
+<td>学习率较小，损失值会从单侧下降，但下降速度非常慢，10步了还没有到达理想状态。</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><blockquote>
+<p>在各种材料中经常看到的中英文词汇有：误差，偏差，Error，Cost，Loss，损失，代价……意思都差不多，在本书中，使用“损失函数”和“Loss Function”这两个词汇，具体的损失函数符号用 J 来表示，误差值用 loss 表示。</p>
+</blockquote>
+<p>“损失”就是所有样本的“误差”的总和   $$损失 = \sum^m_{i=1}误差<em>i$$   也就是    $$J = \sum</em>{i=1}^m loss_i$$ </p>
+<blockquote>
+<p>在黑盒子的例子中，我们如果说“某个样本的损失”是不对的，只能说“某个样本的误差”，因为样本是一个一个计算的。如果我们把神经网络的参数调整到完全满足独立样本的输出误差为 0，通常会令其它样本的误差变得更大，这样作为误差之和的损失函数值，就会变得更大。所以，我们通常会在根据某个样本的误差调整权重后，计算一下整体样本的损失函数值，来判定网络是不是已经训练到了可接受的状态。</p>
+</blockquote>
+<p><strong>损失函数的作用，就是计算神经网络每次迭代的前向计算结果与真实值的差距，从而指导下一步的训练向正确的方向进行。</strong></p>
+<p><strong>如何使用损失函数呢？具体步骤：</strong></p>
+<ol>
+<li>用随机值初始化前向计算公式的参数；</li>
+<li>代入样本，计算输出的预测值；</li>
+<li>用<strong>损失函数计算预测值和标签值（真实值）的误差</strong>；</li>
+<li><strong>根据损失函数的导数，沿梯度最小方向将误差回传，修正前向计算公式中的各个权重值</strong>；</li>
+<li><strong>进入第2步重复</strong>, 直到损失函数值达到一个满意的值就停止迭代。</li>
+</ol>
+<p><strong>损失函数的图像理解</strong></p>
+<ul>
+<li><strong>二维图像</strong></li>
+</ul>
+<blockquote>
+<img src="https://camo.githubusercontent.com/0c3256abd5d53df0ff69fbc19c3a889d7eddbc9df9046c3eb56a89d9bca4e1e3/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f332f676432642e706e67" alt="img" style="zoom: 80%;" />
+
+<p>单变量的损失函数图——纵坐标是损失函数值，横坐标是变量。不断地改变变量的值，会造成损失函数值的上升或下降。而梯度下降算法会让我们沿着损失函数值下降的方向前进。</p>
+<ol>
+<li>假设我们的初始位置在 A 点，x=x0，损失函数值（纵坐标）较大，回传给网络做训练；</li>
+<li>经过一次迭代后，我们移动到了 B 点，x=x1，损失函数值也相应减小，再次回传重新训练；</li>
+<li>以此节奏不断向损失函数的最低点靠近，经历了 x2,x3,x4,x5；</li>
+<li>直到损失值达到可接受的程度，比如 x5 的位置，就停止训练。</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>等高线图（？？？</strong></li>
+</ul>
+<blockquote>
+<img src="https://camo.githubusercontent.com/e88729b8852343a7cc533201bade63919a4048e1a37bcd56edef1b4ac6c020e2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f332f676433642e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>双变量的损失函数图</strong>——横坐标是一个变量 w，纵坐标是另一个变量 b。两个变量的组合形成的损失函数值，在图中对应处于等高线上的唯一的一个坐标点</p>
+<p>w,b 所有不同值的组合会形成一个损失函数值的矩阵，我们把矩阵中具有相同（相近）损失函数值的点连接起来，可以形成一个不规则椭圆，其圆心位置，是损失值为 0 的位置，也是我们要逼近的目标。</p>
+<p>这个椭圆如同平面地图的等高线，来表示的一个洼地，中心位置比边缘位置要低，通过对损失函数值的计算，对损失函数的求导，会带领我们沿着等高线形成的梯子一步步下降，无限逼近中心点。</p>
+</blockquote>
+<h3 id="机器学习常用损失函数"><a href="#机器学习常用损失函数" class="headerlink" title="*机器学习常用损失函数"></a>*机器学习常用损失函数</h3><p>​    符号规则：**$a$ 是预测值<strong>，$y$ **是样本标签值</strong>，$loss$ <strong>是损失函数值</strong>。</p>
+<ul>
+<li><p>Gold Standard Loss，又称0-1误差  </p>
+<p>$$loss=\begin{cases}0 &amp; a=y \\1 &amp; a \ne y \end{cases}$$ </p>
+</li>
+<li><p>绝对值损失函数</p>
+</li>
+</ul>
+<p>​     $$loss = |y-a|$$</p>
+<ul>
+<li>Hinge Loss，铰链/折页损失函数或最大边界损失函数，主要用于SVM（支持向量机）中</li>
+</ul>
+<p>​     $$loss=\max(0,1-y \cdot a) \qquad y=\pm 1$$</p>
+<ul>
+<li>Log Loss，对数损失函数，又叫交叉熵损失函数(cross entropy error)</li>
+</ul>
+<p>​     $$loss = -[y \cdot \ln(a)+(1-y)\cdot\ln(1-a)]\qquad y\in { 0,1 } $$</p>
+<ul>
+<li>Squared Loss，均方差损失函数</li>
+</ul>
+<p>​      $$loss=(a-y)^2$$</p>
+<ul>
+<li>Exponential Loss，指数损失函数</li>
+</ul>
+<p>​      $$loss = e^{-(y \cdot a)}$$ </p>
+<blockquote>
+<p> <strong>神经网络中常用的损失函数</strong></p>
+<ul>
+<li>均方差函数，主要用于回归</li>
+<li>交叉熵函数，主要用于分类</li>
+</ul>
+<p>二者都是非负函数，极值在底部，用梯度下降法可以求解。</p>
+</blockquote>
+<h3 id="均方差损失函数"><a href="#均方差损失函数" class="headerlink" title="均方差损失函数"></a>均方差损失函数</h3><blockquote>
+<p>最直观的一个损失函数了，<strong>计算预测值和真实值之间的欧式距离</strong>。预测值和真实值越接近，两者的均方差就越小</p>
+<p>常用于线性回归(linear regression)，即函数拟合(function fitting)。公式如下</p>
+<p>$$loss = {1 \over 2}(z-y)^2 $$    <strong>[单样本]</strong></p>
+<p>$$J=\frac{1}{2m} \sum_{i=1}^m (z_i-y_i)^2$$  <strong>[多样本]</strong></p>
+</blockquote>
+<p><strong>工作原理</strong>：</p>
+<blockquote>
+<p>要想得到预测值 a 与真实值 y 的差距，最朴素的想法就是用 $Error=a_i-y_i$</p>
+<p>对于单个样本来说，这样做没问题，但是多个样本累计时，$a_i-y_i$ 可能有正有负，误差求和时就会导致相互抵消，从而失去价值。所以有了绝对值差的想法，即  $Error=a_i-y_i$ </p>
+<p><strong>这看上去很简单，并且也很理想，那为什么还要引入均方差损失函数呢？</strong></p>
+<p>那么现在看一下他们的比较：</p>
+<table>
+<thead>
+<tr>
+<th>样本标签值</th>
+<th>样本预测值</th>
+<th>绝对值损失函数</th>
+<th>均方差损失函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[1,1,1]</td>
+<td>[1,2,3]</td>
+<td>(1−1)+(2−1)+(3−1)=3</td>
+<td>(1−1)2+(2−1)2+(3−1)2=5</td>
+</tr>
+<tr>
+<td>[1,1,1]</td>
+<td>[1,3,3]</td>
+<td>(1−1)+(3−1)+(3−1)=4</td>
+<td>(1−1)2+(3−1)2+(3−1)2=8</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>4/3=1.33</td>
+<td>8/5=1.6</td>
+</tr>
+</tbody></table>
+</blockquote>
+<blockquote>
+<p><strong>可以看到5比3已经大了很多，8比4大了一倍，而8比5也放大了某个样本的局部损失对全局带来的影响，用术语说，就是“对某些偏离大的样本比较敏感”，从而引起监督训练过程的足够重视，以便回传误差</strong></p>
+</blockquote>
+<h3 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h3><blockquote>
+<p><strong>交叉熵（Cross Entropy）是Shannon信息论中一个重要概念，主要用于度量两个概率分布间的差异性信息。在信息论中，交叉熵是表示两个概率分布 p,q 的差异，其中 p 表示真实分布，q 表示预测分布，那么 H(p,q) 就称为交叉熵：</strong></p>
+<p>$$H(p,q)=\sum_i p_i \cdot \ln {1 \over q_i} = - \sum_i p_i \ln q_i $$  </p>
+<p>交叉熵可在神经网络中作为损失函数，<strong>p 表示真实标记的分布</strong>，<strong>q 则为训练后的模型的预测标记分布</strong>，<strong>交叉熵损失函数可以衡量 p 与 q 的相似性</strong>。</p>
+<p><strong>交叉熵函数常用于逻辑回归(logistic regression)，也就是分类(classification)</strong></p>
+</blockquote>
+<p><strong>交叉熵的由来</strong> </p>
+<ul>
+<li><strong>信息量</strong></li>
+</ul>
+<blockquote>
+<p>信息表示方法： $$I(x_j) = -\ln (p(x_j))$$ </p>
+<p>$x_j$：表示一个事件</p>
+<p>$p(x_j)$：<strong>表示 $x_j$ 发生的概率</strong></p>
+<p>$I(x_j)$：<strong>信息量</strong>，$x_j$ 越不可能发生时，它一旦发生后的信息量就越大</p>
+</blockquote>
+<p>举个例子，我考试有三种可能的情况发生</p>
+<table>
+<thead>
+<tr>
+<th>事件编号</th>
+<th>事件</th>
+<th>概率 p</th>
+<th>信息量 I</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x1</td>
+<td>优秀</td>
+<td>p=0.7</td>
+<td>I=−ln(0.7)=0.36</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>及格</td>
+<td>p=0.2</td>
+<td>I=−ln(0.2)=1.61</td>
+</tr>
+<tr>
+<td>x3</td>
+<td>不及格</td>
+<td>p=0.1</td>
+<td>I=−ln(0.1)=2.30</td>
+</tr>
+</tbody></table>
+<p>好家伙，某某同学不及格！好大的信息量！相比较来说，“优秀”事件的信息量反而小了很多</p>
+<ul>
+<li><p><strong>熵</strong></p>
+<blockquote>
+<p>$$H(p) = - \sum_j^n p(x_j) \ln (p(x_j))$$ </p>
+<p>针对上个栗子就是 ：</p>
+<p>$$\begin{aligned} H(p)&amp;=-[p(x_1) \ln p(x_1) + p(x_2) \ln p(x_2) + p(x_3) \ln p(x_3)] \\&amp;=0.804\end{aligned}$$  </p>
+</blockquote>
+</li>
+<li><p><strong>相对熵（KL散度）</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>相对熵又称KL散度，<strong>如果我们对于同一个随机变量 x 有两个单独的概率分布 P(x) 和 Q(x)，我们可以使用 KL 散度（Kullback-Leibler (KL) divergence）来衡量这两个分布的差异</strong>，这个相当于信息论范畴的均方差。</p>
+<p>计算公式为  $$D_{KL}(p||q)=\sum_{j=1}^n p(x_j) \ln{p(x_j) \over q(x_j)}$$   </p>
+<p><strong>n 为事件的所有可能性。D 的值越小，表示 q 分布和 p 分布越接近。</strong></p>
+</blockquote>
+<ul>
+<li>交叉熵</li>
+</ul>
+<blockquote>
+<p>将上述公式变形</p>
+<p>$$\begin{aligned} D_{KL}(p||q)&amp;=\sum_{j=1}^n p(x_j) \ln{p(x_j)} - \sum_{j=1}^n p(x_j) \ln q(x_j) \\&amp;=- H(p(x)) + H(p,q) \end{aligned}$$</p>
+<p>等式的前一部分恰巧就是 p 的熵，等式的后一部分，就是<strong>交叉熵</strong>：</p>
+<p>即  $$H(p,q) =- \sum_{j=1}^n p(x_j) \ln q(x_j)$$ </p>
+<p><strong>在机器学习中，我们需要评估标签值 $y$ 和预测值 $a$ 之间的差距，使用KL散度刚刚好，即 $D_{KL}(y||a)$，由于KL散度中的前一部分 $H(y)$ 不变，故在优化过程中，只需要关注交叉熵就可以了。所以一般在机器学习中直接用交叉熵做损失函数来评估模型</strong></p>
+<p>即  $$loss =- \sum_{j=1}^n y_j \ln a_j$$ </p>
+<p><strong>n 并不是样本个数，而是分类个数。所以，对于批量样本（m个）的交叉熵计算公式是</strong></p>
+<p>$$J =- \sum_{i=1}^m \sum_{j=1}^n y_{ij} \ln a_{ij}$$ </p>
+<p> m 是样本数，n 是分类数 </p>
+<blockquote>
+<p>有一类特殊问题，<strong>就是事件只有两种情况发生的可能</strong>，比如“学会了”和“没学会”，<strong>称为 0/1 分类或二分类</strong>。对于这类问题，由于$n=2，y_1=1-y_2，a_1=1-a_2$所以交叉熵可以简化为：$$loss =-[y \ln a + (1-y) \ln (1-a)]$$</p>
+<p>批量算法： $$J= - \sum_{i=1}^m [y_i \ln a_i + (1-y_i) \ln (1-a_i)]$$ </p>
+</blockquote>
+</blockquote>
+<p><strong>关于二分类问题交叉熵</strong></p>
+<p>对于二分类对于批量样本的交叉熵计算公式，有两种情况：</p>
+<ul>
+<li>当 y=1 时，即标签值是 1，是个正例，加号后面的项为 0：$$loss = -\ln(a)$$ </li>
+<li>当 y=0 时，即标签值是0，是个反例，加号前面的项为0： $$loss = -\ln (1-a)$$</li>
+</ul>
+<img src="https://camo.githubusercontent.com/0c6196e426549de3881ab57bcdae0b3e5472687e046da2826e9b26f9670e4b75/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f332f63726f7373656e74726f7079322e706e67" alt="img" style="zoom:80%;" />
+
+<blockquote>
+<p><strong>横坐标是预测输出，纵坐标是损失函数值。y=1 意味着当前样本标签值是1，当预测输出越接近1时，损失函数值越小，训练结果越准确。当预测输出越接近0时，损失函数值越大，训练结果越糟糕。</strong></p>
+</blockquote>
+<p><strong>栗子时刻</strong></p>
+<p><strong>二分类</strong></p>
+<p>假设学会了课程的标签值为1，没有学会的标签值为0</p>
+<p>我们想建立一个预测器，对于一个特定的学员，根据出勤率、课堂表现、作业情况、学习能力等等来预测其学会课程的概率。</p>
+<blockquote>
+<p>对于学员甲，预测其学会的概率为0.6，而实际上该学员通过了考试，真实值为1。所以，学员甲的交叉熵损失函数值是：$$loss_1 = -(1 \times \ln 0.6 + (1-1) \times \ln (1-0.6)) = 0.51$$ </p>
+<p>对于学员乙，预测其学会的概率为0.7，而实际上该学员也通过了考试。所以，学员乙的交叉熵损失函数值是：$$loss_2 = -(1 \times \ln 0.7 + (1-1) \times \ln (1-0.7)) = 0.36$$ </p>
+<p><strong>由于0.7比0.6更接近1，是相对准确的值，所以 loss2 要比 loss1 小，反向传播的力度也会小</strong></p>
+</blockquote>
+<p> <strong>现在是多分类问题</strong></p>
+<p>假设期末考试有三种情况：</p>
+<ol>
+<li>优秀，标签值OneHot编码为 [1,0,0]；</li>
+<li>及格，标签值OneHot编码为 [0,1,0]；</li>
+<li>不及格，标签值OneHot编码为 [0,0,1]。</li>
+</ol>
+<blockquote>
+<p>假设我们预测学员丙的成绩为优秀、及格、不及格的概率为：[0.2,0.5,0.3]</p>
+<p>而真实情况是该学员不及格，则得到的交叉熵是 $$ loss_1 = -(0 \times \ln 0.2 + 0 \times \ln 0.5 + 1 \times \ln 0.3) = 1.2$$ </p>
+<p>假设我们预测学员丁的成绩为优秀、及格、不及格的概率为：[0.2,0.2,0.6]</p>
+<p>而真实情况是该学员不及格，则得到的交叉熵是：</p>
+<p>$$loss_2 = -(0 \times \ln 0.2 + 0 \times \ln 0.2 + 1 \times \ln 0.6) = 0.51$$ </p>
+<p>可以看到，0.51比1.2的损失值小很多，这说明预测值越接近真实标签值（0.6 vs 0.3），交叉熵损失函数值越小，反向传播的力度越小 </p>
+</blockquote>
+<h3 id="为什么不能使用均方差作为分类函数的损失函数"><a href="#为什么不能使用均方差作为分类函数的损失函数" class="headerlink" title="??为什么不能使用均方差作为分类函数的损失函数"></a>??为什么不能使用均方差作为分类函数的损失函数</h3><blockquote>
+<ol>
+<li>回归问题通常用均方差损失函数，可以保证损失函数是个凸函数，即可以得到最优解。<strong>而分类问题如果用均方差的话，损失函数的表现不是凸函数，就很难得到最优解。而交叉熵函数可以保证区间内单调。</strong></li>
+<li>分类问题的最后一层网络，需要分类函数，Sigmoid或者Softmax，如果再接均方差函数的话，其求导结果复杂，运算量比较大。用交叉熵函数的话，可以得到比较简单的计算结果，一个简单的减法就可以得到反向误差。</li>
+</ol>
+</blockquote>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><blockquote>
+<p>output=relu(dot(<strong>w</strong>[weight] , input)+<strong>b</strong>[bias])</p>
+</blockquote>
+<h5 id="random-initialization-随机初始化"><a href="#random-initialization-随机初始化" class="headerlink" title="random initialization[随机初始化]"></a>random initialization[随机初始化]</h5><blockquote>
+<p>因为是随机的,当然会得到一个无意义的表示,但玩意就是个起点,下一步是根据反馈调节这些权重——即训练过程</p>
+</blockquote>
+<h5 id="Training-loop"><a href="#Training-loop" class="headerlink" title="Training loop"></a>Training loop</h5><ul>
+<li>抽取训练样本x和对应目标y组成的数据批量</li>
+<li>在x上运行网络[<strong>Forward pass[向前传播]</strong>],得到预测值 y_pred</li>
+<li>计算网络在这批数据的损失,用于衡量<strong>y_pred和y之间的距离</strong>[所谓损失]</li>
+<li><strong>更新权重[重点]</strong>,使网络在这批数据上的损失略微下降</li>
+</ul>
+<h4 id="关于relu函数"><a href="#关于relu函数" class="headerlink" title="关于relu函数"></a>关于relu函数</h4><blockquote>
+<p><strong>整流线性单位函数</strong>（Rectified Linear Unit, <strong>ReLU</strong>）,又称<strong>修正线性单元</strong>, 是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">人工神经网络</a>中常用的激励函数（activation function），通常指代以<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%9C%E5%9D%A1%E5%87%BD%E6%95%B0">斜坡函数</a>及其变种为代表的非线性函数。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#relu函数实现</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nautual_relu</span>(<span class="params">x</span>):</span> <span class="comment">#x 是一个numpy 2d 向量</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;线性整流函数（Rectified Linear Unit, ReLU）</span></span><br><span class="line"><span class="string">    又称修正线性单元，是一种人工神经网络中常用的**激活函数**（activation function）</span></span><br><span class="line"><span class="string">    通常指代以斜坡函数及其变种为代表的非线性函数。&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">assert</span> len(x.shape)==<span class="number">2</span></span><br><span class="line">    x=x.copy()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(x.shape[<span class="number">1</span>]):</span><br><span class="line">            x[i,j]=max(x[i,j],<span class="number">0</span>) <span class="comment">#看样子是负数归零</span></span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<h4 id="add函数"><a href="#add函数" class="headerlink" title="add函数"></a>add函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nautual_add</span>(<span class="params">x,y</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> len(x.shape)==<span class="number">2</span>  <span class="comment">#依旧假设是2d向量</span></span><br><span class="line">    <span class="keyword">assert</span> y.shape==x.shape</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(x.shape[<span class="number">1</span>]):</span><br><span class="line">            x[i,j] +=y[i,j]</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<h5 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h5><blockquote>
+<p>那么,如果不同尺寸的——比如说2d张量和一个向量相加</p>
+<p>没有歧义的话,向量会被<strong>广播</strong>[broadcast]以匹配较大张量的形状</p>
+</blockquote>
+<ul>
+<li>给较小的张量添加轴(<strong>广播轴</strong>) 使其 **ndim[n-dimension的缩写]**与较大的张量相同</li>
+<li>沿着新轴重复——直至其形状匹配</li>
+</ul>
+<h4 id="Dot"><a href="#Dot" class="headerlink" title="Dot"></a>Dot</h4><blockquote>
+<p>ndim=2基本上就是矩阵的点积规则</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">natural_vector_dot</span>(<span class="params">x,y</span>):</span> <span class="comment">#点积</span></span><br><span class="line">    <span class="keyword">assert</span> len(x.shape)==<span class="number">1</span></span><br><span class="line">    <span class="keyword">assert</span> len(y.shape)==<span class="number">1</span></span><br><span class="line">    <span class="keyword">assert</span> x.shape[<span class="number">0</span>]==y.shape[<span class="number">0</span>]</span><br><span class="line">    z=<span class="number">0.</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">0</span>]):</span><br><span class="line">        z+=x[i]*y[i]</span><br><span class="line">    <span class="keyword">return</span> z</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">natural_matrix_dot</span>(<span class="params">x,y</span>):</span>  <span class="comment">#这就是实际的矩阵乘法辣</span></span><br><span class="line">    <span class="keyword">assert</span> len(x.shape)==<span class="number">2</span></span><br><span class="line">    <span class="keyword">assert</span> len(y.shape)==<span class="number">2</span></span><br><span class="line">    <span class="keyword">assert</span> len(x.shape[<span class="number">1</span>])==len(y.shape[<span class="number">0</span>])</span><br><span class="line">    z= np.zeros((x.shape[<span class="number">0</span>],y.shape[<span class="number">1</span>]))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(y.shape[<span class="number">1</span>]):</span><br><span class="line">            row_x=x[i,:]</span><br><span class="line">            column_y=y[:,j]</span><br><span class="line">            z[i,j]=natural_vector_dot(row_x,column_y) <span class="comment">#点积</span></span><br><span class="line">    <span class="keyword">return</span> z</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>请再继续想一下——更高维的是否是以此类推??</p>
+</blockquote>
+<h4 id="Reshape"><a href="#Reshape" class="headerlink" title="Reshape"></a>Reshape</h4><blockquote>
+<p>改变行和列以达想要的形状</p>
+</blockquote>
+<h5 id="transposition-转置"><a href="#transposition-转置" class="headerlink" title="transposition[转置]"></a>transposition[转置]</h5><blockquote>
+<p>旋转\缩放\仿射变换等基本几何操作都可以表示为张量计算</p>
+</blockquote>
+<h4 id="张量运算的导数：梯度——好家伙久闻大名"><a href="#张量运算的导数：梯度——好家伙久闻大名" class="headerlink" title="张量运算的导数：梯度——好家伙久闻大名"></a>张量运算的导数：梯度——好家伙久闻大名</h4><blockquote>
+<p>它是导数这一概念向多元函数导数的推广。  </p>
+<p>多元函数是以张量作为输入的函数</p>
+</blockquote>
+<p>假设有一个输入向量<code> x</code> 、一个矩阵<code> W</code> 、一个目标 <code>y</code> 和一个损失函数 <code>loss</code> 。你可以用 <code>W </code>来计算预测值 <code>y_pred</code> ，然后计算损失——或者说预测值 <code>y_pred</code> 和目标 <code>y </code>之间的距离</p>
+<blockquote>
+<p>y_pred = dot(W, x)<br>loss_value = loss(y_pred, y)</p>
+</blockquote>
+<p>如果输入数据<code> x</code> 和<code> y</code> 保持不变，那么这可以看作将 <code>W</code> 映射到损失值的函数。</p>
+<p>假设 W 的当前值为 <code>W0</code> 。 <code>f</code> 在 <code>W0</code> 点的导数是一个张量 <code>gradient(f)(W0) </code>，其形状与 <code>W</code> 相同，<br>每个系数 <code>gradient(f)(W0)[i, j]</code> 表示改变 <code>W0[i, j]</code> 时 <code>loss_value</code> 变化的方向和大小。<br>张量 <code>gradient(f)(W0)</code> 是函数 <code>f(W) = loss_value </code>在<code>W0</code>的导数</p>
+<blockquote>
+<p>单变量函数 <code>f(x) </code>的导数可以看作函数 f 曲线的斜率。同样， <code>gradient(f) (W0)</code> 也可以看作表示<code> f(W)</code> 在<code> W0</code> 附近<strong>曲率（curvature）</strong>的张量</p>
+</blockquote>
+<h5 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h5><p>给定一个可微函数，理论上可以用解析法找到它的最小值：函数的最小值是导数为 0 的点，因此你只需找到所有导数为 0 的点，然后计算函数在其中哪个点具有最小值。可以通过对方程<code> gradient(f)(W) = 0</code>求解 W 来实现这一方法——基于当前在随机数据批量上的损失，一点一点地对参数进行调节</p>
+<ul>
+<li>抽取训练样本 x 和对应目标 y 组成的数据批量</li>
+<li>在 x 上运行网络，得到预测值 <code>y_pred</code></li>
+<li>计算网络在这批数据上的损失，用于衡量 <code>y_pred </code>和<code> y</code> 之间的距离</li>
+<li>计算损失相对于网络参数的梯度<code>［一次反向传播（backward pass）］</code></li>
+<li>将参数沿着梯度的反方向移动一点，比如<code>W -= step * gradient</code>，从而使这批数据上的损失减小一点</li>
+</ul>
+<blockquote>
+<p>以上就是<strong>小批量随机梯度下降（mini-batch stochastic gradient descent</strong>，又称为小批量<strong>SGD</strong>）| <strong>随机</strong>（stochastic）是指每批数据都是随机抽取的（stochastic 是 random在科学上的同义词</p>
+</blockquote>
+<p>注意，小批量 SGD 算法的一个变体是每次迭代时只抽取一个样本和目标，而不是抽取一批数据。这叫作<strong>真 SGD</strong>（有别于小批量 SGD）。还有另一种极端，每一次迭代都在所有数据上<br>运行，这叫作<strong>批量 SGD</strong>。这样做的话，每次更新都更加准确，但计算代价也高得多。这两个极端之间的有效折中则是选择合理的批量大小。</p>
+<hr>
+<p>此外，SGD 还有多种变体，其区别在于计算下一次权重更新时还要考虑上一次权重更新，<br>而不是仅仅考虑当前梯度值，比如<strong>带动量的 SGD</strong>、Adagrad、RMSProp 等变体。这些变体被称为<strong>优化方法</strong>（optimization method）或<strong>优化器</strong> （optimizer）</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/BNMnpQ"><img src="https://s1.ax1x.com/2020/10/30/BNMnpQ.png" alt="BNMnpQ.png"></a></p>
+<p>如你所见，在某个参数值附近，有一个<strong>局部极小点</strong>（local minimum）：在这个点附近，向左移动和向右移动都会导致损失值增大。如果使用小学习率的 SGD 进行优化，那么优化过程可<br>能会陷入局部极小点，导致无法找到全局最小点。</p>
+</blockquote>
+<blockquote>
+<p>动量方法的实现过程是每一步都移动小球，不仅要考虑当<br>前的斜率值（当前的加速度），还要考虑当前的速度（来自于之前的加速度）。这在实践中的是指，更新参数 w 不仅要考虑当前的梯度值，还要考虑上一次的参数更新</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><blockquote>
+<p>向神经网络的第一个小台阶</p>
+<p>单层的神经网络，其实就是一个神经元，可以完成一些线性的工作，比如拟合一条直线，这用一个神经元就可以实现。当这个神经元只接收一个输入时，就是单变量线性回归，可以在二维平面上用可视化方法理解。当接收多个变量输入时，叫做多变量线性回归，此时可视化方法理解就比较困难了，通常我们会用变量两两组对的方式来表现。</p>
+<p>当变量多于一个时，两个变量的量纲和数值有可能差别很大，这种情况下，我们通常需要对样本特征数据做归一化，然后把数据喂给神经网络进行训练，否则会出现“消化不良”的情况。</p>
+</blockquote>
+<p>线性回归的解题思路：<strong>利用已有值，预测未知值</strong></p>
+<p><strong>举个栗子</strong></p>
+<p>你想科学控制机房空调功率（保证服务器所在的机房的温度常年保持在23摄氏度左右）但是你他娘不会热力学——所以你打算用统计学研究功率和服务器数量的关系——<strong>最简单的一元线性回归问题</strong> </p>
+<h3 id="一元线性回归模型"><a href="#一元线性回归模型" class="headerlink" title="一元线性回归模型"></a>一元线性回归模型</h3><blockquote>
+<p>$$Y=a+bX+\varepsilon $$ </p>
+<p>X 是自变量   Y 是因变量   ε 是随机误差</p>
+</blockquote>
+<blockquote>
+<p><strong>对于线性回归模型，有如下一些概念需要了解：</strong></p>
+<ul>
+<li>通常假定随机误差 ε 的均值为 0，方差为σ2（σ2&gt;0，σ2 与 X 的值无关）</li>
+<li>若进一步假定随机误差遵从正态分布，就叫做正态线性模型</li>
+<li>一般地，若有 k 个自变量和 1 个因变量（即公式1中的 Y），则因变量的值分为两部分：一部分由自变量影响，即表示为它的函数，函数形式已知且含有未知参数；另一部分由其他的未考虑因素和随机性影响，即随机误差</li>
+<li>当函数为参数未知的线性函数时，称为线性回归分析模型</li>
+<li>当函数为参数未知的非线性函数时，称为非线性回归分析模型</li>
+<li>当自变量个数大于 1 时称为多元回归</li>
+<li>当因变量个数大于 1 时称为多重回归</li>
+</ul>
+</blockquote>
+<h3 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h3><blockquote>
+<p>也叫做最小平方法（Least Square），它通过最小化误差的平方和寻找数据的最佳函数匹配。利用最小二乘法可以简便地求得未知的数据，并使得这些求得的数据与实际数据之间误差的平方和为最小。最小二乘法还可用于曲线拟合。其他一些优化问题也可通过最小化能量或最小二乘法来表达。</p>
+</blockquote>
+<p>线性回归试图学得：$$z_i=w \cdot x_i+b$$ </p>
+<p>使$$z_i \simeq y_i$$ </p>
+<blockquote>
+<p>$x_i$ <strong>是样本特征值，$y_i$ 是样本标签值，$z_i$ 是模型预测值</strong></p>
+</blockquote>
+<p>如何学得 w 和 b 呢？均方差(MSE - mean squared error)是回归任务中常用的手段</p>
+<blockquote>
+<p>$$J = \frac{1}{2m}\sum_{i=1}^m(z_i-y_i)^2 = \frac{1}{2m}\sum_{i=1}^m(y_i-wx_i-b)^2$$   </p>
+</blockquote>
+<p>J 称为损失函数。实际上就是试图找到一条直线，使所有样本到直线上的残差的平方和最小。</p>
+<img src="https://camo.githubusercontent.com/54bcce372e82cc90f25d76e5bb4ea76d77a2dbc2b188017ea58da94c47f950ec/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f342f6d73652e706e67" alt="img" style="zoom:50%;" />
+
+<p>假设我们计算出初步的结果是虚线所示，这条直线是否合适呢？我们来计算一下图中每个点到这条直线的距离，把这些距离的值都加起来（都是正数，不存在互相抵消的问题）成为误差。</p>
+<p>因为上图中的几个点不在一条直线上，所以不能有一条直线能同时穿过它们。所以，我们只能想办法不断改变红色直线的角度和位置，让总体误差最小（永远不可能是 0），就意味着整体偏差最小，那么最终的那条直线就是我们要的结果。</p>
+<blockquote>
+<p><strong>如果想让误差的值最小，通过对 w 和 b 求导，再令导数为 0（到达最小极值），就是 w 和 b 的最优解</strong></p>
+<p>推导过程：</p>
+<p><strong>对于w求导</strong></p>
+<p>$$\begin{aligned}\frac{\partial{J}}{\partial{w}} &amp;=\frac{\partial{(\frac{1}{2m}\sum_{i=1}^m(y_i-wx_i-b)^2)}}{\partial{w}} \\&amp;= \frac{1}{m}\sum_{i=1}^m(y_i-wx_i-b)(-x_i) \end{aligned}$$ </p>
+<p>令其为零  $$\sum_{i=1}^m(y_i-wx_i-b)x_i=0$$ </p>
+<p><strong>对于b求导</strong></p>
+<p>$$\begin{aligned}\frac{\partial{J}}{\partial{b}} &amp;=\frac{\partial{(\frac{1}{2m}\sum_{i=1}^m(y_i-wx_i-b)^2)}}{\partial{b}} \\&amp;=\frac{1}{m}\sum_{i=1}^m(y_i-wx_i-b)(-1) \end{aligned}$$      </p>
+<p> 令其为零   $$\sum_{i=1}^m(y_i-wx_i-b)=0$$  </p>
+<p>​                    得到  $$\sum_{i=1}^m b = m \cdot b = \sum_{i=1}^m{y_i} - w\sum_{i=1}^m{x_i}$$ </p>
+<p>​                    两边除以 m<strong>得到b</strong>：  $$b = \frac{1}{m}\left(\sum_{i=1}^m{y_i} - w\sum_{i=1}^m{x_i}\right)=\bar y-w \bar x$$ </p>
+<p>​            将其带入 <strong>对w求导并令其为零得到的</strong>  $$\sum_{i=1}^m(y_i-wx_i-b)x_i=0$$   中</p>
+<p>​            得 $$\sum_{i=1}^m(y_i-wx_i-\bar y + w \bar x)x_i=0$$</p>
+<p>​                $$\sum_{i=1}^m(x_i y_i-wx^2_i-x_i \bar y + w \bar x x_i)=0$$</p>
+<p>​                $$\sum_{i=1}^m(x_iy_i-x_i \bar y)-w\sum_{i=1}^m(x^2_i - \bar x x_i) = 0$$</p>
+<p>​                        $$w = \frac{\sum_{i=1}^m(x_iy_i-x_i \bar y)}{\sum_{i=1}^m(x^2_i - \bar x x_i)} $$</p>
+<p>​                        $$w = \frac{\sum_{i=1}^m (x_i \cdot y_i) - \sum_{i=1}^m x_i \cdot \frac{1}{m} \sum_{i=1}^m y_i}{\sum_{i=1}^m x^2_i - \sum_{i=1}^m x_i \cdot \frac{1}{m}\sum_{i=1}^m x_i}$$ </p>
+<p>​        分子分母都乘以 $m$：</p>
+<p>​                        $$w = \frac{m\sum_{i=1}^m x_i y_i - \sum_{i=1}^m x_i \sum_{i=1}^m y_i}{m\sum_{i=1}^m x^2_i - (\sum_{i=1}^m x_i)^2} $$    </p>
+<p>​    之后得到不同的变种</p>
+<blockquote>
+<p>而事实上，式13有很多个变种，大家会在不同的文章里看到不同版本，往往感到困惑，比如下面两个公式也是正确的解：</p>
+<p>$$w = \frac{\sum_{i=1}^m y_i(x_i-\bar x)}{\sum_{i=1}^m x^2_i - (\sum_{i=1}^m x_i)^2/m} $$</p>
+<p>$$w = \frac{\sum_{i=1}^m x_i(y_i-\bar y)}{\sum_{i=1}^m x^2_i - \bar x \sum_{i=1}^m x_i} $$</p>
+<p>以上两个公式，如果把公式10代入，也应该可以得到和式13相同的答案，只不过需要一些运算技巧。比如，很多人不知道这个神奇的公式：</p>
+<p>$$\begin{aligned}\sum_{i=1}^m (x_i \bar y) &amp;= \bar y \sum_{i=1}^m x_i =\frac{1}{m}(\sum_{i=1}^m y_i) (\sum_{i=1}^m x_i) \\&amp;=\frac{1}{m}(\sum_{i=1}^m x_i) (\sum_{i=1}^m y_i)= \bar x \sum_{i=1}^m y_i \\&amp;=\sum_{i=1}^m (y_i \bar x) \end{aligned}$$</p>
+</blockquote>
+<p>淦哦我被干碎了</p>
+</blockquote>
+<h3 id="梯度下降-1"><a href="#梯度下降-1" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>我们预设函数 $$z_i = x_i \cdot w + b $$       (1)</p>
+<p>则  $$loss_i(w,b) = \frac{1}{2} (z_i-y_i)^2$$      (2)</p>
+<blockquote>
+<p>与最小二乘法比较可以看到，梯度下降法和最小二乘法的模型及损失函数是相同的，都是一个线性模型加均方差损失函数，模型用于拟合，损失函数用于评估效果。</p>
+</blockquote>
+<blockquote>
+<p>区别在于，最小二乘法从损失函数求导，直接求得数学解析解，而梯度下降以及后面的神经网络，都是利用导数传递误差，再通过迭代方式一步一步（用近似解）逼近真实解。 </p>
+</blockquote>
+<h4 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h4><p>计算 z 的梯度 $$\frac{\partial loss}{\partial z_i}=z_i - y_i$$ </p>
+<p>计算 w  的梯度  $$\frac{\partial{loss}}{\partial{w}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{w}}=(z_i-y_i)x_i$$ </p>
+<blockquote>
+<p>我们用 $loss$ 的值作为误差衡量标准，通过求 $w$ 对它的影响，也就是 $loss$ 对 $w$ 的偏导数，来得到 $w$ 的梯度。由于 $loss$ 是通过公式2-&gt;公式1间接地联系到 $w$ 的，所以我们使用链式求导法则，通过单个样本来求导。</p>
+</blockquote>
+<p>计算 b 的梯度  $$\frac{\partial{loss}}{\partial{b}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{b}}=z_i-y_i$$   </p>
+<h3 id="神经网络法"><a href="#神经网络法" class="headerlink" title="神经网络法"></a>神经网络法</h3><blockquote>
+<p>在梯度下降法中，我们简单讲述了一下神经网络做线性拟合的原理，即：</p>
+<ol>
+<li>初始化权重值</li>
+<li>根据权重值放出一个解</li>
+<li>根据均方差函数求误差</li>
+<li>误差反向传播给线性计算部分以调整权重值</li>
+<li>是否满足终止条件？不满足的话跳回2</li>
+</ol>
+</blockquote>
+<img src="https://camo.githubusercontent.com/af6a93f73fda18748ca51ba5314c37af5d8bad25aaa31a9a80acec2dc3b49182/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f342f53657475702e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>输入层</strong></p>
+<blockquote>
+<p>此神经元在输入层只接受一个输入特征，经过参数 w,b 的计算后，直接输出结果。这样一个简单的“网络”，只能解决简单的一元线性回归问题，而且由于是线性的，我们不需要定义激活函数，这就大大简化了程序，而且便于大家循序渐进地理解各种知识点。</p>
+</blockquote>
+<blockquote>
+<p>严格来说输入层在神经网络中并不能称为一个层。</p>
+</blockquote>
+<p><strong>权重 w,b</strong></p>
+<blockquote>
+<p>因为是一元线性问题，所以 w,b 都是标量。</p>
+</blockquote>
+<p><strong>输出层</strong></p>
+<blockquote>
+<p>输出层 1 个神经元，线性预测公式是：$$z_i = x_i \cdot w + b$$ </p>
+</blockquote>
+<blockquote>
+<p>z 是模型的预测输出，y 是实际的样本标签值，下标 i 为样本。</p>
+</blockquote>
+<p><strong>损失函数</strong></p>
+<blockquote>
+<p>因为是线性回归问题，所以损失函数使用均方差函数。 $$loss(w,b) = \frac{1}{2} (z_i-y_i)^2$$ </p>
+</blockquote>
+<h4 id="反向传播-1"><a href="#反向传播-1" class="headerlink" title="反向传播"></a>反向传播</h4><blockquote>
+<p><strong>计算 $w$ 的梯度</strong></p>
+<p>$${\partial{loss} \over \partial{w}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{w}}=(z_i-y_i)x_i$$ </p>
+<p><strong>计算 $b$ 的梯度</strong></p>
+<p>$$\frac{\partial{loss}}{\partial{b}} = \frac{\partial{loss}}{\partial{z_i}}\frac{\partial{z_i}}{\partial{b}}=z_i-y_i$$ </p>
+</blockquote>
+<h3 id="多样本单特征值计算"><a href="#多样本单特征值计算" class="headerlink" title="多样本单特征值计算"></a>多样本单特征值计算</h3><blockquote>
+<p>在前面的代码中，我们一直使用单样本计算来实现神经网络的训练过程，但是单样本计算有一些缺点：</p>
+<ol>
+<li>前后两个相邻的样本很有可能会对反向传播产生相反的作用而互相抵消。假设样本1造成了误差为 0.5，w 的梯度计算结果是 0.1；紧接着样本2造成的误差为 −0.5，w 的梯度计算结果是 −0.1，那么前后两次更新 w 就会产生互相抵消的作用。</li>
+<li>在样本数据量大时，逐个计算会花费很长的时间。由于我们在本例中样本量不大（200个样本），所以计算速度很快，觉察不到这一点。在实际的工程实践中，动辄10万甚至100万的数据量，轮询一次要花费很长的时间。</li>
+</ol>
+</blockquote>
+<p><strong>所以我们要开始使用矩阵计算辣</strong></p>
+<h4 id="向前计算"><a href="#向前计算" class="headerlink" title="向前计算"></a>向前计算</h4><blockquote>
+<p>Z=X⋅w+b</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__forwardBatch</span>(<span class="params">self, batch_x</span>):</span></span><br><span class="line">    Z = np.dot(batch_x, self.w) + self.b</span><br><span class="line">    <span class="keyword">return</span> Z</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>另外<code>Python</code>中的矩阵乘法命名有些问题，<code>np.dot()</code>并不是矩阵点乘，而是矩阵叉乘，请读者习惯</strong></p>
+</blockquote>
+<h4 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h4><blockquote>
+<p>用传统的均方差函数，其中，$z$ 是每一次迭代的预测输出，$y$ 是样本标签数据。我们使用 $m$ 个样本参与计算，因此损失函数为：$$J(w,b) = \frac{1}{2m}\sum_{i=1}^{m}(z_i - y_i)^2$$</p>
+<p>其中的分母中有个2，实际上是想在求导数时把这个2约掉，没有什么原则上的区别。</p>
+<p>我们假设每次有3个样本参与计算，即 $m=3$，则损失函数实例化后的情形是：</p>
+<p>$$\begin{aligned}J(w,b) &amp;= \frac{1}{2\times3}[(z_1-y_1)^2+(z_2-y_2)^2+(z_3-y_3)^2] \\&amp;=\frac{1}{2\times3}\sum_{i=1}^3[(z_i-y_i)^2]\end{aligned}$$   </p>
+<p><code>Python</code>中的矩阵减法运算，不需要对矩阵中的每个对应的元素单独做减法，而是整个矩阵相减即可。做求和运算时，也不需要自己写代码做遍历每个元素，而是简单地调用求和函数即可。</p>
+</blockquote>
+<h4 id="求梯度"><a href="#求梯度" class="headerlink" title="求梯度"></a>求梯度</h4><blockquote>
+<p><strong>看的迷糊的内容</strong></p>
+<blockquote>
+<p><strong>求 $w$ 的梯度</strong></p>
+<p>我们用 $J$ 的值作为基准，去求 $w$ 对它的影响，也就是 $J$ 对 $w$ 的偏导数，就可以得到 $w$ 的梯度了。从公式3看 $J$ 的计算过程，$z_1,z_2,z_3$都对它有贡献；再从公式2看 $z_1,z_2,z_3$ 的生成过程，都有 $w$ 的参与。所以，$J$ 对 $w$ 的偏导应该是这样的：</p>
+<p>$$\begin{aligned}\frac{\partial{J}}{\partial{w}}&amp;=\frac{\partial{J}}{\partial{z_1}}\frac{\partial{z_1}}{\partial{w}}+\frac{\partial{J}}{\partial{z_2}}\frac{\partial{z_2}}{\partial{w}}+\frac{\partial{J}}{\partial{z_3}}\frac{\partial{z_3}}{\partial{w}}\\&amp;=\frac{1}{3}[(z_1-y_1)x_1+(z_2-y_2)x_2+(z_3-y_3)x_3] \\&amp;=\frac{1}{3}\begin{pmatrix}  x_1 &amp; x_2 &amp; x_3\end{pmatrix}\begin{pmatrix}  z_1-y_1 \\  z_2-y_2 \\  z_3-y_3 \end{pmatrix} \\&amp;=\frac{1}{m} \sum^m_{i=1} (z_i-y_i)x_i \\ &amp;=\frac{1}{m} X^{\top} \cdot (Z-Y) \\ \end{aligned} $$</p>
+<p>其中：</p>
+<p>$$X = \begin{pmatrix}  x_1 \\   x_2 \\   x_3\end{pmatrix}, X^{\top} =\begin{pmatrix} x_1 &amp; x_2 &amp; x_3\end{pmatrix}$$</p>
+<p>公式4中最后两个等式其实是等价的，只不过倒数第二个公式用求和方式计算每个样本，最后一个公式用矩阵方式做一次性计算。</p>
+<p><strong>求 $b$ 的梯度</strong></p>
+<p>$$\begin{aligned}  \frac{\partial{J}}{\partial{b}}&amp;=\frac{\partial{J}}{\partial{z_1}}\frac{\partial{z_1}}{\partial{b}}+\frac{\partial{J}}{\partial{z_2}}\frac{\partial{z_2}}{\partial{b}}+\frac{\partial{J}}{\partial{z_3}}\frac{\partial{z_3}}{\partial{b}} \\&amp;=\frac{1}{3}[(z_1-y_1)+(z_2-y_2)+(z_3-y_3)] \\&amp;=\frac{1}{m} \sum^m_{i=1} (z_i-y_i) \\ &amp;=\frac{1}{m}(Z-Y)\end{aligned} $$ </p>
+<p>公式5中最后两个等式也是等价的，在<code>Python</code>中，可以直接用最后一个公式求矩阵的和，免去了一个个计算 $z_i-y_i$ 最后再求和的麻烦，速度还快。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__backwardBatch</span>(<span class="params">self, batch_x, batch_y, batch_z</span>):</span></span><br><span class="line">    m = batch_x.shape[<span class="number">0</span>]</span><br><span class="line">    dZ = batch_z - batch_y</span><br><span class="line">    dW = np.dot(batch_x.T, dZ)/m</span><br><span class="line">    dB = dZ.sum(axis=<span class="number">0</span>, keepdims=<span class="literal">True</span>)/m</span><br><span class="line">    <span class="keyword">return</span> dW, dB</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码位置</strong></p>
+<p>ch04, HelperClass/NeuralNet.py</p>
+</blockquote>
+</blockquote>
+<h3 id="梯度下降的三种形式-比较"><a href="#梯度下降的三种形式-比较" class="headerlink" title="梯度下降的三种形式|比较"></a>梯度下降的三种形式|比较</h3><h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><h4 id="正规方程法"><a href="#正规方程法" class="headerlink" title="正规方程法"></a>正规方程法</h4><h4 id="神经网络法-1"><a href="#神经网络法-1" class="headerlink" title="神经网络法"></a>神经网络法</h4><h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h3><blockquote>
+<p>看哦你的loss越来越大到离谱喽</p>
+</blockquote>
+<blockquote>
+<p>论层面上，神经网络是以样本在事件中的统计分布概率为基础进行训练和预测的，所以它对样本数据的要求比较苛刻。具体说明如下：</p>
+<ol>
+<li><p>样本的各个特征的取值要符合概率分布，即 [0,1]。</p>
+</li>
+<li><p>样本的度量单位要相同。我们并没有办法去比较1米和1公斤的区别，但是，如果我们知道了1米在整个样本中的大小比例，以及1公斤在整个样本中的大小比例，比如一个处于0.2的比例位置，另一个处于0.3的比例位置，就可以说这个样本的1米比1公斤要小。</p>
+</li>
+<li><p>神经网络假设所有的输入输出数据都是标准差为1，均值为0，包括权重值的初始化，激活函数的选择，以及优化算法的设计。</p>
+</li>
+<li><p>数值问题</p>
+<p>标准化可以避免一些不必要的数值问题。因为激活函数sigmoid/tanh的非线性区间大约在 [−1.7，1.7]。意味着要使神经元有效，线性计算输出的值的数量级应该在1（1.7所在的数量级）左右。这时如果输入较大，就意味着权值必须较小，一个较大，一个较小，两者相乘，就引起数值问题了。</p>
+</li>
+<li><p>梯度更新</p>
+<p>若果输出层的数量级很大，会引起损失函数的数量级很大，这样做反向传播时的梯度也就很大，这时会给梯度的更新带来数值问题。</p>
+</li>
+<li><p>学习率</p>
+<p>如果梯度非常大，学习率就必须非常小，因此，学习率（学习率初始值）的选择需要参考输入的范围，不如直接将数据标准化，这样学习率就不必再根据数据范围作调整。对 w1 适合的学习率，可能相对于 w2 来说会太小，若果使用适合 w1 的学习率，会导致在 w2 方向上步进非常慢，从而消耗非常多的时间；而使用适合 w2 的学习率，对 w1 来说又太大，搜索不到适合 w1 的解。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>标准化常用方法</strong></p>
+<ul>
+<li><strong>min-max标准化（离差标准化）</strong></li>
+</ul>
+<blockquote>
+<p>将数据映射到[0,1]区间</p>
+<p>$$x_{new}=\frac{x-x_{min}}{x_{max} - x_{min}}$$</p>
+</blockquote>
+<ul>
+<li><strong>平均值标准化</strong></li>
+</ul>
+<blockquote>
+<p>将数据映射到[-1,1]区间</p>
+<p>$$x_{new} = \frac{x - \bar{x}}{x_{max} - x_{min}}$$</p>
+</blockquote>
+<ul>
+<li><strong>对数转换</strong></li>
+</ul>
+<blockquote>
+<p>$$x_{new}=\ln(x_i)$$</p>
+</blockquote>
+<ul>
+<li><strong>反正切转换</strong></li>
+</ul>
+<blockquote>
+<p>$$x_{new}=\frac{2}{\pi}\arctan(x_i)$$</p>
+</blockquote>
+<ul>
+<li><strong>z-score法</strong></li>
+</ul>
+<blockquote>
+<p>把每个特征值中的所有数据，变成平均值为0，标准差为1的数据，最后为正态分布。Z-Score规范化（标准差标准化 / 零均值标准化，其中std是标准差）</p>
+<p>$$x_{new} = \frac{x_i - \bar{x}}{std}$$</p>
+</blockquote>
+<ul>
+<li><strong>中心化</strong></li>
+</ul>
+<blockquote>
+<p>平均值为0，无标准差要求</p>
+<p>$$x_{new} = x_i - \bar{x}$$</p>
+</blockquote>
+<ul>
+<li><strong>比例法</strong></li>
+</ul>
+<blockquote>
+<p>要求数据全是正值</p>
+<p>$$x_{new} = \frac{x_k}{\sum_{i=1}^m{x_i}}$$</p>
+</blockquote>
+<p><strong>那么，如何做？</strong></p>
+<blockquote>
+<p>以哪个房价为例</p>
+<table>
+<thead>
+<tr>
+<th>样本序号</th>
+<th>地理位置</th>
+<th>居住面积</th>
+<th>价格（万元）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>10.06</td>
+<td>60</td>
+<td>302.86</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15.47</td>
+<td>74</td>
+<td>393.04</td>
+</tr>
+<tr>
+<td>3</td>
+<td>18.66</td>
+<td>46</td>
+<td>270.67</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5.20</td>
+<td>77</td>
+<td>450.59</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+</blockquote>
+<blockquote>
+<p><strong>按照标准化的定义，我们只要把地理位置列和居住面积列分别做标准化就达到要求了</strong>，结果如表5-6。</p>
+<table>
+<thead>
+<tr>
+<th>样本序号</th>
+<th>地理位置</th>
+<th>居住面积</th>
+<th>价格（万元）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0.4033</td>
+<td>0.2531</td>
+<td>302.86</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.6744</td>
+<td>0.4303</td>
+<td>393.04</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.8341</td>
+<td>0.0759</td>
+<td>270.67</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.1592</td>
+<td>0.4683</td>
+<td>450.59</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h3 id="还原参数值"><a href="#还原参数值" class="headerlink" title="还原参数值"></a>还原参数值</h3><blockquote>
+<p>我们唯一修改的地方，就是样本数据特征值的标准化，并没有修改标签值。可以大概猜到W的值和样本特征值的缩放有关系，而且缩放倍数非常相似，甚至可以说一致。下面推导一下这种现象的数学基础。</p>
+<p>假设在标准化之前，真实的样本值是 X，真实的权重值是 W；在标准化之后，样本值变成了 X′，训练出来的权重值是 W′</p>
+</blockquote>
+<blockquote>
+<p>$$y = x_1 w_1 + x_2 w_2 + b$$        {y是标签值}</p>
+<p>$$z = x_1’ w_1’ + x_2’ w_2’ + b’$$       {z是预测值}</p>
+</blockquote>
+<blockquote>
+<p>由于训练时标签值（房价）并没有做标准化，意味着我们是用真实的房价做的训练，所以预测值和标签值应该相等，所以：</p>
+<p>$$y = z $$</p>
+<p>$$x_1 w_1 + x_2 w_2 + b = x_1’ w_1’ + x_2’ w_2’ + b’ $$\tag{1}</p>
+<p>标准化的公式是：</p>
+<p>$$x’ = \frac{x - x_{min}}{x_{max}-x_{min}} $$\tag{2}</p>
+<p>为了简化书写，我们令$xm=x_{max}-x_{min}$，把公式2代入公式1：</p>
+<p>$$x_1 w_1 + x_2 w_2 + b = \frac{x_1 - x_{1min}}{xm_1} w_1’ + \frac{x_2 - x_{2min}}{xm_2} w_2’ + b’ \=x_1 \frac{w_1’}{xm_1} + x_2 \frac{w_2’}{xm_2}+b’-\frac{w_1’x_{1min}}{xm_1}-\frac{w_2’x_{2min}}{xm_2} $$\tag{3}</p>
+<p>公式3中，$x1,x2$ 是变量，其它都是常量，如果想让公式3等式成立，则变量项和常数项分别相等，即：</p>
+<p>$$w_1 = \frac{w_1’}{xm_1} $$       \tag{4}</p>
+<p>$$w_2 = \frac{w_2’}{xm_2} $$        \tag{5}</p>
+<p>$$ b = b’-\frac{w_1’x_{1min}}{xm_1}-\frac{w_2’x_{2min}}{xm_2}  $$ \tag{6}</p>
+<p>下面我们用实际数值代入公式4,5,6：</p>
+<p>$$w_1 = \frac{w_1’}{x_{1max}-x_{1min}} = \frac{-40.2}{21.96-2.02} = -2.016 $$\tag{7}</p>
+<p>$$w_2 = \frac{w_2’}{x_{2max}-x_{2min}} = \frac{399.3}{119-40} = 5.054$$ \tag{8}</p>
+<p>$$b=244.5-(-2.016) \cdot 2.02 - 5.054 \cdot 40=46.412 $$tag{9}</p>
+<p>可以看到公式7、8、9的计算结果（神经网络的训练结果的变换值）与正规方程的计算结果(-2.018, 5.055, 46.235)基本相同，基于神经网络是一种近似解的考虑，可以认为这种推导是有理论基础和试验证明的。</p>
+</blockquote>
+<h4 id="思考？？"><a href="#思考？？" class="headerlink" title="??思考？？"></a>??思考？？</h4><p>在上一节中，我们在用训练出来的模型预测房屋价格之前，还需要先还原 W 和 B 的值，这看上去比较麻烦，下面我们来介绍一种正确的推理方法。</p>
+<p>既然我们在训练时可以把样本数据标准化，那么在预测时，把预测数据也做相同方式的标准化，不是就可以和训练数据一样进行预测了吗？且慢！这里有一个问题，训练时的样本数据是批量的，至少是成百成千的数量级。但是预测时，一般只有一个或几个数据，如何做标准化？</p>
+<p>我们在针对训练数据做标准化时，得到的最重要的数据是训练数据的最小值和最大值，我们只需要把这两个值记录下来，在预测时使用它们对预测数据做标准化，这就相当于把预测数据“混入”训练数据。前提是预测数据的特征值不能超出训练数据的特征值范围，否则有可能影响准确程度。</p>
+<blockquote>
+<p>二者非常接近，可以说这种方法的确很方便，把预测数据看作训练数据的一个记录，先做标准化，再做预测，这样就不需要把权重矩阵还原了。</p>
+<p>看上去我们已经完美地解决了这个问题，但是且慢，仔细看看<code>loss</code>值，还有<code>W</code>和<code>B</code>的值，都是几十几百的数量级，这和神经网络的概率计算的优点并不吻合，实际上它们的值都应该在 [0,1] 之间的。</p>
+<p>大数量级的数据有另外一个问题，就是它的波动有可能很大。目前我们还没有使用激活函数，一旦网络复杂了，开始使用激活函数时，像486.166这种数据，一旦经过激活函数就会发生梯度饱和的现象，输出值总为1，这样对于后面的网络就没什么意义了，因为输入值都是1。</p>
+<p>好吧，看起来问题解决得并不完美，我们看看还能有什么更好的解决方案！</p>
+<p><strong>——就是下面这个！！</strong></p>
+</blockquote>
+<h3 id="标准化标签"><a href="#标准化标签" class="headerlink" title="标准化标签"></a>标准化标签</h3><p>这一节里我们重点解决在训练过程中的数值的数量级的问题。</p>
+<p>我们既然已经对样本数据特征值做了标准化，那么如此大数值的损失函数值是怎么来的呢？看一看损失函数定义：</p>
+<p>$$J(w,b)=\frac{1}{2m} \sum_{i=1}^m (z_i-y_i)^2 $$</p>
+<p>其中，$z_i$ 是预测值，$y_i$ 是标签值。<strong>初始状态时，$W$ 和 $B$ 都是 $0$，所以，经过前向计算函数 $Z=X \cdot W+B$ 的结果是 $0$，</strong>但是 $Y$ 值很大，再经过平方计算后，一下子就成为至少5位数的数值了。</p>
+<p>第二行代码求得的<code>dZ</code>，与房价是同一数量级的，这样经过反向传播后，<code>dW</code>和<code>dB</code>的值也会很大，导致整个反向传播链的数值都很大。我们可以debug一下，得到第一反向传播时的数值是：</p>
+<p>这么大的数值，需要把学习率设置得很小，比如<code>0.001</code>，才可以落到 [0,1] 区间，但是损失函数值还是不能变得很小。</p>
+<p><strong>如果我们像对特征值做标准化一样，把标签值也标准化到 [0,1] 之间，是不是有帮助呢？</strong></p>
+<p><em>标准化 都可以标准化</em> 、</p>
+<p>聪明的读者可能会想到：既然对标签值做了标准化，那么我们在得到预测结果后，需要对这个结果应该做反标准化</p>
+<blockquote>
+<p>标准化的公式应该是</p>
+<p>$$y = y_{new}(y_{max}-y_{min})+y_{min}$$</p>
+</blockquote>
+<p>总结一下从本章中学到的正确的方法：</p>
+<ol>
+<li>X 必须标准化，否则无法训练；</li>
+<li>Y 值不在 [0,1] 之间时，要做标准化，好处是迭代次数少；</li>
+<li>如果 Y 做了标准化，对得出来的预测结果做关于 Y 的反标准化</li>
+</ol>
+<p><strong>小小总结：</strong></p>
+<ol>
+<li><strong>样本不做标准化的话，网络发散，训练无法进行；</strong></li>
+<li><strong>训练样本标准化后，网络训练可以得到结果，但是预测结果有问题；</strong></li>
+<li><strong>还原参数值后，预测结果正确，但是此还原方法并不能普遍适用；</strong></li>
+<li><strong>标准化测试样本，而不需要还原参数值，可以保证普遍适用；</strong></li>
+<li><strong>标准化标签值，可以使得网络训练收敛快，但是在预测时需要把结果反标准化，以便得到真实值。</strong></li>
+</ol>
+<h2 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h2><blockquote>
+<p>让我们对着一个玩意划一刀——逻辑回归，或者叫做分类器</p>
+</blockquote>
+<blockquote>
+<p>读者可能会觉得这个太简单了，这不是有图吗？定位坐标值后在图上一比划，一下子就能找到对应的区域了。但是我们要求用机器学习的方法来解决这个看似简单的问题，以便将来的预测行为是快速准确的，而不是拿个尺子在图上去比划。</p>
+<p>另外，本着用简单的例子说明复杂的原理的原则，我们用这个看似简单的例子，是想让读者对问题和解决方法都有一个视觉上的清晰认识，而这类可以可视化的问题，在实际生产环境中并不多见</p>
+</blockquote>
+<h3 id="二分类函数"><a href="#二分类函数" class="headerlink" title="二分类函数"></a>二分类函数</h3><ul>
+<li>Logistic函数公式</li>
+</ul>
+<blockquote>
+<p>$$Logistic(z) = \frac{1}{1 + e^{-z}}$$</p>
+<p>对率函数Logistic Function，<strong>既可以做为激活函数使用，又可以当作二分类函数使用</strong>。而在很多不太正规的文字材料中，把这两个概念混用了，<strong>比如下面这个说法：“我们在最后使用Sigmoid激活函数来做二分类”，这是不恰当的。</strong>在本书中，我们会根据不同的任务区分激活函数和分类函数这两个概念，在二分类任务中，叫做Logistic函数，而在作为激活函数时，叫做Sigmoid函数。</p>
+</blockquote>
+<p>以下记 a=Logistic(z)。</p>
+<p>其<strong>导数</strong>则为： $$Logistic’(z) = a(1 - a)$$ </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>具体求导过程可以参考8.1节。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>输入值域：</strong> (−∞,∞)     |      <strong>输出值域：</strong>(0,1)</p>
+<p><strong>其图像为</strong></p>
+<img src="https://camo.githubusercontent.com/9a9517850210205ab3da388244e0d039823714006177000cced04f0188e97d23/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f6c6f6769737469632e706e67" alt="img" style="zoom:80%;" />
+
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>此函数实际上是一个概率计算，它把 (−∞,∞) 之间的任何数字都压缩到 (0,1) 之间，返回一个概率值，这个概率值接近 1 时，认为是正例，否则认为是负例。</p>
+<p>训练时，一个样本 x 在经过神经网络的最后一层的矩阵运算结果作为输入 z，经过Logistic计算后，输出一个 (0,1) 之间的预测值。我们假设这个样本的标签值为 0 属于负类，如果其预测值越接近 0，就越接近标签值，那么误差越小，反向传播的力度就越小</p>
+<p><strong>推理时，我们预先设定一个阈值比如 0.5，则当推理结果大于 0.5 时，认为是正类；小于 0.5 时认为是负类；等于 0.5 时，根据情况自己定义。阈值也不一定就是 0.5，也可以是 0.65 等等，阈值越大，准确率越高，召回率越低；阈值越小则相反，准确度越低，召回率越高</strong>。</p>
+<h4 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h4><p><strong>矩阵运算</strong></p>
+<blockquote>
+<p>$$z=x \cdot w + b$$ </p>
+</blockquote>
+<p><strong>分类计算</strong></p>
+<blockquote>
+<p>$$ a = Logistic(z)=\frac{1}{1 + e^{-z}} $$</p>
+</blockquote>
+<p><strong>损失函数计算</strong></p>
+<p>二分类交叉熵损失函数   $$loss(w,b) = -[y \ln a+(1-y) \ln(1-a)]$$ </p>
+<h4 id="反向传播-2"><a href="#反向传播-2" class="headerlink" title="反向传播"></a>反向传播</h4><p><strong>求损失函数对 $a$ 的偏导</strong></p>
+<blockquote>
+<p>$$\frac{\partial loss}{\partial a}=-\left[\frac{y}{a}-\frac{1-y}{1-a}\right]=\frac{a-y}{a(1-a)}$$ </p>
+</blockquote>
+<p><strong>求 $a$ 对 $z$ 的偏导</strong></p>
+<blockquote>
+<p>$$\frac{\partial a}{\partial z}= a(1-a)$$ </p>
+</blockquote>
+<p><strong>求误差 $loss$ 对 $z$ 的偏导</strong></p>
+<blockquote>
+<p>使用链式法则</p>
+<p>$$\frac{\partial loss}{\partial z}=\frac{\partial loss}{\partial a}\frac{\partial a}{\partial z}=\frac{a-y}{a(1-a)} \cdot a(1-a)=a-y$$ </p>
+</blockquote>
+<p>我们惊奇地发现，使用交叉熵函数求导得到的分母，与Logistic分类函数求导后的结果，正好可以抵消，最后只剩下了 a−y 这一项。真的有这么巧合的事吗？实际上这是依靠科学家们的聪明才智寻找出了这种匹配关系，以满足以下条件：</p>
+<ol>
+<li>损失函数满足二分类的要求，无论是正例还是反例，都是单调的；</li>
+<li>损失函数可导，以便于使用反向传播算法；</li>
+<li><strong>计算过程非常简单，一个减法就可以搞定</strong></li>
+</ol>
+<p><strong>多样本</strong></p>
+<blockquote>
+<p>$$Z=\begin{pmatrix} z_1 \\ z_2 \\ z_3\end{pmatrix},A=Logistic\begin{pmatrix} z_1 \\ z_2 \\ z_3\end{pmatrix}=\begin{pmatrix} a_1 \\ a_2 \\ a_3\end{pmatrix}$$  </p>
+<p>$$\begin{aligned}J(w,b)=&amp;-[y_1 \ln a_1+(1-y_1)\ln(1-a_1)] \\&amp;-[y_2 \ln a_2+(1-y_2)\ln(1-a_2)] \\&amp;-[y_3 \ln a_3+(1-y_3)\ln(1-a_3)] \\\end{aligned}$$  </p>
+<p>然后带入loss对z的求导</p>
+<p>$$\begin{aligned}J(w,b)=&amp;-[y_1 \ln a_1+(1-y_1)\ln(1-a_1)] \\&amp;-[y_2 \ln a_2+(1-y_2)\ln(1-a_2)] \\&amp;-[y_3 \ln a_3+(1-y_3)\ln(1-a_3)] \\\end{aligned}$$</p>
+<p>代入公式6结果：</p>
+<p>$$ \frac{\partial J(w,b)}{\partial Z}=\begin{pmatrix} \frac{\partial J(w,b)}{\partial z_1} \\ \frac{\partial J(w,b)}{\partial z_2} \\ \frac{\partial J(w,b)}{\partial z_3}\end{pmatrix}=\begin{pmatrix} a_1-y_1 \\ a_2-y_2 \\ a_3-y_3 \end{pmatrix}=A-Y$$ </p>
+<p><strong>所以，用矩阵运算时可以简化为矩阵相减的形式：$A-Y$。</strong> </p>
+</blockquote>
+<p><strong>经过数学推导后可以知道，神经网络实际也是在做这样一件事：经过调整 w 和 b 的值，把所有正例的样本都归纳到大于 0.5 的范围内，所有负例都小于 0.5。但是如果只说大于或者小于，无法做准确的量化计算，所以用一个对率函数来模拟</strong></p>
+<p>说到对率函数，还有一个问题，它为什么叫做<strong>“对数几率”函数</strong>呢？</p>
+<blockquote>
+<p>举个栗子</p>
+<p>假设有一个硬币，抛出落地后，得到正面的概率是0.5，得到反面的概率是0.5。如果用正面的概率除以反面的概率，0.5/0.5=1，这个数值叫做odds，即几率。</p>
+<p>泛化一下，如果正面的概率是 a，则反面的概率就是 1−a，则几率等于：$$odds = \frac{a}{1-a}$$ </p>
+<p>上式中，如果 a 是把样本 x 的预测为正例的可能性，那么 1−a 就是其负例的可能性，a1−a就是正负例的比值，称为<strong>几率(odds)**，它反映了 x作为正例的相对可能性，而对几率取对数就叫做</strong>对数几率(log odds, logit)**。</p>
+<table>
+<thead>
+<tr>
+<th>概率a</th>
+<th>0</th>
+<th>0.1</th>
+<th>0.2</th>
+<th>0.3</th>
+<th>0.4</th>
+<th>0.5</th>
+<th>0.6</th>
+<th>0.7</th>
+<th>0.8</th>
+<th>0.9</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>反概率1−a</td>
+<td>1</td>
+<td>0.9</td>
+<td>0.8</td>
+<td>0.7</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>0.4</td>
+<td>0.3</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>几率 odds</td>
+<td>0</td>
+<td>0.11</td>
+<td>0.25</td>
+<td>0.43</td>
+<td>0.67</td>
+<td>1</td>
+<td>1.5</td>
+<td>2.33</td>
+<td>4</td>
+<td>9</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>对数几率 ln(odds)</td>
+<td>N/A</td>
+<td>-2.19</td>
+<td>-1.38</td>
+<td>-0.84</td>
+<td>-0.4</td>
+<td>0</td>
+<td>0.4</td>
+<td>0.84</td>
+<td>1.38</td>
+<td>2.19</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p><strong>可以看到几率的值不是线性的，不利于分析问题，所以在表中第4行对几率取对数，可以得到一组成线性关系的值，并可以用直线方程来表示</strong></p>
+<p>$$\ln(odds) = \ln \frac{a}{1-a}= xw + b$$ </p>
+<p><strong>对其两边取对数</strong></p>
+<p>$$\frac{a}{1-a}=e^{xw+b}$$ </p>
+<p><strong>令$z=xw+b$：</strong></p>
+<p>$$a=\frac{1}{1+e^{-z}}$$ 、</p>
+<p>于是就得出了我们分类计算的公式</p>
+<p>以上推导过程，<strong>实际上就是用线性回归模型的预测结果来逼近样本分类的对数几率</strong>。这就是为什么它叫做逻辑回归(logistic regression)，但其实是分类学习的方法。这种方法的优点如下：</p>
+<ul>
+<li><p>把线性回归的成功经验引入到分类问题中，相当于对“分界线”的预测进行建模，而“分界线”在二维空间上是一条直线，这就不需要考虑具体样本的分布（比如在二维空间上的坐标位置），避免了假设分布不准确所带来的问题；</p>
+</li>
+<li><p>不仅预测出类别（0/1），而且得到了近似的概率值（比如0.31或0.86），这对许多需要利用概率辅助决策的任务很有用；</p>
+</li>
+<li><p>对率函数是任意阶可导的凸函数，有很好的数学性，许多数值优化算法都可以直接用于求取最优解。</p>
+<p><strong>线性分类和线性回归的异同</strong></p>
+</li>
+</ul>
+<p>此原理对线性和非线性二分类都适用。</p>
+<p>回忆一下前面学习过的线性回归，通过均方差函数误差反向传播的方法，不断矫正拟合直线的角度（Weights）和偏移（Bias），因为均方差函数能够准确地反映出当前的拟合程度。那么在线性分类中，我们能不能采取类似的方法呢？</p>
+<p>线性分类，试图在含有两种样本的空间中划出一条分界线，让双方截然分开，就好像是中国象棋的棋盘中的楚河汉界一样。与线性回归相似的地方是，两者都需要划出那条“直线”来，但是不同的地方也很明显</p>
+<p><strong>代数原理</strong></p>
+<p>​     <strong>基本公式回顾</strong></p>
+<p>下面我们以单样本双特征值为例来说明神经网络的二分类过程，这是用代数方式来解释其工作原理。</p>
+<p>​    正向计算：$$ z = x_1 w_1+ x_2 w_2 + b$$</p>
+<p>​    分类：$a={1 \over 1 + e^{-z}}$</p>
+<p>​    损失函数:$loss = -[y \ln (a)+(1-y) \ln (1-a)]$</p>
+<blockquote>
+<p>二分类函数的最终结果是把正例都映射到图6-6中的上半部分的曲线上，而把负类都映射到下半部分的曲线上</p>
+<img src="https://camo.githubusercontent.com/eb47870fb77386afcbffe08eb103f78f8da2aa9a2e44857eb54abbb1fc6f02de/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f7369676d6f69645f62696e6172792e706e67" alt="img" style="zoom:80%;" />
+</blockquote>
+<p>我们用正例来举例：$$a = Logistic(z) = \frac{1}{1 + e^{-z}} &gt; 0.5$$</p>
+<p>做公式变形，两边取自然对数:    z&gt;0</p>
+<p>也就是：$$z = x_1 \cdot w_1 + x_2 \cdot w_2 + b &gt; 0 $$</p>
+<p>对上式做一下变形，把$x_2$放在左侧（选$x_1$还是$x_2$都无所谓），其他项放在右侧（<strong>假设$w_2$&gt;0，则不等号方向不变）</strong></p>
+<blockquote>
+<p><strong>在推导公式时，假设 $w_2$&gt;0，这样做有什么问题吗？如果假设 $w_2$&lt;0 会是什么情况？</strong></p>
+</blockquote>
+<p>$$x_2 &gt; - \frac{w_1}{w_2}x_1 - \frac{b}{w_2}$$</p>
+<p>简化一下两个系数，令$w’=-w1/w2,b’=-b/w2$ </p>
+<p>则可得：$x_2 &gt; w’ \cdot x_1 + b’$ （<strong>方便可视化</strong>）</p>
+<blockquote>
+<p>？？</p>
+<p>用几何方式解释，就是：有一条直线，方程为 z=w′⋅x1+b′，所有的正例样本都处于这条直线的上方；同理可得所有的负例样本都处于这条直线的下方。</p>
+<p><img src="https://camo.githubusercontent.com/c875f7ea4f2c78d8e0069e148a047a73aca0e8b653f1ff2720dd9aa013a4ac22/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f6c696e6561725f62696e6172795f616e616c797369732e706e67" alt="img"></p>
+</blockquote>
+<p>我们再观察一下分类正确的图，如图6-7所示。假设绿色方块为正类：标签值 y=1，红色三角形为负类：标签值 y=0。从几何关系上理解，如果我们有一条直线，其公式为：z=w′⋅x1+b′，如图中的虚线 L1 所示，则所有正类的样本的 x2 都大于 z，而所有的负类样本的 x2 都小于 z，那么这条直线就是我们需要的分割线。</p>
+<p>这就说明神经网络的工作原理和我们在二维平面上的直观感觉是相同的，即神经网络的工作就是找到这么一条合适的直线，尽量让所有正例样本都处于直线上方时，负例样本处于直线的下方。其实这与线性回归中找到一条直线穿过所有样本点的过程有异曲同工之处。</p>
+<p><strong>我们还有一个额外的收获，即：</strong></p>
+<p>$w′=−w_1/w_2$</p>
+<p>$b′=−b/w_2$</p>
+<p>我们可以使用神经网络计算出 $w_1$,$w_2$,b 三个值以后，转换成 w′,b′，只是便于将其化为斜截式来方便可视化</p>
+<p><strong>关于训练我猜想还是和线性回归一样来使用loss进行训练</strong>，应该是的</p>
+<blockquote>
+<p>以上的分类只是0或1的二分类，这点请注意</p>
+</blockquote>
+<h3 id="关于实现逻辑与或非门"><a href="#关于实现逻辑与或非门" class="headerlink" title="关于实现逻辑与或非门"></a>关于实现逻辑与或非门</h3><blockquote>
+<p>单层神经网络，又叫做感知机，它可以轻松实现逻辑与、或、非门。由于逻辑与、或门，需要有两个变量输入，而逻辑非门只有一个变量输入。但是它们共同的特点是输入为0或1，可以看作是正负两个类别。</p>
+</blockquote>
+<p>用分类思想来实现5个逻辑门（多分类？？</p>
+<ul>
+<li><strong>与门 AND</strong></li>
+<li><strong>与非门 NAND</strong></li>
+<li><strong>或门 OR</strong></li>
+<li><strong>或非门 NOR</strong></li>
+<li><strong>非门 NOT</strong></li>
+</ul>
+<p>举个例子：逻辑AND</p>
+<img src="https://camo.githubusercontent.com/61fe9c3743518d72fab5c676fa848b968ab1322c2500681aaabcb2da5c848181/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f4c6f676963416e6447617465446174612e706e67" alt="img" style="zoom:67%;" />
+
+<p>蓝点为负类，红三角为正类</p>
+<p>如果用分类思想的话，根据前面学到的知识，应该在红色点和蓝色点之间划出一条分割线来，可以正好把正例和负例完全分开。<strong>由于样本数据稀疏，所以这条分割线的角度和位置可以比较自由，比如图中的三条直线（红黑绿），都可以是这个问题的解</strong></p>
+<p>很多阅读材料上会这样介绍：模型 $y=wx+b$，令w=−1,b=1，则：</p>
+<ul>
+<li>当 x=0 时，y=−1×0+1=1</li>
+<li>当 x=1 时，y=−1×1+1=0</li>
+</ul>
+<img src="https://camo.githubusercontent.com/22fb82beba26564895ca4e895911c479b97b8fbc94203f5374b25bc89f0d4f1f/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f4c6f6769634e6f742e706e67" alt="img" style="zoom: 50%;" />
+
+<p><strong>上图是不正确的逻辑非门的神经元实现</strong></p>
+<p>因为这成为了一个<strong>拟合问题</strong>，而不是<strong>分类问题</strong></p>
+<p>正确的：<img src="https://camo.githubusercontent.com/738d175738e9449676ee65428cd3141a0e614391dccc1aa3e2ab3301ba8d0d03/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f4c6f6769634e6f74322e706e67" alt="img" style="zoom:50%;" /></p>
+<p><strong>与门：</strong> <img src="https://camo.githubusercontent.com/0a2b67acee65bbb6538c6db6665a57ceea938e1997db16a2138218a116c5bd06/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f362f42696e617279436c61737369666965724e4e2e706e67" alt="img" style="zoom:50%;" /></p>
+<p><strong>……</strong></p>
+<p><strong>永远给出的是近似解</strong></p>
+<table>
+<thead>
+<tr>
+<th>逻辑门</th>
+<th>分类结果</th>
+<th>参数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/f8517dd12151823b4a399f0b4a9c82536a35f9d036558981647c8f13ef226576/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f74526573756c742e706e67"><img src="https://camo.githubusercontent.com/f8517dd12151823b4a399f0b4a9c82536a35f9d036558981647c8f13ef226576/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f74526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W=-12.468 B=6.031</td>
+</tr>
+<tr>
+<td>与</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/bd7d7ebf2f3cce6b399a16e754dc20a01dff73daa03ea350b88bc38e2281ffd2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f676963416e6447617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/bd7d7ebf2f3cce6b399a16e754dc20a01dff73daa03ea350b88bc38e2281ffd2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f676963416e6447617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=11.757 W2=11.757 B=-17.804</td>
+</tr>
+<tr>
+<td>与非</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/c8271e6b484a63a8fad2f7d512d6ec3a6e098eca2b62a740d164af1c8edd3b0a/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e616e6447617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/c8271e6b484a63a8fad2f7d512d6ec3a6e098eca2b62a740d164af1c8edd3b0a/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e616e6447617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=-11.763 W2=-11.763 B=17.812</td>
+</tr>
+<tr>
+<td>或</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/2b506ed0e376fb42ff0f56020da38195d6328bf479b189c1dbe7e271c6c960d5/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634f7247617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/2b506ed0e376fb42ff0f56020da38195d6328bf479b189c1dbe7e271c6c960d5/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634f7247617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=11.743 W2=11.743 B=-11.738</td>
+</tr>
+<tr>
+<td>或非</td>
+<td><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/edc78072dda863a079e89542753850a0af2d337764d68c5db71567bbaf72884c/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f7247617465526573756c742e706e67"><img src="https://camo.githubusercontent.com/edc78072dda863a079e89542753850a0af2d337764d68c5db71567bbaf72884c/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765735c496d616765735c365c4c6f6769634e6f7247617465526573756c742e706e67" alt="img" style="zoom:50%;" /></a></td>
+<td>W1=-11.738 W2=-11.738 B=5.409</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>我们从数值和图形可以得到两个结论：</p>
+<ol>
+<li><code>W1</code>和<code>W2</code>的值基本相同而且符号相同，说明分割线一定是135°斜率</li>
+<li>精度越高，则分割线的起点和终点越接近四边的中点0.5的位置</li>
+</ol>
+<p>以上两点说明神经网络还是很聪明的，它会尽可能优美而鲁棒地找出那条分割线。</p>
+</blockquote>
+<h3 id="多分类"><a href="#多分类" class="headerlink" title="多分类"></a>多分类</h3><h4 id="一对一方式"><a href="#一对一方式" class="headerlink" title="一对一方式"></a>一对一方式</h4><img src="https://camo.githubusercontent.com/65769d0d69f7dbfe41c927693d4b8438bbdaf3ba5e0f0f2b8f0e7be3ca702d26/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f6f6e655f76735f6f6e652e706e67" alt="img" style="zoom: 50%;" />
+
+<p><strong>每次先只保留两个类别的数据，训练一个分类器。如果一共有 N 个类别，则需要训练 C2N 个分类器。以 N=3 时举例，需要训练 A|B，B|C，A|C 三个分类器。</strong></p>
+<p><strong>推理时，(A|B) 分类器告诉你是A类时，需要到 (A|C) 分类器再试一下，如果也是A类，则就是A类。如果 (A|C) 告诉你是C类，则基本是C类了，不可能是B类，不信的话可以到 (B|C) 分类器再去测试一下。</strong></p>
+<h4 id="一对多方式"><a href="#一对多方式" class="headerlink" title="一对多方式"></a>一对多方式</h4><img src="https://camo.githubusercontent.com/9fdbb5b7f8fde5fa8b00cf916236c0a7b40a5c5180f7b4c98c34b89ad5de238b/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f6f6e655f76735f6d756c7469706c652e706e67" alt="img" style="zoom:50%;" />
+
+<p><strong>处理一个类别时，暂时把其它所有类别看作是一类，这样对于三分类问题，可以得到三个分类器。</strong></p>
+<p><strong>推理时，同时调用三个分类器，再把三种结果组合起来，就是真实的结果。比如，第一个分类器告诉你是“红类”，那么它确实就是红类；如果告诉你是非红类，则需要看第二个分类器的结果，绿类或者非绿类；依此类推。</strong></p>
+<h4 id="多对多方式"><a href="#多对多方式" class="headerlink" title="多对多方式"></a>多对多方式</h4><p><strong>假设有4个类别ABCD，我们可以把AB算作一类，CD算作一类，训练一个分类器1；再把AC算作一类，BD算作一类，训练一个分类器2。</strong></p>
+<p><strong>推理时，第1个分类器告诉你是AB类，第二个分类器告诉你是BD类，则做“与”操作，就是B类</strong>。</p>
+<h4 id="区别：多分类与多标签"><a href="#区别：多分类与多标签" class="headerlink" title="*区别：多分类与多标签"></a>*区别：多分类与多标签</h4><p>多分类学习中，虽然有多个类别，但是每个样本只属于一个类别。</p>
+<p>有一种情况也很常见，比如一幅图中，既有蓝天白云，又有花草树木，那么这张图片可以有两种标注方法：</p>
+<ul>
+<li>标注为“风景”，而不是“人物”，属于风景图片，这叫做分类</li>
+<li>被同时标注为“蓝天”、“白云”、“花草”、“树木”等多个标签，这样的任务不叫作多分类学习，而是“多标签”学习，multi-label learning。<strong>我们此处不涉及这类问题</strong>。</li>
+</ul>
+<h4 id="多分类函数"><a href="#多分类函数" class="headerlink" title="多分类函数"></a>多分类函数</h4><blockquote>
+<p><strong>此函数对线性多分类和非线性多分类都适用</strong></p>
+</blockquote>
+<p>思考：<strong>Logistic函数可以得到诸如0.8、0.3这样的二分类概率值，前者接近1，后者接近0。那么多分类问题如何得到类似的概率值呢</strong></p>
+<p>我们依然假设对于一个样本的分类值是用这个线性公式得到的：</p>
+<p>$z=x⋅w+b$</p>
+<p>但是，我们要求 z 不是一个标量，而是一个向量。如果是三分类问题，<strong>我们就要求 z 是一个三维的向量，向量中的每个单元的元素值代表该样本分别属于三个分类的值，这样不就可以了吗？</strong></p>
+<p>具体的说，假设x是一个 (1x2) 的向量，把w设计成一个(2x3)的向量，b设计成(1x3)的向量，则z就是一个(1x3)的向量。我们假设z的计算结果是[3,1,−3]，这三个值分别代表了样本x在三个分类中的数值，下面我们把它转换成概率值。</p>
+<p>——<strong>我们不能训练神经网络让它的z值直接变成概率形式吗？</strong></p>
+<p>——<strong>答案是否定的，因为z值是经过线性计算得到的，线性计算能力有限，无法有效地直接变成概率值</strong>。</p>
+<p><strong>取max值</strong></p>
+<p>z值是 $[3,1,-3]$，如果取max操作会变成 $[1,0,0]$，这符合我们的分类需要，<strong>即三者相加为1</strong>，并且认为该样本属于第一类。但是有两个不足：</p>
+<ol>
+<li><p>分类结果是 $[1,0,0]$，只保留的非0即1的信息，没有各元素之间相差多少的信息，可以理解是“<code>Hard Max</code>”；</p>
+</li>
+<li><p>max操作本身不可导，无法用在反向传播中。</p>
+</li>
+</ol>
+<p><strong>引入softmax</strong></p>
+<p>Softmax加了个”soft”来模拟max的行为，但同时又保留了相对大小的信息。</p>
+<p>$a_j = \frac{e^{z_j}}{\sum\limits_{i=1}^m e^{z_i}}=\frac{e^{z_j}}{e^{z_1}+e^{z_2}+\dots+e^{z_m}}$</p>
+<p>上式中:</p>
+<ul>
+<li>z<del>j</del> 是对第 j 项的分类原始值，即矩阵运算的结果</li>
+<li>z<del>i</del> 是参与分类计算的每个类别的原始值</li>
+<li>m 是总分类数</li>
+<li>a<del>j</del> 是对第 j 项的计算结果</li>
+</ul>
+<img src="https://camo.githubusercontent.com/d2648f46c38f5e226b95b93d7cbb78abeff91a036f697284f96e2c3c4c526c0e/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f736f66746d61782e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>举栗顺便比较</strong></p>
+<table>
+<thead>
+<tr>
+<th>输入原始值</th>
+<th>MAX计算</th>
+<th>Softmax计算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[3,1,−3]</td>
+<td>[1,0,0]</td>
+<td>[0.879,0.119,0.002]</td>
+</tr>
+</tbody></table>
+<p>也就是说，在（至少）有三个类别时，通过使用Softmax公式计算它们的输出，比较相对大小后，得出该样本属于第一类，因为第一类的值为0.879，在三者中最大。注意这是对一个样本的计算得出的数值，而不是三个样本，亦即Softmax给出了某个样本分别属于三个类别的概率。</p>
+<p><strong>它有两个特点：</strong></p>
+<ol>
+<li><strong>三个类别的概率相加为1</strong></li>
+<li><strong>每个类别的概率都大于0</strong></li>
+</ol>
+<p><strong>Softmax的反向传播工作原理</strong></p>
+<blockquote>
+<p>我们仍假设网络输出的预测数据是 z=[3,1,−3]，而标签值是 y=[1,0,0]。在做反向传播时，根据前面的经验，我们会用 z−y，得到：</p>
+<p><strong>z−y=[2,1,−3]</strong></p>
+<p>这个信息很怪</p>
+<ul>
+<li>第一项是2，我们已经预测准确了此样本属于第一类，但是反向误差的值是2，即惩罚值是2</li>
+<li>第二项是1，惩罚值是1，预测对了，仍有惩罚值</li>
+<li>第三项是-3，惩罚值是-3，意为着奖励值是3，明明预测错误了却给了奖励</li>
+</ul>
+</blockquote>
+<p><strong>所以，如果不使用Softmax这种机制，会存在有个问题：</strong></p>
+<blockquote>
+<ul>
+<li>z值和y值之间，即<strong>预测值和标签值之间不可比</strong>，比如 z0=3 与 y0=1 是不可比的</li>
+<li>z值中的三个元素之间虽然可比，但只能比大小，不能比差值，比如 z0&gt;z1&gt;z2，但3和1相差2，1和-3相差4，<strong>这些差值是无意义的</strong></li>
+</ul>
+<p>在使用Softmax之后，我们得到的值是 a=[0.879,0.119,0.002]</p>
+<p>用 a−y：$a−y=[−0.121,0.119,0.002]$ </p>
+<p>——多好啊多好啊</p>
+</blockquote>
+<blockquote>
+<p>这个信息是完全正确的，可以用于反向传播。Softmax先做了归一化，把输出值归一到[0,1]之间，这样就可以与标签值的0或1去比较，并且知道惩罚或奖励的幅度</p>
+</blockquote>
+<p>从继承关系的角度来说，Softmax函数可以视作Logistic函数扩展——其实Logistic函数也是给出了当前样本的一个概率值，只不过是依靠偏近0或偏近1来判断属于正类还是负类</p>
+<h4 id="正向传播-1"><a href="#正向传播-1" class="headerlink" title="正向传播"></a>正向传播</h4><p>矩阵计算:$z=x \cdot w + b$</p>
+<p>分类计算:$a_j = \frac{e^{z_j}}{\sum\limits_{i=1}^m e^{z_i}}=\frac{e^{z_j}}{e^{z_1}+e^{z_2}+\dots+e^{z_m}}$ </p>
+<p>loss:</p>
+<p>​    单样本: $loss(w,b)=-\sum_{i=1}^m y_i \ln a_i$</p>
+<p>​    多样本: $J(w,b) =- \sum_{j=1}^n \sum_{i=1}^m y_{ji} \log a_{ji}$ </p>
+<h4 id="反向传播-3"><a href="#反向传播-3" class="headerlink" title="反向传播"></a>反向传播</h4><p><strong>实例化推导</strong></p>
+<p>$z_1 = x \cdot w+ b_1$</p>
+<p>$z_2 = x \cdot w + b_2$</p>
+<p>$z_3 = x \cdot w + b_3$</p>
+<p>$a_1=\frac{e^{z_1}}{\sum_i e^{z_i}}=\frac{e^{z_1}}{e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>$a_2=\frac{e^{z_2}}{\sum_i e^{z_i}}=\frac{e^{z_2}}{e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>$a_3=\frac{e^{z_3}}{\sum_i e^{z_i}}=\frac{e^{z_3}}{e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>为了方便书写:  令 $E ={e^{z_1}+e^{z_2}+e^{z_3}}$</p>
+<p>$loss(w,b)=-(y_1 \ln a_1 + y_2 \ln a_2 + y_3 \ln a_3)$ </p>
+<p>你对loss求导最终所得:</p>
+<p>$\begin{aligned}  \frac{\partial loss}{\partial z_1}&amp;=-\frac{y_1}{a_1}a_1(1-a_1)+\frac{y_2}{a_2}a_1a_2+\frac{y_3}{a_3}a_1a_3 \\&amp;=-y_1+y_1a_1+y_2a_1+y_3a_1 \\&amp;=-y_1+a_1(y_1+y_2+y_3) \\&amp;=a_1-y_1 \end{aligned}$ </p>
+<blockquote>
+<p> 不失一般性 就是  $\frac{\partial loss}{\partial z_i}=a_i-y_i    $</p>
+</blockquote>
+<p><strong>一般性推导</strong></p>
+<ol>
+<li>Softmax函数自身的求导</li>
+</ol>
+<p>由于Softmax涉及到求和，所以有两种情况(<strong>我不大懂</strong></p>
+<ul>
+<li>求输出项 a1 对输入项 z1 的导数，此时：j=1,i=1,i=j，可以扩展到 i,j 为任意相等值</li>
+<li>求输出项 a2 或 a3 对输入项 z1 的导数，此时：j 为 2 或 3, i=1,i≠j，可以扩展到 i,j 为任意不等值</li>
+</ul>
+<p>分子: 因为是计算 $a_j$，所以分子是 $e^{z_j}$</p>
+<p>分母: $\sum\limits_{i=1}^m e^{z_i} = e^{z_1} + \dots + e^{ z_j } + \dots +e^{ z_m } \Rightarrow E$ </p>
+<p><strong>那么 $i=j$时</strong>（比如输出分类值 $a_1$ 对 $z_1$ 的求导），求 $a_j$ 对 $z_i$ 的导数，此时分子上的 $e^{z_j}$ 要参与求导</p>
+<p>$\begin{aligned}\frac{\partial{a_j}} {\partial{z_i}} &amp;= \frac{\partial{ } }{ \partial{z_i} }(e^{z_j}/E) \\&amp;= \frac{\partial { } } {\partial{z_j} }(e^{z_j}/E) \quad (因为z_i==z_i)\\&amp;=\frac{e^{z_j}E-e^{z_j}e^{z_j} }{E^2} =\frac{e^{z_j} }{E} - \frac{(e^{z_j})^2}{E^2} \\&amp;= a_j-a^2_j=a_j(1-a_j) \\\end{aligned}$ </p>
+<hr>
+<h4 id="这里是分割线"><a href="#这里是分割线" class="headerlink" title="这里是分割线"></a>这里是分割线</h4><hr>
+<p>那么$i \neq j$时 （比如输出分类值 $a_1$ 对 $z_2$ 的求导，$j=1,i=2$），$a_j$对$z_i$的导数，分子上的 $z_j$ 与 $i$ 没有关系，求导为0，分母的求和项中$e^{z_i}$要参与求导。</p>
+<p>$\frac{\partial{a_j}}{\partial{z_i}}=\frac{-(E)’e^{z_j}}{E^2}$</p>
+<p>求和公式对$e^{z_i}$的导数$(E)’$，除了$e^{z_i}$项外，其它都是0</p>
+<p>$(E)’ = (e^{z_1} + \dots + e^{z_i} + \dots +e^{z_m})’=e^{z_i}$</p>
+<p>所以：</p>
+<p>$\begin{aligned}\frac{\partial{a_j}}{\partial{z_i}}&amp;=\frac{-(E)’e^{z_j} } {(E)^2}=-\frac{ e^{z_j }e^{z_i} }{ {(E)^2} } \\&amp;=-\frac{e^{z_j} }{ {E} }\frac{e^{z_j} }{ {E} }=-a_{ i }a_{j} \end{aligned}$</p>
+<p>2.结合损失函数的整体反向传播公式</p>
+<p><strong>我们要求Loss值对$z_1$的偏导数。和以前的Logistic函数不同，那个函数是一个z对应一个a，所以反向关系也是一对一。而在这里，$a_1$的计算是有$z_1$,$z_2$, $z_3$参与的，$a_2$的计算也是有$z_1$,$z_2$, $z_3$参与的，即所有a的计算都与前一层的z有关，所以考虑反向时也会比较复杂</strong> </p>
+<p>先从Loss的公式看，$loss=-(y_1lna_1+y_2lna_2+y_3lna_3)$，**$a_1$肯定与$z_1$有关，那么$a_2$,$a_3$是否与$z_1$有关呢？**</p>
+<p><strong>无论是$a_1$，$a_2$，$a_3$，都是与$z_1$相关的，而不是一对一的关系，所以，想求Loss对$z_1$的偏导，必须把Loss-&gt;$a_1$-&gt;$z_1$， Loss-&gt;$a_2$-&gt;$z_1$，Loss-&gt;$a_3$-&gt;$z_1$，这三条路的结果加起来</strong>。于是有了如下公式:</p>
+<p>$\begin{aligned}  \frac{\partial{loss}}{\partial{z_i}} &amp;= \frac{\partial{loss}}{\partial{a_1}}\frac{\partial{a_1}}{\partial{z_i}} + \frac{\partial{loss}}{\partial{a_2}}\frac{\partial{a_2}}{\partial{z_i}}+\frac{\partial{loss}}{\partial{a_3}}\frac{\partial{a_3}}{\partial{z_i}} \\&amp;=\sum_j \frac{\partial{loss}}{\partial{a_j}}\frac{\partial{a_j}}{\partial{z_i}}\end{aligned}$</p>
+<p>前面说过了，因为Softmax涉及到各项求和，A的分类结果和Y的标签值分类是否一致，所以需要分情况讨论,就有</p>
+<p>$\frac{\partial{a_j}}{\partial{z_i}} = \begin{cases} a_j(1-a_j), &amp; i = j \\ -a_ia_j, &amp; i \neq j \end{cases}$</p>
+<p>因此，$\frac{\partial{loss}}{\partial{z_i}}$应该是 $i=j$ 和 $i \neq j$两种情况的和：</p>
+<ul>
+<li><p>$i = j$ 时，loss通过 $a_1$ 对 $z_1$ 求导（或者是通过 $a_2$ 对 $z_2$ 求导）：</p>
+<p>$\begin{aligned}\frac{\partial{loss}}{\partial{z_i}} &amp;= \frac{\partial{loss}}{\partial{a_j}}\frac{\partial{a_j}}{\partial{z_i}}=-\frac{y_j}{a_j}a_j(1-a_j) \\&amp;=y_j(a_j-1)=y_i(a_i-1) \end{aligned}$</p>
+</li>
+<li><p>$i \neq j$，loss通过 $a_2+a_3$ 对 $z_1$ 求导：</p>
+<p>$\begin{aligned}  \frac{\partial{loss}}{\partial{z_i}} &amp;= \frac{\partial{loss}}{\partial{a_j}}\frac{\partial{a_j}}{\partial{z_i}}=\sum_j^m(-\frac{y_j}{a_j})(-a_ja_i) \\&amp;=\sum_j^m(y_ja_i)=a_i\sum_{j \neq i}{y_j} \end{aligned}$</p>
+</li>
+</ul>
+<p>相加:</p>
+<p>$\begin{aligned}  \frac{\partial{loss}}{\partial{z_i}} &amp;= y_i(a_i-1)+a_i\sum_{j \neq i}y_j \\&amp;=-y_i+a_iy_i+a_i\sum_{j \neq i}y_j \\&amp;=-y_i+a_i(y_i+\sum_{j \neq i}y_j) \\&amp;=-y_i + a_i*1 \\&amp;=a_i-y_i \end{aligned}$</p>
+<blockquote>
+<p>因为$y_j$取值$[1,0,0]$或者$[0,1,0]$或者$[0,0,1]$，这三者加起来，就是$[1,1,1]$，在矩阵乘法运算里乘以$[1,1,1]$相当于什么都不做，就等于原值。</p>
+<p>我们惊奇地发现，最后的反向计算过程就是：$a_i-y_i$，假设当前样本的$a_i=[0.879, 0.119, 0.002]$，而$y_i=[0, 1, 0]$，则：</p>
+<p>$$a_i - y_i = [0.879, 0.119, 0.002]-[0,1,0]=[0.879,-0.881,0.002]$$</p>
+<p>其含义是，样本预测第一类，但实际是第二类，所以给第一类0.879的惩罚值，给第二类0.881的奖励，给第三类0.002的惩罚，并反向传播给神经网络。</p>
+</blockquote>
+<h4 id="神经网络实践"><a href="#神经网络实践" class="headerlink" title="神经网络实践"></a>神经网络实践</h4><p><strong>如果有三个以上的分类同时存在，我们需要对每一类别分配一个神经元</strong></p>
+<p>这个神经元的作用是根据前端输入的各种数据，先做线性处理（Z=WX+B），然后做一次非线性处理，计算每个样本在每个类别中的预测概率，再和标签中的类别比较，看看预测是否准确，如果准确，则奖励这个预测，给与正反馈；如果不准确，则惩罚这个预测，给与负反馈。两类反馈都反向传播到神经网络系统中去调整参数。</p>
+<p>这个网络只有输入层和输出层，由于输入层不算在内，所以是一层网络</p>
+<img src="https://camo.githubusercontent.com/2f16b65361b07b26b2839aee4a9c57baae04fcede605c613ea68dd95fbed04df/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f372f4d756c7469706c65436c61737369666965724e4e2e706e67" alt="img" style="zoom:80%;" />
+
+<p><strong>输入</strong>：假设有两个特征</p>
+<p>$x=\begin{pmatrix}x_1 &amp; x_2\end{pmatrix}$</p>
+<p><strong>权重</strong>：**$W$权重矩阵的尺寸**，可以从前往后看，比如：输入层是2个特征，输出层是3个神经元，则$W$的尺寸就是 $2\times 3$。</p>
+<p>$W=\begin{pmatrix}w_{11} &amp; w_{12} &amp; w_{13}\\w_{21} &amp; w_{22} &amp; w_{23} \end{pmatrix}$</p>
+<p>​    <strong>B的尺寸</strong>是1x3，列数永远和神经元的数量一样，行数永远是1</p>
+<p><strong>输出层</strong>：输出层三个神经元，再加上一个Softmax计算，最后有$A1,A2,A3$三个输出，写作：</p>
+<p>$Z = \begin{pmatrix}z_1 &amp; z_2 &amp; z_3 \end{pmatrix}$</p>
+<p>$A = \begin{pmatrix}a_1 &amp; a_2 &amp; a_3 \end{pmatrix}$</p>
+<p>其中，$Z=X \cdot W+B，A = Softmax(Z)$</p>
+<p><strong>关于样本标签数据</strong></p>
+<p>一般来说，在标记样本时，我们会用1,2,3这样的标记来指明是哪一类。</p>
+<p>所以样本数据是这个样子的：</p>
+<p>$Y = \begin{pmatrix}y_1 \\ y_2 \\ \vdots \\ y_{140}\end{pmatrix}=\begin{pmatrix}3 \\ 2 \\ \vdots \\ 1\end{pmatrix}$ </p>
+<p>在有Softmax的多分类计算时，我们用下面这种等价的方式，俗称<strong>OneHot</strong></p>
+<p>$Y = \begin{pmatrix}y_1 \\ y_2 \\ \vdots \\ y_{140}\end{pmatrix}=\begin{pmatrix}0 &amp; 0 &amp; 1 \\0 &amp; 1 &amp; 0 \\… &amp; … &amp; … \\1 &amp; 0 &amp; 0\end{pmatrix}$ </p>
+<h2 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h2><h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>这啥——假设该神经元有三个输入，分别为$x_1,x_2,x_3$，那么</p>
+<p>$z=x_1 w_1 + x_2 w_2 + x_3 w_3 +b$   ;   $a = \sigma(z)$ </p>
+<p><strong>激活函数也就是 $a=\sigma(z)$ 这一步了</strong> </p>
+<h4 id="激活函数作用-amp-性质"><a href="#激活函数作用-amp-性质" class="headerlink" title="激活函数作用&amp;性质"></a>激活函数作用&amp;性质</h4><p><strong>作用</strong>：</p>
+<ul>
+<li>给神经网络增加非线性因素</li>
+<li>把计算结果压缩到[0,1] 之间，便于后面的计算</li>
+</ul>
+<p><strong>性质</strong>：</p>
+<ul>
+<li><strong>非线性</strong>：<strong>线性的激活函数和没有激活函数一样(摔</strong>；</li>
+<li><strong>可导性</strong>：做误差反向传播和梯度下降，必须要保证激活函数的可导性；</li>
+<li><strong>单调性</strong>：单一的输入会得到单一的输出，较大值的输入得到较大值的输出。</li>
+</ul>
+<blockquote>
+<p>在物理试验中使用的继电器，是最初的激活函数的原型：当输入电流大于一个阈值时，会产生足够的磁场，从而打开下一级电源通道</p>
+</blockquote>
+<p><strong>那么什么时候是我们使用激活函数呢</strong></p>
+<p>简言之：</p>
+<ol>
+<li>神经网络最后一层不需要激活函数</li>
+<li>激活函数只用于连接相邻的两层神经网络</li>
+</ol>
+<h4 id="挤压型激活函数"><a href="#挤压型激活函数" class="headerlink" title="挤压型激活函数"></a>挤压型激活函数</h4><p>这一类函数的特点是，<strong>当输入值域的绝对值较大的时候，其输出在两端是饱和的，都具有S形的函数曲线以及压缩输入值域的作用</strong>，所以叫挤压型激活函数，<strong>又可以叫饱和型激活函数</strong>。</p>
+<p>在英文中，通常用<strong>Sigmoid</strong>来表示，原意是S型的曲线，在数学中是指一类具有压缩作用的S型的函数，在神经网络中，有两个常用的Sigmoid函数</p>
+<p>一个是Logistic函数，另一个是Tanh函数。</p>
+<h5 id="Logistic函数"><a href="#Logistic函数" class="headerlink" title="Logistic函数"></a>Logistic函数</h5><p><strong>对数几率函数（Logistic Function，简称对率函数）</strong></p>
+<p>很多文字材料中通常把激活函数和分类函数混淆在一起说，有一个原因是：<strong>在二分类任务中最后一层使用的对率函数与在神经网络层与层之间连接的Sigmoid激活函数，是同样的形式。所以它既是激活函数，又是分类函数，是个特例。</strong></p>
+<p>对这个函数的叫法比较混乱，在本书中我们约定一下，凡是用到“Logistic”词汇的，指的是二分类函数；而用到“Sigmoid”词汇的，指的是本激活函数</p>
+<p><strong>公式</strong>：$Sigmoid(z) = \frac{1}{1 + e^{-z}} \rightarrow a$ </p>
+<p><strong>导数</strong>：$Sigmoid’(z) = a(1 - a)$</p>
+<blockquote>
+<p><strong>注意，如果是矩阵运算的话，需要在公式2中使用⊙符号表示按元素的矩阵相乘：a⊙(1−a)，后面不再强调。</strong></p>
+</blockquote>
+<p><strong>值域</strong></p>
+<ul>
+<li>输入值域：(−∞,∞)</li>
+<li>输出值域：(0,1)</li>
+<li>导数值域：(0,0.25]</li>
+</ul>
+<blockquote>
+<p>再放送</p>
+<img src="https://camo.githubusercontent.com/22506771636e1f8a886bb2bc751852b8eba0e3fc53c2d9341166af93495a5249/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f7369676d6f69642e706e67" alt="img" style="zoom:80%;" />
+</blockquote>
+<p><strong>谈谈优点</strong></p>
+<p>从函数图像来看，Sigmoid函数的作用是将输入压缩到 (0,1) 这个区间范围内，这种输出在0~1之间的函数可以用来模拟一些概率分布的情况。它还是一个连续函数，导数简单易求。</p>
+<p>从数学上来看，Sigmoid函数对中央区的信号增益较大，对两侧区的信号增益小，在信号的特征空间映射上，有很好的效果。</p>
+<p>从神经科学上来看，中央区酷似神经元的兴奋态，两侧区酷似神经元的抑制态，因而在神经网络学习方面，可以将重点特征推向中央区， 将非重点特征推向两侧区。</p>
+<p>分类功能：我们经常听到这样的对白：</p>
+<ul>
+<li>甲：“你觉得这件事情成功概率有多大？”</li>
+<li>乙：“我有六成把握能成功。”</li>
+</ul>
+<p>Sigmoid函数在这里就起到了如何把一个数值转化成一个通俗意义上的“把握”的表示。z坐标值越大，经过Sigmoid函数之后的结果就越接近1，把握就越大。</p>
+<p><strong>谈谈缺点</strong></p>
+<p>指数计算代价大。</p>
+<p>反向传播时梯度消失：从梯度图像中可以看到，Sigmoid的梯度在两端都会接近于0，根据链式法则，如果传回的误差是$\delta$，那么梯度传递函数是$\delta \cdot a’$，而$a’$这时接近零，也就是说整体的梯度也接近零。这就出现梯度消失的问题，并且这个问题可能导致网络收敛速度比较慢。</p>
+<blockquote>
+<p>此外，如果输入数据是(-1, 1)范围内的均匀分布的数据会导致什么样的结果呢？经过Sigmoid函数处理之后这些数据的均值就从0变到了0.5，导致了均值的漂移，在很多应用中，这个性质是不好的。</p>
+</blockquote>
+<h5 id="Tanh函数"><a href="#Tanh函数" class="headerlink" title="Tanh函数"></a>Tanh函数</h5><p><strong>TanHyperbolic，即双曲正切函数</strong></p>
+<p><strong>公式</strong>：$Tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} = (\frac{2}{1 + e^{-2z}}-1) \rightarrow a$ </p>
+<p><strong>导数</strong>：$$Tanh’(z) = (1 + a)(1 - a)$$ </p>
+<p><strong>值域</strong>：</p>
+<ul>
+<li>输入值域：(−∞,∞)</li>
+<li>输出值域：(−1,1)</li>
+<li>导数值域：(0,1)</li>
+</ul>
+<img src="https://camo.githubusercontent.com/dbf4ffa73bc333afdb93100accfa39351069839cccb8b32c511105eb391ff730/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f74616e682e706e67" alt="img" style="zoom:67%;" />
+
+<p><strong>优点</strong></p>
+<p>无论从理论公式还是函数图像，这个函数都是一个和Sigmoid非常相像的激活函数，他们的性质也确实如此。但是比起Sigmoid，<strong>Tanh减少了一个缺点，就是他本身是零均值的，也就是说，在传递过程中，输入数据的均值并不会发生改变</strong>，这就使他在很多应用中能表现出比Sigmoid优异一些的效果。</p>
+<p><strong>缺点</strong></p>
+<p>exp指数计算代价大。梯度消失问题仍然存在。</p>
+<h5 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h5><p>其它的基本不怎么使用，目的是告诉大家这类函数有很多，但是常用的只有Sigmoid和Tanh两个</p>
+<p><img src="https://camo.githubusercontent.com/6ca3736084bb42ed2b336d801c9e1bab6ccdb1d31f126955629d2cad13f425a5/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f6f74686572732e706e67" alt="img"></p>
+<p><strong>强调二度</strong>(本书中：</p>
+<ol>
+<li>Sigmoid，指的是对数几率函数用于激活函数时的称呼；</li>
+<li>Logistic，指的是对数几率函数用于二分类函数时的称呼；</li>
+<li>Tanh，指的是双曲正切函数用于激活函数时的称呼。</li>
+</ol>
+<h4 id="半线性激活函数"><a href="#半线性激活函数" class="headerlink" title="半线性激活函数"></a>半线性激活函数</h4><blockquote>
+<p>又可以叫<strong>非饱和型</strong>激活函数。</p>
+</blockquote>
+<h5 id="RuLU函数"><a href="#RuLU函数" class="headerlink" title="RuLU函数"></a>RuLU函数</h5><p>Rectified Linear Unit，修正线性单元，线性整流函数，斜坡函数</p>
+<p>$ReLU(z) = max(0,z) = \begin{cases} z, &amp; z \geq 0 \\  0, &amp; z &lt; 0 \end{cases}$ </p>
+<p>$$ReLU’(z) = \begin{cases} 1 &amp; z \geq 0 \\ 0 &amp; z &lt; 0 \end{cases}$$</p>
+<p><img src="https://camo.githubusercontent.com/a9f181a5a1a6a55112fbda1c9a17645649439b83d8cebf2e9140b30f3386df21/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f72656c752e706e67" alt="img"></p>
+<blockquote>
+<p>一图胜万言</p>
+</blockquote>
+<p><strong>仿生学依据</strong>:</p>
+<blockquote>
+<p>相关大脑方面的研究表明生物神经元的信息编码通常是比较分散及稀疏的。通常情况下，大脑中在同一时间大概只有1%~4%的神经元处于活跃状态。使用线性修正以及正则化可以对机器神经网络中神经元的活跃度（即输出为正值）进行调试；相比之下，Sigmoid函数在输入为0时输出为0.5，即已经是半饱和的稳定状态，不够符合实际生物学对模拟神经网络的期望。不过需要指出的是，一般情况下，在一个使用修正线性单元（即线性整流）的神经网络中大概有50%的神经元处于激活态</p>
+</blockquote>
+<h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><ul>
+<li>反向导数恒等于1，更加有效率的反向传播梯度值，收敛速度快；</li>
+<li>避免梯度消失问题；</li>
+<li>计算简单，速度快；</li>
+<li>活跃度的分散性使得神经网络的整体计算成本下降。</li>
+</ul>
+<h6 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h6><p>无界。</p>
+<p><strong>梯度很大的时候可能导致的神经元“死”掉。</strong></p>
+<blockquote>
+<p>这个死掉的原因是什么呢？是因为很大的梯度导致更新之后的网络传递过来的输入是小于零的，从而导致ReLU的输出是0，计算所得的梯度是零，然后对应的神经元不更新，从而使ReLU输出恒为零，对应的神经元恒定不更新，等于这个ReLU失去了作为一个激活函数的作用。问题的关键点就在于输入小于零时，ReLU回传的梯度是零，从而导致了后面的不更新。在学习率设置不恰当的情况下，很有可能网络中大部分神经元“死”掉，也就是说不起作用了。</p>
+</blockquote>
+<blockquote>
+<p>用和Sigmoid函数那里更新相似的算法步骤和参数，来模拟一下ReLU的梯度下降次数，也就是学习率η=0.2，希望函数值从0.9衰减到0.5，这样需要多少步呢？</p>
+<p>由于ReLU的导数为1，所以：</p>
+<p>0.9−1×0.2=0.70.7−1×0.2=0.5</p>
+<p>也就是说，同样的学习速率，ReLU函数只需要两步就可以做到Sigmoid需要67步才能达到的数值！</p>
+</blockquote>
+<h5 id="Leaky-ReLU函数"><a href="#Leaky-ReLU函数" class="headerlink" title="Leaky ReLU函数"></a>Leaky ReLU函数</h5><blockquote>
+<p>LReLU，带泄露的线性整流函数。</p>
+</blockquote>
+<p>$$LReLU(z) = \begin{cases} z &amp; z \geq 0 \\ \alpha \cdot z &amp; z &lt; 0 \end{cases}$$ </p>
+<p>$$LReLU’(z) = \begin{cases} 1 &amp; z \geq 0 \\ \alpha &amp; z &lt; 0 \end{cases}$$</p>
+<p><img src="https://camo.githubusercontent.com/d08bbf901a65fb289bdfbba0f2e12e1ac80bad65c95072b0b9e15e9d7bde6ccc/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f6c65616b7952656c752e706e67" alt="img"></p>
+<h6 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h6><p>继承了ReLU函数的优点。</p>
+<p>Leaky ReLU同样有收敛快速和运算复杂度低的优点，而且由于给了z&lt;0时一个比较小的梯度α,使得z&lt;0时依旧可以进行梯度传递和更新，可以在一定程度上避免神经元“死”掉的问题。</p>
+<h5 id="Softplus函数"><a href="#Softplus函数" class="headerlink" title="Softplus函数"></a>Softplus函数</h5><p>$$Softplus(z) = \ln (1 + e^z)$$</p>
+<p>$$Softplus’(z) = \frac{e^z}{1 + e^z}$$</p>
+<p><img src="https://camo.githubusercontent.com/693c2f386fb9524acd057564bc605efb5f1160a236364012967059e012431401/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f736f6674706c75732e706e67" alt="img"></p>
+<h5 id="ELU函数"><a href="#ELU函数" class="headerlink" title="ELU函数"></a>ELU函数</h5><p>$$ELU(z) = \begin{cases} z &amp; z \geq 0 \ \alpha (e^z-1) &amp; z &lt; 0 \end{cases}$$</p>
+<p>$$ELU’(z) = \begin{cases} 1 &amp; z \geq 0 \ \alpha e^z &amp; z &lt; 0 \end{cases}$$</p>
+<p><img src="https://camo.githubusercontent.com/23c66aca83ff86a58c6fa912d417ed4e4e29c259a161f77dc3656afb158e46f2/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f382f656c752e706e67" alt="img"></p>
+<h3 id="前馈神经网络的通用近似定理"><a href="#前馈神经网络的通用近似定理" class="headerlink" title="前馈神经网络的通用近似定理"></a>前馈神经网络的通用近似定理</h3><blockquote>
+<p>在工程实践中，我们最常遇到不是线性问题，而是非线性问题</p>
+</blockquote>
+<p><strong>Q1</strong>:如何使用神经网络拟合一条有很强规律的曲线，比如正弦曲线？</p>
+<p><strong>Q2</strong>:前面的正弦函数，看上去是非常有规律的，也许单层神经网络很容易就做到了。如果是更复杂的曲线，单层神经网络还能轻易做到吗,比如：</p>
+<img src="https://camo.githubusercontent.com/109ce8870945455683564f53717cd91c4ad5365f041b088d0ba6233c3e86f68f/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f53616d706c652e706e67" alt="img" style="zoom:50%;" />
+
+<blockquote>
+<p>原则上说，如果你有足够的耐心，愿意花很高的时间成本和计算资源，总可以用多项式回归的方式来解决这个问题</p>
+</blockquote>
+<p>上面这条“蛇形”曲线，实际上是由下面这个公式添加噪音后生成的：</p>
+<p>$$y=0.4x^2 + 0.3x\sin(15x) + 0.01\cos(50x)-0.3$$</p>
+<blockquote>
+<p>以上问题可以叫做非线性回归，即自变量X和因变量Y之间不是线性关系。常用的传统的处理方法有线性迭代法、分段回归法、迭代最小二乘法等。<strong>在神经网络中，解决这类问题的思路非常简单，就是使用带有一个隐层的两层神经网络</strong></p>
+</blockquote>
+<h4 id="评估标准"><a href="#评估标准" class="headerlink" title="评估标准"></a>评估标准</h4><blockquote>
+<p>回归问题主要是求值，评价标准主要是看求得值与实际结果的偏差有多大</p>
+</blockquote>
+<h5 id="平均绝对误差"><a href="#平均绝对误差" class="headerlink" title="平均绝对误差"></a>平均绝对误差</h5><p>MAE（Mean Abolute Error）</p>
+<p>$MAE=\frac{1}{m} \sum_{i=1}^m \lvert a_i-y_i \rvert$</p>
+<blockquote>
+<p>对异常值不如均方差敏感，类似中位数</p>
+</blockquote>
+<h5 id="绝对平均值率误差"><a href="#绝对平均值率误差" class="headerlink" title="绝对平均值率误差"></a>绝对平均值率误差</h5><p>MAPE（Mean Absolute Percentage Error）</p>
+<p>$MAPE=\frac{100}{m} \sum^m_{i=1} \left\lvert {a_i - y_i \over y_i} \right\rvert$ </p>
+<h5 id="和方差"><a href="#和方差" class="headerlink" title="和方差"></a>和方差</h5><p>SSE（Sum Squared Error）</p>
+<p>$SSE=\sum_{i=1}^m (a_i-y_i)^2$ </p>
+<blockquote>
+<p>得出的值与样本数量有关系，假设有1000个测试样本，得到的值是120；如果只有100个测试样本，得到的值可能是11，我们不能说11就比120要好。</p>
+</blockquote>
+<h5 id="均方差"><a href="#均方差" class="headerlink" title="均方差"></a>均方差</h5><p>MSE（Mean Squared Error）</p>
+<p>$MSE = \frac{1}{m} \sum_{i=1}^m (a_i-y_i)^2$</p>
+<blockquote>
+<p>就是实际值减去预测值的平方再求期望，没错，就是线性回归的代价函数。由于MSE计算的是误差的平方，所以它对异常值是非常敏感的，因为一旦出现异常值，MSE指标会变得非常大。MSE越小，证明误差越小</p>
+</blockquote>
+<h5 id="均方根误差"><a href="#均方根误差" class="headerlink" title="均方根误差"></a>均方根误差</h5><p>RMSE（Root Mean Squard Error）</p>
+<p>$RMSE = \sqrt{\frac{1}{m} \sum_{i=1}^m (a_i-y_i)^2}$</p>
+<blockquote>
+<p>是均方差开根号的结果，其实质是一样的，<strong>只不过对结果有更好的解释</strong>。</p>
+<p>例如：要做房价预测，每平方是万元，我们预测结果也是万元，那么MSE差值的平方单位应该是千万级别的。假设我们的模型预测结果与真实值相差1000元，则用MSE的计算结果是1000,000，这个值没有单位，如何描述这个差距？于是就求个平方根就好了，这样误差可以是标签值是同一个数量级的，在描述模型的时候就说，我们模型的误差是多少元</p>
+</blockquote>
+<h5 id="R平方"><a href="#R平方" class="headerlink" title="R平方"></a>R平方</h5><p>$R^2=1-\frac{\sum (a_i - y_i)^2}{\sum(\bar y_i-y_i)^2}=1-\frac{MSE(a,y)}{Var(y)}$</p>
+<blockquote>
+<p>上面的几种衡量标准针对不同的模型会有不同的值。比如说预测房价，那么误差单位就是元，比如3000元、11000元等。如果预测身高就可能是0.1、0.2米之类的。也就是说，对于不同的场景，会有不同量纲，因而也会有不同的数值，无法用一句话说得很清楚，必须啰啰嗦嗦带一大堆条件才能表达完整。</p>
+<p><strong>我们通常用概率来表达一个准确率，比如89%的准确率。</strong></p>
+<p><strong>那么线性回归有没有这样的衡量标准呢？</strong>答案就是R-Squared</p>
+</blockquote>
+<p><strong>R平方是多元回归中的回归平方和（分子）占总平方和（分母）的比例</strong>，它是度量多元回归方程中拟合程度的一个统计量。R平方值越接近1，表明回归平方和占总平方和的比例越大，回归线与各观测点越接近，回归的拟合程度就越好</p>
+<ul>
+<li>如果结果是0，说明模型跟瞎猜差不多；</li>
+<li>如果结果是1，说明模型无错误；</li>
+<li>如果结果是0-1之间的数，就是模型的好坏程度；</li>
+<li>如果结果是负数，说明模型还不如瞎猜。</li>
+</ul>
+<h3 id="一元多次多项式"><a href="#一元多次多项式" class="headerlink" title="一元多次多项式"></a>一元多次多项式</h3><p><strong>有一个定理：任意一个函数在一个较小的范围内，都可以用多项式任意逼近。因此在实际工程实践中，有时候可以不管 y 值与 x 值的数学关系究竟是什么，而是强行用回归分析方法进行近似的拟合。</strong></p>
+<p>那么如何得到更多的特征值呢？对于只有一个特征值的问题，人们发明了一种聪明的办法，就是把特征值的高次方作为另外的特征值，加入到回归分析中，用公式描述:</p>
+<p>$z = x w_1 + x^2 w_2 + … + x^m w_m + b$ </p>
+<p>上式中x是原有的唯一特征值，$x^m$ 是利用 $x$ 的 $m$ 次方作为额外的特征值，这样就把特征值的数量从 $1$ 个变为 $m$ 个。</p>
+<h3 id="多元多次多项式"><a href="#多元多次多项式" class="headerlink" title="多元多次多项式"></a>多元多次多项式</h3><blockquote>
+<p>先看一个被经常拿出来讲解的例子</p>
+<p><img src="https://camo.githubusercontent.com/51d346a59263e8ac125782f0dcb8fe63e40a7d7bedd82ac76cbe66c051e6b54d/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f706f6c796e6f6d69616c5f31305f7069632e706e67" alt="img"></p>
+<p>一堆散点，看上去像是一条带有很大噪音的正弦曲线，从左上到右下，分别是1次多项式、2次多项式……10次多项式，其中：</p>
+<ul>
+<li>第4、5、6、7图是比较理想的拟合</li>
+<li>第1、2、3图欠拟合，多项式的次数不够高</li>
+<li>第8、9、10图，多项式次数过高，过拟合了</li>
+</ul>
+</blockquote>
+<h3 id="万能近似定理"><a href="#万能近似定理" class="headerlink" title="万能近似定理"></a>万能近似定理</h3><blockquote>
+<p>万能近似定理(universal approximation theorem) ，是深度学习最根本的理论依据。它证明了在给定网络具有<strong>足够多的隐藏单元</strong>的条件下，<strong>配备一个线性输出层和一个带有任何“挤压”性质的激活函数（如Sigmoid激活函数）的隐藏层的前馈神经网络，能够以任何想要的误差量近似任何从一个有限维度的空间映射到另一个有限维度空间的Borel可测的函数</strong>。</p>
+<p>前馈网络的导数也可以以任意好地程度近似函数的导数。</p>
+</blockquote>
+<p>万能近似定理其实说明了理论上神经网络可以近似任何函数。但实践上我们不能保证学习算法一定能学习到目标函数。即使网络可以表示这个函数，学习也可能因为两个不同的原因而失败：</p>
+<ol>
+<li>用于训练的优化算法可能找不到用于期望函数的参数值；</li>
+<li>训练算法可能由于过拟合而选择了错误的函数。</li>
+</ol>
+<p>根据“<strong>没有免费的午餐</strong>”定理，说明了没有普遍优越的机器学习算法。前馈网络提供了表示函数的万能系统，在这种意义上，给定一个函数，存在一个前馈网络能够近似该函数。但不存在万能的过程既能够验证训练集上的特殊样本，又能够选择一个函数来扩展到训练集上没有的点</p>
+<p><img src="https://camo.githubusercontent.com/ef5201021af6838fc52d04bb44ad8d7244765aca57c55b8786e855ec77fbe53d/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f6e6e2e706e67" alt="img"></p>
+<p><img src="https://camo.githubusercontent.com/de66dd3b7af5da8e631c65e2be85a2e6991685acc8ccea56a771a88dfbacee42/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f392f666f72776172642e706e67" alt="img"></p>
+<h3 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h3><blockquote>
+<p>待续</p>
+</blockquote>
+<h3 id="超参数优化"><a href="#超参数优化" class="headerlink" title="超参数优化"></a>超参数优化</h3><p>超参数优化（Hyperparameter Optimization）主要存在两方面的困难：</p>
+<ol>
+<li>超参数优化是一个组合优化问题，无法像一般参数那样通过梯度下降方法来优化，也没有一种通用有效的优化方法。</li>
+<li>评估一组超参数配置（Conﬁguration）的时间代价非常高，从而导致一些优化方法（比如演化算法）在超参数优化中难以应用。</li>
+</ol>
+<p>对于超参数的设置，比较简单的方法有<strong>人工搜索</strong>、<strong>网格搜索</strong>和<strong>随机搜索</strong></p>
+<p><strong>参数配置</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>缺省值</th>
+<th>是否可调</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入层神经元数</td>
+<td>1</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>隐层神经元数</td>
+<td>4</td>
+<td>Yes</td>
+<td>影响迭代次数</td>
+</tr>
+<tr>
+<td>输出层神经元数</td>
+<td>1</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>学习率</td>
+<td>0.1</td>
+<td>Yes</td>
+<td>影响迭代次数</td>
+</tr>
+<tr>
+<td>批样本量</td>
+<td>10</td>
+<td>Yes</td>
+<td>影响迭代次数</td>
+</tr>
+<tr>
+<td>最大epoch</td>
+<td>10000</td>
+<td>Yes</td>
+<td>影响终止条件,建议不改动</td>
+</tr>
+<tr>
+<td>损失门限值</td>
+<td>0.001</td>
+<td>Yes</td>
+<td>影响终止条件,建议不改动</td>
+</tr>
+<tr>
+<td>损失函数</td>
+<td>MSE</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>权重矩阵初始化方法</td>
+<td>Xavier</td>
+<td>Yes</td>
+<td>参看15.1</td>
+</tr>
+</tbody></table>
+<p>最终可以调节的其实只有三个：</p>
+<ul>
+<li>隐层神经元数</li>
+<li>学习率</li>
+<li>批样本量</li>
+</ul>
+<p>另外还有一个权重矩阵初始化方法需要特别注意</p>
+<blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>超参数</th>
+<th>目标</th>
+<th>作用</th>
+<th>副作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>学习率</td>
+<td>调至最优</td>
+<td>低的学习率会导致收敛慢，高的学习率会导致错失最佳解</td>
+<td>容易忽略其它参数的调整</td>
+</tr>
+<tr>
+<td>隐层神经元数量</td>
+<td>增加</td>
+<td>增加数量会增加模型的表示能力</td>
+<td>参数增多、训练时间增长</td>
+</tr>
+<tr>
+<td>批大小</td>
+<td>有限范围内尽量大</td>
+<td>大批量的数据可以保持训练平稳，缩短训练时间</td>
+<td>可能会收敛速度慢</td>
+</tr>
+</tbody></table>
+<h4 id="网格搜索"><a href="#网格搜索" class="headerlink" title="网格搜索"></a>网格搜索</h4><h4 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h4><h2 id="非线性分类"><a href="#非线性分类" class="headerlink" title="非线性分类"></a>非线性分类</h2><blockquote>
+<p>请类比推理</p>
+</blockquote>
+<h3 id="二分类"><a href="#二分类" class="headerlink" title="二分类"></a>二分类</h3><blockquote>
+<p>直接上图：</p>
+<p><img src="https://camo.githubusercontent.com/28d804403a1cf54be933e649b08b738d68dc9090aa3b6ad4478e5c6a319c30d8/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31302f62696e6172795f6261636b776172642e706e67" alt="img"></p>
+</blockquote>
+<p><strong>向前</strong>：</p>
+<p>$z1_{1} = x_{1} w1_{11} + x_{2} w1_{21} + b1_{1}$</p>
+<p>$z1_{2} = x_{1} w1_{12} + x_{2} w1_{22} + b1_{2}$</p>
+<p>$Z1 = X \cdot W1 + B1$</p>
+<p>$$a1_{1} = Sigmoid(z1_{1})$$</p>
+<p>$$a1_{2} = Sigmoid(z1_{2})$$</p>
+<p>$A1=\begin{pmatrix} a1_{1} &amp; a1_{2}\end{pmatrix}=Sigmoid(Z1)$ </p>
+<p>$z2_1 = a1_{1} w2_{11} + a1_{2} w2_{21} + b2_{1}$ </p>
+<p>$Z2 = A1 \cdot W2 + B2$ </p>
+<p>$$a2_1 = Logistic(z2_1)$$</p>
+<p>$$A2 = Logistic(Z2)$$ </p>
+<p>$loss = -Y \ln A2 + (1-Y) \ln (1-A2) $ </p>
+<p> <strong>反向</strong>：</p>
+<ul>
+<li><p>$\begin{aligned}\frac{\partial loss}{\partial Z2}&amp;=\frac{\partial loss}{\partial A2}\frac{\partial A2}{\partial Z2} \\&amp;=\frac{A2-Y}{A2(1-A2)} \cdot A2(1-A2) \\&amp;=A2-Y \rightarrow dZ2\end{aligned}$</p>
+</li>
+<li><p>$\begin{aligned}\frac{\partial loss}{\partial W2}&amp;=\begin{pmatrix} \frac{\partial loss}{\partial w2_{11}} \\ \frac{\partial loss}{\partial w2_{21}}\end{pmatrix}=\begin{pmatrix} \frac{\partial loss}{\partial Z2}\frac{\partial z2}{\partial w2_{11}} \\ \frac{\partial loss}{\partial Z2}\frac{\partial z2}{\partial w2_{21}}\end{pmatrix}\\&amp;=\begin{pmatrix} dZ2 \cdot a1_{1} \\ dZ2 \cdot a1_{2} \end{pmatrix}=\begin{pmatrix} a1_{1} \\ a1_{2}\end{pmatrix}dZ2\\&amp;=A1^{\top} \cdot dZ2 \rightarrow dW2 \end{aligned}$ </p>
+</li>
+<li><p>$\frac{\partial{loss}}{\partial{B2}}=dZ2 \rightarrow dB2 $</p>
+</li>
+<li><p>$\begin{aligned} \frac{\partial{loss}}{\partial{A1}} &amp;= \begin{pmatrix} \frac{\partial loss}{\partial a1_{1}} &amp; \frac{\partial loss}{\partial a1_{2}} \end{pmatrix}\\&amp;=\begin{pmatrix}\frac{\partial{loss}}{\partial{Z2}} \frac{\partial{Z2}}{\partial{a1_{1}}} &amp; \frac{\partial{loss}}{\partial{Z2}} \frac{\partial{Z2}}{\partial{a1_{2}}} \end{pmatrix}\\&amp;=\begin{pmatrix}dZ2 \cdot w2_{11} &amp; dZ2 \cdot w2_{21}\end{pmatrix}\\&amp;=dZ2 \cdot \begin{pmatrix} w2_{11} &amp; w2_{21}\end{pmatrix}\\&amp;=dZ2 \cdot W2^{\top}\end{aligned}$ </p>
+</li>
+<li><p>$\frac{\partial A1}{\partial Z1}=A1 \odot (1-A1) \rightarrow dA1$</p>
+</li>
+<li><p>$\begin{aligned}\frac{\partial loss}{\partial Z1}&amp;=\frac{\partial loss}{\partial A1}\frac{\partial A1}{\partial Z1}\\&amp;=dZ2 \cdot W2^{\top} \odot dA1 \rightarrow dZ1 \end{aligned}$ </p>
+</li>
+<li><p>$dW1=X^{\top} \cdot dZ1$</p>
+</li>
+<li><p>$dB1=dZ1$</p>
+</li>
+</ul>
+<h3 id="多分类-1"><a href="#多分类-1" class="headerlink" title="多分类"></a>多分类</h3><blockquote>
+<p><img src="https://camo.githubusercontent.com/e33917aa13957ea80e32c135da0ea2a1c9c050b3cfa2ad593c4ea65bd4e482f4/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31312f6e6e2e706e67" alt="img"></p>
+</blockquote>
+<h2 id="模型的加载和保存"><a href="#模型的加载和保存" class="headerlink" title="模型的加载和保存"></a>模型的加载和保存</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SaveResultValue</span>(<span class="params">self</span>):</span></span><br><span class="line">        np.savez(self.result_file_name, W=self.W, B=self.B)</span><br></pre></td></tr></table></figure>
+
+<h1 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h1><blockquote>
+<p>典型结构</p>
+<p><img src="https://camo.githubusercontent.com/7312eb679de72055e164caa6a1df3de72b9c5abebc5114a83481844798e7779d/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31372f636f6e765f6e65742e706e67" alt="img"></p>
+<p>原始的输入：图片</p>
+<p>卷积—&gt;池化—&gt;卷积—&gt;池化—&gt;铺平—&gt;fully connected—&gt;softmax</p>
+</blockquote>
+<p>所以，在一个典型的卷积神经网络中，会至少包含以下几个层：</p>
+<ul>
+<li>卷积层</li>
+<li>激活函数层</li>
+<li>池化层</li>
+<li>全连接分类层</li>
+</ul>
+<h2 id="卷积核"><a href="#卷积核" class="headerlink" title="卷积核"></a>卷积核</h2><blockquote>
+<p>其实就是一个小矩阵，类似这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.1  0.23  -0.45</span><br><span class="line">0.1  -2.1   1.24</span><br><span class="line">0.74 -1.32  0.01</span><br></pre></td></tr></table></figure>
+
+<p>这是一个3x3的卷积核，还会有1x1、5x5、7x7、9x9、11x11的卷积核。在卷积层中，我们会用输入数据与卷积核相乘，得到输出数据，就类似全连接层中的Weights一样，所以卷积核里的数值，也是通过反向传播的方法学习到的。</p>
+</blockquote>
+<blockquote>
+<img src="https://camo.githubusercontent.com/05398dd262a1d17a87d68e0f78ec23de4d15f60bc7695a4e384caf2d3670ae97/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31372f636972636c655f66696c746572732e706e67" alt="img" style="zoom:67%;" />
+
+<p>如图所示的内容，是使用9个不同的卷积核在同一张图上运算后得到的结果，而表中按顺序列出了9个卷积核的数值和名称，可以一一对应到上面的9张图中</p>
+<img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20210121195115183.png" alt="image-20210121195115183" style="zoom:67%;" />
+
+<ul>
+<li>sharpness 锐化  :  <strong>如果一个像素点比周围像素点亮，则此算子会令其更亮</strong></li>
+<li>vertical edge 检测竖边:   <strong>检测出了十字线中的竖线，由于是左侧和右侧分别检查一次，所以得到两条颜色不一样的竖线</strong></li>
+<li>surround 周边: <strong>把周边增强，把同色的区域变弱，形成大色块</strong>  </li>
+<li>Sobel-Y   : <strong>纵向亮度差分可以检测出横边，与横边检测不同的是，它可以使得两条横线具有相同的颜色，具有分割线的效果</strong>  </li>
+<li>Identity:  <strong>中心为1四周为0的过滤器，卷积后与原图相同</strong>  </li>
+<li>horizontal 横边检测 : <strong>检测出了十字线中的横线，由于是上侧和下侧分别检查一次，所以得到两条颜色不一样的横线</strong></li>
+<li>blur 模糊: <strong>通过把周围的点做平均值计算而“杀富济贫”造成模糊效果</strong>  </li>
+<li>Sobel-X   :  <strong>横向亮度差分可以检测出竖边，与竖边检测不同的是，它可以使得两条竖线具有相同的颜色，具有分割线的效果</strong>  </li>
+<li>embossing 浮雕   :  <strong>形成大理石浮雕般的效果</strong></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><img src="https://camo.githubusercontent.com/7e1c145e4897e0a8925a7c6620717f6a7c07b2c908e8336e15a2d592f9892ff6/68747470733a2f2f61696564756769746875623461322e626c6f622e636f72652e77696e646f77732e6e65742f61322d696d616765732f496d616765732f31372f636972636c655f636f6e765f72656c755f706f6f6c2e706e67" alt="img"></p>
+<p>原图经过卷积-激活-池化操作后的效果</p>
+<ol>
+<li>注意图一是原始图片，用cv2读取出来的图片，其顺序是反向的，即：</li>
+</ol>
+<ul>
+<li>第一维是高度</li>
+<li>第二维是宽度</li>
+<li>第三维是彩色通道数，但是其顺序为BGR，而不是常用的RGB</li>
+</ul>
+<ol>
+<li>我们对原始图片使用了一个3x1x3x3的卷积核，因为原始图片为彩色图片，所以第一个维度是3，对应RGB三个彩色通道；我们希望只输出一张feature map，以便于说明，所以第二维是1；我们使用了3x3的卷积核，用的是sobel x算子。所以图二是卷积后的结果。</li>
+<li>图三做了一层Relu激活计算，把小于0的值都去掉了，只留下了一些边的特征。</li>
+<li>图四是图三的四分之一大小，虽然图片缩小了，但是特征都没有丢失，反而因为图像尺寸变小而变得密集，亮点的密度要比图三大而粗。</li>
+</ol>
+</blockquote>
+<p>在最后一层的池化后面，把所有特征数据变成一个一维的全连接层，然后就和普通的深度全连接网络一样了，通过在最后一层的softmax分类函数，以及多分类交叉熵函数，对比图片的OneHot编码标签，回传误差值，从全连接层传回到池化层，通过激活函数层再回传给卷积层，对卷积核的数值进行梯度更新，实现卷积核数值的自我学习。</p>
+<p><strong>但是如果图像发生了位置上的微小移动</strong>（一些旋转、翻转、放大、缩小、平移）？</p>
+<blockquote>
+<p>人类的视觉系统来说都可以轻松应对，即平移不变性、旋转视角不变性、尺度不变性。那么卷积神经网络网络如何处理呢？</p>
+</blockquote>
+<ul>
+<li><p><strong>平移不变性</strong></p>
+<p>对于原始图A，平移后得到图B，对于同一个卷积核来说，都会得到相同的特征，这就是卷积核的权值共享。但是特征处于不同的位置，由于距离差距较大，即使经过多层池化后，也不能处于近似的位置。此时，后续的全连接层会通过权重值的调整，把这两个相同的特征看作同一类的分类标准之一。如果是小距离的平移，通过池化层就可以处理了。</p>
+</li>
+<li><p><strong>旋转视角不变性</strong></p>
+<p>对于原始图A，有小角度的旋转得到C，卷积层在A图上得到特征a，在C图上得到特征c，可以想象a与c的位置间的距离不是很远，在经过两层池化以后，基本可以重合。所以卷积网络对于小角度旋转是可以容忍的，但是对于较大的旋转，需要使用数据增强来增加训练样本。一个极端的例子是当6旋转90度时，谁也不能确定它到底是6还是9。</p>
+</li>
+<li><p><strong>尺度不变性</strong></p>
+<p>对于原始图A和缩小的图D，人类可以毫不费力地辨别出它们是同一个东西。池化在这里是不是有帮助呢？没有！因为神经网络对A做池化的同时，也会用相同的方法对D做池化，这样池化的次数一致，最终D还是比A小。如果我们有多个卷积视野，相当于从两米远的地方看图A，从一米远的地方看图D，那么A和D就可以很相近似了。这就是Inception的想法，用不同尺寸的卷积核去同时寻找同一张图片上的特征。</p>
+</li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2020/12/31/%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2020/12/02/EN/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="RuaYiii's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2021/02/">二月 2021<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2021/01/">一月 2021<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/12/">十二月 2020<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/11/">十一月 2020<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2020/10/">十月 2020<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;RuaYiii's Blog
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
