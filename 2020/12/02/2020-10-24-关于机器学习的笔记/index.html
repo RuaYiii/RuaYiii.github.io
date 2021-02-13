@@ -262,9 +262,14 @@
 <p><strong>求 w 的偏导</strong></p>
 <p>​    目前 z=162，如果想让 z 变小一些，比如目标是 z=150，w 应该如何变化呢？</p>
 <p>​    最笨的办法是可以在输入端一点一点的试——直到满意为止</p>
-<p>​    从 z 开始一层一层向回➡   <strong>z=x⋅y</strong>   又有  <code>x=2w+3b</code>,<code>y=2b+1</code></p>
-<p>所以<img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20201116200258117.png" alt="image-20201116200258117" style="zoom:80%;" />  （链式法则）</p>
-<p>其中  $$\frac{ \partial{ z } }{ \partial{ x } }=\frac{ \partial{ }}{ \partial{ x } }(x \cdot y)=y=9$$       $$\frac{\partial{ x } }{ \partial{ w } }=\frac { \partial{ } } { \partial{ w } } (2w+3b)=2$$     </p>
+<p>​    从 z 开始一层一层向回➡   <strong>z=x⋅y</strong>   又有   <code>x=2w+3b</code> ,<code>y=2b+1 </code> </p>
+<p>所以</p>
+<img src="C:\Users\hp\AppData\Roaming\Typora\typora-user-images\image-20201116200258117.png" alt="image-20201116200258117" style="zoom:80%;" />
+
+<p>  （链式法则）</p>
+<p>其中  </p>
+<p> $$ \frac{ \partial{ z } }{ \partial{ x } }=\frac{ \partial{ }}{ \partial{ x } }(x \cdot y)=y=9 $$      </p>
+<p>  $$ \frac{\partial{ x } }{ \partial{ w } }=\frac { \partial{ } } { \partial{ w } } (2w+3b)=2 $$      </p>
 <p> 上述表达的含义是：当 w 变化一点点时，z 会产生 w 的变化值18倍的变化。记住我们的目标是让 z=150，目前在初始状态时是 z=162，所以，问题转化为：当需要 z 从 162 变到 150 时，w 需要变化多少？ </p>
 <p>​    既然 Δz=18⋅Δw    那么—— $$\Delta w = {\Delta z \over 18}=\frac{162-150}{18}= 0.6667$$  </p>
 <p>​    最终结果也可以看出  $$w = w - 0.6667=2.3333$$</p>
