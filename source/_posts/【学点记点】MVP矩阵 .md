@@ -48,33 +48,31 @@ M矩阵不是一个单一的矩阵，我们描述模型空间的变换往往伴�
 
 - 虽然是x-y-z三个维度，但是你可能发现下面的矩阵形式是四维的，这是因为平移变换不是齐次的，所以额外引入一个维度: 4*4的一个矩阵
 
-
 $$
 \left[ 
-\begin{array}  { l l l l  }  1 & 0 & 0 & t_x \\ 
-0 & 1 & 0 & t_y \\ 
-0 & 0 & 1 & t_z \\ 
+\begin{matrix} 1 & 0 & 0 & t_x \\\\
+0 & 1 & 0 & t_y \\\\
+0 & 0 & 1 & t_z \\\\
 0 & 0 & 0 & 1
-\end{array} 
+\end{matrix} 
 \right] 
 \left[ 
-\begin{array}  { l l l l  }  
-1 & 0 & 0 & 0 \\ 
-0 & cos \theta & -sin\theta & 0 \\ 
-0 & sin \theta & -cos\theta & 0 \\ 
+\begin{matrix} 
+1 & 0 & 0 & 0 \\\\ 
+0 & cos \theta & -sin\theta & 0 \\\\ 
+0 & sin \theta & -cos\theta & 0 \\\\ 
 0 & 0 & 0 & 1
-\end{array} 
+\end{matrix} 
 \right] 
 \left[ 
-\begin{array}  { l l l l  }
-k_x & 0 & 0 & 0 \\ 
-0 & k_y & 0 & 0 \\ 
-0 & 0 & k_z & 0 \\ 
+\begin{matrix} 
+k_x & 0 & 0 & 0 \\\\ 
+0 & k_y & 0 & 0 \\\\ 
+0 & 0 & k_z & 0 \\\\ 
 0 & 0 & 0 & 1
-\end{array} 
+\end{matrix} 
 \right] 
 $$
-
 
 - 值得注意的是，中间这个旋转矩阵的形式是依据你旋转的的轴，比如上面的公式就是绕x轴旋转
 
@@ -86,30 +84,29 @@ $$
 > 
 - 显然摄像机的视角立足于世界空间，由于涉及旋转中心，所以首先要将世界原点和摄像机移动重合起来，所以是先平移再旋转，但是摄像机不会缩放吧，我们可以把它理解成徒有位置和朝向的单一点，缩放不具备意义，但是再一些引擎中，摄像机的坐标系和世界坐标系不是一个方向（比如unity，所以最后处理的时候会反向z轴，如下
 
-
 $$
 \left[ 
-\begin{array}  { l l l l  }  
-1 & 0 & 0 & 0 \\ 
-0 & 1 & 0 & 0 \\ 
-0 & 0 & -1 & 0 \\ 
+\begin{matrix}  
+1 & 0 & 0 & 0 \\\\ 
+0 & 1 & 0 & 0 \\\\ 
+0 & 0 & -1 & 0 \\\\ 
 0 & 0 & 0 & 0
-\end{array} 
-\right]\left[ 
-\begin{array}  { l l l l  }  
-1 & 0 & 0 & 0 \\ 
-0 & cos \theta & -sin\theta & 0 \\ 
-0 & sin \theta & -cos\theta & 0 \\ 
+\end{matrix} 
+\right]
+\left[ 
+\begin{matrix}  
+1 & 0 & 0 & 0 \\\\ 
+0 & cos \theta & -sin\theta & 0 \\\\ 
+0 & sin \theta & -cos\theta & 0 \\\\ 
 0 & 0 & 0 & 1
-\end{array} 
+\end{matrix} 
 \right] \left[ 
-\begin{array}  { l l l l  }  1 & 0 & 0 & t_x \\ 
-0 & 1 & 0 & t_y \\ 
-0 & 0 & 1 & t_z \\ 
+\begin{matrix}   1 & 0 & 0 & t_x \\\\ 
+0 & 1 & 0 & t_y \\\\ 
+0 & 0 & 1 & t_z \\\\ 
 0 & 0 & 0 & 1
-\end{array} 
+\end{matrix} 
 \right] 
-
 $$
 
 
@@ -136,9 +133,9 @@ $$
 $$
 \left[ 
 \begin{array}  { l l l l  }  
-1 & 0 & 0 & -\frac{right+left}{2} \\ 
-0 & 1 & 0 & -\frac{top+button}{2} \\ 
-0 & 0 & 1 & -\frac{near+far}{2} \\ 
+1 & 0 & 0 & -\frac{right+left}{2} \\\\ 
+0 & 1 & 0 & -\frac{top+button}{2} \\\\ 
+0 & 0 & 1 & -\frac{near+far}{2} \\\\ 
 0 & 0 & 0 & 1
 \end{array} 
 \right]
@@ -153,9 +150,9 @@ $$
 $$
 \left[ 
 \begin{array}  { l l l l  }  
-\frac{2}{r-l} & 0 & 0 & 0 \\ 
-0 & \frac{2}{t-b} & 0 & 0 \\ 
-0 & 0 & \frac{2}{n-f} & 0 \\ 
+\frac{2}{r-l} & 0 & 0 & 0 \\\\ 
+0 & \frac{2}{t-b} & 0 & 0 \\\\ 
+0 & 0 & \frac{2}{n-f} & 0 \\\\ 
 0 & 0 & 0 & 1
 \end{array} 
 \right]
@@ -168,9 +165,9 @@ $$
 $$
 \left[ 
 \begin{array}  { l l l l  }  
-\frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\ 
-0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b} \\ 
-0 & 0 & \frac{2}{n-f} & -\frac{n+f}{n-f} \\ 
+\frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\\\ 
+0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b} \\\\ 
+0 & 0 & \frac{2}{n-f} & -\frac{n+f}{n-f} \\\\ 
 0 & 0 & 0 & 1
 \end{array} 
 \right]
@@ -191,7 +188,7 @@ $$
 
 为了好看大家都乘z ，但是经过变换齐次的那个 1 会变成 z ,根据这个规则，我们的最后一行用（0 0 1 0） 就能完成这个变换
 
-现在是这样的：$\left( \begin{array} { l } { n x / z } \\ { n y / z } \\ { unknow } \\ { 1 } \end{array} \right) =>\left( \begin{array} { l } { n x  } \\ { n y  } \\ { unknow } \\ { z } \end{array} \right)$
+现在是这样的：$\left( \begin{array} { l } { n x / z } \\\\ { n y / z } \\\\ { unknow } \\\\ { 1 } \end{array} \right) =>\left( \begin{array} { l } { n x  } \\\\ { n y  } \\\\ { unknow } \\\\ { z } \end{array} \right)$
 
 但是z轴呢？
 
@@ -208,7 +205,7 @@ $$
 
 对于远平面上的也是，但是n变成f, 然后讨论 x ,y 为 0的情况
 
-则我们我们只抽出对z轴产生影响的那行，设缩放为A, 位移为B，则有 $\left( \begin{array} { l l } { 0 } & { 0 } & { A } & { B } \end{array} \right) \left( \begin{array} { l l } { x } \\ { y } \\ { n } \\{ 1 } \end{array} \right) = n ^ { 2 }$  也就可以得到`**A*n+B=n^2**`
+则我们我们只抽出对z轴产生影响的那行，设缩放为A, 位移为B，则有 $\left( \begin{array} { l l } { 0 } & { 0 } & { A } & { B } \end{array} \right) \left( \begin{array} { l l } { x } \\\\ { y } \\\\ { n } \\\\{ 1 } \end{array} \right) = n ^ { 2 }$  也就可以得到`**A*n+B=n^2**`
 
 同理 也有 `**A*f+B=f^2`  唉 然后联立求解就可以得到： A=n+f ; B=-n*f**
 
@@ -217,9 +214,9 @@ $$
 $$
 \left[ 
 \begin{array}  { l l l l  }  
-n & 0 & 0 & 0\\ 
-0 & n & 0 & 0 \\ 
-0 & 0 & n+f & -nf \\ 
+n & 0 & 0 & 0\\\\ 
+0 & n & 0 & 0 \\\\ 
+0 & 0 & n+f & -nf \\\\ 
 0 & 0 & 1 & 0
 \end{array} 
 \right]
@@ -230,23 +227,23 @@ $$
 $$
 \left[ 
 \begin{array}  { l l l l  }  
-\frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\ 
-0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b} \\ 
-0 & 0 & \frac{2}{n-f} & -\frac{n+f}{n-f} \\ 
+\frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\\\ 
+0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b} \\\\ 
+0 & 0 & \frac{2}{n-f} & -\frac{n+f}{n-f} \\\\ 
 0 & 0 & 0 & 1
 \end{array} 
 \right]\left[ 
 \begin{array}  { l l l l  }  
-n & 0 & 0 & 0\\ 
-0 & n & 0 & 0 \\ 
-0 & 0 & n+f & -nf \\ 
+n & 0 & 0 & 0\\\\ 
+0 & n & 0 & 0 \\\\ 
+0 & 0 & n+f & -nf \\\\ 
 0 & 0 & 1 & 0
 \end{array} 
 \right]= \left[ 
 \begin{array}  { l l l l  }  
-\frac{2n}{r-l} & 0 & -\frac{r+l}{r-l} & 0 \\ 
-0 & \frac{2n}{t-b} & -\frac{t+b}{t-b} & 0 \\ 
-0 & 0 & \frac{n+f}{n-f} & -\frac{2nf}{n-f} \\ 
+\frac{2n}{r-l} & 0 & -\frac{r+l}{r-l} & 0 \\\\ 
+0 & \frac{2n}{t-b} & -\frac{t+b}{t-b} & 0 \\\\ 
+0 & 0 & \frac{n+f}{n-f} & -\frac{2nf}{n-f} \\\\ 
 0 & 0 & 1 & 0
 \end{array} 
 \right]
@@ -255,9 +252,9 @@ $$
 $$
 \left[ 
 \begin{array}  { l l l l  }  
-\frac{2n}{r-l} & 0 & -\frac{r+l}{r-l} & 0 \\ 
-0 & \frac{2n}{t-b} & -\frac{t+b}{t-b} & 0 \\ 
-0 & 0 & \frac{n+f}{n-f} & -\frac{2nf}{n-f} \\ 
+\frac{2n}{r-l} & 0 & -\frac{r+l}{r-l} & 0 \\\\ 
+0 & \frac{2n}{t-b} & -\frac{t+b}{t-b} & 0 \\\\ 
+0 & 0 & \frac{n+f}{n-f} & -\frac{2nf}{n-f} \\\\ 
 0 & 0 & 1 & 0
 \end{array} 
 \right]

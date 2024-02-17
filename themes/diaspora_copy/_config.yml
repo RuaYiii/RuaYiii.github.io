@@ -32,7 +32,7 @@ twitterpic:
   creatorid: yourtwitteridhere
 
 # 是否使用mathjax
-mathjax: false
+mathjax: true
 
 
 # 是否关闭默认滚动条
