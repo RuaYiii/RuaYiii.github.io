@@ -1,6 +1,6 @@
 ---
 title: 【技术杂谈】聊聊SD那档子事：clip、vae、unet、controlnet 和 lora
-date: 2021-2-23 00:00:01
+date: 2024-2-23 00:00:01
 categories: 
     - 技术杂谈
 tags: 
