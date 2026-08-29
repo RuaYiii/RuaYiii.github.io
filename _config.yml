@@ -2,15 +2,18 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-# Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: Rua Yii
-language: cn
-timezone: ''
 
+# Site
+title: "RuaYiii's Space"
+subtitle: '不在场。'
+description: '不在场。'
+keywords:
+  - RuaYiii
+  - personal blog
+  - projects
+author: RuaYiii
+language: zh-CN
+timezone: Asia/Shanghai
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://ruayiii.github.io/
