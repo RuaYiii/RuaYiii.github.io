@@ -401,6 +401,63 @@ $(function() {
 	
 	
     var typed = null;
+    function getQuoteLibrary() {
+    var element = document.getElementById('quote-library');
+
+    if (!element) {
+        return [];
+    }
+
+    try {
+        var quotes = JSON.parse(element.textContent || '[]');
+        return Array.isArray(quotes) ? quotes : [];
+    } catch (error) {
+        console.warn('Failed to parse local quote library:', error);
+        return [];
+    }
+}
+
+function getRandomQuote() {
+    var quotes = getQuoteLibrary();
+
+    if (quotes.length === 0) {
+        return null;
+    }
+
+    var index = Math.floor(Math.random() * quotes.length);
+    return quotes[index];
+}
+
+function formatQuote(quote) {
+    if (typeof quote === 'string') {
+        return quote;
+    }
+
+    if (!quote || !quote.text) {
+        return '';
+    }
+
+    if (quote.source) {
+        return quote.text + ' —— ' + quote.source;
+    }
+
+    return quote.text;
+}
+
+function startQuoteTyping() {
+    var quote = getRandomQuote();
+    var content = formatQuote(quote);
+
+    if (!content) {
+        return;
+    }
+
+    typed = new Typed('.hitokoto .typed', {
+        strings: [content],
+        typeSpeed: 90,
+        startDelay: 500
+    });
+}
     $('body').on('click', function(e) {
         var tag = $(e.target).attr('class') || '',
             rel = $(e.target).attr('rel') || '';
@@ -418,26 +475,9 @@ $(function() {
 				if(typed !== null)
 					{typed.destroy(); typed = null;}
 				else{
-					if($("#hitokoto").data('st') == true){
-						$.get("https://v1.hitokoto.cn/", function (data) {
-						var data = data;
-						var str =  data.hitokoto + " ——  By "		
-						var options = {
-						  strings: [ 
-							//str + "Who??^1000",
-							//str + "It's me^2000",
-							//str +'Haha, make a joke',
-							str + data.from,
-						  ],
-						  typeSpeed: 90,
-						  startDelay: 500,
-						  //backDelay: 500,
-						  //backSpeed: 50,//回退速度
-						  //loop: true,
-						}
-						typed = new Typed(".hitokoto .typed", options);
-						})
-					}
+					if ($("#hitokoto").data('st') == true) {
+                                startQuoteTyping();
+                            }
 				}	
                 return false;
                 break;

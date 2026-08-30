@@ -90,7 +90,19 @@ body.mu .icon-logo {color:#333;}
 .nav p {color:#999;font-size:12px;position:absolute;width:100%;text-align:center;bottom:30px;}
 .nav p a {color:#999;text-decoration:underline;}
 .nav p:first-letter {font-family:sans-serif;}
-.nav .hitokoto {text-align:center;font-size: 16px;margin: 10% auto 10px;padding: 10px 20px 10px;color: darkgray;max-width:800;}
+.nav .hitokoto {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 10% auto 10px;
+    padding: 10px 20px;
+    color: darkgray;
+    max-width: 800px;
+    max-height: 40vh;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    white-space: pre-line;
+}
 .nav .footerlinks {font-size: 45px; margin: 20px 1px 30px;padding: 10px 1px 10px;}
 .nav .footerlinks a {font-size: 35px; text-decoration:none;}
 .nav .footerlinks a:hover { color: #737373;}/* 鼠标移动到链接上 */

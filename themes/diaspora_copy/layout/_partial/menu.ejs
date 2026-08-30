@@ -1,4 +1,8 @@
 <div class="nav">
+    <%
+    var quoteLibrary = site.data.quotes || [];
+    var quoteJson = JSON.stringify(quoteLibrary).replace(/</g, '\\u003c');
+    %>
     <ul id="menu-menu" class="menu">
         <% for (var i in theme.menu){ %>
         <li class="<%- theme.menu[i].indexOf('http') > -1 ? " " : "pview" %> menu-item menu-item-type-post_type menu-item-object-page">
@@ -8,9 +12,10 @@
     </ul>
 	<span class="target"></span>
 	<center>
-	<div class="hitokoto">
-		<span class="typed" id="hitokoto" data-st="<%=theme.hitokoto%>"></span>
-	</div>
+<div class="hitokoto">
+    <span class="typed" id="hitokoto" data-st="<%= theme.hitokoto %>"></span>
+    <script id="quote-library" type="application/json"><%- quoteJson %></script>
+</div>
 	</center>
 	
 	<p class="footerlinks">
