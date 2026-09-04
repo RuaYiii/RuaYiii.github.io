@@ -1,0 +1,57 @@
+<%
+var friends = site.data.friends || [];
+%>
+
+<% if (friends.length) { %>
+<section class="home-section friends-section" aria-labelledby="friends-title">
+    <div class="home-section__inner friends-section__layout">
+        <header class="friends-section__intro">
+            <p class="friends-section__eyebrow">[02] FRIENDS</p>
+
+            <h2 id="friends-title">Friends</h2>
+
+            <p class="friends-section__description">
+                一些相邻的站点，以及仍在表达的人。
+            </p>
+        </header>
+
+        <div class="friends-panel">
+            <header class="friends-panel__header">
+                <span>LINK DIRECTORY</span>
+                <span>
+                    <%= String(friends.length).padStart(2, '0') %>
+                    CONNECTIONS
+                </span>
+            </header>
+
+            <ul class="friends-tags">
+                <% friends.forEach(function (friend) { %>
+                <li class="friend-tag">
+                    <a
+                        href="<%= friend.url %>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="<%= friend.description || friend.name %>"
+                        style="--friend-accent: <%= friend.accent || '#e75867' %>;"
+                    >
+                        <span class="friend-tag__prefix" aria-hidden="true">#</span>
+
+                        <strong><%= friend.name %></strong>
+
+                        <% if (friend.description) { %>
+                        <span class="friend-tag__description">
+                            <%= friend.description %>
+                        </span>
+                        <% } %>
+
+                        <span class="friend-tag__arrow" aria-hidden="true">
+                            ↗
+                        </span>
+                    </a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</section>
+<% } %>

@@ -472,3 +472,303 @@
     }
 }
 
+/* Friends：Drink Log 风格的链接标签面板 */
+.friends-section {
+    margin-top: 0;
+    padding-top: clamp(64px, 6vw, 84px);
+    padding-bottom: clamp(64px, 6vw, 84px);
+    color: var(--space-text);
+    background: #fff;
+}
+
+.friends-section__layout {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+    gap: clamp(40px, 6vw, 88px);
+    align-items: start;
+}
+
+.friends-section__eyebrow {
+    margin: 0 0 22px;
+}
+
+.friends-section__intro h2 {
+    margin: 0;
+    color: var(--space-text);
+    font-size: clamp(40px, 4.5vw, 58px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.friends-section__description {
+    max-width: 250px;
+    margin: 24px 0 0;
+    color: #756970;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* 包住所有友链的统一面板 */
+.friends-panel {
+    overflow: visible;
+    color: var(--space-ink);
+    background: var(--space-paper);
+    border: 3px solid var(--space-ink);
+    border-radius: 0;
+    box-shadow: 8px 8px 0 var(--space-coral);
+}
+
+.friends-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 20px;
+    color: var(--space-ink);
+    font-family: "Source Code Pro", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    border-bottom: 2px dashed var(--space-ink);
+}
+
+/* Tag 容器 */
+.friends-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px 16px;
+    align-items: center;
+    margin: 0;
+    padding: 34px 28px 38px;
+}
+
+.friend-tag {
+    --tag-shift: 0px;
+    --tag-tilt: 0deg;
+
+    position: relative;
+    max-width: 100%;
+    list-style: none;
+    transform: translateY(var(--tag-shift)) rotate(var(--tag-tilt));
+    transform-origin: center;
+}
+
+/* 受控随机：轻微错位，但每次刷新保持稳定 */
+.friend-tag:nth-child(8n + 1) {
+    --tag-shift: -5px;
+    --tag-tilt: -2.8deg;
+}
+
+.friend-tag:nth-child(8n + 2) {
+    --tag-shift: 4px;
+    --tag-tilt: 2deg;
+}
+
+.friend-tag:nth-child(8n + 3) {
+    --tag-shift: -3px;
+    --tag-tilt: -1.8deg;
+}
+
+.friend-tag:nth-child(8n + 4) {
+    --tag-shift: 5px;
+    --tag-tilt: 2.7deg;
+}
+
+.friend-tag:nth-child(8n + 5) {
+    --tag-shift: 4px;
+    --tag-tilt: -2.2deg;
+}
+
+.friend-tag:nth-child(8n + 6) {
+    --tag-shift: -5px;
+    --tag-tilt: 3deg;
+}
+
+.friend-tag:nth-child(8n + 7) {
+    --tag-shift: 3px;
+    --tag-tilt: 1.7deg;
+}
+
+.friend-tag:nth-child(8n + 8) {
+    --tag-shift: -4px;
+    --tag-tilt: -2.5deg;
+}
+
+.friend-tag:hover {
+    z-index: 1;
+}
+
+/* 单个友链 Tag */
+.friend-tag > a {
+    --friend-accent: var(--space-coral);
+
+    display: inline-flex;
+    max-width: 100%;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    padding: 9px 11px;
+    color: #fff;
+    text-decoration: none;
+    background: var(--space-ink);
+    border: 2px solid var(--space-ink);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--friend-accent);
+    transition:
+        color 100ms steps(2, end),
+        background-color 100ms steps(2, end),
+        box-shadow 100ms steps(2, end),
+        transform 100ms steps(2, end);
+}
+
+.friend-tag__prefix {
+    flex: 0 0 auto;
+    color: var(--friend-accent);
+    font-family: "Source Code Pro", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.friend-tag strong {
+    flex: 0 0 auto;
+    color: #fff;
+    font-family: "Source Code Pro", monospace;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.friend-tag__description {
+    max-width: 180px;
+    overflow: hidden;
+    color: #f3c969;
+    font-family: "Source Code Pro", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.friend-tag__description::before {
+    color: var(--space-coral);
+    content: "// ";
+}
+
+.friend-tag__arrow {
+    flex: 0 0 auto;
+    color: var(--friend-accent);
+    font-family: "Source Code Pro", monospace;
+    font-size: 10px;
+    line-height: 1;
+}
+
+.friend-tag > a:hover {
+    color: var(--space-ink);
+    background: var(--space-paper);
+    border-color: var(--space-ink);
+    box-shadow: 1px 1px 0 var(--friend-accent);
+    transform: translate(3px, 3px);
+}
+
+.friend-tag > a:hover strong {
+    color: var(--space-ink);
+}
+
+/* 三个首页章节的统一分界 */
+.projects-section,
+.friends-section,
+.writing-intro {
+    position: relative;
+}
+
+.projects-section::before,
+.friends-section::before,
+.writing-intro::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(1200px, calc(100% - 48px));
+    height: 3px;
+    content: "";
+    background: var(--space-ink);
+    transform: translateX(-50%);
+}
+
+/* 让章节编号成为明显的视觉标签 */
+.projects-section__eyebrow,
+.friends-section__eyebrow,
+.writing-intro__eyebrow {
+    display: inline-flex;
+    min-height: 27px;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+    color: #fff;
+    font-family: "Source Code Pro", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.15em;
+    background: var(--space-ink);
+    border: 2px solid var(--space-ink);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--space-coral);
+}
+
+/* 响应式 */
+@media screen and (max-width: 960px) {
+    .friends-section__layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .friends-section__description {
+        max-width: 520px;
+        margin-top: 18px;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .friends-section {
+        padding-top: 54px;
+        padding-bottom: 54px;
+    }
+
+    .friends-panel {
+        border-radius: 0;
+        box-shadow: 5px 5px 0 var(--space-coral);
+    }
+
+    .friends-panel__header {
+        padding: 18px;
+    }
+
+    .friends-tags {
+        gap: 18px 14px;
+        padding: 28px 20px 32px;
+    }
+
+    .friend-tag__description {
+        display: none;
+    }
+
+    .projects-section::before,
+    .friends-section::before,
+    .writing-intro::before {
+        width: calc(100% - 36px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .friend-tag > a {
+        transition: none;
+    }
+
+    .friend-tag > a:hover {
+        transform: none;
+    }
+}

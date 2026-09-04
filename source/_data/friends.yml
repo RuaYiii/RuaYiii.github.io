@@ -1,0 +1,56 @@
+- id: friend-one
+  name: "wjz"
+  description: "wjz’s ⑨"
+  url: "https://pophirasawa.top/"
+  initials: "FO"
+  accent: "#f09a6e"
+
+- id: friend-two
+  name: "安达"
+  description: "junpickle's 🥚"
+  url: "https://junpickle.github.io/"
+  initials: "FT"
+  accent: "#e75867"
+
+- id: friend-three
+  name: "鱼籽"
+  description: "sherroe's ♥"
+  url: "https://sherroe.top/"
+  initials: "FT"
+  accent: "#c49ad9"
+- id: friend-four
+  name: "龟龟"
+  description: "天泽龟's shell"
+  url: "https://tzturtle.moe/"
+  initials: "FT"
+  accent: "#78b8c4"
+
+- id: friend-five
+  name: "喵哈羊"
+  description: "MHY's 🐏"
+  url: "https://kafudolly.github.io/"
+  initials: "FT"
+  accent: "#e8c76d"
+
+- id: friend-six
+  name: "澤村睿"
+  description: "澤村睿’s 🌋"
+  url: "https://scientificw.github.io/"
+  initials: "FT"
+  accent: "#8fb9aa"
+
+- id: friend-seven
+  name: "石上"
+  description: "石上の🌸"
+  url: "https://lanweifrj.github.io/"
+  initials: "FT"
+  accent: "#e69abb"
+
+- id: friend-eight
+  name: "poria"
+  description: "poria's 🗑️"
+  url: "https://poriahcorvus.github.io/"
+  initials: "FT"
+  accent: "#9b8dc6"
+
+  
