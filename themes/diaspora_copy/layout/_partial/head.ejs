@@ -47,7 +47,7 @@ var description = '';
     <meta property="og:type" content="object"/>
     <meta property="og:title" content="<%= page_title() %>"/>
     <% if (description) { %><meta property="og:description" content="<%= description %>"/><%}%>
-    <%- css(['css/diaspora.css'])%>
+    <%- css(['css/diaspora.css', 'css/home-modules.css']) %>
     <script>window.searchDbPath = "<%= url_for('/search.xml') %>";</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

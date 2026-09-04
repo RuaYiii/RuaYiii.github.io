@@ -1,0 +1,16 @@
+- id: drink-log
+  name: "Drink Log"
+  label: "Featured Project"
+  description: "把手边已有的基酒和辅料投入虚拟 Shaker，看看今晚能够调出什么。"
+  live_url: "https://ruayiii.github.io/drink_log/"
+  repository_url: "https://github.com/RuaYiii/drink_log"
+  status: "Live"
+  year: 2026
+  featured: true
+  stack:
+    - React
+    - Vite
+    - Three.js
+    - Zustand
+  monogram: "DL"
+  accent: "#e75867"

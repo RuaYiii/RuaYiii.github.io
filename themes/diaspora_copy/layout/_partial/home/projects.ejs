@@ -1,0 +1,87 @@
+<%
+var projects = site.data.projects || [];
+%>
+
+<% if (projects.length) { %>
+<section class="home-section projects-section" aria-labelledby="projects-title">
+    <div class="home-section__inner projects-section__layout">
+        <header class="projects-section__intro">
+            <p class="projects-section__eyebrow">01 / PROJECTS</p>
+
+            <h2 id="projects-title">Projects</h2>
+
+            <p class="projects-section__description">
+                一些正在生长、偶尔维护，<br>
+                也可能突然改变方向的东西。
+            </p>
+        </header>
+
+        <div class="projects-grid">
+            <% projects.forEach(function (project, index) { %>
+            <article
+                class="project-card<%= project.featured ? ' project-card--featured' : '' %>"
+                style="--project-accent: <%= project.accent || '#e75867' %>;"
+            >
+                <header class="project-card__header">
+                    <span class="project-card__label">
+                        <%= project.featured ? 'Featured' : 'Project' %>
+                    </span>
+
+                    <span class="project-card__meta">
+                        <%= project.status || 'Project' %>
+                        <% if (project.year) { %>
+                            · <%= project.year %>
+                        <% } %>
+                    </span>
+                </header>
+
+                <div class="project-card__body">
+                    <div class="project-card__content">
+                        <h3 id="project-<%= project.id %>-title">
+                            <%= project.name %>
+                        </h3>
+
+                        <p><%= project.description %></p>
+
+                        <% if (project.stack && project.stack.length) { %>
+                        <ul class="project-card__stack" aria-label="Technology stack">
+                            <% project.stack.forEach(function (technology) { %>
+                            <li><%= technology %></li>
+                            <% }); %>
+                        </ul>
+                        <% } %>
+                    </div>
+
+                    <div class="project-card__mark" aria-hidden="true">
+                        <strong><%= project.monogram || 'PR' %></strong>
+                        <span><%= String(index + 1).padStart(2, '0') %></span>
+                    </div>
+                </div>
+
+                <footer class="project-card__actions">
+                    <% if (project.live_url) { %>
+                    <a
+                        href="<%= project.live_url %>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        打开项目 <span aria-hidden="true">↗</span>
+                    </a>
+                    <% } %>
+
+                    <% if (project.repository_url) { %>
+                    <a
+                        href="<%= project.repository_url %>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        查看源码 <span aria-hidden="true">↗</span>
+                    </a>
+                    <% } %>
+                </footer>
+            </article>
+            <% }); %>
+        </div>
+    </div>
+</section>
+<% } %>
