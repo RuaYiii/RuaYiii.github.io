@@ -1,0 +1,247 @@
+/* 首页文章网格 */
+#primary {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px;
+    box-sizing: border-box;
+    width: min(1200px, calc(100% - 48px));
+    margin: 64px auto 0;
+    background: #fff;
+    align-items: start;
+}
+
+/* 文章卡片 */
+#primary .post-card {
+    --card-accent: var(--space-coral);
+
+    display: flex;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    align-self: start;
+    flex-direction: column;
+    overflow: visible;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+#primary .post-card:nth-child(4n + 1) {
+    --card-accent: #e75867;
+}
+
+#primary .post-card:nth-child(4n + 2) {
+    --card-accent: #d99262;
+}
+
+#primary .post-card:nth-child(4n + 3) {
+    --card-accent: #78b8c4;
+}
+
+#primary .post-card:nth-child(4n + 4) {
+    --card-accent: #c49ad9;
+}
+
+#primary .post-card:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+/* 封面区域 */
+#primary .post-card__media {
+    position: relative;
+    z-index: auto;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    overflow: hidden;
+    background: var(--space-ink);
+    border: 1px solid var(--space-ink);
+}
+#primary .post-card__cover {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+#primary .post-card:hover .post-card__cover {
+    transform: scale(1.025);
+}
+#primary .post-card__media::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background: rgba(23, 18, 31, 0.08);
+    transition: opacity 180ms ease;
+}
+#primary .post-card__media::after {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 58px;
+    height: 6px;
+    content: "";
+    pointer-events: none;
+    background: var(--card-accent);
+}
+#primary .post-card:hover .post-card__media::before {
+    opacity: 0.2;
+}
+/* 文章文字区 */
+#primary .post-card .post-card__body {
+    position: static;
+    display: flex;
+    box-sizing: border-box;
+    width: auto;
+    min-height: 0;
+    height: auto;
+    padding: 22px 2px 28px;
+    flex-direction: column;
+    color: var(--space-text);
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #d9cfd2;
+}
+
+#primary .post-card__date {
+    margin: 0;
+    color: var(--card-accent);
+    font-family: "Source Code Pro", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+#primary .post-card__title {
+    margin: 18px 0 0;
+    font-size: clamp(24px, 2.2vw, 32px);
+    font-weight: 500;
+    line-height: 1.22;
+    letter-spacing: -0.035em;
+}
+
+#primary .post-card__summary {
+    display: -webkit-box;
+    min-height: 0;
+    margin: 16px 0 0;
+    overflow: hidden;
+    color: #6f6269;
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+#primary .post-card__title-link {
+    color: var(--space-text);
+    text-decoration: none;
+    transition: color 160ms ease;
+}
+
+#primary .post-card__title-link::after {
+    display: inline-block;
+    margin-left: 8px;
+    color: var(--card-accent);
+    font-family: "Source Code Pro", monospace;
+    font-size: 12px;
+    content: "↗";
+    transition: transform 160ms ease;
+}
+
+#primary .post-card:hover .post-card__title-link {
+    color: var(--card-accent);
+}
+
+#primary .post-card:hover .post-card__title-link::after {
+    transform: translate(2px, -2px);
+}
+/* 加载更多 */
+#pager {
+    z-index: 1;
+    margin: 64px 0 0;
+}
+
+#pager a {
+    display: inline-block;
+    padding: 12px 24px;
+    color: #fff;
+    font-family: "Source Code Pro", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    background: var(--space-ink);
+    border: 2px solid var(--space-ink);
+    box-shadow: 4px 4px 0 var(--space-coral);
+    transition:
+        box-shadow 100ms steps(2, end),
+        transform 100ms steps(2, end);
+}
+
+#pager a:hover {
+    color: var(--space-ink);
+    background: var(--space-paper);
+    box-shadow: 1px 1px 0 var(--space-coral);
+    transform: translate(3px, 3px);
+}
+
+/* 平板与手机 */
+@media screen and (max-width: 800px) {
+    #primary {
+        grid-template-columns: 1fr;
+        width: min(680px, calc(100% - 36px));
+        gap: 30px;
+        margin-top: 42px;
+    }
+
+    #primary .post-card {
+    box-shadow: none;
+}
+
+    #primary .post-card .post-card__body {
+        min-height: 0;
+        padding: 22px;
+    }
+
+    #primary .post-card__summary {
+        min-height: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #primary .post-card__title {
+        font-size: 24px;
+    }
+
+    #primary .post-card__media {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #primary .post-card,
+    #primary .post-card__cover,
+    #pager a {
+        transition: none;
+    }
+
+    #primary .post-card:hover,
+    #pager a:hover {
+        transform: none;
+    }
+
+    #primary .post-card:hover .post-card__cover {
+        transform: none;
+    }
+}

@@ -1,10 +1,42 @@
-<div class="post">
-    <a href="<%- url_for(post.path) %>" title="<%- post.title || "Untitled" %>">
-        <%- image_tag(post.cover || theme.cover[Math.floor(Math.random() * theme.cover.length)], {class: "cover", width: 680, height: 440}) %>
+<article class="post post-card">
+    <a
+        class="post-card__media"
+        href="<%- url_for(post.path) %>"
+        title="<%- post.title || 'Untitled' %>"
+    >
+        <%- image_tag(
+            post.cover || theme.cover[Math.floor(Math.random() * theme.cover.length)],
+            {
+                class: "cover post-card__cover",
+                width: 680,
+                height: 440
+            }
+        ) %>
     </a>
-    <div class="else">
-        <p><%- post.date.locale("zh-cn").format("MMMM DD, YYYY") %></p>
-        <h3><%- link_to(post.path, post.title || "Untitled", {class: "posttitle"}) %></h3>
-        <p><%- truncate(strip_html(post.content), {length: 80, omission: '...'}) %></p>
+
+    <div class="else post-card__body">
+        <p class="post-card__date">
+            <%- post.date.locale("zh-cn").format("MMMM DD, YYYY") %>
+        </p>
+
+        <h3 class="post-card__title">
+            <%- link_to(
+                post.path,
+                post.title || "Untitled",
+                {
+                    class: "posttitle post-card__title-link"
+                }
+            ) %>
+        </h3>
+
+        <p class="post-card__summary">
+            <%- truncate(
+                strip_html(post.content),
+                {
+                    length: 80,
+                    omission: "..."
+                }
+            ) %>
+        </p>
     </div>
-</div>
+</article>
