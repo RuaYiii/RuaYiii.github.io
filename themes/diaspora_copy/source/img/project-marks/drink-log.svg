@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="462" height="522" viewBox="0 0 462 522">
+  <title>Drink Log — RuaYiii's yellow and blue cocktail</title>
+  <!-- Vector transcription of the supplied screenshot, pending the original artwork. -->
+  <path fill="#0033ff" d="M1 286H238V522H1Z"/>
+  <path fill="#1600ff" d="M325 26H462V161H325Z"/>
+  <path fill="#ffff00" d="M345 120 444 30 458 45 365 139Z"/>
+  <path fill="#ffff00" d="M63 0 451 140 181 304 128 435 244 500 234 519 113 451 0 432 3 412 110 428 169 282Z"/>
+  <!-- The separate D aligns with the lower blue block, as in RuaYiii's reference. -->
+  <path fill="#000000" fill-rule="evenodd" d="M276 286H342C420 286 462 326 462 404S420 522 342 522H276ZM304 312V496H342C401 496 434 465 434 404S401 312 342 312Z"/>
+</svg>

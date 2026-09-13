@@ -1,7 +1,7 @@
 - id: drink-log
   name: "Drink Log"
   label: "Featured Project"
-  description: "把手边已有的基酒和辅料投入虚拟 Shaker，看看今晚能够调出什么。"
+  description: "吨！吨！吨！"
   live_url: "https://ruayiii.github.io/drink_log/"
   repository_url: "https://github.com/RuaYiii/drink_log"
   status: "Live"
@@ -13,4 +13,26 @@
     - Three.js
     - Zustand
   monogram: "DL"
-  accent: "#e75867"
+  mark_style: "cocktail"
+  mark_image: "img/project-marks/drink-log.svg"
+  accent: "#ffff00"
+
+- id: aesthetic-archive
+  name: "余像"
+  subtitle: "Aesthetic Archive"
+  label: "Project"
+  description: "他者的眼睛，剩余的影像。"
+  live_url: "https://ruayiii.github.io/aesthetic-archive/"
+  repository_url: "https://github.com/RuaYiii/aesthetic-archive"
+  status: "Live"
+  year: 2026
+  featured: false
+  stack:
+    - Python
+    - Flask
+    - SQLite
+    - Vanilla JS
+  monogram: "AA"
+  mark_style: "archive"
+  mark_image: "img/project-marks/aesthetic-archive.svg"
+  accent: "#98a397"

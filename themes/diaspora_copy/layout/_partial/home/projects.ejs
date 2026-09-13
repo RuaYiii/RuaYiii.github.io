@@ -16,11 +16,14 @@ var projects = site.data.projects || [];
             </p>
         </header>
 
-        <div class="projects-grid">
+        <div class="projects-grid<%= projects.length > 1 ? ' projects-grid--multiple' : '' %>">
             <% projects.forEach(function (project, index) { %>
             <article
                 class="project-card<%= project.featured ? ' project-card--featured' : '' %>"
+                data-project="<%= project.id %>"
                 style="--project-accent: <%= project.accent || '#e75867' %>;"
+                aria-labelledby="project-<%= project.id %>-title"
+                tabindex="0"
             >
                 <header class="project-card__header">
                     <span class="project-card__label">
@@ -35,27 +38,43 @@ var projects = site.data.projects || [];
                     </span>
                 </header>
 
-                <div class="project-card__body">
-                    <div class="project-card__content">
-                        <h3 id="project-<%= project.id %>-title">
-                            <%= project.name %>
-                        </h3>
+                <div class="project-card__title-block">
+                    <h3 id="project-<%= project.id %>-title">
+                        <%= project.name %>
+                    </h3>
 
-                        <p><%= project.description %></p>
+                    <% if (project.subtitle) { %>
+                    <p class="project-card__subtitle"><%= project.subtitle %></p>
+                    <% } %>
+                </div>
 
-                        <% if (project.stack && project.stack.length) { %>
-                        <ul class="project-card__stack" aria-label="Technology stack">
-                            <% project.stack.forEach(function (technology) { %>
-                            <li><%= technology %></li>
-                            <% }); %>
-                        </ul>
-                        <% } %>
-                    </div>
+                <p class="project-card__description"><%= project.description %></p>
 
-                    <div class="project-card__mark" aria-hidden="true">
-                        <strong><%= project.monogram || 'PR' %></strong>
-                        <span><%= String(index + 1).padStart(2, '0') %></span>
-                    </div>
+                <% if (project.stack && project.stack.length) { %>
+                <ul class="project-card__stack" aria-label="Technology stack">
+                    <% project.stack.forEach(function (technology) { %>
+                    <li><%= technology %></li>
+                    <% }); %>
+                </ul>
+                <% } %>
+
+                <div class="project-card__mark project-card__mark--<%= project.mark_style || 'monogram' %>" aria-hidden="true">
+                    <% if (project.mark_image) { %>
+                    <img
+                        class="project-card__mark-image"
+                        src="<%= url_for(project.mark_image) %>"
+                        width="240"
+                        height="260"
+                        alt=""
+                        decoding="async"
+                        draggable="false"
+                    >
+                    <% } else { %>
+                    <strong><%= project.monogram || 'PR' %></strong>
+                    <span class="project-card__mark-index">
+                        <%= String(index + 1).padStart(2, '0') %>
+                    </span>
+                    <% } %>
                 </div>
 
                 <footer class="project-card__actions">

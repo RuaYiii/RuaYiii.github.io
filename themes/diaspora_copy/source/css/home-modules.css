@@ -71,6 +71,11 @@
     gap: 18px;
 }
 
+/* 多项目时使用等宽卡片；Featured 只通过内容层级表达。 */
+.projects-grid--multiple {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 /*
  * Featured 项目占据网格的完整一行，
  * 但高度受到控制，不再成为一个完整屏幕。
@@ -79,59 +84,114 @@
     grid-column: 1 / -1;
 }
 
+.projects-grid--multiple .project-card--featured {
+    grid-column: auto;
+}
+
 /* 单张项目卡 */
 .project-card {
     --project-accent: var(--space-coral);
+    --project-surface: linear-gradient(135deg, var(--space-ink), var(--space-plum));
 
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto auto auto 1fr;
+    gap: 8px;
     box-sizing: border-box;
     min-width: 0;
-    min-height: 310px;
-    overflow: hidden;
+    min-height: 410px;
+    overflow: visible;
     color: #f8f3f1;
-    background:
-        radial-gradient(
-            circle at 94% 4%,
-            rgba(217, 146, 98, 0.28),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 65% 110%,
-            rgba(231, 88, 103, 0.18),
-            transparent 44%
-        ),
-        linear-gradient(135deg, var(--space-ink), var(--space-plum));
-    border: 1px solid rgba(45, 32, 54, 0.22);
-    border-radius: 22px;
-    box-shadow:
-        0 18px 45px rgba(35, 23, 39, 0.12),
-        0 2px 8px rgba(35, 23, 39, 0.08);
-    transition:
-        transform 180ms ease,
-        box-shadow 180ms ease;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    isolation: isolate;
 }
 
 .project-card--featured {
-    min-height: 340px;
+    min-height: 410px;
 }
 
-.project-card:hover {
-    transform: translateY(-4px);
-    box-shadow:
-        0 24px 55px rgba(35, 23, 39, 0.18),
-        0 4px 12px rgba(35, 23, 39, 0.1);
+.project-card::before {
+    position: absolute;
+    inset: 11% 3% 9% 5%;
+    z-index: -1;
+    content: "";
+    opacity: 0.72;
+    background:
+        conic-gradient(
+            from 9deg at 48% 44%,
+            transparent 0 7deg,
+            var(--project-accent) 7.2deg 7.8deg,
+            transparent 8deg 76deg,
+            rgba(24, 19, 31, 0.82) 76.2deg 77deg,
+            transparent 77.2deg 158deg,
+            var(--project-accent) 158.2deg 158.9deg,
+            transparent 159.1deg 246deg,
+            rgba(24, 19, 31, 0.82) 246.2deg 247deg,
+            transparent 247.2deg 329deg,
+            var(--project-accent) 329.2deg 329.9deg,
+            transparent 330.1deg 360deg
+        );
+    pointer-events: none;
+    transition: opacity 320ms ease;
+}
+
+.project-card::after {
+    position: absolute;
+    top: 44%;
+    left: 47%;
+    z-index: -1;
+    width: 16px;
+    aspect-ratio: 1;
+    content: "";
+    background: var(--space-paper);
+    border: 2px solid var(--project-accent);
+    box-shadow: 0 0 0 3px rgba(24, 19, 31, 0.28);
+    transform: rotate(45deg);
+    pointer-events: none;
+    transition: transform 420ms cubic-bezier(0.22, 0.72, 0.22, 1);
+}
+
+.projects-grid .project-card:nth-child(even)::before {
+    inset: 9% 5% 11% 3%;
+    transform: scaleX(-1);
+}
+
+.projects-grid .project-card:nth-child(even)::after {
+    right: 47%;
+    left: auto;
 }
 
 /* 卡片顶部 */
 .project-card__header {
+    grid-row: 1;
+    grid-column: 1 / 12;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 20px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 0;
+    padding: 15px 24px 15px 18px;
+    background:
+        linear-gradient(116deg, rgba(255, 255, 255, 0.12), transparent 31%),
+        linear-gradient(28deg, transparent 0 68%, rgba(255, 255, 255, 0.06) 68.5% 70%, transparent 70.5%),
+        var(--project-surface);
+    border: 0;
+    clip-path: polygon(0 0, 100% 0, 96% 82%, 88% 100%, 3% 94%);
+    filter: drop-shadow(1px 1px 0 rgba(255, 255, 255, 0.18));
+    backface-visibility: hidden;
+    transition: transform 340ms cubic-bezier(0.22, 0.72, 0.22, 1);
+    will-change: transform;
+}
+
+.projects-grid .project-card:nth-child(even) .project-card__header {
+    grid-column: 2 / 13;
+    padding-right: 18px;
+    padding-left: 24px;
+    clip-path: polygon(0 0, 100% 0, 97% 94%, 12% 100%, 4% 82%);
 }
 
 .project-card__label {
@@ -152,24 +212,37 @@
 }
 
 /* 卡片主要内容 */
-.project-card__body {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 112px;
-    gap: 28px;
-    align-items: center;
-    padding: 28px 24px;
-}
-
-.project-card--featured .project-card__body {
-    grid-template-columns: minmax(0, 1fr) 158px;
-    padding: 34px 30px;
-}
-
-.project-card__content {
+.project-card__title-block {
+    grid-row: 2;
+    grid-column: 1 / 9;
+    z-index: 2;
     min-width: 0;
+    min-height: 104px;
+    padding: 24px 32px 24px 20px;
+    background:
+        linear-gradient(131deg, rgba(255, 255, 255, 0.18) 0 7%, transparent 7.6% 47%, rgba(255, 255, 255, 0.08) 47.6% 49%, transparent 49.6%),
+        linear-gradient(24deg, transparent 0 72%, var(--project-accent) 72.3% 73%, transparent 73.3%),
+        var(--project-surface);
+    border: 0;
+    clip-path: polygon(6% 0, 82% 0, 100% 23%, 94% 100%, 18% 94%, 0 72%, 0 12%);
+    filter: drop-shadow(1px 1px 0 rgba(255, 255, 255, 0.2));
+    backface-visibility: hidden;
+    transition: transform 380ms cubic-bezier(0.22, 0.72, 0.22, 1);
+    will-change: transform;
 }
 
-.project-card__content h3 {
+.projects-grid .project-card:nth-child(even) .project-card__title-block {
+    grid-column: 5 / 13;
+    padding-right: 20px;
+    padding-left: 32px;
+    background:
+        linear-gradient(229deg, rgba(255, 255, 255, 0.18) 0 7%, transparent 7.6% 47%, rgba(255, 255, 255, 0.08) 47.6% 49%, transparent 49.6%),
+        linear-gradient(156deg, transparent 0 72%, var(--project-accent) 72.3% 73%, transparent 73.3%),
+        var(--project-surface);
+    clip-path: polygon(18% 0, 94% 0, 100% 12%, 100% 72%, 82% 94%, 6% 100%, 0 23%);
+}
+
+.project-card__title-block h3 {
     margin: 0;
     color: #fff;
     font-size: clamp(32px, 3.5vw, 46px);
@@ -178,114 +251,274 @@
     letter-spacing: -0.045em;
 }
 
-.project-card--featured .project-card__content h3 {
+.project-card--featured .project-card__title-block h3 {
     font-size: clamp(42px, 5vw, 62px);
 }
 
-.project-card__content > p {
+/* Drink Log：标题延续用户黄蓝图标的色版，主题跟随项目身份。 */
+.project-card[data-project="drink-log"] {
+    --project-surface: #10131f;
+    --drink-blue: #0033ff;
+    --drink-violet: #1600ff;
+}
+
+.projects-grid .project-card[data-project="drink-log"] .project-card__title-block {
+    background:
+        linear-gradient(24deg, transparent 0 72%, var(--drink-blue) 72% 72.7%, transparent 72.7%),
+        linear-gradient(132deg, transparent 0 76%, var(--drink-blue) 76% 91%, var(--drink-violet) 91%),
+        var(--project-surface);
+    filter: none;
+}
+
+.project-card[data-project="drink-log"] .project-card__meta {
+    color: #b5bed8;
+}
+
+.project-card[data-project="drink-log"]:focus-visible {
+    outline-color: var(--drink-blue);
+}
+
+.project-card__subtitle {
+    margin: 12px 0 0;
+    color: var(--project-accent);
+    font-family: "Source Code Pro", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.project-card__description {
+    grid-row: 3;
+    grid-column: 2 / 10;
+    z-index: 3;
     max-width: 580px;
-    margin: 20px 0 0;
+    margin: 0;
+    padding: 18px 52px 20px 22px;
     color: #cbbec4;
     font-size: 15px;
     line-height: 1.75;
+    background:
+        linear-gradient(154deg, rgba(255, 255, 255, 0.13) 0 5%, transparent 5.6% 58%, rgba(255, 255, 255, 0.07) 58.5% 60%, transparent 60.5%),
+        linear-gradient(33deg, transparent 0 81%, var(--project-accent) 81.3% 82%, transparent 82.3%),
+        var(--project-surface);
+    border: 0;
+    clip-path: polygon(9% 0, 100% 8%, 94% 82%, 83% 100%, 14% 92%, 0 70%, 3% 18%);
+    filter: drop-shadow(1px 1px 0 rgba(255, 255, 255, 0.16));
+    backface-visibility: hidden;
+    transition: transform 420ms cubic-bezier(0.22, 0.72, 0.22, 1);
+    will-change: transform;
+}
+
+.projects-grid .project-card:nth-child(even) .project-card__description {
+    grid-column: 4 / 12;
+    padding-right: 22px;
+    padding-left: 52px;
+    background:
+        linear-gradient(206deg, rgba(255, 255, 255, 0.13) 0 5%, transparent 5.6% 58%, rgba(255, 255, 255, 0.07) 58.5% 60%, transparent 60.5%),
+        linear-gradient(147deg, transparent 0 81%, var(--project-accent) 81.3% 82%, transparent 82.3%),
+        var(--project-surface);
+    clip-path: polygon(0 8%, 91% 0, 97% 18%, 100% 70%, 86% 92%, 17% 100%, 6% 82%);
 }
 
 /* 技术栈 */
 .project-card__stack {
+    grid-row: 4;
+    grid-column: 1 / 10;
+    z-index: 2;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 24px 0 0;
+    gap: 7px;
+    align-self: start;
+    margin: 0;
     padding: 0;
 }
 
+.projects-grid .project-card:nth-child(even) .project-card__stack {
+    grid-column: 4 / 13;
+    justify-content: flex-end;
+}
+
 .project-card__stack li {
-    padding: 7px 10px;
+    padding: 9px 12px;
     color: #d9cdd1;
     font-family: "Source Code Pro", monospace;
     font-size: 10px;
     line-height: 1;
     list-style: none;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
+    background:
+        linear-gradient(128deg, rgba(255, 255, 255, 0.14), transparent 36%),
+        var(--project-surface);
+    border: 0;
+    clip-path: polygon(7% 0, 100% 0, 94% 100%, 0 86%);
+    backface-visibility: hidden;
+    transition: transform 360ms cubic-bezier(0.22, 0.72, 0.22, 1);
+    will-change: transform;
 }
 
-/* 右侧项目标记 */
+.project-card__stack li:nth-child(even) {
+    clip-path: polygon(0 9%, 94% 0, 100% 86%, 6% 100%);
+}
+
+/* 项目标记只提供布局与动效，透明 SVG 自身定义轮廓和色版。 */
 .project-card__mark {
+    grid-row: 2 / 4;
+    grid-column: 9 / 13;
+    z-index: 4;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
-    width: 112px;
+    width: 100%;
+    max-width: 148px;
     aspect-ratio: 1;
-    padding: 14px;
-    overflow: hidden;
-    color: var(--space-ink);
-    background:
-        radial-gradient(
-            circle at 20% 15%,
-            rgba(255, 239, 221, 0.78),
-            transparent 34%
-        ),
-        linear-gradient(
-            145deg,
-            var(--project-accent),
-            #8e3d52
-        );
-    border-radius: 16px;
+    justify-self: end;
+    align-self: center;
+    padding: 0;
+    overflow: visible;
+    color: #f5efeb;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    clip-path: none;
+    filter: none;
+    backface-visibility: hidden;
+    transition: transform 420ms cubic-bezier(0.22, 0.72, 0.22, 1);
+    will-change: transform;
 }
 
 .project-card--featured .project-card__mark {
-    width: 158px;
+    width: 100%;
+    max-width: 158px;
 }
 
-.project-card__mark::before {
-    position: absolute;
-    inset: 0;
-    content: "";
-    opacity: 0.16;
-    background-image:
-        linear-gradient(rgba(23, 18, 31, 0.4) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(23, 18, 31, 0.4) 1px, transparent 1px);
-    background-size: 22px 22px;
+.projects-grid .project-card:nth-child(even) .project-card__mark {
+    grid-column: 1 / 5;
+    justify-self: start;
 }
 
-.project-card__mark strong,
-.project-card__mark span {
-    position: relative;
-    z-index: 1;
+.project-card__mark-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .project-card__mark strong {
+    position: relative;
+    z-index: 1;
     align-self: flex-end;
+    color: var(--project-accent);
     font-size: 42px;
     line-height: 0.9;
-    letter-spacing: -0.08em;
+    letter-spacing: -0.09em;
 }
 
 .project-card--featured .project-card__mark strong {
     font-size: 58px;
 }
 
-.project-card__mark span {
+.project-card__mark-index {
+    position: relative;
+    z-index: 1;
+    color: var(--project-accent);
     font-family: "Source Code Pro", monospace;
-    font-size: 9px;
-    letter-spacing: 0.14em;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.18em;
+}
+
+.project-card:hover .project-card__mark {
+    transform: translate3d(10px, -8px, 0) rotate(2deg);
+}
+
+.projects-grid .project-card:nth-child(even):hover .project-card__mark {
+    transform: translate3d(-10px, -8px, 0) rotate(-2deg);
+}
+
+.project-card:hover .project-card__title-block {
+    transform: translate3d(-7px, -4px, 0) rotate(-0.45deg);
+}
+
+.project-card:hover .project-card__description {
+    transform: translate3d(7px, 6px, 0) rotate(0.35deg);
+}
+
+.project-card:hover .project-card__header {
+    transform: translate3d(-4px, -6px, 0) rotate(-0.2deg);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover::after {
+    transform: rotate(135deg) scale(1.2);
+}
+
+.projects-grid .project-card:nth-child(even):hover .project-card__title-block {
+    transform: translate3d(7px, -4px, 0) rotate(0.45deg);
+}
+
+.projects-grid .project-card:nth-child(even):hover .project-card__description {
+    transform: translate3d(-7px, 6px, 0) rotate(-0.35deg);
+}
+
+.projects-grid .project-card:nth-child(even):hover .project-card__header {
+    transform: translate3d(4px, -6px, 0) rotate(0.2deg);
+}
+
+.project-card:hover .project-card__stack li:nth-child(odd) {
+    transform: translate3d(-4px, 6px, 0);
+}
+
+.project-card:hover .project-card__stack li:nth-child(even) {
+    transform: translate3d(4px, 8px, 0);
+}
+
+.projects-grid .project-card:nth-child(even):hover .project-card__stack li:nth-child(odd) {
+    transform: translate3d(4px, 6px, 0);
+}
+
+.projects-grid .project-card:nth-child(even):hover .project-card__stack li:nth-child(even) {
+    transform: translate3d(-4px, 8px, 0);
 }
 
 /* 卡片底部链接 */
 .project-card__actions {
+    grid-row: 5;
+    grid-column: 4 / 13;
+    z-index: 2;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
+    align-self: end;
+    justify-self: end;
     margin-top: auto;
-    padding: 0 24px 24px;
+    padding: 0;
+    backface-visibility: hidden;
+    transition: transform 400ms cubic-bezier(0.22, 0.72, 0.22, 1);
+    will-change: transform;
+}
+
+.projects-grid .project-card:nth-child(even) .project-card__actions {
+    grid-column: 1 / 10;
+    justify-self: start;
 }
 
 .project-card--featured .project-card__actions {
-    padding: 0 30px 28px;
+    padding: 0;
+}
+
+.project-card:hover .project-card__actions {
+    transform: translate3d(7px, 8px, 0);
+}
+
+.projects-grid .project-card:nth-child(even):hover .project-card__actions {
+    transform: translate3d(-7px, 8px, 0);
 }
 
 .project-card__actions a {
@@ -298,12 +531,21 @@
     font-size: 12px;
     line-height: 1;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px;
+    background: var(--project-surface);
+    border: 0;
+    border-radius: 0;
+    clip-path: polygon(5% 0, 100% 0, 94% 100%, 0 88%);
+    backface-visibility: hidden;
     transition:
+        transform 260ms cubic-bezier(0.22, 0.72, 0.22, 1),
         color 160ms ease,
         background-color 160ms ease,
         border-color 160ms ease;
+    will-change: transform;
+}
+
+.project-card__actions a:nth-child(even) {
+    clip-path: polygon(0 8%, 94% 0, 100% 88%, 6% 100%);
 }
 
 .project-card__actions a:first-child {
@@ -316,10 +558,236 @@
     color: var(--space-ink);
     background: var(--space-paper);
     border-color: var(--space-paper);
+    transform: translate3d(-5px, -5px, 0);
 }
 
-/* 中等宽度 */
-@media screen and (max-width: 960px) {
+.project-card__actions a:focus-visible {
+    box-shadow: inset 0 0 0 2px #fff;
+    outline: 0;
+}
+
+/* 余像：复用三框图标的灰绿、铁锈与黄铜色；仅改变配色。 */
+.project-card[data-project="aesthetic-archive"] {
+    --project-surface: linear-gradient(135deg, #252822, #343b32);
+    color: #eeebe1;
+}
+
+.project-card[data-project="aesthetic-archive"] .project-card__title-block h3,
+.project-card[data-project="aesthetic-archive"] .project-card__actions a {
+    color: #eeebe1;
+}
+
+.project-card[data-project="aesthetic-archive"] .project-card__meta {
+    color: #b5bdb0;
+}
+
+.project-card[data-project="aesthetic-archive"] .project-card__description,
+.project-card[data-project="aesthetic-archive"] .project-card__stack li {
+    color: #d7dbd1;
+}
+
+.projects-grid .project-card[data-project="aesthetic-archive"] .project-card__title-block {
+    background:
+        linear-gradient(229deg, rgba(238, 235, 225, 0.18) 0 7%, transparent 7.6% 47%, rgba(238, 235, 225, 0.08) 47.6% 49%, transparent 49.6%),
+        linear-gradient(156deg, transparent 0 72%, #b66d52 72.3% 73%, transparent 73.3%),
+        var(--project-surface);
+}
+
+.projects-grid .project-card[data-project="aesthetic-archive"] .project-card__description {
+    background:
+        linear-gradient(206deg, rgba(238, 235, 225, 0.13) 0 5%, transparent 5.6% 58%, rgba(238, 235, 225, 0.07) 58.5% 60%, transparent 60.5%),
+        linear-gradient(147deg, transparent 0 81%, #98a397 81.3% 82%, transparent 82.3%),
+        var(--project-surface);
+}
+
+.project-card[data-project="aesthetic-archive"]::before {
+    background: conic-gradient(
+        from 9deg at 48% 44%,
+        transparent 0 7deg,
+        rgba(133, 145, 128, 0.58) 7.2deg 7.8deg,
+        transparent 8deg 76deg,
+        rgba(52, 59, 50, 0.40) 76.2deg 77deg,
+        transparent 77.2deg 158deg,
+        rgba(133, 145, 128, 0.58) 158.2deg 158.9deg,
+        transparent 159.1deg 246deg,
+        rgba(52, 59, 50, 0.40) 246.2deg 247deg,
+        transparent 247.2deg 329deg,
+        rgba(133, 145, 128, 0.58) 329.2deg 329.9deg,
+        transparent 330.1deg 360deg
+    );
+}
+
+.project-card[data-project="aesthetic-archive"]::after {
+    border-color: #98a397;
+    box-shadow: 0 0 0 3px rgba(52, 59, 50, 0.16);
+}
+
+.project-card[data-project="aesthetic-archive"] .project-card__actions a:first-child {
+    color: #252822;
+    background: #c7ad72;
+    border-color: #c7ad72;
+}
+
+.project-card[data-project="aesthetic-archive"] .project-card__actions a:hover {
+    color: #252822;
+    background: #eeebe1;
+    border-color: #eeebe1;
+}
+
+.project-card[data-project="aesthetic-archive"] .project-card__actions a:focus-visible {
+    box-shadow: inset 0 0 0 2px #eeebe1;
+}
+
+/*
+ * 具备精细指针的设备使用“封面 → 碎裂展开”交互。
+ * 触屏设备不进入折叠态，避免内容依赖不存在的 hover。
+ */
+@media (hover: hover) and (pointer: fine) and (min-width: 681px) {
+    .project-card {
+        cursor: crosshair;
+    }
+
+    .project-card::before,
+    .project-card::after {
+        opacity: 0;
+    }
+
+    .project-card::after {
+        transition:
+            opacity 180ms ease,
+            transform 420ms cubic-bezier(0.22, 0.72, 0.22, 1);
+    }
+
+    .project-card__header,
+    .project-card__description,
+    .project-card__stack,
+    .project-card__actions {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+            transform 420ms cubic-bezier(0.22, 0.72, 0.22, 1),
+            opacity 220ms ease,
+            visibility 0s linear 420ms;
+    }
+
+    .project-card__header {
+        transform: translate3d(10%, 72px, 0) scale(0.76);
+    }
+
+    .project-card__description {
+        transform: translate3d(-8%, -22px, 0) scale(0.84);
+    }
+
+    .project-card__stack {
+        transform: translate3d(18%, -58px, 0) scale(0.78);
+    }
+
+    .project-card__actions {
+        transform: translate3d(-18%, -94px, 0) scale(0.78);
+    }
+
+    .project-card__title-block {
+        z-index: 6;
+        transform: translate3d(10%, 64px, 0) scale(1.08);
+    }
+
+    .project-card__mark {
+        z-index: 7;
+        transform: translate3d(-18%, 66px, 0) scale(1.08);
+    }
+
+    .projects-grid .project-card:nth-child(even) .project-card__header {
+        transform: translate3d(-10%, 72px, 0) scale(0.76);
+    }
+
+    .projects-grid .project-card:nth-child(even) .project-card__description {
+        transform: translate3d(8%, -22px, 0) scale(0.84);
+    }
+
+    .projects-grid .project-card:nth-child(even) .project-card__stack {
+        transform: translate3d(-18%, -58px, 0) scale(0.78);
+    }
+
+    .projects-grid .project-card:nth-child(even) .project-card__actions {
+        transform: translate3d(18%, -94px, 0) scale(0.78);
+    }
+
+    .projects-grid .project-card:nth-child(even) .project-card__title-block {
+        transform: translate3d(-10%, 64px, 0) scale(1.08);
+    }
+
+    .projects-grid .project-card:nth-child(even) .project-card__mark {
+        transform: translate3d(18%, 66px, 0) scale(1.08);
+    }
+
+    .project-card:is(:hover, :focus, :focus-within)::before,
+    .project-card:is(:hover, :focus, :focus-within)::after {
+        opacity: 1;
+    }
+
+    .project-card:is(:hover, :focus, :focus-within)::after {
+        transform: rotate(135deg) scale(1.2);
+    }
+
+    .project-card:is(:hover, :focus, :focus-within) .project-card__header,
+    .project-card:is(:hover, :focus, :focus-within) .project-card__description,
+    .project-card:is(:hover, :focus, :focus-within) .project-card__stack,
+    .project-card:is(:hover, :focus, :focus-within) .project-card__actions {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: 0s;
+    }
+
+    .project-card:is(:hover, :focus, :focus-within) .project-card__header {
+        transform: translate3d(-4px, -6px, 0) rotate(-0.2deg);
+    }
+
+    .project-card:is(:hover, :focus, :focus-within) .project-card__title-block {
+        transform: translate3d(-7px, -4px, 0) rotate(-0.45deg);
+    }
+
+    .project-card:is(:hover, :focus, :focus-within) .project-card__description {
+        transform: translate3d(7px, 6px, 0) rotate(0.35deg);
+    }
+
+    .project-card:is(:hover, :focus, :focus-within) .project-card__mark {
+        transform: translate3d(10px, -8px, 0) rotate(2deg);
+    }
+
+    .project-card:is(:hover, :focus, :focus-within) .project-card__actions {
+        transform: translate3d(7px, 8px, 0);
+    }
+
+    .projects-grid .project-card:nth-child(even):is(:hover, :focus, :focus-within) .project-card__header {
+        transform: translate3d(4px, -6px, 0) rotate(0.2deg);
+    }
+
+    .projects-grid .project-card:nth-child(even):is(:hover, :focus, :focus-within) .project-card__title-block {
+        transform: translate3d(7px, -4px, 0) rotate(0.45deg);
+    }
+
+    .projects-grid .project-card:nth-child(even):is(:hover, :focus, :focus-within) .project-card__description {
+        transform: translate3d(-7px, 6px, 0) rotate(-0.35deg);
+    }
+
+    .projects-grid .project-card:nth-child(even):is(:hover, :focus, :focus-within) .project-card__mark {
+        transform: translate3d(-10px, -8px, 0) rotate(-2deg);
+    }
+
+    .projects-grid .project-card:nth-child(even):is(:hover, :focus, :focus-within) .project-card__actions {
+        transform: translate3d(-7px, 8px, 0);
+    }
+
+    .project-card:focus-visible {
+        outline: 2px solid var(--project-accent);
+        outline-offset: 8px;
+    }
+}
+
+/* 中等桌面先把栏目介绍移到项目卡上方，为双卡保留横向空间。 */
+@media screen and (max-width: 1200px) {
     .projects-section__layout {
         grid-template-columns: 1fr;
         gap: 42px;
@@ -328,6 +796,18 @@
     .projects-section__description {
         max-width: 520px;
         margin-top: 20px;
+    }
+}
+
+/* 平板及以下回到单列，避免卡片内部标题与项目标记互相挤压。 */
+@media screen and (max-width: 960px) {
+    .projects-grid,
+    .projects-grid--multiple {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid--multiple .project-card--featured {
+        grid-column: auto;
     }
 }
 
@@ -347,19 +827,12 @@
 
     .project-card,
     .project-card--featured {
-        min-height: 0;
-        border-radius: 18px;
+        min-height: 390px;
+        border-radius: 0;
     }
 
     .project-card__header {
         padding: 18px;
-    }
-
-    .project-card__body,
-    .project-card--featured .project-card__body {
-        grid-template-columns: minmax(0, 1fr) 92px;
-        gap: 18px;
-        padding: 26px 18px;
     }
 
     .project-card__mark,
@@ -369,19 +842,41 @@
 
     .project-card__mark strong,
     .project-card--featured .project-card__mark strong {
-        font-size: 38px;
+        font-size: 30px;
     }
 
     .project-card__actions,
     .project-card--featured .project-card__actions {
-        padding: 0 18px 20px;
+        padding: 0;
     }
 }
 
 @media screen and (max-width: 460px) {
-    .project-card__body,
-    .project-card--featured .project-card__body {
-        grid-template-columns: 1fr;
+    .project-card,
+    .project-card--featured {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        min-height: 0;
+    }
+
+    .project-card__header,
+    .projects-grid .project-card:nth-child(even) .project-card__header,
+    .project-card__title-block,
+    .projects-grid .project-card:nth-child(even) .project-card__title-block,
+    .project-card__description,
+    .projects-grid .project-card:nth-child(even) .project-card__description,
+    .project-card__stack,
+    .projects-grid .project-card:nth-child(even) .project-card__stack,
+    .project-card__actions,
+    .projects-grid .project-card:nth-child(even) .project-card__actions {
+        grid-column: 1 / 9;
+    }
+
+    .project-card__stack,
+    .projects-grid .project-card:nth-child(even) .project-card__stack,
+    .project-card__actions,
+    .projects-grid .project-card:nth-child(even) .project-card__actions {
+        justify-content: flex-start;
+        justify-self: start;
     }
 
     .project-card__mark {
@@ -390,12 +885,42 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .project-card,
-    .project-card__actions a {
+    .project-card::before,
+    .project-card::after,
+    .project-card__header,
+    .project-card__title-block,
+    .project-card__description,
+    .project-card__stack li,
+    .project-card__actions,
+    .project-card__actions a,
+    .project-card__mark {
         transition: none;
     }
 
     .project-card:hover {
+        transform: none;
+    }
+
+    .project-card:hover .project-card__mark {
+        transform: none;
+    }
+
+    .project-card:hover::before {
+        opacity: 0.72;
+    }
+
+    .project-card:hover::after {
+        transform: rotate(45deg);
+    }
+
+    .project-card:hover .project-card__header,
+    .project-card:hover .project-card__title-block,
+    .project-card:hover .project-card__description,
+    .project-card:hover .project-card__actions {
+        transform: none;
+    }
+
+    .project-card:hover .project-card__stack li:nth-child(n) {
         transform: none;
     }
 }
